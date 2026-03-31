@@ -5716,6 +5716,8 @@
 \end{proof}
 
 \section{Spaces of meromorphic functions}
+
+\section{The Riemann Mapping Theorem}
 \setexercise{2}
 \begin{exercise}
 	\begin{enumerate}[label=(\alph*)]
@@ -5921,6 +5923,272 @@
 		|f'(a)|\le 1.
 	\]
 \end{proof}
+
+\section{The Weierstrass Factorization Theorem}
+
+\setexercise{3}
+\begin{exercise}
+	Let $f$ and $g$ be analytic functions on a region $G$ and show that there are analytic functions $f_1$, $g_1$, and $h$ on $G$ such that $f(z)=h(z)f_1(z)$ and $g(z)=h(z)g_1(z)$ for all $z$ in $G$; and $f_1$ and $g_1$ have no common zeros.
+\end{exercise}
+\begin{proof}[Solution]
+	We consider first the trivial cases. If \(f\equiv g\equiv 0\), take
+	\[
+		h\equiv 0,\qquad f_1\equiv 1,\qquad g_1\equiv 1.
+	\]
+	If \(f\equiv 0\) and \(g\not\equiv 0\), take
+	\[
+		h=g,\qquad f_1\equiv 0,\qquad g_1\equiv 1.
+	\]
+	Similarly, if \(g\equiv 0\) and \(f\not\equiv 0\), take
+	\[
+		h=f,\qquad f_1\equiv 1,\qquad g_1\equiv 0.
+	\]
+	So we may assume that neither \(f\) nor \(g\) is identically zero.
+
+	Let
+	\[
+		E=\{a\in G: f(a)=0 \text{ and } g(a)=0\}.
+	\]
+	Since zeros of a nonzero analytic function are isolated, the set \(E\) has no limit point in \(G\). For each \(a\in E\), define
+	\[
+		m(a)=\min\bigl(\operatorname{ord}_a(f),\operatorname{ord}_a(g)\bigr).
+	\]
+	By the theorem on existence of an analytic function with prescribed zeros and multiplicities, there exists an analytic function \(h\) on \(G\) whose zeros are exactly the points of \(E\), and such that for each \(a\in E\),
+	\[
+		\operatorname{ord}_a(h)=m(a).
+	\]
+
+	Now define
+	\[
+		f_1(z)=\frac{f(z)}{h(z)},\qquad g_1(z)=\frac{g(z)}{h(z)}
+	\]
+	at points where \(h(z)\neq 0\). We show that both quotients extend analytically across the zeros of \(h\).
+
+	Fix \(a\in E\). Write locally
+	\[
+		f(z)=(z-a)^p u(z),\qquad g(z)=(z-a)^q v(z),\qquad h(z)=(z-a)^m w(z),
+	\]
+	where \(u,v,w\) are analytic near \(a\), with
+	\[
+		u(a)\neq 0,\qquad v(a)\neq 0,\qquad w(a)\neq 0,
+	\]
+	and
+	\[
+		p=\operatorname{ord}_a(f),\qquad q=\operatorname{ord}_a(g),\qquad m=\min(p,q).
+	\]
+	Then
+	\[
+		\frac{f(z)}{h(z)}=(z-a)^{p-m}\frac{u(z)}{w(z)},\qquad
+		\frac{g(z)}{h(z)}=(z-a)^{q-m}\frac{v(z)}{w(z)}.
+	\]
+	Since \(p-m\ge 0\) and \(q-m\ge 0\), both expressions are analytic near \(a\). Hence the singularities at the zeros of \(h\) are removable, so \(f_1\) and \(g_1\) extend to analytic functions on all of \(G\). By construction,
+	\[
+		f=hf_1,\qquad g=hg_1 \qquad \text{on } G.
+	\]
+
+	It remains to show that \(f_1\) and \(g_1\) have no common zeros. Suppose, to the contrary, that for some \(a\in G\),
+	\[
+		f_1(a)=g_1(a)=0.
+	\]
+	Then \(f(a)=g(a)=0\), so \(a\in E\). Also,
+	\[
+		\operatorname{ord}_a(f)=\operatorname{ord}_a(h)+\operatorname{ord}_a(f_1),\qquad
+		\operatorname{ord}_a(g)=\operatorname{ord}_a(h)+\operatorname{ord}_a(g_1).
+	\]
+	Since \(f_1(a)=g_1(a)=0\), we have \(\operatorname{ord}_a(f_1)\ge 1\) and \(\operatorname{ord}_a(g_1)\ge 1\). Therefore,
+	\[
+		\min\bigl(\operatorname{ord}_a(f),\operatorname{ord}_a(g)\bigr)
+		\ge \operatorname{ord}_a(h)+1,
+	\]
+	which contradicts the definition
+	\[
+		\operatorname{ord}_a(h)=\min\bigl(\operatorname{ord}_a(f),\operatorname{ord}_a(g)\bigr).
+	\]
+	Thus \(f_1\) and \(g_1\) have no common zeros.
+
+	Therefore there exist analytic functions \(f_1\), \(g_1\), and \(h\) on \(G\) such that
+	\[
+		f=hf_1,\qquad g=hg_1,
+	\]
+	and \(f_1\) and \(g_1\) have no common zeros.
+\end{proof}
+
+\setexercise{6}
+\begin{exercise}
+	Discuss the convergence of the infinite products
+	\[
+		\prod \left(1+\frac{i}{n}\right)
+		\qquad \text{and} \qquad
+		\prod \left|1+\frac{i}{n}\right|.
+	\]
+\end{exercise}
+
+\begin{proof}[Solution]
+	Let
+	\[
+		P_N=\prod_{n=1}^N\left(1+\frac{i}{n}\right).
+	\]
+	Write each factor in polar form:
+	\[
+		1+\frac{i}{n}
+		=\left|1+\frac{i}{n}\right|e^{\,i\arg(1+i/n)}.
+	\]
+	Hence
+	\[
+		P_N
+		=\left(\prod_{n=1}^N \left|1+\frac{i}{n}\right|\right)
+		\exp\!\left(i\sum_{n=1}^N \arg\left(1+\frac{i}{n}\right)\right).
+	\]
+
+	First consider the moduli:
+	\[
+		\left|1+\frac{i}{n}\right|=\sqrt{1+\frac{1}{n^2}},
+	\]
+	so
+	\[
+		\log\left|1+\frac{i}{n}\right|
+		=\frac{1}{2}\log\left(1+\frac{1}{n^2}\right)\sim \frac{1}{2n^2}.
+	\]
+	Since $\sum \frac{1}{n^2}$ converges, it follows that
+	\[
+		\sum_{n=1}^\infty \log\left|1+\frac{i}{n}\right|
+	\]
+	converges, and therefore
+	\[
+		\prod_{n=1}^\infty \left|1+\frac{i}{n}\right|
+	\]
+	converges to a finite positive limit.
+
+	Next consider the arguments:
+	\[
+		\arg\left(1+\frac{i}{n}\right)=\arctan\left(\frac{1}{n}\right)\sim \frac{1}{n}.
+	\]
+	Since $\sum \frac{1}{n}$ diverges, we have
+	\[
+		\sum_{n=1}^\infty \arg\left(1+\frac{i}{n}\right)=\infty.
+	\]
+	Thus the arguments of the partial products $P_N$ are unbounded and do not converge modulo $2\pi$.
+
+	Therefore, although the moduli $\lvert P_N\rvert$ converge, the sequence $P_N$ does not converge in $\mathbb{C}$.
+
+	In conclusion,
+	\[
+		\prod_{n=1}^\infty \left|1+\frac{i}{n}\right| \text{ converges,}
+		\qquad
+		\prod_{n=1}^\infty \left(1+\frac{i}{n}\right) \text{ diverges.}
+	\]
+\end{proof}
+
+\setexercise{9}
+\begin{exercise}
+	Use Theorem 5.15 to show there is an analytic function $f$ on
+	\(
+	D=\{z: |z|<1\}
+	\)
+	which is not analytic on any region $G$ which properly contains $D$.
+\end{exercise}
+
+\setexercise{13}
+\begin{exercise}
+	Find an entire function $f$ such that $f(m+in)=0$ for all possible integers $m$, $n$. Find the most elementary solution possible.
+\end{exercise}
+
+\section{Factorization of the sine function}
+\setexercise{1}
+\begin{exercise}
+	Show that
+	\[
+		\cos \pi z=\prod_{n=1}^{\infty}\left[1-\frac{4z^2}{(2n-1)^2}\right].
+	\]
+\end{exercise}
+
+
+\chapter{Runge's Theorem}
+\section{Runge's Theorem}
+\setexercise{2}
+\begin{exercise}
+	Let $G$ be the open unit disk $B(0;1)$ and let
+	\(
+	K=\left\{z:\frac{1}{4}\le |z|\le \frac{3}{4}\right\}.
+	\)
+	Show that there is a function $f$ analytic on some open subset $G_1$ containing $K$ which cannot be approximated on $K$ by functions in $H(G)$.
+\end{exercise}
+
+\section{Simple connectedness}
+\setexercise{1}
+\begin{exercise}
+	The set
+	\[
+		G=\left\{re^{it}:-\infty<t<0 \text{ and } 1+e^t<r<1+2e^t\right\}
+	\]
+	is called a cornucopia. Show that $G$ is simply connected. Let $K=\overline{G}$; is $\widehat{K}$ connected?
+\end{exercise}
+
+\chapter{Analytic Continuation and Riemann Surfaces}
+
+\chapter{Harmonic Functions}
+\section{Basic properties of harmonic functions}
+\setexercise{4}
+\begin{exercise}
+	Prove that a nonconstant harmonic function on a region is an open map.
+	(Hint: Use the fact that the connected subsets of $\mathbb{R}$ are intervals.)
+\end{exercise}
+
+\setexercise{5}
+\begin{exercise}
+	If $f$ is analytic on $G$ and $f(z)\ne 0$ for any $z$ show that
+	\[
+		u=\log |f|
+	\]
+	is harmonic on $G$.
+\end{exercise}
+
+\setexercise{6}
+\begin{exercise}
+	Let $u$ be harmonic in $G$ and suppose $\overline{B}(a;R)\subseteq G$. Show that
+	\[
+		u(a)=\frac{1}{\pi R^2}\iint_{\overline{B}(a;R)} u(x,y)\,dx\,dy.
+	\]
+\end{exercise}
+
+\setexercise{7}
+\begin{exercise}
+	For $|z|<1$ let
+	\(
+	u(z)=\Im\left[\left(\frac{1+z}{1-z}\right)^2\right].
+	\)
+	Show that $u$ is harmonic and
+	\(
+	\lim_{r\to 1^-} u(re^{i\theta})=0
+	\)
+	for all $\theta$. Does this violate Theorem 1.7? Why?
+\end{exercise}
+
+\setexercise{9}
+\begin{exercise}
+	Let $u:G\to\mathbb{R}$ be harmonic and let
+	\(
+	A=\{z\in G: u_x(z)=u_y(z)=0\};
+	\)
+	that is, $A$ is the set of zeros of the gradient of $u$. Can $A$ have a limit point in $G$?
+\end{exercise}
+
+\section{Harmonic functions on a disk}
+\setexercise{2}
+\begin{exercise}
+	In the statement of Theorem 2.4 suppose that $f$ is piecewise continuous on $\partial D$. Is the conclusion of the theorem still valid? If not, what parts of the conclusion remain true?
+\end{exercise}
+
+\setexercise{4}
+\begin{exercise}
+	Let $G$ be a simply connected region and let $\Gamma$ be its closure in $\mathbb{C}_\infty$; $\partial_\infty G=\Gamma - G$. Suppose there is a homeomorphism $\varphi$ of $\Gamma$ onto $\overline{D}$ ($D=\{z:|z|<1\}$) such that $\varphi$ is analytic on $G$.
+
+	\begin{enumerate}
+		\item[(a)] Show that $\varphi(G)=D$ and $\varphi(\partial_\infty G)=\partial D$.
+		\item[(b)] Show that if $f:\partial_\infty G\to \mathbb{R}$ is a continuous function then there is a continuous function $u:\Gamma\to \mathbb{R}$ such that $u(z)=f(z)$ for $z\in \partial_\infty G$ and $u$ is harmonic in $G$.
+		\item[(c)] Suppose that the function $f$ in part (b) is not assumed to be continuous at $\infty$. Show that there is a continuous function $u:G^-\to \mathbb{R}$ such that $u(z)=f(z)$ for $z\in \partial G$ and $u$ is harmonic in $G$ (see Exercise 2).
+	\end{enumerate}
+\end{exercise}
 
 
 \end{document}
