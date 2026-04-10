@@ -24,7 +24,6 @@
 \fancyhf{} % Clear header and footer
 \fancyfoot[C]{\footnotesize \thepage\ of \pageref{LastPage}}
 
-
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
@@ -6088,10 +6087,71 @@
 	which is not analytic on any region $G$ which properly contains $D$.
 \end{exercise}
 
+\begin{proof}[Solution]
+	Let
+	\[
+		A=\left\{\left(1-\frac{1}{n}\right)e^{2\pi i k/n} : n\ge 2,\; k=0,1,\dots,n-1\right\}.
+	\]
+	Then $A \subset D=\{z:|z|<1\}$, the points of $A$ are distinct, and $A$ has no limit point in $D$; all its limit points lie on the unit circle $|z|=1$.
+
+	By Theorem 5.15 (with multiplicities $m_j=1$), there exists an analytic function $f$ on $D$ whose only zeros are the points of $A$.
+
+	Suppose, for contradiction, that $f$ is analytic on a region $G$ which properly contains $D$. Then there exists $w\in G\setminus D$, so $|w|\ge 1$. Since $G$ is a region, it is path-connected, hence there exists a continuous path in $G$ from $0$ to $w$. By continuity, this path meets the unit circle at some point $\zeta\in G$ with $|\zeta|=1$.
+
+	Since every point of $|z|=1$ is a limit point of $A$, there exists a sequence of zeros of $f$ in $D$ converging to $\zeta$. Because $\zeta\in G$ and $f$ is analytic on $G$, the Identity Theorem implies that $f\equiv 0$ on $G$, a contradiction.
+
+	Therefore, $f$ is not analytic on any region $G$ which properly contains $D$.
+\end{proof}
+
 \setexercise{13}
 \begin{exercise}
 	Find an entire function $f$ such that $f(m+in)=0$ for all possible integers $m$, $n$. Find the most elementary solution possible.
 \end{exercise}
+\begin{proof}[Solution]
+	Let
+	\[
+		\Lambda = \{m+in : m,n \in \mathbb{Z}\}
+	\]
+	be the Gaussian integer lattice. We construct an entire function whose zeros are exactly the points of \(\Lambda\).
+
+	Observe that \(\Lambda\) is invariant under the transformations
+	\[
+		\omega \mapsto -\omega, \qquad \omega \mapsto i\omega.
+	\]
+	Thus every nonzero lattice point belongs to a set of the form
+	\[
+		\{\omega, -\omega, i\omega, -i\omega\}.
+	\]
+	Let \(S\) be a set containing exactly one representative from each such set in \(\Lambda \setminus \{0\}\).
+
+	Define
+	\[
+		f(z) = z \prod_{\omega \in S} \left(1 - \frac{z^4}{\omega^4}\right).
+	\]
+
+	We first show that \(f\) is entire. For \(|z| \le R\),
+	\[
+		\left| \frac{z^4}{\omega^4} \right| \le \frac{R^4}{|\omega|^4}.
+	\]
+	Since
+	\[
+		\sum_{\omega \in S} \frac{1}{|\omega|^4} < \infty,
+	\]
+	the infinite product converges uniformly on compact sets. Hence \(f\) is entire.
+
+	Now we verify the zeros. Clearly \(f(0) = 0\). Let \(\lambda \in \Lambda \setminus \{0\}\). Then \(\lambda\) belongs to exactly one set
+	\[
+		\{\omega, -\omega, i\omega, -i\omega\}
+	\]
+	for some \(\omega \in S\), so \(\lambda^4 = \omega^4\). Therefore
+	\[
+		1 - \frac{\lambda^4}{\omega^4} = 0,
+	\]
+	which implies \(f(\lambda) = 0\).
+
+	Thus \(f(m+in) = 0\) for all integers \(m,n\), as required.
+\end{proof}
+
 
 \section{Factorization of the sine function}
 \setexercise{1}
