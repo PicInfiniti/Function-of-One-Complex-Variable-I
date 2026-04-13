@@ -6161,6 +6161,67 @@
 		\cos \pi z=\prod_{n=1}^{\infty}\left[1-\frac{4z^2}{(2n-1)^2}\right].
 	\]
 \end{exercise}
+\begin{proof}[Solution]
+	We begin with Euler’s product formula for the sine function:
+	\[
+		\sin \pi z=\pi z\prod_{n=1}^{\infty}\left(1-\frac{z^2}{n^2}\right).
+	\]
+	Using the double-angle identity,
+	\[
+		\sin 2\pi z=2\sin \pi z \cos \pi z,
+	\]
+	we compute \(\sin 2\pi z\) in two ways. First, applying Euler’s product with \(2z\),
+	\[
+		\sin 2\pi z
+		=2\pi z\prod_{n=1}^{\infty}\left(1-\frac{4z^2}{n^2}\right).
+	\]
+	Second,
+	\[
+		\sin 2\pi z
+		=
+		2\left(\pi z\prod_{n=1}^{\infty}\left(1-\frac{z^2}{n^2}\right)\right)\cos \pi z.
+	\]
+	Equating these expressions gives
+	\[
+		2\pi z\prod_{n=1}^{\infty}\left(1-\frac{4z^2}{n^2}\right)
+		=
+		2\pi z\prod_{n=1}^{\infty}\left(1-\frac{z^2}{n^2}\right)\cos \pi z.
+	\]
+	For \(z\neq 0\), cancel \(2\pi z\) to obtain
+	\[
+		\cos \pi z
+		=
+		\prod_{n=1}^{\infty}
+		\frac{1-\frac{4z^2}{n^2}}{1-\frac{z^2}{n^2}}.
+	\]
+
+	Now split the product into even and odd terms:
+	\[
+		\prod_{n=1}^{\infty}\left(1-\frac{4z^2}{n^2}\right)
+		=
+		\left(\prod_{n=1}^{\infty}\left(1-\frac{4z^2}{(2n)^2}\right)\right)
+		\left(\prod_{n=1}^{\infty}\left(1-\frac{4z^2}{(2n-1)^2}\right)\right).
+	\]
+	Since
+	\[
+		1-\frac{4z^2}{(2n)^2}=1-\frac{z^2}{n^2},
+	\]
+	we have
+	\[
+		\prod_{n=1}^{\infty}\left(1-\frac{4z^2}{n^2}\right)
+		=
+		\left(\prod_{n=1}^{\infty}\left(1-\frac{z^2}{n^2}\right)\right)
+		\left(\prod_{n=1}^{\infty}\left(1-\frac{4z^2}{(2n-1)^2}\right)\right).
+	\]
+	Substituting into the expression for \(\cos \pi z\), the common factors cancel, yielding
+	\[
+		\cos \pi z
+		=
+		\prod_{n=1}^{\infty}\left(1-\frac{4z^2}{(2n-1)^2}\right).
+	\]
+
+	Since both sides define entire functions and agree for all \(z\neq 0\), the identity holds for all \(z\in\mathbb{C}\).
+\end{proof}
 
 
 \chapter{Runge's Theorem}
@@ -6174,6 +6235,55 @@
 	Show that there is a function $f$ analytic on some open subset $G_1$ containing $K$ which cannot be approximated on $K$ by functions in $H(G)$.
 \end{exercise}
 
+\begin{proof}[Solution]
+	Let
+	\[
+		f(z)=\frac{1}{z}.
+	\]
+	Since \(0\notin K\), the function \(f\) is analytic on any open annulus containing \(K\); for example, on
+	\[
+		G_1=\left\{z:\frac18<|z|<\frac78\right\}.
+	\]
+	Clearly \(K\subset G_1\).
+
+	We show that \(f\) cannot be approximated uniformly on \(K\) by functions in \(H(G)\), where
+	\[
+		G=B(0;1).
+	\]
+
+	Assume, to the contrary, that there exists a sequence \((f_n)\subset H(G)\) such that
+	\[
+		f_n \to \frac1z
+		\qquad\text{uniformly on }K.
+	\]
+	Consider the circle
+	\[
+		\Gamma=\{z:|z|=1/2\}.
+	\]
+	Since \(\Gamma\subset K\), the convergence is uniform on \(\Gamma\) as well.
+
+	For each \(n\), the function \(f_n\) is analytic on all of \(G\), and \(\Gamma\) bounds the disk \(\{z:|z|<1/2\}\subset G\). Hence, by Cauchy’s theorem,
+	\[
+		\int_\Gamma f_n(z)\,dz=0
+		\qquad\text{for every }n.
+	\]
+	Because \(f_n\to 1/z\) uniformly on \(\Gamma\), we may pass to the limit inside the integral:
+	\[
+		0
+		=
+		\lim_{n\to\infty}\int_\Gamma f_n(z)\,dz
+		=
+		\int_\Gamma \frac{1}{z}\,dz.
+	\]
+	But
+	\[
+		\int_\Gamma \frac{1}{z}\,dz=2\pi i,
+	\]
+	a contradiction.
+
+	Therefore \(f(z)=1/z\), which is analytic on the open set \(G_1\supset K\), cannot be approximated uniformly on \(K\) by functions in \(H(G)\).
+\end{proof}
+
 \section{Simple connectedness}
 \setexercise{1}
 \begin{exercise}
@@ -6183,7 +6293,60 @@
 	\]
 	is called a cornucopia. Show that $G$ is simply connected. Let $K=\overline{G}$; is $\widehat{K}$ connected?
 \end{exercise}
+\begin{proof}[Solution]
+	Write
+	\[
+		G=\left\{re^{it}:-\infty<t<0,\ 1+e^t<r<1+2e^t\right\}.
+	\]
 
+	We first show that \(G\) is simply connected. By Theorem 2.2(c), it is enough to show that
+	\[
+		\mathbb C_\infty\setminus G
+	\]
+	is connected.
+
+	Now \(G\) is the region between the two spirals
+	\[
+		\Gamma_1=\left\{(1+e^t)e^{it}:-\infty<t<0\right\},
+		\qquad
+		\Gamma_2=\left\{(1+2e^t)e^{it}:-\infty<t<0\right\},
+	\]
+	which wind around the origin as \(t\to -\infty\) and converge to the unit circle \(\{|z|=1\}\). Thus \(G\) is a spiral strip lying entirely outside the unit circle.
+
+	To see that \(\mathbb C_\infty\setminus G\) is connected, note that any point \(z\notin G\) can be joined to \(\infty\) by a path avoiding \(G\):
+	if \(|z|\le 1\), move first inside the disk \(\{|w|<1\}\), which is disjoint from \(G\), and then continue to \(\infty\) through the point at infinity in \(\mathbb C_\infty\);
+	if \(|z|>1\), one may move slightly in angle and then radially outward so as to avoid the narrow spiral strip \(G\), eventually reaching arbitrarily large modulus and hence \(\infty\).
+	Therefore \(\mathbb C_\infty\setminus G\) is connected. By Theorem 2.2(c), \(G\) is simply connected.
+
+	Now let
+	\[
+		K=\overline{G}.
+	\]
+	Then \(K\) consists of the closed spiral strip together with its limit set, namely the unit circle \(\{|z|=1\}\). In particular,
+	\[
+		\{|z|=1\}\subset K.
+	\]
+	Hence the open unit disk
+	\[
+		\mathbb D=\{z:|z|<1\}
+	\]
+	is a bounded component of \(\mathbb C\setminus K\).
+
+	Outside the unit circle, however, the complement of \(K\) is connected: removing the closed spiral strip does not create any further bounded complementary component, since all the winding accumulates onto the unit circle and the region outside the strip still has access to infinity.
+
+	Therefore the only bounded component of \(\mathbb C\setminus K\) is \(\mathbb D\). So the polynomial hull of \(K\) is
+	\[
+		\widehat K = K\cup \mathbb D.
+	\]
+	In particular, \(\widehat K\) is connected.
+
+	Thus
+	\[
+		\boxed{G \text{ is simply connected}}
+		\qquad\text{and}\qquad
+		\boxed{\widehat K \text{ is connected}.}
+	\]
+\end{proof}
 \chapter{Analytic Continuation and Riemann Surfaces}
 
 \chapter{Harmonic Functions}
@@ -6193,6 +6356,23 @@
 	Prove that a nonconstant harmonic function on a region is an open map.
 	(Hint: Use the fact that the connected subsets of $\mathbb{R}$ are intervals.)
 \end{exercise}
+\begin{proof}[Solution]
+	Let \(u:\Omega \to \mathbb{R}\) be a nonconstant harmonic function on a region \(\Omega\). We show that \(u\) is an open map.
+
+	Let \(G \subset \Omega\) be open, and let \(y_0 \in u(G)\). Then there exists \(x_0 \in G\) such that \(u(x_0)=y_0\). Since \(G\) is open, there exists \(r>0\) such that the closed ball \(\overline{B(x_0,r)} \subset G\).
+
+	Because \(u\) is harmonic and nonconstant on \(\Omega\), it cannot be constant on \(B(x_0,r)\). By the maximum and minimum principles, \(u\) cannot attain a local maximum or minimum at \(x_0\). Hence there exist points \(x_1, x_2 \in B(x_0,r)\) such that
+	\[
+		u(x_1) < u(x_0) < u(x_2).
+	\]
+
+	Since \(B(x_0,r)\) is connected and \(u\) is continuous, the set \(u(B(x_0,r))\) is a connected subset of \(\mathbb{R}\), hence an interval. Because this interval contains values both less than and greater than \(y_0\), it follows that there exists \(\varepsilon > 0\) such that
+	\[
+		(y_0 - \varepsilon,\, y_0 + \varepsilon) \subset u(B(x_0,r)) \subset u(G).
+	\]
+
+	Thus every point \(y_0 \in u(G)\) is an interior point of \(u(G)\), so \(u(G)\) is open. Therefore \(u\) is an open map.
+\end{proof}
 
 \setexercise{5}
 \begin{exercise}
@@ -6202,6 +6382,28 @@
 	\]
 	is harmonic on $G$.
 \end{exercise}
+\begin{proof}[Solution]
+	Let \(f\) be analytic on \(G\) and assume \(f(z)\neq 0\) for all \(z\in G\). We show that
+	\[
+		u(z)=\log |f(z)|
+	\]
+	is harmonic on \(G\).
+
+	Fix \(z_0\in G\). Since \(f\) is analytic and nonvanishing, there exists a neighborhood \(U\subset G\) of \(z_0\) on which one can define an analytic branch of the logarithm of \(f\). That is, there exists an analytic function \(g\) on \(U\) such that
+	\[
+		f(z)=e^{g(z)} \quad \text{for all } z\in U.
+	\]
+	Taking absolute values, we obtain
+	\[
+		|f(z)| = |e^{g(z)}| = e^{\Re g(z)},
+	\]
+	and hence
+	\[
+		\log |f(z)| = \Re g(z).
+	\]
+
+	Since \(g\) is analytic on \(U\), its real part \(\Re g\) is harmonic on \(U\). Therefore \(u=\log|f|\) is harmonic in a neighborhood of each point \(z_0\in G\), and hence harmonic on all of \(G\).
+\end{proof}
 
 \setexercise{6}
 \begin{exercise}
@@ -6210,6 +6412,56 @@
 		u(a)=\frac{1}{\pi R^2}\iint_{\overline{B}(a;R)} u(x,y)\,dx\,dy.
 	\]
 \end{exercise}
+\begin{proof}[Solution]
+	Since \(u\) is harmonic in \(G\) and \(\overline{B}(a;R)\subseteq G\), the mean value property for circles applies. Writing \(a=(a_1,a_2)\), we have for each \(0\le r\le R\),
+	\[
+		u(a)=\frac{1}{2\pi}\int_0^{2\pi} u(a_1+r\cos\theta,\; a_2+r\sin\theta)\,d\theta.
+	\]
+
+	Multiply both sides by \(r\) and integrate from \(0\) to \(R\):
+	\[
+		\int_0^R u(a)\,r\,dr
+		=
+		\frac{1}{2\pi}\int_0^R\int_0^{2\pi}
+		u(a_1+r\cos\theta,\; a_2+r\sin\theta)\,d\theta\, r\,dr.
+	\]
+	Since \(u(a)\) is constant with respect to \(r\), the left-hand side is
+	\[
+		u(a)\int_0^R r\,dr = u(a)\frac{R^2}{2}.
+	\]
+	Thus
+	\[
+		u(a)\frac{R^2}{2}
+		=
+		\frac{1}{2\pi}\int_0^R\int_0^{2\pi}
+		u(a_1+r\cos\theta,\; a_2+r\sin\theta)\, r\,d\theta\,dr.
+	\]
+	Multiplying by \(2/R^2\), we get
+	\[
+		u(a)
+		=
+		\frac{1}{\pi R^2}\int_0^R\int_0^{2\pi}
+		u(a_1+r\cos\theta,\; a_2+r\sin\theta)\, r\,d\theta\,dr.
+	\]
+
+	Now the change to polar coordinates centered at \(a\),
+	\[
+		x=a_1+r\cos\theta,\qquad y=a_2+r\sin\theta,
+	\]
+	has Jacobian \(r\), so
+	\[
+		\int_0^R\int_0^{2\pi}
+		u(a_1+r\cos\theta,\; a_2+r\sin\theta)\, r\,d\theta\,dr
+		=
+		\iint_{\overline{B}(a;R)} u(x,y)\,dx\,dy.
+	\]
+	Therefore
+	\[
+		u(a)=\frac{1}{\pi R^2}\iint_{\overline{B}(a;R)} u(x,y)\,dx\,dy.
+	\]
+
+	This is precisely the mean value property for disks.
+\end{proof}
 
 \setexercise{7}
 \begin{exercise}
@@ -6223,6 +6475,95 @@
 	\)
 	for all $\theta$. Does this violate Theorem 1.7? Why?
 \end{exercise}
+\begin{proof}[Solution]
+	Let
+	\[
+		f(z)=\left(\frac{1+z}{1-z}\right)^2, \qquad |z|<1.
+	\]
+	Since \(1-z\neq 0\) on the unit disk, \(f\) is analytic on \(\{\,|z|<1\,\}\). Therefore
+	\[
+		u(z)=\Im f(z)
+	\]
+	is harmonic, because the imaginary part of an analytic function is harmonic.
+
+	It remains to compute the radial boundary values. For \(z=re^{i\theta}\) with \(0\le r<1\),
+	\[
+		u(re^{i\theta})
+		=\Im\left[\left(\frac{1+re^{i\theta}}{1-re^{i\theta}}\right)^2\right].
+	\]
+	Multiply numerator and denominator inside the square by \(1-re^{-i\theta}\):
+	\[
+		\frac{1+re^{i\theta}}{1-re^{i\theta}}
+		=
+		\frac{(1+re^{i\theta})(1-re^{-i\theta})}{|1-re^{i\theta}|^2}
+		=
+		\frac{1-r^2+2ir\sin\theta}{|1-re^{i\theta}|^2}.
+	\]
+	Hence
+	\[
+		\left(\frac{1+re^{i\theta}}{1-re^{i\theta}}\right)^2
+		=
+		\frac{(1-r^2+2ir\sin\theta)^2}{|1-re^{i\theta}|^4},
+	\]
+	so
+	\[
+		u(re^{i\theta})
+		=
+		\frac{\Im\bigl((1-r^2+2ir\sin\theta)^2\bigr)}{|1-re^{i\theta}|^4}
+		=
+		\frac{4r(1-r^2)\sin\theta}{|1-re^{i\theta}|^4}.
+	\]
+
+	Now fix \(\theta\).
+
+	If \(\theta\neq 0 \pmod{2\pi}\), then
+	\[
+		|1-re^{i\theta}|^2 \to |1-e^{i\theta}|^2>0
+		\qquad (r\to 1^-),
+	\]
+	while \(4r(1-r^2)\sin\theta\to 0\). Therefore
+	\[
+		\lim_{r\to 1^-}u(re^{i\theta})=0.
+	\]
+
+	If \(\theta=0 \pmod{2\pi}\), then \(\sin\theta=0\), so in fact
+	\[
+		u(re^{i\theta})=0
+		\quad\text{for all } r,
+	\]
+	and again
+	\[
+		\lim_{r\to 1^-}u(re^{i\theta})=0.
+	\]
+
+	Thus
+	\[
+		\lim_{r\to 1^-}u(re^{i\theta})=0
+		\qquad\text{for every }\theta.
+	\]
+
+	This does \emph{not} violate Theorem 1.7. The reason is that Theorem 1.7 assumes the functions involved are \emph{bounded} on \(G\), whereas this function \(u\) is unbounded in the unit disk. Indeed, if
+	\[
+		z_\rho = 1-\rho+i\rho \qquad (\rho>0 \text{ small}),
+	\]
+	then \(|z_\rho|<1\), and
+	\[
+		\frac{1+z_\rho}{1-z_\rho}
+		=
+		\frac{2-\rho+i\rho}{\rho-i\rho}.
+	\]
+	As \(\rho\to 0^+\), this behaves like
+	\[
+		\frac{2}{\rho(1-i)},
+	\]
+	so
+	\[
+		\left(\frac{1+z_\rho}{1-z_\rho}\right)^2
+		\sim \frac{4}{\rho^2(1-i)^2}
+		= \frac{2i}{\rho^2},
+	\]
+	whose imaginary part tends to \(+\infty\). Hence \(u\) is not bounded, and the theorem does not apply.
+\end{proof}
 
 \setexercise{9}
 \begin{exercise}
@@ -6232,12 +6573,89 @@
 	\)
 	that is, $A$ is the set of zeros of the gradient of $u$. Can $A$ have a limit point in $G$?
 \end{exercise}
+\begin{proof}[Solution]
+	In general, \(A\) can have a limit point in \(G\) only if \(u\) is constant. Thus, if \(u\) is nonconstant harmonic, then \(A\) has no limit point in \(G\).
+
+	To see this, suppose \(a\in G\) is a limit point of
+	\[
+		A=\{z\in G: u_x(z)=u_y(z)=0\}.
+	\]
+	Choose a disk \(B(a;r)\subset G\). Since \(u\) is harmonic, on \(B(a;r)\) there exists a harmonic conjugate \(v\), so that
+	\[
+		f=u+iv
+	\]
+	is analytic on \(B(a;r)\).
+
+	By the Cauchy--Riemann equations,
+	\[
+		f'(z)=u_x(z)-i\,u_y(z).
+	\]
+	Hence
+	\[
+		z\in A \quad \Longleftrightarrow \quad f'(z)=0.
+	\]
+	Because \(a\) is a limit point of \(A\), the analytic function \(f'\) has zeros with a limit point in \(B(a;r)\). By the identity theorem, it follows that
+	\[
+		f'\equiv 0 \qquad \text{on } B(a;r).
+	\]
+	Therefore \(f\) is constant on \(B(a;r)\), and so \(u=\Re f\) is constant on \(B(a;r)\).
+
+	Now \(u\) is harmonic on the connected set \(G\), and \(u\) agrees with a constant on the nonempty open set \(B(a;r)\). Hence \(u\) is constant on all of \(G\). Indeed, \(u\) has a local maximum and a local minimum on \(B(a;r)\), so by the maximum principle \(u\) must be constant on \(G\).
+
+	Thus, if \(A\) has a limit point in \(G\), then \(u\) is constant on \(G\). Equivalently, for a nonconstant harmonic function, the set
+	\[
+		A=\{z\in G: \nabla u(z)=0\}
+	\]
+	has no limit point in \(G\).
+\end{proof}
 
 \section{Harmonic functions on a disk}
 \setexercise{2}
 \begin{exercise}
 	In the statement of Theorem 2.4 suppose that $f$ is piecewise continuous on $\partial D$. Is the conclusion of the theorem still valid? If not, what parts of the conclusion remain true?
 \end{exercise}
+\begin{proof}[Solution]
+	In general, the full conclusion of Theorem \(2.4\) is \emph{not} valid if \(f\) is only piecewise continuous on \(\partial D\).
+
+	Indeed, if there were a function \(u:\overline D\to \mathbb R\) that is continuous on \(\overline D\), harmonic in \(D\), and satisfies
+	\[
+		u(\zeta)=f(\zeta)\qquad (\zeta\in \partial D),
+	\]
+	then the boundary function \(f=u|_{\partial D}\) would have to be continuous on \(\partial D\), since it is the restriction of a continuous function on \(\overline D\). Thus, if \(f\) has a jump discontinuity, such a \(u\) cannot exist.
+
+	However, the Poisson integral still makes sense:
+	\[
+		u(re^{i\theta})
+		=
+		\frac1{2\pi}\int_{-\pi}^{\pi} P_r(\theta-t)\,f(e^{it})\,dt,
+		\qquad 0\le r<1.
+	\]
+	Since a piecewise continuous function on \(\partial D\) is bounded and integrable, this formula defines a harmonic function \(u\) on \(D\).
+
+	What remains true is the following:
+
+	\begin{enumerate}
+		\item The function \(u\) defined by the Poisson integral is harmonic in \(D\).
+
+		\item At every point \(e^{i\theta_0}\in \partial D\) where \(f\) is continuous,
+		      \[
+			      \lim_{r\to 1^-} u(re^{i\theta_0}) = f(e^{i\theta_0}).
+		      \]
+
+		\item If \(e^{i\theta_0}\) is a jump discontinuity of \(f\), and the one-sided limits
+		      \[
+			      f(\theta_0^-),\qquad f(\theta_0^+)
+		      \]
+		      exist, then
+		      \[
+			      \lim_{r\to 1^-} u(re^{i\theta_0})
+			      =
+			      \frac{f(\theta_0^-)+f(\theta_0^+)}2.
+		      \]
+	\end{enumerate}
+
+	So the theorem does \emph{not} remain true as stated: one generally loses continuity on \(\overline D\) and exact boundary agreement at the discontinuity points. What survives is the existence of a harmonic function in \(D\), given by the Poisson integral, which takes the correct boundary values at all continuity points and the average of the one-sided limits at each jump point.
+\end{proof}
 
 \setexercise{4}
 \begin{exercise}
@@ -6249,6 +6667,104 @@
 		\item[(c)] Suppose that the function $f$ in part (b) is not assumed to be continuous at $\infty$. Show that there is a continuous function $u:G^-\to \mathbb{R}$ such that $u(z)=f(z)$ for $z\in \partial G$ and $u$ is harmonic in $G$ (see Exercise 2).
 	\end{enumerate}
 \end{exercise}
+\begin{proof}[Solution]
+	\textbf{(a)} Since \(\varphi:\Gamma\to \overline D\) is a homeomorphism, it maps interior points of \(\Gamma\) onto interior points of \(\overline D\), and boundary points of \(\Gamma\) onto boundary points of \(\overline D\). We claim that
+	\[
+		\varphi(G)=D
+		\qquad\text{and}\qquad
+		\varphi(\partial_\infty G)=\partial D.
+	\]
 
+	First, \(\varphi(G)\subset \overline D\) is open, because \(\varphi\) is analytic and nonconstant on \(G\), hence open. Since \(\varphi(G)\subset \overline D\) is open in \(\mathbb C\), it must lie in \(D\). Thus
+	\[
+		\varphi(G)\subset D.
+	\]
+
+	Now let \(w\in D\). Since \(\varphi\) is onto \(\overline D\), there exists \(z\in \Gamma\) such that \(\varphi(z)=w\). If \(z\in \partial_\infty G\), then \(z\) is a boundary point of \(\Gamma\), so because \(\varphi\) is a homeomorphism, \(\varphi(z)\) must be a boundary point of \(\overline D\), that is, \(\varphi(z)\in \partial D\), contradicting \(w\in D\). Hence \(z\in G\). Therefore \(w\in \varphi(G)\), so \(D\subset \varphi(G)\). Thus
+	\[
+		\varphi(G)=D.
+	\]
+
+	Since \(\varphi\) is onto \(\overline D\), it follows immediately that
+	\[
+		\varphi(\partial_\infty G)=\overline D\setminus \varphi(G)=\overline D\setminus D=\partial D.
+	\]
+
+	\medskip
+
+	\textbf{(b)} Let \(f:\partial_\infty G\to \mathbb R\) be continuous. Define
+	\[
+		g:\partial D\to \mathbb R,\qquad
+		g(\zeta)=f\bigl(\varphi^{-1}(\zeta)\bigr).
+	\]
+	Because \(\varphi|\partial_\infty G:\partial_\infty G\to \partial D\) is a homeomorphism by part (a), the function \(g\) is continuous on \(\partial D\).
+
+	By Theorem \(2.4\), there exists a continuous function \(v:\overline D\to \mathbb R\) such that
+	\[
+		v(\zeta)=g(\zeta)\quad (\zeta\in \partial D),
+	\]
+	and \(v\) is harmonic in \(D\).
+
+	Now define
+	\[
+		u(z)=v(\varphi(z)),\qquad z\in \Gamma.
+	\]
+	Since \(\varphi\) is continuous on \(\Gamma\) and \(v\) is continuous on \(\overline D\), the function \(u\) is continuous on \(\Gamma\).
+
+	If \(z\in \partial_\infty G\), then \(\varphi(z)\in \partial D\), so
+	\[
+		u(z)=v(\varphi(z))=g(\varphi(z))
+		= f\bigl(\varphi^{-1}(\varphi(z))\bigr)=f(z).
+	\]
+	Thus \(u=f\) on \(\partial_\infty G\).
+
+	It remains to show that \(u\) is harmonic in \(G\). Since \(v\) is harmonic on \(D\), locally there is an analytic function \(F\) on \(D\) with
+	\[
+		v=\Re F.
+	\]
+	Because \(\varphi\) is analytic on \(G\), the composition \(F\circ \varphi\) is analytic on \(G\). Hence
+	\[
+		u=v\circ \varphi=\Re(F\circ \varphi)
+	\]
+	is harmonic on \(G\).
+
+	So there exists a continuous \(u:\Gamma\to \mathbb R\) such that \(u=f\) on \(\partial_\infty G\) and \(u\) is harmonic in \(G\).
+
+	\medskip
+
+	\textbf{(c)} Now assume only that \(f:\partial_\infty G\to \mathbb R\) need not be continuous at \(\infty\). We want to construct a function continuous on \(G^- = G\cup \partial G\), equal to \(f\) on \(\partial G\), and harmonic in \(G\).
+
+	Let
+	\[
+		E=\varphi(\partial G)\subset \partial D.
+	\]
+	Since \(\varphi(\infty)\in \partial D\), the set \(E\) is \(\partial D\) with one point removed, hence homeomorphic to an interval. Define
+	\[
+		g:E\to \mathbb R,\qquad g(\zeta)=f\bigl(\varphi^{-1}(\zeta)\bigr).
+	\]
+	Because \(f\) is continuous at each point of \(\partial G\), the function \(g\) is continuous on \(E\).
+
+	By Exercise \(2\), a continuous function on a proper arc of \(\partial D\) admits a harmonic extension to \(D\) that is continuous on \(D\cup E\). Hence there exists a function
+	\[
+		v:D\cup E\to \mathbb R
+	\]
+	such that \(v\) is continuous on \(D\cup E\), harmonic in \(D\), and
+	\[
+		v(\zeta)=g(\zeta)\qquad (\zeta\in E).
+	\]
+
+	Now define
+	\[
+		u(z)=v(\varphi(z)),\qquad z\in G^-.
+	\]
+	Since \(\varphi\) maps \(G\) onto \(D\) and \(\partial G\) onto \(E\), the function \(u\) is well-defined and continuous on \(G^-\). For \(z\in \partial G\),
+	\[
+		u(z)=v(\varphi(z))=g(\varphi(z))
+		=f\bigl(\varphi^{-1}(\varphi(z))\bigr)=f(z).
+	\]
+	As in part (b), \(u\) is harmonic in \(G\), because locally it is the real part of an analytic composition.
+
+	Therefore there exists a continuous function \(u:G^-\to \mathbb R\) such that \(u=f\) on \(\partial G\) and \(u\) is harmonic in \(G\).
+\end{proof}
 
 \end{document}
