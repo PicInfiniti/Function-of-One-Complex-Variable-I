@@ -6347,6 +6347,136 @@
 		\boxed{\widehat K \text{ is connected}.}
 	\]
 \end{proof}
+
+\section{Mittag-Leffier's Theorem}
+\begin{exercise}
+	Let $G$ be a region and let $\{a_n\}$ and $\{b_m\}$ be two sequences of distinct points in $G$ without limit points in $G$ such that $a_n \neq b_m$ for all $n,m$. Let $S_n(z)$ be a singular part at $a_n$ and let $p_m$ be a positive integer. Show that there is a meromorphic function $f$ on $G$ whose poles and zeros are $\{a_n\}$ and $\{b_m\}$ respectively, the singular part at $z = a_n$ is $S_n(z)$, and $z = b_m$ is a zero of multiplicity $p_m$.
+\end{exercise}
+
+
+\begin{proof}[Solution]
+	Let $q_n$ denote the order of the pole prescribed by the singular part $S_n$ at $a_n$.
+
+	\medskip
+	\noindent \textbf{Step 1: Construct a meromorphic function with the prescribed singular parts.}
+
+	By the Mittag--Leffler theorem, there exists a meromorphic function $F$ on $G$ such that
+
+	\begin{itemize}
+		\item the poles of $F$ are exactly the points $a_n$, and
+		\item the singular part of $F$ at $a_n$ is $S_n$.
+	\end{itemize}
+
+	Thus, near each $a_n$,
+	\[
+		F(z)=S_n(z)+H_n(z),
+	\]
+	where $H_n$ is holomorphic near $a_n$.
+
+	Let $\{c_j\}$ be the set of zeros of $F$ in $G\setminus\{a_n\}$, and let $s_j$ be the multiplicity of the zero at $c_j$. Since $F$ is meromorphic and not identically zero, its zeros form a discrete set in $G$, so $\{c_j\}$ has no limit point in $G$.
+
+	\medskip
+	\noindent \textbf{Step 2: Remove the unwanted zeros of $F$.}
+
+	By the Weierstrass product theorem, there exists a holomorphic function $U$ on $G$ whose zeros are exactly the points $c_j$, with multiplicities $s_j$, and with no other zeros.
+
+	Since $U(a_n)\neq 0$ for every $n$, for each $n$ we may choose a holomorphic branch $\log U_n$ of $\log U$ in a neighborhood of $a_n$.
+
+	We now use the following standard interpolation fact:
+
+	\begin{quote}
+		If $\{\alpha_n\}$ is a discrete subset of $G$ and if for each $n$ and each $0\le k\le N_n$ numbers $\gamma_{n,k}$ are prescribed, then there exists a holomorphic function $h$ on $G$ such that
+		\[
+			h^{(k)}(\alpha_n)=\gamma_{n,k}, \qquad 0\le k\le N_n.
+		\]
+	\end{quote}
+
+	Apply this with $\alpha_n=a_n$, $N_n=q_n$, and
+	\[
+		\gamma_{n,k}=-(\log U_n)^{(k)}(a_n), \qquad 0\le k\le q_n.
+	\]
+	Then there exists a holomorphic function $M$ on $G$ such that, near each $a_n$,
+	\[
+		M(z)=-\log U_n(z)+O\bigl((z-a_n)^{q_n+1}\bigr).
+	\]
+
+	Set
+	\[
+		u(z):=U(z)e^{M(z)}.
+	\]
+	Since $e^M$ never vanishes, $u$ has exactly the same zeros as $U$, namely the points $c_j$ with multiplicities $s_j$, and no other zeros.
+
+	Moreover, near $a_n$,
+	\[
+		u(z)=U(z)e^{M(z)}
+		=U(z)e^{-\log U_n(z)+O((z-a_n)^{q_n+1})}
+		=e^{O((z-a_n)^{q_n+1})}
+		=1+O\bigl((z-a_n)^{q_n+1}\bigr).
+	\]
+
+	Now define
+	\[
+		F_1:=\frac{F}{u}.
+	\]
+	Then $F_1$ is meromorphic on $G$, its poles are exactly the points $a_n$, and it has no zeros in $G\setminus\{a_n\}$.
+
+	We claim that the singular part of $F_1$ at each $a_n$ is still $S_n$. Indeed,
+	\[
+		\frac1{u(z)}=1+O\bigl((z-a_n)^{q_n+1}\bigr),
+	\]
+	hence
+	\[
+		F_1(z)-F(z)=F(z)\left(\frac1{u(z)}-1\right).
+	\]
+	Since $F$ has a pole of order $q_n$ at $a_n$, while $\frac1u-1$ vanishes to order at least $q_n+1$, the product above is holomorphic near $a_n$. Therefore $F_1$ and $F$ have the same singular part at $a_n$, namely $S_n$.
+
+	\medskip
+	\noindent \textbf{Step 3: Insert the prescribed zeros at the points $b_m$.}
+
+	By the Weierstrass product theorem again, there exists a holomorphic function $V$ on $G$ whose zeros are exactly the points $b_m$, with multiplicities $p_m$, and with no other zeros.
+
+	Since $V(a_n)\neq 0$ for all $n$, we may choose for each $n$ a holomorphic branch $\log V_n$ of $\log V$ near $a_n$.
+
+	Using the same interpolation theorem as above, there exists a holomorphic function $N$ on $G$ such that near each $a_n$,
+	\[
+		N(z)=-\log V_n(z)+O\bigl((z-a_n)^{q_n+1}\bigr).
+	\]
+	Define
+	\[
+		v(z):=V(z)e^{N(z)}.
+	\]
+	Then $v$ has zeros exactly at the points $b_m$, with multiplicities $p_m$, and no other zeros, and near each $a_n$,
+	\[
+		v(z)=1+O\bigl((z-a_n)^{q_n+1}\bigr).
+	\]
+
+	Now set
+	\[
+		f:=F_1\,v=\frac{Fv}{u}.
+	\]
+
+	\medskip
+	\noindent \textbf{Step 4: Verification.}
+
+	\begin{itemize}
+		\item \emph{Poles.} Since $u(a_n)\neq 0$ and $v(a_n)\neq 0$, the poles of $f$ are exactly the points $a_n$.
+
+		\item \emph{Singular parts.} Near $a_n$,
+		      \[
+			      \frac{v(z)}{u(z)}=1+O\bigl((z-a_n)^{q_n+1}\bigr),
+		      \]
+		      so
+		      \[
+			      f(z)-F(z)=F(z)\left(\frac{v(z)}{u(z)}-1\right)
+		      \]
+		      is holomorphic near $a_n$. Hence $f$ has the same singular part at $a_n$ as $F$, namely $S_n$.
+
+		\item \emph{Zeros.} The function $F_1$ has no zeros in $G\setminus\{a_n\}$, while $v$ has zeros exactly at the points $b_m$, with multiplicities $p_m$. Since $v(a_n)\neq 0$, it follows that the zeros of $f$ are exactly the points $b_m$, and the multiplicity of the zero at $b_m$ is $p_m$.
+	\end{itemize}
+
+	Therefore $f$ is meromorphic on $G$, its poles are exactly the points $a_n$, its zeros are exactly the points $b_m$ with multiplicities $p_m$, and its singular part at $a_n$ is $S_n$.
+\end{proof}
+
 \chapter{Analytic Continuation and Riemann Surfaces}
 
 \chapter{Harmonic Functions}
