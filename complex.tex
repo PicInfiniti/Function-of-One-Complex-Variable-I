@@ -6342,9 +6342,9 @@
 
 	Thus
 	\[
-		\boxed{G \text{ is simply connected}}
+		G \text{ is simply connected}
 		\qquad\text{and}\qquad
-		\boxed{\widehat K \text{ is connected}.}
+		\widehat K \text{ is connected}.
 	\]
 \end{proof}
 
@@ -6355,127 +6355,186 @@
 
 
 \begin{proof}[Solution]
-	Let $q_n$ denote the order of the pole prescribed by the singular part $S_n$ at $a_n$.
-
-	\medskip
-	\noindent \textbf{Step 1: Construct a meromorphic function with the prescribed singular parts.}
-
-	By the Mittag--Leffler theorem, there exists a meromorphic function $F$ on $G$ such that
+	We must construct a meromorphic function on $G$ with two kinds of prescribed local behavior:
 
 	\begin{itemize}
-		\item the poles of $F$ are exactly the points $a_n$, and
-		\item the singular part of $F$ at $a_n$ is $S_n$.
+		\item at each point $a_n$, the function must have a pole whose singular part is exactly the given principal part $S_n(z)$;
+		\item at each point $b_m$, the function must have a zero of multiplicity exactly $p_m$.
 	\end{itemize}
 
-	Thus, near each $a_n$,
-	\[
-		F(z)=S_n(z)+H_n(z),
-	\]
-	where $H_n$ is holomorphic near $a_n$.
+	The natural tools for these two requirements are the Mittag--Leffler theorem and the holomorphic interpolation theorem. The key point is that the first theorem allows us to prescribe singular parts at the points $a_n$, while the second allows us to prescribe finitely many derivatives at the points $b_m$.
 
-	Let $\{c_j\}$ be the set of zeros of $F$ in $G\setminus\{a_n\}$, and let $s_j$ be the multiplicity of the zero at $c_j$. Since $F$ is meromorphic and not identically zero, its zeros form a discrete set in $G$, so $\{c_j\}$ has no limit point in $G$.
+	We proceed in two steps.
 
 	\medskip
-	\noindent \textbf{Step 2: Remove the unwanted zeros of $F$.}
 
-	By the Weierstrass product theorem, there exists a holomorphic function $U$ on $G$ whose zeros are exactly the points $c_j$, with multiplicities $s_j$, and with no other zeros.
+	\noindent
+	\textbf{Step 1: Construction of a meromorphic function with the prescribed singular parts.}
 
-	Since $U(a_n)\neq 0$ for every $n$, for each $n$ we may choose a holomorphic branch $\log U_n$ of $\log U$ in a neighborhood of $a_n$.
+	Since the sequence $\{a_n\}$ has no limit point in $G$, the set $\{a_n\}$ is discrete in $G$. Therefore the Mittag--Leffler theorem applies. It yields a meromorphic function $g$ on $G$ such that:
 
-	We now use the following standard interpolation fact:
+	\begin{enumerate}
+		\item the poles of $g$ are exactly the points $a_n$, and
+		\item the singular part of $g$ at $a_n$ is $S_n(z)$ for each $n$.
+	\end{enumerate}
 
-	\begin{quote}
-		If $\{\alpha_n\}$ is a discrete subset of $G$ and if for each $n$ and each $0\le k\le N_n$ numbers $\gamma_{n,k}$ are prescribed, then there exists a holomorphic function $h$ on $G$ such that
-		\[
-			h^{(k)}(\alpha_n)=\gamma_{n,k}, \qquad 0\le k\le N_n.
-		\]
-	\end{quote}
-
-	Apply this with $\alpha_n=a_n$, $N_n=q_n$, and
+	Thus, for each $n$, there exists a function $\phi_n$ holomorphic in a neighborhood of $a_n$ such that near $a_n$ we may write
 	\[
-		\gamma_{n,k}=-(\log U_n)^{(k)}(a_n), \qquad 0\le k\le q_n.
+		g(z)=S_n(z)+\phi_n(z).
 	\]
-	Then there exists a holomorphic function $M$ on $G$ such that, near each $a_n$,
+	This means that $g$ already has precisely the desired pole behavior.
+
+	Now observe that by hypothesis we have $a_n \neq b_m$ for all $n,m$. Hence none of the points $b_m$ is a pole of $g$. Therefore $g$ is holomorphic at every $b_m$, and all derivatives $g^{(k)}(b_m)$ are well-defined for every $k\ge 0$.
+
+	\medskip
+
+	\noindent
+	\textbf{Step 2: Addition of a holomorphic correction term to create the prescribed zeros.}
+
+	We now seek a holomorphic function $h$ on $G$ such that the function
 	\[
-		M(z)=-\log U_n(z)+O\bigl((z-a_n)^{q_n+1}\bigr).
+		f(z)=g(z)+h(z)
+	\]
+	has a zero of multiplicity exactly $p_m$ at each point $b_m$.
+
+	Recall the standard criterion for multiplicity of a zero: if $F$ is holomorphic near $b$, then $F$ has a zero of multiplicity exactly $p$ at $b$ if and only if
+	\[
+		F(b)=F'(b)=\cdots =F^{(p-1)}(b)=0
+		\quad\text{and}\quad
+		F^{(p)}(b)\neq 0.
+	\]
+	Applying this to $F=f$ and $b=b_m$, we see that we want
+	\[
+		f^{(k)}(b_m)=0 \qquad (0\le k\le p_m-1),
+	\]
+	and
+	\[
+		f^{(p_m)}(b_m)\neq 0.
 	\]
 
-	Set
+	Since $f=g+h$, this becomes a condition on the derivatives of $h$ at the points $b_m$. Namely, for each $m$ we want
 	\[
-		u(z):=U(z)e^{M(z)}.
+		g^{(k)}(b_m)+h^{(k)}(b_m)=0
+		\qquad (0\le k\le p_m-1),
 	\]
-	Since $e^M$ never vanishes, $u$ has exactly the same zeros as $U$, namely the points $c_j$ with multiplicities $s_j$, and no other zeros.
-
-	Moreover, near $a_n$,
+	and
 	\[
-		u(z)=U(z)e^{M(z)}
-		=U(z)e^{-\log U_n(z)+O((z-a_n)^{q_n+1})}
-		=e^{O((z-a_n)^{q_n+1})}
-		=1+O\bigl((z-a_n)^{q_n+1}\bigr).
+		g^{(p_m)}(b_m)+h^{(p_m)}(b_m)\neq 0.
+	\]
+
+	A convenient way to ensure this is to prescribe
+	\[
+		h^{(k)}(b_m)=-g^{(k)}(b_m), \qquad 0\le k\le p_m-1,
+	\]
+	and also prescribe
+	\[
+		h^{(p_m)}(b_m)=1-g^{(p_m)}(b_m).
+	\]
+	With this choice we will obtain
+	\[
+		f^{(k)}(b_m)=g^{(k)}(b_m)+h^{(k)}(b_m)=0
+		\qquad (0\le k\le p_m-1),
+	\]
+	and
+	\[
+		f^{(p_m)}(b_m)=g^{(p_m)}(b_m)+h^{(p_m)}(b_m)=1\neq 0.
+	\]
+	So this would force $b_m$ to be a zero of multiplicity exactly $p_m$.
+
+	Thus the problem has been reduced to the existence of a holomorphic function $h$ on $G$ whose derivatives at each $b_m$ satisfy the finite list of conditions
+	\[
+		h^{(k)}(b_m)=
+		\begin{cases}
+			-g^{(k)}(b_m),    & 0\le k\le p_m-1, \\[4pt]
+			1-g^{(p_m)}(b_m), & k=p_m.
+		\end{cases}
+	\]
+
+	\medskip
+
+	\noindent
+	\textbf{Step 3: Existence of the holomorphic correction term.}
+
+	The sequence $\{b_m\}$ has no limit point in $G$, so it is also a discrete subset of $G$. Therefore we may apply the holomorphic interpolation theorem (equivalently, Weierstrass interpolation with prescribed derivatives): for a discrete set in a region, one may prescribe finitely many derivatives at each point and obtain a holomorphic function realizing those values.
+
+	Applying this theorem to the discrete set $\{b_m\}$, with the derivative data specified above, we obtain a holomorphic function $h$ on $G$ such that for every $m$,
+	\[
+		h^{(k)}(b_m)=-g^{(k)}(b_m)
+		\qquad (0\le k\le p_m-1),
+	\]
+	and
+	\[
+		h^{(p_m)}(b_m)=1-g^{(p_m)}(b_m).
 	\]
 
 	Now define
 	\[
-		F_1:=\frac{F}{u}.
-	\]
-	Then $F_1$ is meromorphic on $G$, its poles are exactly the points $a_n$, and it has no zeros in $G\setminus\{a_n\}$.
-
-	We claim that the singular part of $F_1$ at each $a_n$ is still $S_n$. Indeed,
-	\[
-		\frac1{u(z)}=1+O\bigl((z-a_n)^{q_n+1}\bigr),
-	\]
-	hence
-	\[
-		F_1(z)-F(z)=F(z)\left(\frac1{u(z)}-1\right).
-	\]
-	Since $F$ has a pole of order $q_n$ at $a_n$, while $\frac1u-1$ vanishes to order at least $q_n+1$, the product above is holomorphic near $a_n$. Therefore $F_1$ and $F$ have the same singular part at $a_n$, namely $S_n$.
-
-	\medskip
-	\noindent \textbf{Step 3: Insert the prescribed zeros at the points $b_m$.}
-
-	By the Weierstrass product theorem again, there exists a holomorphic function $V$ on $G$ whose zeros are exactly the points $b_m$, with multiplicities $p_m$, and with no other zeros.
-
-	Since $V(a_n)\neq 0$ for all $n$, we may choose for each $n$ a holomorphic branch $\log V_n$ of $\log V$ near $a_n$.
-
-	Using the same interpolation theorem as above, there exists a holomorphic function $N$ on $G$ such that near each $a_n$,
-	\[
-		N(z)=-\log V_n(z)+O\bigl((z-a_n)^{q_n+1}\bigr).
-	\]
-	Define
-	\[
-		v(z):=V(z)e^{N(z)}.
-	\]
-	Then $v$ has zeros exactly at the points $b_m$, with multiplicities $p_m$, and no other zeros, and near each $a_n$,
-	\[
-		v(z)=1+O\bigl((z-a_n)^{q_n+1}\bigr).
-	\]
-
-	Now set
-	\[
-		f:=F_1\,v=\frac{Fv}{u}.
+		f=g+h.
 	\]
 
 	\medskip
-	\noindent \textbf{Step 4: Verification.}
+
+	\noindent
+	\textbf{Step 4: Verification that $f$ has all the required properties.}
+
+	We check each requirement in turn.
+
+	\smallskip
+
+	\noindent
+	\emph{(i) Singular parts at the points $a_n$.}
+
+	Since $h$ is holomorphic on all of $G$, it is holomorphic in a neighborhood of each $a_n$. Near $a_n$ we already know that
+	\[
+		g(z)=S_n(z)+\phi_n(z),
+	\]
+	where $\phi_n$ is holomorphic near $a_n$. Hence near $a_n$ we have
+	\[
+		f(z)=g(z)+h(z)=S_n(z)+\bigl(\phi_n(z)+h(z)\bigr).
+	\]
+	Because $\phi_n+h$ is holomorphic near $a_n$, the singular part of $f$ at $a_n$ is exactly $S_n(z)$.
+
+	Therefore the prescribed singular part at each $a_n$ is correct.
+
+	\smallskip
+
+	\noindent
+	\emph{(ii) Poles of $f$.}
+
+	Since the singular part of $f$ at $a_n$ is $S_n(z)$, the point $a_n$ is a pole of $f$. On the other hand, $g$ has no poles except at the points $a_n$, and $h$ is holomorphic everywhere on $G$, so adding $h$ cannot introduce any new poles. Therefore the poles of $f$ are exactly the points $a_n$.
+
+	\smallskip
+
+	\noindent
+	\emph{(iii) Zeros at the points $b_m$ with multiplicity $p_m$.}
+
+	For each $m$ and each $k$ with $0\le k\le p_m-1$, we have
+	\[
+		f^{(k)}(b_m)=g^{(k)}(b_m)+h^{(k)}(b_m)
+		= g^{(k)}(b_m)-g^{(k)}(b_m)=0.
+	\]
+	Also,
+	\[
+		f^{(p_m)}(b_m)=g^{(p_m)}(b_m)+h^{(p_m)}(b_m)
+		= g^{(p_m)}(b_m)+1-g^{(p_m)}(b_m)=1\neq 0.
+	\]
+	Hence $f$ has a zero of multiplicity exactly $p_m$ at $b_m$.
+
+	This holds for every $m$.
+
+	\medskip
+
+	We have therefore constructed a meromorphic function $f$ on $G$ such that:
 
 	\begin{itemize}
-		\item \emph{Poles.} Since $u(a_n)\neq 0$ and $v(a_n)\neq 0$, the poles of $f$ are exactly the points $a_n$.
-
-		\item \emph{Singular parts.} Near $a_n$,
-		      \[
-			      \frac{v(z)}{u(z)}=1+O\bigl((z-a_n)^{q_n+1}\bigr),
-		      \]
-		      so
-		      \[
-			      f(z)-F(z)=F(z)\left(\frac{v(z)}{u(z)}-1\right)
-		      \]
-		      is holomorphic near $a_n$. Hence $f$ has the same singular part at $a_n$ as $F$, namely $S_n$.
-
-		\item \emph{Zeros.} The function $F_1$ has no zeros in $G\setminus\{a_n\}$, while $v$ has zeros exactly at the points $b_m$, with multiplicities $p_m$. Since $v(a_n)\neq 0$, it follows that the zeros of $f$ are exactly the points $b_m$, and the multiplicity of the zero at $b_m$ is $p_m$.
+		\item its poles are exactly the points $a_n$;
+		\item the singular part of $f$ at each $a_n$ is $S_n(z)$;
+		\item each $b_m$ is a zero of $f$ of multiplicity exactly $p_m$.
 	\end{itemize}
 
-	Therefore $f$ is meromorphic on $G$, its poles are exactly the points $a_n$, its zeros are exactly the points $b_m$ with multiplicities $p_m$, and its singular part at $a_n$ is $S_n$.
+	This proves the result.
 \end{proof}
+
 
 \chapter{Analytic Continuation and Riemann Surfaces}
 
