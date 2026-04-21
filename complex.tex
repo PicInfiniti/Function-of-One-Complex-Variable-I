@@ -6352,63 +6352,7 @@
 \begin{exercise}
 	Let $G$ be a region and let $\{a_n\}$ and $\{b_m\}$ be two sequences of distinct points in $G$ without limit points in $G$ such that $a_n \neq b_m$ for all $n,m$. Let $S_n(z)$ be a singular part at $a_n$ and let $p_m$ be a positive integer. Show that there is a meromorphic function $f$ on $G$ whose poles and zeros are $\{a_n\}$ and $\{b_m\}$ respectively, the singular part at $z = a_n$ is $S_n(z)$, and $z = b_m$ is a zero of multiplicity $p_m$.
 \end{exercise}
-\begin{proof}[Solution]
-	We will combine the Mittag--Leffler theorem with the holomorphic interpolation theorem.
 
-	Since the set $\{a_n\}$ has no limit point in $G$, the Mittag--Leffler theorem gives a meromorphic function $g$ on $G$ such that
-
-	\[
-		\text{the poles of } g \text{ are exactly } \{a_n\},
-	\]
-	and the singular part of $g$ at $a_n$ is $S_n(z)$ for each $n$.
-
-	Because $a_n \neq b_m$ for all $n,m$, the function $g$ is holomorphic at every point $b_m$.
-
-	Our goal is now to modify $g$ by adding a holomorphic function so that the resulting function has zeros of the prescribed multiplicities at the points $b_m$. Define
-	\[
-		f(z)=g(z)+h(z),
-	\]
-	where $h$ is holomorphic on $G$ and will be chosen appropriately.
-
-	For $f$ to have a zero of multiplicity exactly $p_m$ at $b_m$, we need
-	\[
-		f^{(k)}(b_m)=0 \qquad (0 \leq k \leq p_m-1),
-	\]
-	and
-	\[
-		f^{(p_m)}(b_m)\neq 0.
-	\]
-	Since $f=g+h$, this will hold if we prescribe the derivatives of $h$ at each $b_m$ by
-	\[
-		h^{(k)}(b_m)=-g^{(k)}(b_m), \qquad 0 \leq k \leq p_m-1,
-	\]
-	and
-	\[
-		h^{(p_m)}(b_m)=1-g^{(p_m)}(b_m).
-	\]
-	Then for each $m$ we get
-	\[
-		f^{(k)}(b_m)=g^{(k)}(b_m)+h^{(k)}(b_m)=0
-		\qquad (0 \leq k \leq p_m-1),
-	\]
-	while
-	\[
-		f^{(p_m)}(b_m)=g^{(p_m)}(b_m)+h^{(p_m)}(b_m)=1\neq 0.
-	\]
-	Hence $b_m$ is a zero of $f$ of multiplicity exactly $p_m$.
-
-	It remains to show that such a holomorphic function $h$ exists. Since the set $\{b_m\}$ has no limit point in $G$, the holomorphic interpolation theorem (equivalently, Weierstrass interpolation with prescribed derivatives) implies that there is a holomorphic function $h$ on $G$ satisfying all the above derivative conditions at all the points $b_m$.
-
-	Now we verify that $f=g+h$ has the required properties.
-
-	First, since $h$ is holomorphic on $G$, adding $h$ does not change the singular part of a Laurent expansion at any pole of $g$. Therefore the singular part of $f$ at $a_n$ is still $S_n(z)$ for every $n$. In particular, the poles of $f$ are exactly the points $a_n$.
-
-	Second, by construction, each $b_m$ is a zero of $f$ of multiplicity exactly $p_m$.
-
-	Thus $f$ is a meromorphic function on $G$ whose poles are exactly $\{a_n\}$, whose singular part at $a_n$ is $S_n(z)$, and whose zeros are exactly the points $b_m$ with multiplicities $p_m$.
-
-	Therefore such a meromorphic function exists.
-\end{proof}
 
 \begin{proof}[Solution]
 	Let $q_n$ denote the order of the pole prescribed by the singular part $S_n$ at $a_n$.
@@ -6910,6 +6854,7 @@
 
 	Thus, the harmonicity conclusion remains valid, while the boundary continuity and exact agreement fail in general.
 \end{proof}
+
 \setexercise{4}
 \begin{exercise}
 	Let $G$ be a simply connected region and let $\Gamma$ be its closure in $\mathbb{C}_\infty$; $\partial_\infty G=\Gamma - G$. Suppose there is a homeomorphism $\varphi$ of $\Gamma$ onto $\overline{D}$ ($D=\{z:|z|<1\}$) such that $\varphi$ is analytic on $G$.
