@@ -6804,6 +6804,117 @@
 	In the statement of Theorem 2.4 suppose that $f$ is piecewise continuous on $\partial D$. Is the conclusion of the theorem still valid? If not, what parts of the conclusion remain true?
 \end{exercise}
 \begin{proof}[Solution]
+	We analyze whether the conclusion of Theorem 2.4 remains valid when $f$ is only piecewise continuous on $\partial D$.
+
+	\medskip
+
+	\noindent
+	\textbf{Failure of the full conclusion.}
+
+	The theorem asserts the existence of a function $u$ that is continuous on $\overline D$, harmonic in $D$, and satisfies
+	\[
+		u(\zeta)=f(\zeta)\qquad (\zeta\in\partial D).
+	\]
+	We show this is generally impossible if $f$ is not continuous.
+
+	Suppose, for contradiction, that such a function $u$ exists. Since $u$ is continuous on $\overline D$, its restriction to the boundary,
+	\[
+		u|_{\partial D},
+	\]
+	must be continuous on $\partial D$. But by assumption this restriction equals $f$. Hence $f$ must be continuous on $\partial D$.
+
+	Therefore, if $f$ has even a single jump discontinuity, no such $u\in C(\overline D)$ can exist. This shows that the full conclusion of the theorem fails when $f$ is only piecewise continuous.
+
+	\medskip
+
+	\noindent
+	\textbf{Existence of a harmonic function via the Poisson integral.}
+
+	Although we lose continuity up to the boundary, we can still construct a harmonic function inside $D$ using the Poisson integral:
+	\[
+		u(re^{i\theta})
+		=
+		\frac{1}{2\pi}\int_{-\pi}^{\pi} P_r(\theta-t)\,f(e^{it})\,dt,
+		\qquad 0\le r<1.
+	\]
+
+	Since $f$ is piecewise continuous on $\partial D$, it is bounded and Riemann integrable on $[-\pi,\pi]$. The Poisson kernel
+	\[
+		P_r(\theta)=\frac{1-r^2}{1-2r\cos\theta+r^2}
+	\]
+	is continuous and nonnegative, and satisfies
+	\[
+		\frac{1}{2\pi}\int_{-\pi}^{\pi} P_r(t)\,dt=1.
+	\]
+	Therefore the integral defining $u$ exists for each $0\le r<1$.
+
+	Moreover, for each fixed $r<1$, the function $u(re^{i\theta})$ is a convolution of $f$ with the Poisson kernel, which is smooth in $\theta$. Standard properties of the Poisson kernel imply that $u$ is harmonic in $D$.
+
+	Thus, even for piecewise continuous $f$, we still obtain a function $u$ that is harmonic in $D$.
+
+	\medskip
+
+	\noindent
+	\textbf{Boundary behavior at points of continuity.}
+
+	Let $e^{i\theta_0}\in\partial D$ be a point at which $f$ is continuous. We claim that
+	\[
+		\lim_{r\to 1^-} u(re^{i\theta_0})=f(e^{i\theta_0}).
+	\]
+
+	This follows from the fact that the Poisson kernel $P_r(\theta)$ acts as an \emph{approximate identity}. As $r\to 1^-$, the function $P_r(\theta)$ becomes increasingly concentrated near $\theta=0$, while preserving total mass $2\pi$.
+
+	Hence
+	\[
+		u(re^{i\theta_0})
+		=
+		\frac{1}{2\pi}\int_{-\pi}^{\pi} P_r(\theta_0-t)\,f(e^{it})\,dt
+	\]
+	is a weighted average of the values of $f$ near $t=\theta_0$. Because $f$ is continuous at $\theta_0$, these nearby values are close to $f(e^{i\theta_0})$, and therefore the integral converges to $f(e^{i\theta_0})$.
+
+	\medskip
+
+	\noindent
+	\textbf{Boundary behavior at jump discontinuities.}
+
+	Suppose now that $e^{i\theta_0}$ is a jump discontinuity of $f$. Since $f$ is piecewise continuous, the one-sided limits
+	\[
+		f(\theta_0^-),\qquad f(\theta_0^+)
+	\]
+	exist and are finite.
+
+	In this case, the Poisson kernel is symmetric, and the averaging process gives equal weight to values approaching $\theta_0$ from the left and right. A standard result for approximate identities then implies
+	\[
+		\lim_{r\to 1^-} u(re^{i\theta_0})
+		=
+		\frac{f(\theta_0^-)+f(\theta_0^+)}{2}.
+	\]
+
+	Thus, at a jump discontinuity, the Poisson integral converges to the average of the two one-sided limits.
+
+	\medskip
+
+	\noindent
+	\textbf{Conclusion.}
+
+	We conclude:
+
+	\begin{itemize}
+		\item In general, there does not exist a function $u\in C(\overline D)$ that is harmonic in $D$ and satisfies $u|_{\partial D}=f$ when $f$ is only piecewise continuous.
+
+		\item However, the Poisson integral still defines a harmonic function $u$ on $D$.
+
+		\item This function satisfies the boundary condition in the following weaker sense:
+		      \begin{itemize}
+			      \item at every point where $f$ is continuous, $u$ converges to $f$;
+			      \item at each jump discontinuity, $u$ converges to the average of the one-sided limits.
+		      \end{itemize}
+	\end{itemize}
+
+	Thus, the harmonicity conclusion remains valid, while the boundary continuity and exact agreement fail in general.
+\end{proof}
+
+\begin{proof}[Solution]
 	In general, the full conclusion of Theorem \(2.4\) is \emph{not} valid if \(f\) is only piecewise continuous on \(\partial D\).
 
 	Indeed, if there were a function \(u:\overline D\to \mathbb R\) that is continuous on \(\overline D\), harmonic in \(D\), and satisfies
