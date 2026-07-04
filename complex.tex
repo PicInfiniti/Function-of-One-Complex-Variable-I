@@ -1758,22 +1758,27 @@
 	Show that if $F_1$ and $F_2$ are primitives for $f:G\to\mathbb{C}$ and $G$ is open and connected, then there is a constant $c$ such that $F_1(z)=c+F_2(z)$ for each $z\in G$.
 \end{exercise}
 
-\begin{proof}
-	Let \(H := F_1 - F_2\). Then \(H\) is holomorphic on \(G\) and
+\begin{proof}[Solution]
+	Let
 	\[
-		H'(z) = F_1'(z) - F_2'(z) = f(z) - f(z) = 0 \qquad (z \in G).
+		H:=F_1-F_2.
+	\]
+	Since \(F_1\) and \(F_2\) are primitives for \(f\) on \(G\), we have
+	\[
+		H'(z)=F_1'(z)-F_2'(z)=f(z)-f(z)=0
+		\qquad (z\in G).
 	\]
 
-	Fix \(z_0 \in G\). Since \(G\) is open and connected (hence path–connected), for any
-	\(z \in G\) there exists a piecewise \(C^1\) path \(\gamma\) in \(G\) from \(z_0\) to \(z\).
-	By the fundamental theorem of calculus for line integrals of holomorphic functions,
+	By Proposition 2.10 from Chapter III, since \(G\) is open and connected, \(H\) is
+	constant on \(G\). Hence there exists \(c\in\mathbb C\) such that
+	\(
+	H(z)=c
+	\)
+	for all \(z\in G\). Therefore,
 	\[
-		H(z) - H(z_0) = \int_\gamma H'(w)\,dw = \int_\gamma 0\,dw = 0.
+		F_1(z)=F_2(z)+c
 	\]
-	Thus \(H(z)=H(z_0)=:c\) for all \(z \in G\). Therefore,
-	\[
-		F_1(z) = F_2(z) + c \qquad \text{for all } z \in G.
-	\]
+	for all \(z\in G\).
 \end{proof}
 
 
