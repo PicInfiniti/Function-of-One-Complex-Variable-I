@@ -190,7 +190,7 @@
 
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	The line $L_\beta$ passes through the point $a$ with slope $\tan\beta$.
 	For $L_\beta$ to be tangent to the circle $C$ at $a$, it must be perpendicular to the radius drawn from the center $c$ to the point $a$.
 	Since:
@@ -223,7 +223,7 @@
 	Otherwise, $\Lambda$ projects onto a circle in $\mathbb{C}$.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let \(z=u+vi\) and \(Z=(x_1, x_2, x_3)\) its corresponding point on the circle. Then:
 	\[
 		x_1=\frac{2u}{u^2+v^2+1},\qquad
@@ -281,7 +281,7 @@
 	Also, show that every closed ball is a closed set.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Fix $a\in X$ and $r\ge 0$.
 
 	\medskip
@@ -330,7 +330,7 @@
 	\end{enumerate}
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Recall that open balls in the subspace $(Y,d)$ are of the form
 	\[
 		B_Y(y,r)=\{z\in Y: d(z,y)<r\}=B_X(y,r)\cap Y.
@@ -364,7 +364,7 @@
 \begin{exercise}
 	Do Exercise 8 with "closed" in place of "open".
 \end{exercise}
-\begin{proof}
+\begin{proof}[Solution]
 	(1) If $F$ is closed in $X$, then $X\setminus F$ is open in $X$. By Exercise~8,
 	$(X\setminus F)\cap Y$ is open in $(Y,d)$. Since
 	\[
@@ -394,7 +394,7 @@
 	If $\{D_j : j \in J\}$ is a collection of connected subsets of $X$ and if for each $j,k \in J$ we have \(D_j \cap D_k \neq \varnothing,\)
 	then \(D = \bigcup_{j \in J} D_j\)is connected.
 \end{exercise}
-\begin{proof}
+\begin{proof}[Solution]
 	Fix an index $j_0 \in J$ and, for each $k \in J$, set
 	\[
 		E_k := D_{j_0} \cup D_k.
@@ -431,7 +431,7 @@
 \end{exercise}
 
 
-\begin{proof}
+\begin{proof}[Solution]
 	Fix $\varepsilon > 0$ and	for $x \in F$, set
 	\[
 		C_\varepsilon(x) := \{y \in F : \text{there exist $\varepsilon$-chain from y to x}\}.
@@ -474,7 +474,7 @@
 \end{exercise}
 
 
-\begin{proof}
+\begin{proof}[Solution]
 	Since $A\subset\overline{A}$, we have
 	\[
 		\operatorname{diam}A\le \operatorname{diam}\overline{A}.
@@ -496,7 +496,7 @@
 	Show that $\{x_n\}$ must be convergent.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Fix $\varepsilon>0$. Since $(x_n)$ is Cauchy, there exists $N_1$ such that
 	$d(x_m,x_n)<\varepsilon/2$ for all $m,n\ge N_1$.
 	Since $x_{n_k}\to x$, there exists $N_2$ such that
@@ -518,7 +518,7 @@
 	Show that the union of a finite number of compact sets is compact.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let \(K_1, K_2, \dots, K_n\) be compact subsets of a topological space \(X\), and let
 	\[
 		K = \bigcup_{i=1}^{n} K_i.
@@ -550,7 +550,7 @@
 	(Hint: you might have an easier time of it if you first show that you can assume $x = (0,0,\dots)$.$)$
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	\textbf{Reduction to the center $0$.}
 	The metric is translation-invariant: $d(x+z,y+z)=d(x,y)$ for all $x,y,z\in X$.
 	Hence translation by $-x$ is an isometry sending $\overline{B}(x;\epsilon)$ to
@@ -596,7 +596,7 @@
 	Show that the closure of a totally bounded set is totally bounded.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $(X,d)$ be a metric space and let $A\subset X$ be totally bounded.
 	Fix $\varepsilon>0$. Since $A$ is totally bounded, there exist points
 	$x_1,\dots,x_N\in X$ such that
@@ -624,7 +624,7 @@
 	continuous (Lipschitz) functions from $X$ into $\mathbb{C}$, then so is $fg$.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $(X,d)$ be a metric space and let $f,g:X\to\mathbb{C}$ be bounded.
 	Set $M_f:=\sup_{x\in X}|f(x)|<\infty$ and $M_g:=\sup_{x\in X}|g(x)|<\infty$.
 	For all $x,y\in X$ we have
@@ -677,7 +677,7 @@
 	Is the composition of two uniformly continuous (Lipschitz) functions again uniformly continuous (Lipschitz)?
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $(X,d_X),(Y,d_Y),(Z,d_Z)$ be metric spaces.
 	Suppose $f:X\to Y$ and $g:Y\to Z$.
 
@@ -723,7 +723,7 @@
 	$g : X \to \Omega$ with $g(x) = f(x)$ for every $x \in D$.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	\textbf{Step 1: Define $g$ by limits.}
 	Since $D$ is dense in $X$, for each $x\in X$ there exists a sequence $(x_n)\subset D$
 	with $x_n\to x$ in $(X,d)$. Because $f$ is uniformly continuous,
@@ -780,7 +780,7 @@
 	Prove the following converse to Exercise 2.5. Suppose $(X,d)$ is a compact metric space having the property that for every $\epsilon > 0$ and for any points $a, b \in X$, there are points $z_0, z_1, \ldots, z_n \in X$ with $z_0 = a, z_n = b$, and $d(z_{k-1}, z_k) < \epsilon$ for $1 \leq k \leq n$. Then $(X,d)$ is connected. (Hint: Use Theorem 5.17.)
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Assume for contradiction that $X$ is disconnected. Then
 	$X=U\cup V$ where $U,V\subseteq X$ are nonempty, disjoint, open sets.
 	Since $X$ is compact, the closed sets $\overline{U}$ and $\overline{V}$
@@ -812,7 +812,7 @@
 	show that $f$ is a Lipschitz function. If $\sup_n M_n = \infty$, show that $f$ may fail to be Lipschitz.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	\textbf{Uniform limit of uniformly continuous functions is uniformly continuous.}
 	Let $\varepsilon>0$. Since $f_n \to f$ uniformly, choose $N$ with
 	$\sup_{x\in X}\rho\!\bigl(f_N(x),f(x)\bigr) < \varepsilon/3$.
@@ -879,7 +879,7 @@
 
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	\begin{enumerate}[label=(\alph*), leftmargin=2em]
 		\item Here $a_n=a^n$. Then $\limsup |a_n|^{1/n}=|a|$, hence $R=1/|a|$ if $a\neq 0$, while $R=\infty$ if $a=0$ (the series is then a constant).
 
@@ -917,7 +917,7 @@
 	(Hint: The $n$th coefficient of this series is not $\displaystyle \frac{(-1)^n}{n}.$)
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let the general term of the power series be $a_m z^m$, where
 	\[
 		a_m =
@@ -963,7 +963,7 @@
 	Show that \( f(z)=|z|^{2}=x^{2}+y^{2} \) has a derivative only at the origin.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let \(f(z)=|z|^{2}=x^{2}+y^{2}\) with \(z=x+iy\). Writing \(f=u+iv\) gives
 	\(u(x,y)=x^{2}+y^{2}\) and \(v(x,y)=0\), so
 	\[
@@ -992,7 +992,7 @@
 \end{exercise}
 
 
-\begin{proof}
+\begin{proof}[Solution]
 	Fix \(a\in G\) and let \(h\in\mathbb{C}\) with \(h\neq0\) and \(a+h\in G\).
 	Write the given identity \(h(z)=g(f(z))\) at the points \(a\) and \(a+h\):
 	\[
@@ -1033,7 +1033,7 @@
 \begin{exercise}
 	Show that the real part of the function \(z^{\frac{1}{2}}\) is always positive.
 \end{exercise}
-\begin{proof}
+\begin{proof}[Solution]
 	Let \(z = re^{i\theta}\) with \(r > 0\) and \(-\pi < \theta \leq \pi\).
 	The principal branch of the square root is defined by
 	\[
@@ -1061,7 +1061,7 @@
 	Suppose \(f:G\to\mathbb{C}\) is analytic and \(G\) is connected. Show that if \(f(z)\in\mathbb{R}\) for all \(z\in G\), then \(f\) is constant.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Write \(f=u+iv\) with \(u,v:G\to\mathbb{R}\). The hypothesis \(f(G)\subset\mathbb{R}\)
 	means \(v\equiv 0\) on \(G\). Since \(f\) is analytic, the Cauchy--Riemann equations hold:
 	\[
@@ -1082,7 +1082,7 @@
 	Can you make \(G\) maximal? Are \(f\) and \(g\) analytic?
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Define
 	\[
 		f(z):= \exp\!\Bigl(\tfrac12\,\ln(1-z^2)\Bigr),
@@ -1131,7 +1131,7 @@
 	is also analytic.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	First note that $G$ open $\Rightarrow$ $G^*=\{z:\bar z\in G\}$ is open. Fix $z_0\in G^*$, so $\bar z_0\in G$.
 
 	Consider
@@ -1162,7 +1162,7 @@
 	\emph{(Hint: Suppose such a branch exists and compare this with the principal branch.)}
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Suppose, for contradiction, that there exists a branch of the logarithm
 	\(L : \mathbb{C}\setminus\{0\}\to \mathbb{C}\) such that \(e^{L(z)}=z\) for all
 	\(z\in\mathbb{C}\setminus\{0\}\).
@@ -1306,7 +1306,7 @@
 \end{exercise}
 
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let \(T(z)=\dfrac{az+b}{cz+d}\) with \(ad-bc\neq0\) and suppose
 	\(T(\mathbb{R}_\infty)=\mathbb{R}_\infty\).
 	Evaluate \(T\) at three real points \(0,1,\infty\).
@@ -1374,7 +1374,7 @@
 	Let \(D = \{\, z : |z| < 1 \,\}\) and find all Möbius transformations \(T\) such that \(T(D) = D\).
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let \(\phi_a(z)=\dfrac{z-a}{1-\overline{a}\,z}\) for \(|a|<1\). Then \(\phi_a\) is a Möbius map with
 	\(\phi_a(a)=0\) and \(\phi_a(\mathbb D)=\mathbb D\), where \(\mathbb D=D=\{z:|z|<1\}\); moreover
 	\(\phi_a^{-1}=\phi_{-a}\).
@@ -1420,7 +1420,7 @@
 \end{exercise}
 
 
-\begin{proof}
+\begin{proof}[Solution]
 	\textbf{Normalization.}
 	By translating we may assume the tangency point is \(a=0\). By a rotation
 	(precomposition by a unimodular constant) we may assume both circles are
@@ -1510,7 +1510,7 @@
 	Can you map the open unit disk conformally onto \(\{\,z: 0<|z|<1\,\}\)?
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	I am unsure how to prove this without using Cauchy’s integral theorem, singularity theory, or the fact that conformal maps preserve topological properties such as simple connectedness. I know the answer is negative, since $\mathbb{D}$ is simply connected whereas $\mathbb{D}\setminus\{0\}$ is not, so there cannot exist a surjective conformal map between them.
 	However, I would appreciate guidance on how to prove this using only the material from the first three chapters.
 \end{proof}
@@ -1525,7 +1525,7 @@
 	Can \(f\) be one-to-one?
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Since \(G\) is not simply connected, any surjective analytic function from \(G\) onto the unit disk cannot be one-to-one.
 \end{proof}
 
@@ -1538,7 +1538,7 @@
 	Show that \(f\) is constant.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Without loss of generality assume $f(G)\subset\{w\in\mathbb C:|w|=1\}$.
 	Then $|f(z)|=1$ for all $z\in G$, so $\overline{f(z)}=1/f(z)$ and $f(z)\neq 0$.
 
@@ -1573,7 +1573,7 @@
 	Show that if $\gamma : [a,b] \to \mathbb{C}$ is a Lipschitz function, then $\gamma$ is of bounded variation.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $\gamma:[a,b]\to\mathbb{C}$ be Lipschitz with constant $L\ge 0$, i.e.,
 	\[
 		|\gamma(s)-\gamma(t)|\le L\,|s-t| \qquad \text{for all } s,t\in[a,b].
@@ -1599,7 +1599,7 @@
 	Let $\gamma$ and $\sigma$ be the two polygons $[1,i]$ and $[1,\,1+i,\,i]$. Express $\gamma$ and $\sigma$ as paths and calculate $\int_\gamma f$ and $\int_\sigma f$ where $f(z)=|z|^{2}$.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	A straight segment from \(1\) to \(i\) can be parametrized by
 	\[
 		\gamma(t)=1+t(i-1)=(1-t)+it,\qquad t\in[0,1],\quad \gamma'(t)=i-1.
@@ -1642,7 +1642,7 @@
 \end{exercise}
 
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $\gamma(t)=r e^{it}$ for $t\in[0,\pi]$. Then $\gamma'(t)=i r e^{it}$ and
 	\[
 		I(r)=\int_{\gamma}\frac{e^{iz}}{z}\,dz
@@ -1704,7 +1704,7 @@
 	\end{enumerate}
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Take the principal branch of the square root, i.e.\ \(\arg z\in(-\pi,\pi)\), so that
 	\[
 		z^{-1/2} = \frac{1}{\sqrt{z}} = e^{-\tfrac{i}{2}\arg z}
@@ -1787,7 +1787,7 @@
 	Let $\gamma$ be a closed rectifiable curve in an open set $G$ and $a\notin G$. Show that for $n\ge 2$, $\displaystyle\int_\gamma (z-a)^{-n}\,dz=0$.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Define
 	\[
 		F(z) := -\frac{(z-a)^{-\,n+1}}{\,n-1\,}, \qquad z \in G.
@@ -1814,7 +1814,7 @@
 	\]
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let \(\gamma:[\alpha,\beta]\to G\) be a rectifiable parametrization with
 	\(\gamma(\alpha)=a\) and \(\gamma(\beta)=b\).
 	Since \(f\) and \(g\) are analytic, the product rule gives
@@ -1858,7 +1858,7 @@
 	\]
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $\gamma : [a,b] \to \mathbb{C}$ be a rectifiable parametrization of the curve,
 	and let $\{\gamma\} = \gamma([a,b])$ denote its image.
 	We are given that
@@ -2020,7 +2020,7 @@
 	\]
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $\gamma$ be a rectifiable curve in $\mathbb{C}$ and denote its image by $\{\gamma\}$.
 	Since $\gamma$ is continuous on a compact interval, $\{\gamma\}$ is compact and therefore closed.
 	Thus $\mathbb{C} \setminus \{\gamma\}$ is an open set.
@@ -2080,7 +2080,7 @@
 	Give the power series expansion of $\log z$ about $z=i$ and find its radius of convergence.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	We expand $f(z)=\log z$ in a Taylor series about $z=i$ using Theorem~2.8.
 	The derivatives of $\log z$ are
 	\[
@@ -2125,7 +2125,7 @@
 	\end{enumerate}
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	We use Cauchy's integral formula for derivatives:
 	\[
 		f^{(n)}(0)
@@ -2206,7 +2206,7 @@
 	\end{enumerate}
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	\textbf{(a)}  Evaluate
 	\[
 		\int_{\gamma} \frac{e^{z}-e^{-z}}{z^{n}}\,dz,
@@ -2332,7 +2332,7 @@
 	Show that $f$ is a polynomial of degree $\le n$.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $f$ be entire and suppose there exist constants $M>0$, $R>0$, and an integer $n\ge 1$ such that
 	\[
 		|f(z)| \le M |z|^{n} \qquad \text{for all } |z|>R.
@@ -2384,7 +2384,7 @@
 	Show that either $f(a)=0$ or $f$ is constant.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Suppose $f : G \to \mathbb{C}$ is analytic on a region $G$ and that
 	\[
 		|f(a)| \le |f(z)| \qquad \text{for all } z\in G,
@@ -2419,7 +2419,7 @@
 	Show that either $f \equiv 0$ or $g \equiv 0$.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Suppose $f$ and $g$ are analytic on a region $G$ and satisfy
 	\[
 		f(z)\,g(z)=0 \qquad \text{for all } z\in G.
@@ -2449,7 +2449,7 @@
 	Prove that $U$ is constant.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $U:\mathbb{C}\to\mathbb{R}$ be harmonic and assume that
 	\[
 		U(z)\ge 0 \qquad \text{for all } z\in\mathbb{C}.
@@ -2491,7 +2491,7 @@
 	then either $f$ is constant or $g \equiv 0$.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $f$ and $g$ be analytic on a region $G$ and suppose that the function
 	\[
 		h(z)=\overline{f(z)}\, g(z)
@@ -2524,7 +2524,7 @@
 		\int_{\gamma} \frac{p'(z)}{p(z)}\,dz = 2\pi i\,n.
 	\]
 \end{exercise}
-\begin{proof}
+\begin{proof}[Solution]
 	Let $p$ be a polynomial of degree $n$. Then we can factor it as
 	\[
 		p(z) = a_n \prod_{k=1}^n (z - z_k),
@@ -2584,7 +2584,7 @@
 	\]
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $w = r e^{i\theta} \neq 0$ and let $\gamma$ be any rectifiable path in
 	$\mathbb{C} \setminus \{0\}$ from $1$ to $w$.
 
@@ -2679,7 +2679,7 @@
 \end{exercise}
 
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $f:G\to\mathbb{C}$ be analytic and define
 	\[
 		\varphi(z,w)=
@@ -2758,7 +2758,7 @@
 	\]
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $\gamma$ be a closed rectifiable curve in $\mathbb{C}$ and let $a\notin\gamma$.
 	Fix an integer $n\ge 2$.
 	We use Corollary~5.9 with the analytic function $f(z)=1$ and $k=n-1$.
@@ -2793,7 +2793,7 @@
 	Show that $|f'(0)| \le 1$.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $f$ be analytic on $D=B(0;1)$ and assume $|f(z)|\le 1$ for all $|z|<1$.
 	We wish to prove that $|f'(0)|\le 1$.
 
@@ -2862,7 +2862,7 @@
 	for all positive integers $n$.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $\gamma(t)=1+e^{it}$ for $0\le t\le 2\pi$.
 	Then $\gamma$ is the circle $|z-1|=1$, which winds once counterclockwise around $z=1$.
 	Hence
@@ -2931,7 +2931,7 @@
 	Show that $f$ is analytic.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Since each $f_n$ is analytic on $G$, it is continuous on $G$.
 	Because $f_n \to f$ uniformly on $G$, the limit function $f$ is also continuous on $G$.
 	Let $T$ be any triangular path in $G$.
@@ -3003,7 +3003,7 @@
 \end{figure}
 
 
-\begin{proof}
+\begin{proof}[Solution]
 	We assume $f:\mathbb{C}\to\mathbb{C}$ is continuous on $\mathbb{C}$ and analytic on
 	$\mathbb{C}\setminus[-1,1]$.
 	By Morera’s theorem, it suffices to prove that
@@ -3132,7 +3132,7 @@
 	Evaluate the integral $\displaystyle \int_{\gamma} \frac{dz}{z^{2}+1}$ where $\gamma(\theta) = 2|\cos 2\theta|\, e^{i\theta}$ for $0 \le \theta \le 2\pi$.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	We are given the curve
 	\[
 		\gamma(\theta)=2|\cos 2\theta|\,e^{i\theta}, \qquad 0\le \theta\le 2\pi,
@@ -3255,7 +3255,7 @@
 	\label{fig:path}
 \end{figure}
 
-\begin{proof}
+\begin{proof}[Solution]
 	The curve $\gamma$ is defined by
 	\[
 		\gamma(\theta)=
@@ -3337,7 +3337,7 @@
 	Find $\displaystyle \int_{\gamma} f$.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let
 	\[
 		f(z)=\frac{1}{
@@ -3427,7 +3427,7 @@
 	Find all possible values of $\displaystyle \int_{\gamma} \frac{dz}{1 + z^{2}}$ where $\gamma$ is any closed rectifiable curve.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	We use the partial fraction decomposition
 	\[
 		\frac{1}{1+z^{2}}
@@ -3460,7 +3460,7 @@
 	Suppose that $f : G \to \mathbb{C}$ is analytic and one--one; show that $f'(z) \neq 0$ for any $z$ in $G$.
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Let $f : G \to \mathbb{C}$ be analytic and one--one, and fix a point
 	$a \in G$.  We show that $f'(a) \neq 0$.
 	Suppose for contradiction that $f'(a)=0$.
@@ -3621,7 +3621,7 @@
 	\]
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Solution]
 	Fix $\omega\in\mathbb C$. We show that there exists a sequence $z_n\in G$ with
 	$z_n\to a$ and $f(z_n)\to\omega$.
 
@@ -4687,7 +4687,7 @@
 	centered at $z$ such that $V\cap G$ is simply connected.
 	Give some examples of regions that are not simply connected but have this property and some which don't.
 \end{exercise}
-\begin{proof}
+\begin{proof}[Solution]
 	Let us write
 	\[
 		(*)\qquad
