@@ -3621,86 +3621,69 @@
 	\]
 \end{exercise}
 
+
 \begin{proof}[Solution]
-	Fix $\omega\in\mathbb C$. We show that there exists a sequence $z_n\in G$ with
-	$z_n\to a$ and $f(z_n)\to\omega$.
+	Fix \(\omega \in \mathbb C\). We show that \(\omega\) is a cluster value of
+	\(f\) at \(a\).
 
-	Suppose for contradiction that no such sequence exists. We claim that there is
-	$\delta>0$ such that
-	\begin{equation}\label{eq:omit}
-		0<|z-a|<\delta \quad\Longrightarrow\quad f(z)\neq \omega .
-	\end{equation}
-	Indeed, if \eqref{eq:omit} were false, then for each $n$ we could choose
-	$z_n\in G$ with $0<|z_n-a|<1/n$ and $f(z_n)=\omega$, which would imply
-	$z_n\to a$ and $f(z_n)\to\omega$, contradicting the assumption. Hence
-	\eqref{eq:omit} holds for some $\delta>0$.
-
-	On the punctured disk $D^*:=\{z:0<|z-a|<\delta\}$ define
+	Suppose not. Then there exist \(\varepsilon>0\) and \(0<\rho<r\) such that
 	\[
-		g(z):=\frac1{f(z)-\omega}
+		|f(z)-\omega|\ge \varepsilon
 	\]
-	whenever $z\neq a_n$. Then $g$ is analytic on $D^*\setminus\{a_n\}$.
+	whenever \(0<|z-a|<\rho\) and \(z\) is not a pole of \(f\).
 
-	\medskip
-	\noindent\textbf{Step 1: Each $a_n$ is a removable singularity of $g$.}
-	Let $a_n\in D^*$ be a pole of $f$, say of order $m\ge1$. Then there is a
-	holomorphic $h$ near $a_n$ with $h(a_n)\neq0$ such that
+	Define
 	\[
-		f(z)=\frac{h(z)}{(z-a_n)^m}.
+		g(z)=\frac{1}{f(z)-\omega}
 	\]
-	Hence
+	at all points where \(f\) is analytic. Then
 	\[
-		f(z)-\omega=\frac{h(z)-\omega(z-a_n)^m}{(z-a_n)^m},
+		|g(z)|\le \frac{1}{\varepsilon}.
 	\]
-	and the numerator satisfies $(h-\omega(\cdot-a_n)^m)(a_n)=h(a_n)\neq0$.
-	Therefore $f(z)-\omega$ has a pole of order $m$ at $a_n$, so $g(z)$ has a zero
-	of order $m$ at $a_n$ and extends holomorphically across $a_n$ by setting
-	$g(a_n)=0$.
+	If \(b\) is a pole of \(f\), then \(f-\omega\) also has a pole at \(b\), and
+	therefore \(g=1/(f-\omega)\) has a removable singularity at \(b\). Define
+	\(g(b)=0\). Thus \(g\) extends to a bounded holomorphic function on
+	\[
+		0<|z-a|<\rho .
+	\]
 
-	Doing this for each $a_n\in D^*$, we obtain a holomorphic function (still
-	denoted $g$) on $D^*$ whose zeros include all $a_n$ in $D^*$. Since $a_n\to a$,
-	$g$ has infinitely many zeros accumulating at $a$.
+	Since \(g\) is bounded near \(a\), the removable singularity theorem implies
+	that \(g\) extends holomorphically to \(a\). Hence \(g\) is holomorphic on
+	\[
+		|z-a|<\rho .
+	\]
 
-	\medskip
-	\noindent\textbf{Step 2: The singularity of $g$ at $a$ is essential.}
-	The point $a$ is an isolated singularity of $g$ (because $g$ is holomorphic on
-	$D^*$). It cannot be removable: if $g$ extended holomorphically to $a$, then
-	the extension would be holomorphic on a neighborhood of $a$ and vanish at
-	infinitely many points $a_n\to a$, hence would vanish identically by the
-	identity theorem, impossible since $g(z)=1/(f(z)-\omega)$ is not identically
-	zero.
+	Now \(a_n\to a\), so for all sufficiently large \(n\), \(a_n\in \{0<|z-a|<\rho\}\).
+	At each such pole \(a_n\), by the definition of the removable extension,
+	\[
+		g(a_n)=0.
+	\]
+	Thus \(g\) has zeros accumulating at \(a\). Since \(g\) is holomorphic on
+	\(|z-a|<\rho\), the identity theorem gives
+	\[
+		g\equiv 0
+	\]
+	on \(|z-a|<\rho\). This is impossible, because wherever \(f\) is analytic,
+	\[
+		g(z)=\frac{1}{f(z)-\omega}
+	\]
+	cannot be equal to \(0\).
 
-	It also cannot be a pole: if $a$ were a pole of order $m\ge1$, then
-	$g(z)=h(z)/(z-a)^m$ near $a$ with $h$ holomorphic and $h(a)\neq0$. But for $n$
-	large, $a_n$ lies in this neighborhood and $0=g(a_n)=h(a_n)/(a_n-a)^m$, so
-	$h(a_n)=0$ for infinitely many $a_n\to a$, forcing $h\equiv0$ near $a$ by the
-	identity theorem, contradicting $h(a)\neq0$.
-
-	Thus $a$ is neither removable nor a pole, hence it is an essential singularity
-	of $g$.
-
-	\medskip
-	\noindent\textbf{Step 3: Produce a sequence with $f(z_n)\to\omega$.}
-	By Casorati--Weierstrass (equivalently, by the fact that a function with an
-	essential singularity is unbounded on every punctured neighborhood), $g$ is
-	unbounded on each $\{0<|z-a|<1/n\}$. Hence we can choose $z_n$ such that
+	Therefore our supposition was false. Hence for every \(n\in\mathbb N\), there
+	exists \(z_n\in G\), not a pole of \(f\), such that
 	\[
 		0<|z_n-a|<\frac1n
-		\quad\text{and}\quad
-		|g(z_n)|>n.
+		\qquad\text{and}\qquad
+		|f(z_n)-\omega|<\frac1n.
 	\]
-	Then $z_n\to a$ and $|g(z_n)|\to\infty$, so $1/g(z_n)\to0$. But
+	It follows that
 	\[
-		\frac1{g(z_n)} = f(z_n)-\omega,
+		z_n\to a
+		\qquad\text{and}\qquad
+		f(z_n)\to \omega .
 	\]
-	so $f(z_n)\to\omega$, contradicting the initial assumption.
-
-	Therefore for this $\omega$ there exists a sequence $z_n\in G$ with $z_n\to a$
-	and $f(z_n)\to\omega$. Since $\omega\in\mathbb C$ was arbitrary, the conclusion
-	holds for every $\omega\in\mathbb C$.
+	Since \(\omega\in\mathbb C\) was arbitrary, the result follows.
 \end{proof}
-
-
 \section{Residues}
 
 \setexercise{2}
