@@ -46,6 +46,7 @@
   }{%
     \refstepcounter{chapter}%
     \setcounter{section}{0}%
+    \setcounter{exercise}{0}%
     \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#2}%
     \begin{center}
       \textit{Chapter \thechapter} \\[1.5ex]
@@ -66,6 +67,7 @@
 \newtheorem{remark}{Remark}[section]
 \newtheorem{namedlemma}{Negation Lemma}[section]
 \newtheorem{exercise}{}
+\renewcommand{\theHexercise}{\thechapter.\arabic{exercise}}
 \newcommand{\setexercise}[1]{\setcounter{exercise}{#1-1}}
 
 
@@ -613,16 +615,281 @@
 \chapter{August 2020}
 
 \section{Part I}
+\begin{exercise}
+	Let \(f\) be an entire function. Show that \(f\) is a constant function if there exist
+	\(M>0\) and \(R>0\) such that
+	\[
+		|f(z)|\le M|z|^{1/2}
+		\qquad \text{whenever } |z|>R.
+	\]
+\end{exercise}
+
+\begin{exercise}
+	Fix \(w=re^{i\theta}\neq 0\) and let \(\gamma\) be a piecewise smooth curve in
+	\(\mathbb{C}\setminus\{0\}\) from \(1\) to \(w\). Show that there is an integer
+	\(k\) such that
+	\[
+		\int_\gamma \frac{1}{z}\,dz=\log r+i\theta+2\pi i k.
+	\]
+\end{exercise}
+
+\begin{exercise}
+	\begin{enumerate}
+		\item[(a)] Let \(a>1\). Show that the equation
+		      \[
+			      ze^{a-z}=1
+		      \]
+		      has precisely one root in the closed unit disk
+		      \(\{z:|z|=1\}\).
+		\item[(b)] Show that the root in part (a) is positive.
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+	Using the maximum modulus principle, prove the Fundamental Theorem of Algebra.
+\end{exercise}
+
+\begin{exercise}
+	Let \(f\) be an entire function, taking real values on the real axis, and imaginary
+	values on the imaginary axis. Show that \(f(z)\) is an odd function; that is,
+	\[
+		f(-z)=-f(z)
+	\]
+	for all \(z\).
+\end{exercise}
+
 \section{Part II}
+\begin{exercise}
+	Given entire functions \(f,g\) without common zeros, prove that there exist entire
+	functions \(A,B\) such that
+	\[
+		Af+Bg=1.
+	\]
+	Hint: Use the Mittag-Leffler Theorem.
+\end{exercise}
+
+\begin{exercise}
+	If \(f\) is a nonconstant entire function, show that
+	\[
+		(f^3+f^2)(\mathbb{C})=\mathbb{C}.
+	\]
+\end{exercise}
+
+\begin{exercise}
+	Suppose that \(G\) is a region in \(\mathbb{C}\), \(\{f_n\}\) is a sequence in
+	\(H(G)\), \(f\) is a nonconstant function, and \(f_n\to f\) in \(H(G)\). Let
+	\(a\in G\) and \(b=f(a)\). Show that there is a sequence \(\{a_n\}\) in \(G\)
+	such that
+	\begin{enumerate}
+		\item[(i)] \(a=\lim a_n\),
+		\item[(ii)] \(f_n(a_n)=b\) for sufficiently large \(n\).
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+	Let
+	\[
+		G=\{z:\operatorname{Re}(z)>0\},
+	\]
+	and \(f:G\to G\) be a one-one analytic function from \(G\) into \(G\). Suppose
+	\(f(a)=a\) for some positive real number \(a\). Show that
+	\[
+		|f'(a)|\le 1.
+	\]
+\end{exercise}
+
+\begin{exercise}
+	Let \(0<R_1<R_2\) and \(\alpha\in\mathbb{R}\), and let \(G\) be the annulus
+	centered at the origin with radii \(R_1\) and \(R_2\). Let
+	\[
+		z^\alpha=\exp(\alpha\log z),
+	\]
+	where \(\log z\) is a branch of the logarithm. Prove that \(z^\alpha\) is
+	analytic in \(G\) if and only if \(\alpha\) is an integer.
+\end{exercise}
 
 \chapter{August 2024}
 
 \section{Part I}
+\begin{exercise}
+	Let \(G\) and \(\Omega\) be two regions in \(\mathbb{C}\), and
+	\(h:G\to\mathbb{C}\) be a one-one analytic function, and
+	\(f:G\to\mathbb{C}\) be a continuous function with \(f(G)\subset\Omega\), and
+	\(g:\Omega\to\mathbb{C}\) be an analytic function with \(g'(w)\neq 0\) for any
+	\(w\in\Omega\). Show that \(f\) is analytic if
+	\[
+		h(z)=g(f(z)), \qquad \text{for all } z\in G.
+	\]
+\end{exercise}
+
+\begin{exercise}
+	Let \(D\) be the open unit disk. Show that no analytic function
+	\(f:D\to\mathbb{C}\) has the property that
+	\[
+		|f(z_n)|\to\infty,
+		\qquad \text{whenever } |z_n|\to 1.
+	\]
+\end{exercise}
+
+\begin{exercise}
+	How many roots does the polynomial
+	\[
+		z^9+z^5-8z^3+2z+1
+	\]
+	have between the circles \(\{|z|=1\}\) and \(\{|z|=2\}\)?
+\end{exercise}
+
+\begin{exercise}
+	Prove Liouville's Theorem by considering the following integral
+	\[
+		\int_{C_R}\frac{f(z)}{(z-a)(z-b)}\,dz,
+	\]
+	for a bounded entire function \(f(z)\), where \(C_R=Re^{it}\) with
+	\(t\in[0,2\pi]\), and \(a\neq b\) with \(|a|<R\) and \(|b|<R\).
+\end{exercise}
+
+\begin{exercise}
+	Let \(G\) be a region, and
+	\[
+		G^*=\{z:\overline{z}\in G\}.
+	\]
+	If \(f:G\to\mathbb{C}\) is analytic, prove that \(f^*:G^*\to\mathbb{C}\)
+	defined by
+	\[
+		f^*(z)=\overline{f(\overline{z})}
+	\]
+	is also analytic.
+\end{exercise}
+
 \section{Part II}
+\begin{exercise}
+	Prove that a nonconstant harmonic function on a region is an open map.
+\end{exercise}
+
+\begin{exercise}
+	Let \(G\) be a region and \(f,f_1,f_2,\ldots\) be elements of \(H(G)\). Show
+	that \(f_n\to f\) in \(H(G)\) if and only if for each closed rectifiable curve
+	\(\gamma\) in \(G\), \(f_n\to f\) uniformly on \(\gamma\).
+\end{exercise}
+
+\begin{exercise}
+	Let \(G\) be a region and suppose \(\mathcal{F}\) is normal in \(H(G)\) and
+	\(\Omega\) is open in \(\mathbb{C}\) such that \(f(G)\subset\Omega\) for every
+	\(f\in\mathcal{F}\). Show that if \(g\) is analytic on \(\Omega\) and is bounded
+	on bounded sets then
+	\[
+		\{g\circ f:f\in\mathcal{F}\}
+	\]
+	is normal.
+\end{exercise}
+
+\begin{exercise}
+	Show there is an analytic function \(f\) on
+	\[
+		D=\{z:|z|<1\}
+	\]
+	which is not analytic on any region \(G\) which properly contains \(D\).
+\end{exercise}
+
+\begin{exercise}
+	Find an entire function \(f\) such that for every integer \(n\ge 1\), \(f\) has
+	\(n\) as a zero of order \(n\). Find the most elementary solution possible.
+\end{exercise}
 
 \chapter{January 2025}
 
 \section{Part I}
+\begin{exercise}
+	Prove the Fundamental Theorem of Algebra by completing the following two steps
+	for a nonconstant polynomial
+	\[
+		p(z)=a_0+a_1z+\cdots+a_nz^n,
+	\]
+	where \(a_n\neq 0\) and \(n\ge 1\).
+	\begin{enumerate}
+		\item[(a)] Show that there is a nonzero polynomial \(q(z)\) such that
+		      \[
+			      \frac{1}{zp(z)}=\frac{1}{zp(0)}+\frac{q(z)}{p(z)},
+		      \]
+		      for \(z\neq 0\) and \(p(z)\neq 0\).
+		\item[(b)] By means of integration over the circle \(C_R=Re^{it}\) with
+		      \(t\in[0,2\pi]\), show that \(p(z_0)=0\) for some point
+		      \(z_0\) in \(\mathbb{C}\).
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+	Show that the equation
+	\[
+		e^z=cz,
+	\]
+	where \(c\) is a constant with \(|c|>e\), has exactly one solution in the set
+	\[
+		\{z\in\mathbb{C}:\operatorname{Re}z<1\}.
+	\]
+\end{exercise}
+
+\begin{exercise}
+	Show that if \(f:\mathbb{C}\to\mathbb{C}\) is a continuous function such that
+	\(f\) is analytic off \([-1,1]\), then \(f\) is an entire function.
+\end{exercise}
+
+\begin{exercise}
+	Using Liouville's Theorem, prove the Fundamental Theorem of Algebra.
+\end{exercise}
+
+\begin{exercise}
+	Let \(G\) be a region and \(z_0\in G\). Suppose \(f:G\to\mathbb{C}\) is
+	analytic and \(f'(z_0)\neq 0\). Show that
+	\[
+		\int_\gamma \frac{1}{f(z)-f(z_0)}\,dz=\frac{2\pi i}{f'(z_0)}
+	\]
+	if \(\gamma=\gamma(t)=z_0+re^{it}\) for \(t\in[0,2\pi]\) and \(r>0\) is small
+	enough.
+\end{exercise}
+
 \section{Part II}
+\begin{exercise}
+	Let \(G\) and \(\Omega\) be domains in the complex plane. If
+	\(f:G\to\Omega\) is one-to-one and analytic and
+	\(\varphi:\Omega\to\mathbb{R}\) is subharmonic, show that
+	\(\varphi\circ f\) is subharmonic.
+\end{exercise}
+
+\begin{exercise}
+	Let \(G\) be a domain in the complex plane and \(u:G\to\mathbb{R}\) be a
+	nonconstant harmonic function and let
+	\[
+		A=\{z\in G:u_x(z)=u_y(z)=0\}.
+	\]
+	Show that \(A\) does not have any limit points in \(G\).
+\end{exercise}
+
+\begin{exercise}
+	Find an entire function \(f\) such that
+	\[
+		f\left(ne^{2k\pi i/n}\right)=0
+	\]
+	for all positive integers \(n\) and all integers \(0\le k\le n-1\). Give the
+	most elementary example possible.
+\end{exercise}
+
+\begin{exercise}
+	Let \(G\) and \(\Omega\) be two domains in the complex plane. Suppose
+	\(\{f_n\}\) is a sequence in \(C(G,\Omega)\) which converges to \(f\) and
+	\(\{z_n\}\) is a sequence in \(G\) which converges to a point \(z\) in \(G\).
+	Show
+	\[
+		\lim_{n\to\infty} f_n(z_n)=f(z).
+	\]
+\end{exercise}
+
+\begin{exercise}
+	Show that if \(\mathcal{F}\subset H(G)\) is normal then
+	\[
+		\mathcal{F}'=\{f':f\in\mathcal{F}\}
+	\]
+	is also normal.
+\end{exercise}
 
 \end{document}
