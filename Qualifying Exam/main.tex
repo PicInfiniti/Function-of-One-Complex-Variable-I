@@ -37,25 +37,6 @@
   {.5em}   % Space after theorem header
   {}       % Theorem head spec (can be left empty)
 
-\RenewDocumentCommand{\chapter}{s m}{%
-  \par\vspace{2em}%
-  \IfBooleanTF{#1}{%
-    \begin{center}
-      \textbf{#2}
-    \end{center}
-  }{%
-    \refstepcounter{chapter}%
-    \setcounter{section}{0}%
-    \setcounter{exercise}{0}%
-    \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#2}%
-    \begin{center}
-      \textit{Chapter \thechapter} \\[1.5ex]
-      \textbf{#2}
-    \end{center}
-  }%
-  \vspace{1em}%
-}
-
 \theoremstyle{spaced}
 \newtheorem{conjecture}{Conjecture}[section]
 \newtheorem{theorem}{Theorem}[section]
@@ -67,7 +48,6 @@
 \newtheorem{remark}{Remark}[section]
 \newtheorem{namedlemma}{Negation Lemma}[section]
 \newtheorem{exercise}{}
-\renewcommand{\theHexercise}{\thechapter.\arabic{exercise}}
 \newcommand{\setexercise}[1]{\setcounter{exercise}{#1-1}}
 
 
@@ -79,10 +59,12 @@
 \date{Summer 2026-2027}
 
 \begin{document}
+\hypersetup{pageanchor=false}
 \maketitle
 
 \tableofcontents
 
+\hypersetup{pageanchor=true}
 \chapter{August 2018}
 \section{Part I}
 \begin{exercise}
@@ -636,11 +618,11 @@
 \begin{exercise}
 	\begin{enumerate}
 		\item[(a)] Let \(a>1\). Show that the equation
-		      \[
-			      ze^{a-z}=1
-		      \]
-		      has precisely one root in the closed unit disk
-		      \(\{z:|z|=1\}\).
+			\[
+				ze^{a-z}=1
+			\]
+			has precisely one root in the closed unit disk
+			\(\{z:|z|=1\}\).
 		\item[(b)] Show that the root in part (a) is positive.
 	\end{enumerate}
 \end{exercise}
@@ -808,13 +790,13 @@
 	where \(a_n\neq 0\) and \(n\ge 1\).
 	\begin{enumerate}
 		\item[(a)] Show that there is a nonzero polynomial \(q(z)\) such that
-		      \[
-			      \frac{1}{zp(z)}=\frac{1}{zp(0)}+\frac{q(z)}{p(z)},
-		      \]
-		      for \(z\neq 0\) and \(p(z)\neq 0\).
+			\[
+				\frac{1}{zp(z)}=\frac{1}{zp(0)}+\frac{q(z)}{p(z)},
+			\]
+			for \(z\neq 0\) and \(p(z)\neq 0\).
 		\item[(b)] By means of integration over the circle \(C_R=Re^{it}\) with
-		      \(t\in[0,2\pi]\), show that \(p(z_0)=0\) for some point
-		      \(z_0\) in \(\mathbb{C}\).
+			\(t\in[0,2\pi]\), show that \(p(z_0)=0\) for some point
+			\(z_0\) in \(\mathbb{C}\).
 	\end{enumerate}
 \end{exercise}
 

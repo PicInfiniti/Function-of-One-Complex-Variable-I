@@ -37,24 +37,6 @@
   {.5em}   % Space after theorem header
   {}       % Theorem head spec (can be left empty)
 
-\RenewDocumentCommand{\chapter}{s m}{%
-  \par\vspace{2em}%
-  \IfBooleanTF{#1}{%
-    \begin{center}
-      \textbf{#2}
-    \end{center}
-  }{%
-    \refstepcounter{chapter}%
-    \setcounter{section}{0}%
-    \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#2}%
-    \begin{center}
-      \textit{Chapter \thechapter} \\[1.5ex]
-      \textbf{#2}
-    \end{center}
-  }%
-  \vspace{1em}%
-}
-
 \theoremstyle{spaced}
 \newtheorem{conjecture}{Conjecture}[section]
 \newtheorem{theorem}{Theorem}[section]
