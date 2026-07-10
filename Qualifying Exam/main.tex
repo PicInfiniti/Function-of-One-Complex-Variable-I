@@ -12,10 +12,16 @@
 \usetikzlibrary{decorations.markings}
 \patchcmd{\thebibliography}{\advance\leftmargin\labelsep}{\labelsep=.5em\leftmargin=2.5em\itemindent=0em\advance\leftmargin\labelsep}
 \titlespacing*{\section}{0pt}{3em}{2em}
+\titlespacing*{\chapter}{0pt}{0pt}{2em}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}
+  {}
+  {0pt}
+  {}
 \titleformat{\section}
   {\normalfont\large\bfseries} % format for the whole title
-  {\thesection}                % section number format
-  {0.5em}                      % spacing between number and title
+  {}                           % section number format
+  {0pt}                        % spacing between number and title
   {}                           % code before the title text
 
 \setstretch{1.1}
@@ -48,6 +54,8 @@
 \newtheorem{namedlemma}{Negation Lemma}[section]
 \newtheorem{exercise}{}
 \newcommand{\setexercise}[1]{\setcounter{exercise}{#1-1}}
+\pretocmd{\chapter}{\setcounter{exercise}{0}}{}{}
+\renewcommand{\theHexercise}{\thechapter.\arabic{exercise}}
 
 
 \title{Complex Analysis Qualifying Exam Problems}
