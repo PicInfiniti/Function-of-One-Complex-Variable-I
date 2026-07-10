@@ -1,0 +1,620 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage{mathrsfs, amsmath,amssymb,amsthm,mathtools,setspace,graphicx,array,tikz,url}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage} 
+\usepackage[top=3cm, left=3cm, right=3cm, bottom=3cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\usepackage{amsthm} % Required for theorem environments
+\usetikzlibrary{decorations.markings}
+\patchcmd{\thebibliography}{\advance\leftmargin\labelsep}{\labelsep=.5em\leftmargin=2.5em\itemindent=0em\advance\leftmargin\labelsep}
+\titlespacing*{\section}{0pt}{3em}{2em}
+\titleformat{\section}
+  {\normalfont\large\bfseries} % format for the whole title
+  {\thesection}                % section number format
+  {0.5em}                      % spacing between number and title
+  {}                           % code before the title text
+
+\setstretch{1.1}
+
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer
+\fancyfoot[C]{\footnotesize \thepage\ of \pageref{LastPage}}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\newtheoremstyle{spaced}
+  {15pt}   % Space above (e.g., 10pt)
+  {20pt}   % Space below (e.g., 10pt)
+  {\itshape} % Body font (e.g., italic)
+  {}       % Indentation of the header
+  {\bfseries} % Theorem header font (e.g., bold)
+  {.}      % Punctuation after theorem header
+  {.5em}   % Space after theorem header
+  {}       % Theorem head spec (can be left empty)
+
+\newcommand{\chapter}[1]{%
+  \par\vspace{2em}%
+  \refstepcounter{section}%
+  \begin{center}
+    \textit{Chapter \thesection} \\[1.5ex]
+    \textbf{#1}
+  \end{center}
+  \vspace{1em}%
+}
+
+\theoremstyle{spaced}
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{namedlemma}{Negation Lemma}[section]
+\newtheorem{exercise}{}
+\newcommand{\setexercise}[1]{\setcounter{exercise}{#1-1}}
+
+
+\title{Qualifying  Function of One Complex Variable I}
+\author{
+  John B. Conway (Second Edition)
+}
+
+\date{Summer 2026-2027}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\chapter{August 2018}
+\section{Part I}
+\begin{exercise}
+	Find a conformal map \(f\) from the vertical strip
+	\[
+		\Omega=\{z\in\mathbb{C}:3<\operatorname{Re}(z)<11\}
+	\]
+	onto the open unit disk \(\mathbb{D}\).
+\end{exercise}
+
+\begin{proof}[Solution]
+	The width of the strip is \(11-3=8\). First map the strip to a horizontal strip by setting
+	\[
+		w=\frac{\pi}{8}(z-3).
+	\]
+	Since \(3<\operatorname{Re}(z)<11\), we have
+	\[
+		0<\operatorname{Re}(w)<\pi.
+	\]
+	Now define
+	\[
+		\omega=e^{iw}.
+	\]
+	Because
+	\[
+		\arg(\omega)=\operatorname{Re}(w),
+	\]
+	the map \(\omega=e^{iw}\) sends the strip onto the upper half-plane
+	\[
+		\{\omega\in\mathbb{C}:\operatorname{Im}(\omega)>0\}.
+	\]
+	Finally, the map
+	\[
+		\phi(\omega)=\frac{\omega-i}{\omega+i}
+	\]
+	maps the upper half-plane conformally onto the unit disk \(\mathbb{D}\). Therefore a conformal map from \(\Omega\) onto \(\mathbb{D}\) is
+	\[
+		\boxed{
+			f(z)=\frac{e^{i\pi(z-3)/8}-i}{e^{i\pi(z-3)/8}+i}
+		}.
+	\]
+\end{proof}
+
+\begin{exercise}
+	Suppose that $F$ and $G$ are holomorphic functions on the right half plane
+	\[
+		H=\{z\in\mathbb{C}:\operatorname{Re}(z)>0\}.
+	\]
+	Suppose also that $F$ and $G$ have the same zeros with the same multiplicities at each zero. Prove that there is a holomorphic function $h$ on $H$ such that
+	\[
+		F(z)=e^{h(z)}G(z)
+	\]
+	for all $z\in H$.
+\end{exercise}
+\begin{proof}[Solution]
+	If \(F\equiv G\equiv 0\), then we may take \(h\equiv 0\). Thus assume that
+	\(F\) and \(G\) are not identically zero.
+
+	Define
+	\[
+		q(z)=\frac{F(z)}{G(z)}
+	\]
+	at points where \(G(z)\neq 0\). We claim that \(q\) extends to a holomorphic
+	function on all of \(H\).
+
+	Let \(a\in H\) be a zero of \(G\). Since \(F\) and \(G\) have the same zeros
+	with the same multiplicities, there is some \(m\ge 1\) such that locally
+	\[
+		F(z)=(z-a)^m\phi(z),
+		\qquad
+		G(z)=(z-a)^m\psi(z),
+	\]
+	where \(\phi\) and \(\psi\) are holomorphic near \(a\), with
+	\[
+		\phi(a)\neq 0,
+		\qquad
+		\psi(a)\neq 0.
+	\]
+	Hence near \(a\),
+	\[
+		q(z)=\frac{F(z)}{G(z)}
+		=\frac{\phi(z)}{\psi(z)}.
+	\]
+	So the singularity of \(q\) at \(a\) is removable. Therefore \(q\) extends
+	holomorphically to all of \(H\).
+
+	Moreover, the extension of \(q\) has no zeros. Indeed, away from the zeros of
+	\(G\), this is clear since \(F\) and \(G\) have the same zeros. At a common
+	zero \(a\), we have
+	\[
+		q(a)=\frac{\phi(a)}{\psi(a)}\neq 0.
+	\]
+
+	Now \(H=\{z\in\mathbb C:\operatorname{Re}(z)>0\}\) is convex, hence simply
+	connected. Since \(q\) is holomorphic and never zero on \(H\), by Corollary
+	6.17, Chapter IV, there exists a holomorphic function \(h\) on \(H\) such that
+	\[
+		q(z)=e^{h(z)}.
+	\]
+	Therefore, for all \(z\in H\),
+	\[
+		F(z)=q(z)G(z)=e^{h(z)}G(z).
+	\]
+	Thus there is a holomorphic function \(h\) on \(H\) satisfying
+	\[
+		F(z)=e^{h(z)}G(z)
+	\]
+	for all \(z\in H\).
+\end{proof}
+
+\begin{exercise}
+	Suppose $f$ is a holomorphic function on the open unit disc
+	\[
+		D=\{z:|z|<1\}.
+	\]
+	Prove that there is a sequence $(z_n)_{n=1}^{\infty}$ in $D$ such that $|z_n|\to 1$ and the set
+	\[
+		\{f(z_n):n\geq 1\}
+	\]
+	is bounded.
+\end{exercise}
+\begin{proof}[Solution (I)]
+	If \(f\equiv 0\), then take \(z_n=1-\frac1n\). Then \(|z_n|\to 1\) and
+	\(\{f(z_n):n\ge 1\}=\{0\}\), which is bounded.
+
+	Now assume \(f\not\equiv 0\). Suppose, toward a contradiction, that no such
+	sequence exists. Then for every \(M>0\), there is \(0<\rho<1\) such that
+	\[
+		|f(z)|>M
+	\]
+	whenever \(\rho<|z|<1\). Indeed, otherwise we could find \(z_n\in D\) with
+	\[
+		|z_n|>1-\frac1n
+		\qquad\text{and}\qquad
+		|f(z_n)|\le M,
+	\]
+	which would give \(|z_n|\to 1\) and \(\{f(z_n)\}\) bounded.
+
+	Thus
+	\[
+		|f(z)|\to \infty
+		\qquad \text{as } |z|\to 1.
+	\]
+
+	In particular, for some \(0<R<1\),
+	\[
+		|f(z)|>1
+	\]
+	whenever \(R<|z|<1\). Hence all zeros of \(f\) lie in the compact set
+	\(\{|z|\le R\}\). Since \(f\not\equiv 0\), it has only finitely many zeros
+	there. Let those zeros be \(\alpha_1,\dots,\alpha_N\), with multiplicities
+	\(m_1,\dots,m_N\), and define
+	\[
+		P(z)=\prod_{j=1}^N (z-\alpha_j)^{m_j}.
+	\]
+	If \(f\) has no zeros, take \(P\equiv 1\).
+
+	Then
+	\[
+		F(z)=\frac{f(z)}{P(z)}
+	\]
+	extends to a holomorphic function on \(D\), and \(F\) has no zeros in \(D\).
+	Therefore
+	\[
+		g(z)=\frac1{F(z)}
+	\]
+	is holomorphic on \(D\).
+
+	Since \(P\) is bounded on \(D\), and \(|f(z)|\to\infty\) as \(|z|\to 1\), we get
+	\[
+		|F(z)|\to\infty
+		\qquad \text{as } |z|\to 1.
+	\]
+	Thus
+	\[
+		g(z)\to 0
+		\qquad \text{as } |z|\to 1.
+	\]
+
+	Fix \(z_0\in D\). Given \(\varepsilon>0\), choose \(\rho<1\) such that
+	\[
+		|g(z)|<\varepsilon
+	\]
+	whenever \(\rho<|z|<1\). Choose \(r\) such that
+	\[
+		\max\{|z_0|,\rho\}<r<1.
+	\]
+	By the maximum modulus principle applied on \(\{|z|\le r\}\),
+	\[
+		|g(z_0)|\le \max_{|z|=r}|g(z)|<\varepsilon.
+	\]
+	Since \(\varepsilon>0\) was arbitrary, \(g(z_0)=0\). Hence \(g\equiv 0\) on
+	\(D\), which is impossible because \(g=1/F\).
+
+	Therefore our supposition was false. Hence there exists a sequence
+	\((z_n)\subset D\) such that
+	\[
+		|z_n|\to 1
+	\]
+	and
+	\[
+		\{f(z_n):n\ge 1\}
+	\]
+	is bounded.
+\end{proof}
+
+\begin{proof}[Solution (II)]
+	Suppose, toward a contradiction, that no such sequence exists. Then for every
+	\(M>0\), there exists \(0<\rho<1\) such that
+	\[
+		|f(z)|>M
+	\]
+	whenever \(\rho<|z|<1\). Otherwise, for some \(M>0\), we could choose
+	\(z_n\in D\) with
+	\[
+		|z_n|>1-\frac1n
+		\qquad\text{and}\qquad
+		|f(z_n)|\le M,
+	\]
+	which would give the desired sequence.
+
+	Thus
+	\[
+		|f(z)|\to \infty
+		\qquad\text{as } |z|\to 1.
+	\]
+	In particular, there exists \(0<R<1\) such that
+	\[
+		|f(z)|>1
+	\]
+	whenever \(R<|z|<1\). Hence \(f\) has no zeros in the annulus
+	\[
+		A=\{z:R<|z|<1\}.
+	\]
+	Therefore
+	\[
+		g(z)=\frac1{f(z)}
+	\]
+	is holomorphic on \(A\). Also,
+	\[
+		g(z)\to 0
+		\qquad\text{as } |z|\to 1.
+	\]
+
+	Now expand \(g\) in its Laurent series on the annulus \(A\):
+	\[
+		g(z)=\sum_{n=-\infty}^{\infty} c_n z^n.
+	\]
+	For any \(r\) with \(R<r<1\),
+	\[
+		c_n=\frac{1}{2\pi i}\int_{|\omega|=r}
+		\frac{g(\omega)}{\omega^{n+1}}\,d\omega .
+	\]
+	Hence
+	\[
+		|c_n|
+		\le \max_{|\omega|=r}|g(\omega)|\, r^{-n}.
+	\]
+	Letting \(r\to 1^{-}\), we have
+	\[
+		\max_{|\omega|=r}|g(\omega)|\to 0,
+	\]
+	and \(r^{-n}\to 1\). Therefore
+	\[
+		c_n=0
+	\]
+	for every \(n\in\mathbb Z\). Hence
+	\[
+		g\equiv 0
+	\]
+	on \(A\), which is impossible since \(g=1/f\).
+
+	Therefore our supposition was false. Thus there exists a sequence
+	\((z_n)\subset D\) such that
+	\[
+		|z_n|\to 1
+	\]
+	and
+	\[
+		\{f(z_n):n\ge 1\}
+	\]
+	is bounded.
+\end{proof}
+
+\begin{exercise}
+	Determine, with proof, all entire functions $f$ such that for all $\lambda\in\mathbb{C}$ with $|\lambda|=1$ and all $z\in\mathbb{C}$ the equation
+	\[
+		f(\lambda z)=\lambda f(z)
+	\]
+	holds.
+\end{exercise}
+\begin{proof}[Solution (I)]
+	We claim that the only such functions are
+	\[
+		f(z)=cz
+	\]
+	for some constant \(c\in\mathbb C\).
+
+	Let \(f\) be entire. Then \(f\) has a power series expansion on all of
+	\(\mathbb C\):
+	\[
+		f(z)=\sum_{n=0}^{\infty} a_n z^n .
+	\]
+	For \(|\lambda|=1\), we have
+	\[
+		f(\lambda z)=\sum_{n=0}^{\infty} a_n(\lambda z)^n
+		=\sum_{n=0}^{\infty} a_n \lambda^n z^n.
+	\]
+	By assumption,
+	\[
+		f(\lambda z)=\lambda f(z)
+		=\lambda \sum_{n=0}^{\infty} a_n z^n
+		=\sum_{n=0}^{\infty} \lambda a_n z^n.
+	\]
+	Therefore, for every \(|\lambda|=1\),
+	\[
+		\sum_{n=0}^{\infty} a_n\lambda^n z^n
+		=
+		\sum_{n=0}^{\infty} \lambda a_n z^n.
+	\]
+	By uniqueness of power series coefficients,
+	\[
+		a_n\lambda^n=\lambda a_n
+	\]
+	for every \(n\ge 0\) and every \(|\lambda|=1\). Hence
+	\[
+		a_n(\lambda^n-\lambda)=0.
+	\]
+
+	If \(n=1\), this condition gives no restriction on \(a_1\). But if
+	\(n\neq 1\), we can choose \(|\lambda|=1\) such that
+	\[
+		\lambda^n\neq \lambda.
+	\]
+	Thus \(a_n=0\) for every \(n\neq 1\). Therefore
+	\[
+		f(z)=a_1z.
+	\]
+
+	Conversely, every function of the form \(f(z)=cz\) satisfies
+	\[
+		f(\lambda z)=c\lambda z=\lambda cz=\lambda f(z).
+	\]
+	Hence the entire functions satisfying the condition are exactly
+	\[
+		\boxed{f(z)=cz,\qquad c\in\mathbb C.}
+	\]
+\end{proof}
+\begin{proof}[Solution (II)]
+	First put \(z=0\). Then
+	\[
+		f(0)=\lambda f(0)
+	\]
+	for every \(|\lambda|=1\). Choosing \(\lambda\neq 1\), we get
+	\[
+		f(0)=0.
+	\]
+	Hence
+	\[
+		g(z)=\frac{f(z)}{z}
+	\]
+	is holomorphic on \(\mathbb C\setminus\{0\}\), and the singularity at \(0\) is
+	removable. Define
+	\[
+		g(0)=f'(0).
+	\]
+	Then \(g\) is entire.
+
+	For \(z\neq 0\) and \(|\lambda|=1\),
+	\[
+		g(\lambda z)
+		=\frac{f(\lambda z)}{\lambda z}
+		=\frac{\lambda f(z)}{\lambda z}
+		=\frac{f(z)}{z}
+		=g(z).
+	\]
+	Thus, by continuity,
+	\[
+		g(\lambda z)=g(z)
+	\]
+	for all \(z\in\mathbb C\) and all \(|\lambda|=1\).
+
+	In particular, if \(|\zeta|=1\), then \(\zeta=\lambda\cdot 1\) for some
+	\(|\lambda|=1\), so
+	\[
+		g(\zeta)=g(1).
+	\]
+	Thus \(g\) is constant on the unit circle.
+
+	Write the Taylor expansion of \(g\) at \(0\):
+	\[
+		g(z)=\sum_{n=0}^{\infty}a_nz^n.
+	\]
+	By Cauchy's integral formula for Taylor coefficients,
+	\[
+		a_n=\frac{1}{2\pi i}\int_{|\zeta|=1}
+		\frac{g(\zeta)}{\zeta^{n+1}}\,d\zeta .
+	\]
+	For \(n\ge 1\), since \(g(\zeta)=g(1)\) on \(|\zeta|=1\), we get
+	\[
+		a_n
+		=\frac{g(1)}{2\pi i}\int_{|\zeta|=1}\frac{1}{\zeta^{n+1}}\,d\zeta
+		=0.
+	\]
+	Therefore all Taylor coefficients of \(g\) except possibly \(a_0\) vanish.
+	Hence \(g\) is constant on \(\mathbb C\). Say
+	\[
+		g(z)=c.
+	\]
+	Then
+	\[
+		f(z)=zg(z)=cz.
+	\]
+
+	Conversely, if \(f(z)=cz\), then
+	\[
+		f(\lambda z)=c\lambda z=\lambda cz=\lambda f(z).
+	\]
+	Therefore the desired functions are exactly
+	\[
+		\boxed{f(z)=cz,\qquad c\in\mathbb C.}
+	\]
+\end{proof}
+
+
+
+\begin{exercise}
+	Let $f$ and $g$ be entire functions satisfying $f(0)=g(0)\neq 0$ and
+	\[
+		|f(z)|\leq |g(z)| \qquad \forall z\in\mathbb{C}.
+	\]
+	Show that $f=g$.
+\end{exercise}
+\begin{proof}[Solution]
+	Since \(g(0)=f(0)\neq 0\), there exists \(r>0\) such that
+	\[
+		g(z)\neq 0
+	\]
+	for all \(z\in B(0,r)\). Define
+	\[
+		h(z)=\frac{f(z)}{g(z)}
+	\]
+	on \(B(0,r)\). Then \(h\) is holomorphic on \(B(0,r)\). Also, by hypothesis,
+	\[
+		|h(z)|=\frac{|f(z)|}{|g(z)|}\le 1
+	\]
+	for all \(z\in B(0,r)\). Moreover,
+	\[
+		h(0)=\frac{f(0)}{g(0)}=1.
+	\]
+	Thus
+	\[
+		|h(0)|=1.
+	\]
+	So \(h\) attains its maximum modulus at the interior point \(0\). By the
+	maximum modulus principle, \(h\) is constant on \(B(0,r)\). Since \(h(0)=1\),
+	we get
+	\[
+		h\equiv 1
+	\]
+	on \(B(0,r)\). Therefore
+	\[
+		f(z)=g(z)
+	\]
+	for all \(z\in B(0,r)\).
+
+	Since \(f\) and \(g\) are entire and agree on a nonempty open set, the identity
+	theorem implies that
+	\[
+		f=g
+	\]
+	on all of \(\mathbb C\).
+\end{proof}
+
+\section{Part II}
+\begin{exercise}
+	Determine all entire functions that satisfy the functional equation
+	\[
+		f(3z)=(1-3z)f(z).
+	\]
+	Express the answer in terms of an infinite product.
+\end{exercise}
+
+\begin{exercise}
+	Let $F(z)$ be holomorphic on a disc $D(z_0,r)$ so that
+	\[
+		F(z_0)=F'(z_0)=0 \qquad \text{and} \qquad F''(z_0)\neq 0.
+	\]
+	Show that there are two curves $\Gamma_1$ and $\Gamma_2$ passing through $z_0$
+	that are orthogonal at $z_0$ and so that the function $F$ when restricted to
+	$\Gamma_1$ is real-valued and has a minimum at $z_0$, and when restricted to
+	$\Gamma_2$ it is also real-valued and has a maximum at $z_0$.
+\end{exercise}
+
+\begin{exercise}
+	Prove that if $f$ is a non-constant bounded holomorphic function defined on the
+	half plane
+	\[
+		\{z:\operatorname{Im} z<1\},
+	\]
+	then there is some point on the real axis where the value of $f$ is not real.
+\end{exercise}
+
+\begin{exercise}
+	Show that there exists a sequence of polynomials $(P_n)$ so that
+	\[
+		\lim_{n\to\infty} P_n(z)=
+		\begin{cases}
+			1,  & \text{if } \operatorname{Re}(z)>0, \\
+			0,  & \text{if } \operatorname{Re}(z)=0, \\
+			-1, & \text{if } \operatorname{Re}(z)<0.
+		\end{cases}
+	\]
+	Also, explain why $(P_n)$ can't be bounded on compact subsets of $\mathbb{C}$.
+\end{exercise}
+
+\begin{exercise}
+	Let $\mathfrak{F}$ be the collection of holomorphic functions on the open unit
+	disk
+	\[
+		D=\{z:|z|<1\}
+	\]
+	satisfying
+	\[
+		\iint_D |f|\,dx\,dy \leq 1.
+	\]
+	Prove or disprove that $\mathfrak{F}$ is a normal family.
+\end{exercise}
+
+\chapter{August 2020}
+
+\section{Part I}
+\section{Part II}
+
+\chapter{August 2024}
+
+\section{Part I}
+\section{Part II}
+
+\chapter{January 2025}
+
+\section{Part I}
+\section{Part II}
+
+\end{document}
