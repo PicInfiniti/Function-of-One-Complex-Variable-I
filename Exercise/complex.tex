@@ -5154,48 +5154,84 @@
 \end{exercise}
 
 \begin{proof}[Solution]
-	To show that \(f_n\to f\) in \(C(G,\Omega)\), it is enough to show that \(f_n\to f\) uniformly on each compact subset of \(G\).
+	By Proposition~1.10(b), it is enough to show that $\{f_n\}$ converges to $f$
+	uniformly on every compact subset of $G$.
 
-	Let \(K\subset G\) be compact, and let \(\varepsilon>0\). Since \(\{f_n\}\) is equicontinuous at each point of \(G\), for each \(z\in K\) there exists \(r_z>0\) such that
+	Let $K \subset G$ be compact and let $\varepsilon>0$. Since $\{f_n\}$ is
+	equicontinuous at each point of $G$, Proposition~1.22 implies that
+	$\{f_n\}$ is equicontinuous on $K$. Hence, there exists $\delta_1>0$ such
+	that
 	\[
-		|w-z|<r_z \implies |f_n(w)-f_n(z)|<\frac{\varepsilon}{3}
-		\quad \text{for all } n.
+		z,w\in K,\qquad |z-w|<\delta_1
 	\]
-	Also, since \(f\in C(G,\Omega)\), \(f\) is continuous, so by shrinking \(r_z\) if necessary we may also assume
+	implies
 	\[
-		|w-z|<r_z \implies |f(w)-f(z)|<\frac{\varepsilon}{3}.
+		d(f_n(z),f_n(w))<\frac{\varepsilon}{3}
+	\]
+	for every $n$.
+
+	Since $f\in C(G,\Omega)$ and $K$ is compact, $f$ is uniformly continuous
+	on $K$. Thus, there exists $\delta_2>0$ such that
+	\[
+		z,w\in K,\qquad |z-w|<\delta_2
+	\]
+	implies
+	\[
+		d(f(z),f(w))<\frac{\varepsilon}{3}.
 	\]
 
-	The family of open disks \(\{B(z,r_z): z\in K\}\) covers \(K\). Since \(K\) is compact, there exist points \(z_1,\dots,z_m\in K\) such that
+	Set
 	\[
-		K\subset \bigcup_{j=1}^m B(z_j,r_{z_j}).
+		\delta=\min\{\delta_1,\delta_2\}.
+	\]
+	By compactness of $K$, there exist points $z_1,\ldots,z_m\in K$ such that
+	\[
+		K\subset \bigcup_{j=1}^m B(z_j,\delta).
 	\]
 
-	For each \(j=1,\dots,m\), we have \(f_n(z_j)\to f(z_j)\). Hence there exists \(N\) such that for all \(n\ge N\),
+	For each $j=1,\ldots,m$, the pointwise convergence
 	\[
-		|f_n(z_j)-f(z_j)|<\frac{\varepsilon}{3}
-		\qquad (j=1,\dots,m).
+		f_n(z_j)\longrightarrow f(z_j)
+	\]
+	implies that there exists $N_j\in\mathbb{N}$ such that
+	\[
+		n\geq N_j
+	\]
+	implies
+	\[
+		d(f_n(z_j),f(z_j))<\frac{\varepsilon}{3}.
+	\]
+	Let
+	\[
+		N=\max\{N_1,\ldots,N_m\}.
 	\]
 
-	Now let \(w\in K\). Choose \(j\) such that \(w\in B(z_j,r_{z_j})\). Then for \(n\ge N\),
+	Now let $n\geq N$ and $z\in K$. Choose $j$ such that
+	$|z-z_j|<\delta$. Then, by the triangle inequality,
 	\[
-		|f_n(w)-f(w)|
-		\le |f_n(w)-f_n(z_j)| + |f_n(z_j)-f(z_j)| + |f(z_j)-f(w)|.
+		\begin{aligned}
+			d(f_n(z),f(z))
+			 & \leq d(f_n(z),f_n(z_j))
+			+d(f_n(z_j),f(z_j))
+			+d(f(z_j),f(z))            \\
+			 & < \frac{\varepsilon}{3}
+			+\frac{\varepsilon}{3}
+			+\frac{\varepsilon}{3}     \\
+			 & =\varepsilon.
+		\end{aligned}
 	\]
-	Each term on the right is \(<\varepsilon/3\), so
+	Therefore,
 	\[
-		|f_n(w)-f(w)|<\varepsilon.
+		\sup_{z\in K} d(f_n(z),f(z))\longrightarrow 0.
 	\]
-	Since \(w\in K\) was arbitrary, this shows that
-	\[
-		\sup_{w\in K}|f_n(w)-f(w)|<\varepsilon
-		\qquad (n\ge N).
-	\]
-	Therefore \(f_n\to f\) uniformly on \(K\).
-	Since \(K\subset G\) was an arbitrary compact set, it follows that \(f_n\to f\) in \(C(G,\Omega)\).
-\end{proof}
 
-\setexercise{8}
+	Thus, $f_n\to f$ uniformly on every compact subset of $G$. By
+	Proposition~1.10(b), it follows that
+	\[
+		f_n\longrightarrow f
+	\]
+	in $C(G,\Omega)$.
+\end{proof}\setexercise{8}
 \begin{exercise}
 	\begin{enumerate}[label=(\alph*)]
 		\item Let $f$ be analytic on $B(0;R)$ and let
