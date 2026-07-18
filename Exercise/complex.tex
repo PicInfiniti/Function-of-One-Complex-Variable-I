@@ -5635,50 +5635,66 @@
 	\end{enumerate}
 \end{exercise}
 \begin{proof}[Solution]
-	\textbf{(a)} Since \(f\) is analytic on \(G\setminus\{a\}\) and \(f(G\setminus\{a\})=\Omega\) is bounded, \(f\) is bounded in some punctured neighborhood of \(a\). Hence \(a\) is a removable singularity of \(f\). So \(f\) extends to a function, still denoted \(f\), analytic on all of \(G\).
-
-	Now assume in addition that \(f\) is one-one on \(G\setminus\{a\}\). We show that
+	Since \(\Omega=f(G\setminus\{a\})\) is bounded, there exists \(M>0\)
+	such that
 	\[
-		f(a)\in \partial \Omega.
+		|f(z)|\leq M
+	\]
+	for every \(z\in G\setminus\{a\}\). In particular, \(f\) is bounded in
+	a punctured neighborhood of \(a\). Hence, by Riemann's removable
+	singularity theorem, \(f\) has a removable singularity at \(a\).
+
+	Define
+	\[
+		f(a):=\lim_{z\to a} f(z).
+	\]
+	Then \(f\) extends to an analytic function on all of \(G\).
+	Now suppose that \(f\) is one-to-one on \(G\setminus\{a\}\). Since
+	\[
+		\lim_{z\to a} f(z)=f(a),
+	\]
+	we have
+	\[
+		f(a)\in\overline{\Omega}.
 	\]
 
-	Suppose not. Then \(f(a)\in \Omega\). Since \(\Omega=f(G\setminus\{a\})\), there exists \(z_0\in G\setminus\{a\}\) such that
+	We claim that \(f(a)\notin\Omega\). Suppose, for contradiction, that
+	\(f(a)\in\Omega\). Then there exists \(z_0\in G\setminus\{a\}\) such that
 	\[
 		f(z_0)=f(a).
 	\]
-	But the extension is analytic on \(G\), so this contradicts injectivity of \(f\) on \(G\setminus\{a\}\), because \(z_0\neq a\).
 
-	It remains to rule out the possibility that \(f(a)\notin \overline{\Omega}\). But \(a\) is a limit point of \(G\setminus\{a\}\), so if \(z_n\to a\) with \(z_n\neq a\), continuity of the extended \(f\) gives
-	\[
-		f(z_n)\to f(a).
-	\]
-	Since each \(f(z_n)\in \Omega\), it follows that \(f(a)\in \overline{\Omega}\). Therefore \(f(a)\in \overline{\Omega}\setminus \Omega=\partial\Omega\).
+	Choose disjoint open neighborhoods \(U\) of \(a\) and \(V\) of \(z_0\),
+	with \(U,V\subseteq G\). The extended function \(f\) is nonconstant
+	because it is one-to-one on \(G\setminus\{a\}\). Therefore, by the open
+	mapping theorem, \(f(U)\) and \(f(V)\) are open sets containing \(f(a)\).
 
-	\medskip
-	\textbf{(b)} Suppose, for contradiction, that there exists a one-one analytic map
+	Thus, \(f(U)\cap f(V)\) is an open set containing \(f(a)\), so there
+	exists
 	\[
-		f:G=\{z:0<|z|<1\}\to \Omega=\{z:r<|z|<R\},
-		\qquad r>0,
+		w\in f(U)\cap f(V)
 	\]
-	onto \(\Omega\).
+	such that \(w\neq f(a)\). Hence, there exist \(u\in U\) and \(v\in V\)
+	such that
+	\[
+		f(u)=w=f(v).
+	\]
+	Since \(w\neq f(a)\), we have \(u\neq a\). Also, because
+	\(U\cap V=\varnothing\), we have \(u\neq v\). Thus,
+	\(u,v\in G\setminus\{a\}\) are distinct points satisfying
+	\[
+		f(u)=f(v),
+	\]
+	which contradicts the assumption that \(f\) is one-to-one.
 
-	Since \(\Omega\) is bounded, part (a) implies that \(f\) has a removable singularity at \(0\). Thus \(f\) extends analytically to the disk \(D=\{z:|z|<1\}\). Since \(f\) is one-one on \(G\), part (a) also implies that
+	Therefore, \(f(a)\notin\Omega\). Since \(f(a)\in\overline{\Omega}\), it
+	follows that
 	\[
-		f(0)\in \partial\Omega.
+		f(a)\in\overline{\Omega}\setminus\Omega=\partial\Omega.
 	\]
-	But
-	\[
-		\partial\Omega=\{z:|z|=r\}\cup \{z:|z|=R\}.
-	\]
-
-	Now \(f(D)\) is open, because \(f\) is analytic and nonconstant. Also,
-	\[
-		f(D)=f(G)\cup\{f(0)\}=\Omega\cup\{f(0)\}.
-	\]
-	Since \(f(0)\in \partial\Omega\), the set \(\Omega\cup\{f(0)\}\) is not open. This is impossible.
-
-	Therefore no such one-one analytic map can exist.
 \end{proof}
+
+
 
 \setexercise{3}
 \begin{exercise}
