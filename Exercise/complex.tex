@@ -5342,155 +5342,104 @@
 	Is the converse true? Can you add something to the hypothesis that
 	$\mathcal{F}'$ is normal to insure that $\mathcal{F}$ is normal?
 \end{exercise}
+
 \begin{proof}[Solution]
-	Assume first that \(\mathcal F\subset H(G)\) is normal. We show that
+	First suppose that \(\mathcal{F}\) is normal. Let
 	\[
-		\mathcal F'=\{f':f\in\mathcal F\}
+		\{h_n\}\subset \mathcal{F}'.
 	\]
-	is also normal.
+	For each \(n\), choose \(f_n\in\mathcal{F}\) such that \(h_n=f_n'\).
+	Since \(\mathcal{F}\) is normal, there is a subsequence
+	\(\{f_{n_k}\}\) and a function \(f\in H(G)\) such that
+	\[
+		f_{n_k}\longrightarrow f
+	\]
+	uniformly on compact subsets of \(G\). Convergence in \(H(G)\) implies
+	convergence of derivatives, so
+	\[
+		h_{n_k}=f_{n_k}'\longrightarrow f'
+	\]
+	uniformly on compact subsets of \(G\). Thus every sequence in
+	\(\mathcal{F}'\) has a convergent subsequence, and therefore
+	\(\mathcal{F}'\) is normal.
 
-	Let \(\{g_n\}\subset \mathcal F'\). Choose \(f_n\in\mathcal F\) such that
+	The converse is not true. For example, let
 	\[
-		g_n=f_n'.
-	\]
-	Since \(\mathcal F\) is normal, there is a subsequence \(\{f_{n_k}\}\) such that either
-
-	\smallskip
-	\(\bullet\) \(f_{n_k}\to f\in H(G)\) uniformly on compact subsets of \(G\), or
-
-	\smallskip
-	\(\bullet\) \(f_{n_k}\to\infty\) uniformly on compact subsets of \(G\).
-
-	\medskip
-	If \(f_{n_k}\to f\in H(G)\), then by the Weierstrass theorem for derivatives,
-	\[
-		f_{n_k}'\to f'
-	\]
-	uniformly on compact subsets of \(G\). Hence \(\{g_n\}\) has a subsequence converging in \(H(G)\).
-
-	If \(f_{n_k}\to\infty\) uniformly on compact subsets of \(G\), put
-	\[
-		h_k=\frac{1}{f_{n_k}}.
-	\]
-	Then \(h_k\to 0\) uniformly on compact subsets. By the Weierstrass theorem again,
-	\[
-		h_k' \to 0
-	\]
-	uniformly on compact subsets. But
-	\[
-		h_k'=-\frac{f_{n_k}'}{f_{n_k}^2},
-	\]
-	so
-	\[
-		\frac{f_{n_k}'}{f_{n_k}^2}\to 0
-	\]
-	uniformly on compact subsets. This does not by itself imply that \(\{f_{n_k}'\}\) converges, so it is better to argue directly by Cauchy's estimate.
-
-	Fix a compact set \(K\subset G\). Choose compact sets
-	\[
-		K\subset U\subset \overline U\subset G,
-	\]
-	with \(U\) open, and let
-	\[
-		\delta=\operatorname{dist}(K,\partial U)>0.
-	\]
-	Since \(f_{n_k}\to\infty\) uniformly on \(\overline U\), for every \(M>0\) we have \(|f_{n_k}|\ge M\) on \(\overline U\) for all large \(k\). This gives no direct control on \(f_{n_k}'\), so in the \(\infty\)-valued notion of normality the derivative conclusion is obtained only from the finite-limit case. Thus in the present context, where the normality is taken in \(H(G)\cup\{\infty\}\), the standard implication is understood for subsequences converging to holomorphic limits. Therefore \(\mathcal F'\) is normal.
-
-	\medskip
-	The converse is false.
-
-	Take
-	\[
-		G=\mathbb C,\qquad f_n(z)=nz.
+		\mathcal{F}=\{f_n:n\geq 1\},
+		\qquad
+		f_n(z)=n.
 	\]
 	Then
 	\[
-		f_n'(z)=n,
+		\mathcal{F}'=\{0\},
 	\]
-	so every sequence in \(\mathcal F'=\{n:n\ge 1\}\) has a subsequence converging uniformly on compact sets to \(\infty\). Hence \(\mathcal F'\) is normal (in the sense of \(H(G)\cup\{\infty\}\)).
+	which is normal. However, \(\mathcal{F}\) is not locally bounded and
+	hence is not normal.
 
-	But \(\mathcal F=\{nz:n\ge 1\}\) is not normal on \(\mathbb C\). Indeed, if a subsequence \(n_k z\) converged uniformly on compact subsets to a holomorphic function \(g\), then evaluating at \(z=0\) would give
+	A sufficient additional hypothesis is that, for some fixed
+	\(a\in G\),
 	\[
-		g(0)=0,
+		\{f(a):f\in\mathcal{F}\}
 	\]
-	while evaluating at \(z=1\) would force
+	is bounded. Assume that \(G\) is a region, that \(\mathcal{F}'\) is
+	normal, and that
 	\[
-		n_k=g(1)+o(1),
+		\sup_{f\in\mathcal{F}}|f(a)|<\infty
 	\]
-	which is impossible. Nor can \(n_k z\to\infty\) uniformly on compact subsets, since all functions vanish at \(0\). Thus \(\mathcal F\) is not normal.
+	for some \(a\in G\). We show that \(\mathcal{F}\) is normal.
 
-	\medskip
-	Now suppose \(\mathcal F'\) is normal. What extra hypothesis ensures that \(\mathcal F\) is normal? A sufficient condition is that there exists \(z_0\in G\) such that
+	Let \(\{f_n\}\subset\mathcal{F}\). Since \(\mathcal{F}'\) is normal,
+	there is a subsequence, which we continue to denote by \(\{f_n\}\),
+	such that
 	\[
-		\{f(z_0):f\in\mathcal F\}
+		f_n'\longrightarrow h
 	\]
-	is bounded.
-
-	We show that under this additional hypothesis, \(\mathcal F\) is normal.
-
-	Let \(\{f_n\}\subset \mathcal F\). Since \(\mathcal F'\) is normal, after passing to a subsequence we may assume that either
-
-	\smallskip
-	\(\bullet\) \(f_n'\to g\in H(G)\) uniformly on compact subsets, or
-
-	\smallskip
-	\(\bullet\) \(f_n'\to\infty\) uniformly on compact subsets.
-
-	\medskip
-	The second alternative cannot occur. Indeed, if \(f_n'\to\infty\) uniformly on compact subsets, then in particular on some closed disk
+	uniformly on compact subsets of \(G\), for some \(h\in H(G)\).
+	The sequence \(\{f_n(a)\}\) is bounded, so, after passing to a further
+	subsequence, we may assume that
 	\[
-		\overline{B(z_0,r)}\subset G
+		f_n(a)\longrightarrow c
 	\]
-	we have \(|f_n'|\to\infty\) uniformly. But by the boundedness of \(\{f_n(z_0)\}\), after taking a further subsequence we may assume
-	\[
-		f_n(z_0)\to c\in\mathbb C.
-	\]
-	Then for \(z\in \overline{B(z_0,r)}\),
-	\[
-		f_n(z)=f_n(z_0)+\int_{z_0}^z f_n'(\zeta)\,d\zeta.
-	\]
-	If \(f_n'\to\infty\) uniformly, the integral term cannot stay compatible with analyticity and the bounded initial values at \(z_0\) in a way that yields a normal family; so only the first alternative is relevant for extracting a normal subsequence.
+	for some \(c\in\mathbb{C}\).
 
-	Thus, after passing to a subsequence, we may assume
+	Fix \(z_0\in G\). Since \(G\) is a region, there is a piecewise smooth
+	path \(\gamma\) in \(G\) joining \(a\) to \(z_0\). Choose \(r>0\) such
+	that
 	\[
-		f_n'\to g\in H(G)
+		\overline{B(z_0;r)}\subset G.
 	\]
-	uniformly on compact subsets.
-
-	Since \(\{f_n(z_0)\}\) is bounded, it has a convergent subsequence; passing again to a subsequence, assume
+	Set
 	\[
-		f_n(z_0)\to c.
+		L=\gamma([0,1])\cup\overline{B(z_0;r)}.
 	\]
-
-	Fix a compact set \(K\subset G\). Choose a compact connected set \(L\subset G\) with
-	\[
-		z_0\in L,\qquad K\subset L.
-	\]
-	Because \(f_n'\to g\) uniformly on \(L\), the sequence \(\{f_n'\}\) is uniformly Cauchy on \(L\). For each \(z\in K\), choose a piecewise \(C^1\) path \(\gamma_z\subset L\) joining \(z_0\) to \(z\), with lengths bounded by a constant \(M\) independent of \(z\in K\). Then
+	Then \(L\) is a compact subset of \(G\). For \(z\in\overline{B(z_0;r)}\),
+	the fundamental theorem for complex line integrals gives
 	\[
 		f_n(z)-f_m(z)
 		=
-		f_n(z_0)-f_m(z_0)+\int_{\gamma_z}(f_n'(\zeta)-f_m'(\zeta))\,d\zeta.
+		f_n(a)-f_m(a)
+		+\int_{\gamma}(f_n'-f_m')(w)\,dw
+		+\int_{[z_0,z]}(f_n'-f_m')(w)\,dw.
 	\]
-	Hence
+	Consequently,
 	\[
 		|f_n(z)-f_m(z)|
-		\le
-		|f_n(z_0)-f_m(z_0)|
-		+
-		M\sup_{\zeta\in L}|f_n'(\zeta)-f_m'(\zeta)|.
+		\leq
+		|f_n(a)-f_m(a)|
+		+\bigl(\ell(\gamma)+r\bigr)
+		\sup_{w\in L}|f_n'(w)-f_m'(w)|.
 	\]
-	The right-hand side tends to \(0\) as \(m,n\to\infty\), uniformly for \(z\in K\). Therefore \(\{f_n\}\) is uniformly Cauchy on \(K\), hence converges uniformly on \(K\).
+	The right-hand side tends to zero as \(m,n\to\infty\), independently
+	of \(z\in\overline{B(z_0;r)}\). Thus \(\{f_n\}\) is uniformly Cauchy
+	on a neighborhood of every point of \(G\).
 
-	Since \(K\) was arbitrary, \(\{f_n\}\) converges uniformly on compact subsets of \(G\) to some \(f\in H(G)\). Therefore \(\mathcal F\) is normal.
+	By covering an arbitrary compact subset of \(G\) by finitely many such
+	neighborhoods, it follows that \(\{f_n\}\) is uniformly Cauchy on every
+	compact subset of \(G\). Since \(H(G)\) is complete, \(\{f_n\}\)
+	converges in \(H(G)\).
 
-	\medskip
-	So:
-	\begin{enumerate}
-		\item If \(\mathcal F\) is normal, then \(\mathcal F'\) is normal.
-		\item The converse is false.
-		\item A sufficient additional hypothesis for the converse is that \(\{f(z_0):f\in\mathcal F\}\) be bounded for some \(z_0\in G\).
-	\end{enumerate}
+	Therefore every sequence in \(\mathcal{F}\) has a convergent
+	subsequence, so \(\mathcal{F}\) is normal.
 \end{proof}
 
 \setexercise{7}
@@ -5503,63 +5452,39 @@
 \begin{proof}[Solution]
 	Let
 	\[
-		\mathcal G=\{g\circ f:f\in\mathcal F\}.
+		\mathcal{G}=\{g\circ f : f\in\mathcal{F}\}.
 	\]
-	We must show that \(\mathcal G\) is normal in \(H(G)\).
+	Since \(f(G)\subset \Omega\) for every \(f\in\mathcal{F}\), and \(g\) is
+	analytic on \(\Omega\), each function \(g\circ f\) is analytic on \(G\).
+	Because \(\mathcal{F}\) is normal in \(H(G)\), Montel's theorem implies
+	that \(\mathcal{F}\) is locally bounded. Fix \(a\in G\). Then there exist
+	\(r>0\) and \(M>0\) such that
+	\[
+		B(a;r)\subset G
+	\]
+	and
+	\[
+		|f(z)|\leq M
+	\]
+	for every \(f\in\mathcal{F}\) and every \(z\in B(a;r)\).
 
-	Take any sequence \(\{g\circ f_n\}\subset \mathcal G\), where \(f_n\in\mathcal F\). Since \(\mathcal F\) is normal in \(H(G)\), there is a subsequence \(\{f_{n_k}\}\) and a function \(f\in H(G)\) such that
+	Define
 	\[
-		f_{n_k}\to f
+		E=\{f(z): f\in\mathcal{F},\ z\in B(a;r)\}.
 	\]
-	uniformly on compact subsets of \(G\).
-
-	We claim that
+	Then \(E\subset\Omega\), and \(E\) is bounded. Since \(g\) is bounded on
+	bounded subsets of \(\Omega\), there exists \(N>0\) such that
 	\[
-		g\circ f_{n_k}\to g\circ f
+		|g(w)|\leq N
 	\]
-	uniformly on compact subsets of \(G\). This will prove that every sequence in \(\mathcal G\) has a subsequence converging in \(H(G)\), and hence that \(\mathcal G\) is normal.
-
-	So let \(K\subset G\) be compact. Since \(f\) is continuous, \(f(K)\) is compact, hence bounded. Choose \(R>0\) such that
+	for every \(w\in E\). Hence, for every \(f\in\mathcal{F}\) and every
+	\(z\in B(a;r)\),
 	\[
-		f(K)\subset \{w:|w|\le R\}.
-	\]
-	Because \(f_{n_k}\to f\) uniformly on \(K\), for all sufficiently large \(k\) we have
-	\[
-		|f_{n_k}(z)-f(z)|<1 \qquad (z\in K),
-	\]
-	and therefore
-	\[
-		|f_{n_k}(z)|\le |f(z)|+1\le R+1 \qquad (z\in K).
-	\]
-	Thus for all large \(k\),
-	\[
-		f_{n_k}(K)\subset \overline{B}(0,R+1).
+		|(g\circ f)(z)|=|g(f(z))|\leq N.
 	\]
 
-	Now \(g\) is analytic on \(\Omega\), hence continuous there, and by hypothesis it is bounded on bounded sets. Therefore \(g\) is bounded on the bounded set
-	\[
-		\Omega\cap \overline{B}(0,R+1).
-	\]
-	Since \(g\) is analytic, it follows from Cauchy's estimate on small disks around points of the compact set \(f(K)\) that \(g\) is uniformly continuous on a neighborhood of \(f(K)\) inside \(\Omega\). Hence, because \(f_{n_k}\to f\) uniformly on \(K\), we get
-	\[
-		g(f_{n_k}(z))\to g(f(z))
-	\]
-	uniformly for \(z\in K\).
-
-	More explicitly: since \(f(K)\) is compact and contained in the open set \(\Omega\), there exists \(r>0\) such that the closed \(r\)-neighborhood
-	\[
-		E=\{w\in\mathbb C:\operatorname{dist}(w,f(K))\le r\}
-	\]
-	is a compact subset of \(\Omega\). For all sufficiently large \(k\), uniform convergence of \(f_{n_k}\) to \(f\) on \(K\) implies
-	\[
-		f_{n_k}(K)\subset E.
-	\]
-	Since \(g\) is continuous on the compact set \(E\), it is uniformly continuous there. Therefore
-	\[
-		\sup_{z\in K}|g(f_{n_k}(z))-g(f(z))|\to 0.
-	\]
-
-	Thus \(g\circ f_{n_k}\to g\circ f\) uniformly on compact subsets of \(G\). Since \(g\circ f\) is analytic on \(G\), this shows that \(\mathcal G\) is normal in \(H(G)\).
+	Therefore, the family \(\mathcal{G}\) is locally bounded on \(G\).
+	By Montel's theorem, \(\mathcal{G}\) is normal in \(H(G)\).
 \end{proof}
 
 \setexercise{9}
@@ -5576,85 +5501,60 @@
 	for each $r$, $0<r<1$.
 \end{exercise}
 \begin{proof}[Solution]
-	We will show that convergence in \(H(D)\) (that is, uniform convergence on compact subsets of \(D\)) is equivalent to
-	\[
-		\int_{\gamma_r} |f(z)-f_n(z)|\,|dz|\to 0
-		\qquad (n\to\infty)
-	\]
-	for each \(r\), \(0<r<1\).
+	Recall that convergence in \(H(D)\) means uniform convergence on compact
+	subsets of \(D\).
 
-	\medskip
-	\textbf{(\(\Rightarrow\))} Suppose \(f_n\to f\) in \(H(D)\). Fix \(r\) with \(0<r<1\). Since
+	Suppose first that \(f_n \to f\) in \(H(D)\). For any \(0<r<1\), the
+	circle \(\gamma_r\) is a compact subset of \(D\). Hence,
 	\[
-		\gamma_r=\{z:|z|=r\}
+		\sup_{|z|=r}|f(z)-f_n(z)|\longrightarrow 0.
 	\]
-	is compact and contained in \(D\), the convergence is uniform on \(\gamma_r\). Hence
-	\[
-		\sup_{|z|=r}|f(z)-f_n(z)|\to 0.
-	\]
-	Therefore
+	Since the length of \(\gamma_r\) is \(2\pi r\), we have
 	\[
 		\int_{\gamma_r}|f(z)-f_n(z)|\,|dz|
-		\le \left(\sup_{|z|=r}|f(z)-f_n(z)|\right)\int_{\gamma_r}|dz|.
-	\]
-	Since the length of \(\gamma_r\) is \(2\pi r\), it follows that
-	\[
-		\int_{\gamma_r}|f(z)-f_n(z)|\,|dz|
-		\le 2\pi r \sup_{|z|=r}|f(z)-f_n(z)|\to 0.
+		\leq 2\pi r\sup_{|z|=r}|f(z)-f_n(z)|
+		\longrightarrow 0.
 	\]
 
-	\medskip
-	\textbf{(\(\Leftarrow\))} Now suppose that for each \(r\), \(0<r<1\),
+	Conversely, suppose that
 	\[
-		\int_{\gamma_r}|f(z)-f_n(z)|\,|dz|\to 0.
+		\int_{\gamma_r}|f(z)-f_n(z)|\,|dz|\longrightarrow 0
 	\]
-	We must show that \(f_n\to f\) uniformly on compact subsets of \(D\).
-
-	Let \(K\subset D\) be compact. Choose \(r\) such that
+	for every \(0<r<1\). Let \(K\subset D\) be compact. Choose numbers
+	\(0<\rho<r<1\) such that
 	\[
-		K\subset B(0;r)\subset \overline{B}(0;r)\subset D.
+		K\subset \overline{B(0;\rho)}.
 	\]
-	Fix \(w\in K\). By Cauchy's integral formula, applied to the analytic function \(f-f_n\) on a neighborhood of \(\overline{B}(0;r)\),
+	For \(z\in \overline{B(0;\rho)}\), Cauchy's integral formula applied to
+	the analytic function \(f-f_n\) gives
 	\[
-		(f-f_n)(w)=\frac{1}{2\pi i}\int_{\gamma_r}\frac{f(z)-f_n(z)}{z-w}\,dz.
+		f(z)-f_n(z)
+		=
+		\frac{1}{2\pi i}
+		\int_{\gamma_r}
+		\frac{f(w)-f_n(w)}{w-z}\,dw.
 	\]
-	Hence
+	Since \(|w|=r\) and \(|z|\leq \rho\), we have
 	\[
-		|(f-f_n)(w)|
-		\le \frac{1}{2\pi}\int_{\gamma_r}\frac{|f(z)-f_n(z)|}{|z-w|}\,|dz|.
+		|w-z|\geq r-\rho.
 	\]
-	Since \(w\in K\subset B(0;r)\), let
+	Therefore,
 	\[
-		\rho=\sup\{|w|:w\in K\}.
+		|f(z)-f_n(z)|
+		\leq
+		\frac{1}{2\pi(r-\rho)}
+		\int_{\gamma_r}|f(w)-f_n(w)|\,|dw|.
 	\]
-	Then \(\rho<r\), and for \(z\in \gamma_r\) we have
+	Taking the supremum over \(z\in K\), we obtain
 	\[
-		|z-w|\ge r-|w|\ge r-\rho.
+		\sup_{z\in K}|f(z)-f_n(z)|
+		\leq
+		\frac{1}{2\pi(r-\rho)}
+		\int_{\gamma_r}|f(w)-f_n(w)|\,|dw|
+		\longrightarrow 0.
 	\]
-	Therefore
-	\[
-		|(f-f_n)(w)|
-		\le \frac{1}{2\pi(r-\rho)}\int_{\gamma_r}|f(z)-f_n(z)|\,|dz|.
-	\]
-	The right-hand side is independent of \(w\in K\). Taking the supremum over \(w\in K\), we obtain
-	\[
-		\sup_{w\in K}|f(w)-f_n(w)|
-		\le \frac{1}{2\pi(r-\rho)}\int_{\gamma_r}|f(z)-f_n(z)|\,|dz|.
-	\]
-	By hypothesis, the integral on the right tends to \(0\) as \(n\to\infty\). Hence
-	\[
-		\sup_{w\in K}|f(w)-f_n(w)|\to 0.
-	\]
-	Thus \(f_n\to f\) uniformly on \(K\).
-
-	Since \(K\subset D\) was arbitrary, \(f_n\to f\) in \(H(D)\).
-
-	\medskip
-	Therefore a sequence \(\{f_n\}\subset H(D)\) converges to \(f\) if and only if
-	\[
-		\int_{\gamma_r} |f(z)-f_n(z)|\,|dz|\to 0
-	\]
-	for each \(r\), \(0<r<1\).
+	Thus \(f_n\to f\) uniformly on every compact subset of \(D\), and hence
+	\(f_n\to f\) in \(H(D)\).
 \end{proof}
 
 \setexercise{10}
@@ -5664,68 +5564,55 @@
 	constant function.
 \end{exercise}
 \begin{proof}[Solution]
-	Assume \(f_n \to f\) in \(H(G)\), that is, uniformly on compact subsets of \(G\), and each \(f_n\) is one-one on the region \(G\). We must show that either \(f\) is one-one or \(f\) is constant.
+	Suppose that \(f\) is not constant. We will show that \(f\) is one-one.
 
-	Suppose \(f\) is not constant. We will prove that \(f\) is one-one.
-
-	Take \(z_1,z_2\in G\) and suppose
+	Assume, to the contrary, that there exist distinct points \(z_1,z_2\in G\)
+	such that
 	\[
 		f(z_1)=f(z_2).
 	\]
-	We want to show that \(z_1=z_2\).
+	For each \(n\), define
+	\[
+		g_n(z)=f_n(z)-f_n(z_1),
+	\]
+	and define
+	\[
+		g(z)=f(z)-f(z_1).
+	\]
+	Since \(f_n\to f\) uniformly on compact subsets of \(G\), and
+	\(f_n(z_1)\to f(z_1)\), we have
+	\[
+		g_n\to g
+	\]
+	uniformly on compact subsets of \(G\).
 
-	Assume, to the contrary, that \(z_1\neq z_2\). Since \(G\) is a region and \(f\) is analytic and nonconstant, the zeros of
+	Because \(f\) is not constant and \(G\) is a region, the function \(g\)
+	is not identically zero. Also,
 	\[
-		g(z)=f(z)-f(z_1)
+		g(z_2)=f(z_2)-f(z_1)=0.
 	\]
-	are isolated. Thus we may choose \(r>0\) such that the closed disk
+	Thus \(z_2\) is an isolated zero of \(g\). Choose \(r>0\) such that
 	\[
-		\overline{B(z_1,r)}\subset G,
+		\overline{B(z_2;r)}\subset G,\qquad z_1\notin\overline{B(z_2;r)},
 	\]
-	\(z_2\notin \overline{B(z_1,r)}\), and
-	\[
-		f(z)\neq f(z_1)\qquad \text{for } 0<|z-z_1|\le r.
-	\]
-	Hence \(z_1\) is the only zero of \(g\) in \(\overline{B(z_1,r)}\).
+	and \(g\) has no zeros on \(\partial B(z_2;r)\).
 
-	Since \(g\) has no zeros on the circle \(|z-z_1|=r\), we have
+	By Hurwitz's theorem, for all sufficiently large \(n\), the functions
+	\(g_n\) and \(g\) have the same number of zeros in \(B(z_2;r)\), counting
+	multiplicity. Since \(g\) has at least one zero there, \(g_n\) must also
+	have a zero \(w_n\in B(z_2;r)\). Hence
 	\[
-		m:=\min_{|z-z_1|=r}|g(z)|>0.
+		0=g_n(w_n)=f_n(w_n)-f_n(z_1),
 	\]
+	so
+	\[
+		f_n(w_n)=f_n(z_1).
+	\]
+	Since \(f_n\) is one-one, this implies \(w_n=z_1\), contradicting
+	\(z_1\notin B(z_2;r)\).
 
-	Now \(f_n\to f\) uniformly on \(\overline{B(z_1,r)}\), and also \(f_n(z_2)\to f(z_2)=f(z_1)\). Therefore
-	\[
-		\bigl(f_n(z)-f_n(z_2)\bigr)-\bigl(f(z)-f(z_1)\bigr)\to 0
-	\]
-	uniformly on \(|z-z_1|=r\). So for all sufficiently large \(n\),
-	\[
-		\sup_{|z-z_1|=r}\left|\bigl(f_n(z)-f_n(z_2)\bigr)-\bigl(f(z)-f(z_1)\bigr)\right|<m.
-	\]
-
-	By Rouch\'e's theorem, the functions
-	\[
-		f(z)-f(z_1)
-		\quad\text{and}\quad
-		f_n(z)-f_n(z_2)
-	\]
-	have the same number of zeros in \(B(z_1,r)\), counting multiplicity. Since \(f(z)-f(z_1)\) has at least one zero there (namely \(z_1\)), it follows that
-	\[
-		f_n(z)-f_n(z_2)
-	\]
-	has a zero in \(B(z_1,r)\). That is, for some \(w_n\in B(z_1,r)\),
-	\[
-		f_n(w_n)=f_n(z_2).
-	\]
-
-	But \(w_n\neq z_2\), because \(z_2\notin \overline{B(z_1,r)}\). This contradicts the fact that \(f_n\) is one-one.
-
-	Therefore our assumption \(z_1\neq z_2\) was impossible. Hence
-	\[
-		f(z_1)=f(z_2)\implies z_1=z_2,
-	\]
-	so \(f\) is one-one.
-
-	We conclude that if \(f\) is not constant, then \(f\) is one-one. Equivalently, either \(f\) is one-one or \(f\) is constant.
+	Therefore, if \(f\) is not constant, then \(f\) is one-one. Hence \(f\)
+	is either one-one or constant.
 \end{proof}
 
 \section{Spaces of meromorphic functions}
