@@ -6404,21 +6404,54 @@
 	(Hint: Use the fact that the connected subsets of $\mathbb{R}$ are intervals.)
 \end{exercise}
 \begin{proof}[Solution]
-	Let \(u:\Omega \to \mathbb{R}\) be a nonconstant harmonic function on a region \(\Omega\). We show that \(u\) is an open map.
-
-	Let \(G \subset \Omega\) be open, and let \(y_0 \in u(G)\). Then there exists \(x_0 \in G\) such that \(u(x_0)=y_0\). Since \(G\) is open, there exists \(r>0\) such that the closed ball \(\overline{B(x_0,r)} \subset G\).
-
-	Because \(u\) is harmonic and nonconstant on \(\Omega\), it cannot be constant on \(B(x_0,r)\). By the maximum and minimum principles, \(u\) cannot attain a local maximum or minimum at \(x_0\). Hence there exist points \(x_1, x_2 \in B(x_0,r)\) such that
+	Let \(u:\Omega\to\mathbb{R}\) be a nonconstant harmonic function on a region
+	\(\Omega\). We prove that \(u\) is an open map.
+	Let \(G\subseteq\Omega\) be open, and let \(y_0\in u(G)\). Choose
+	\(z_0\in G\) such that
 	\[
-		u(x_1) < u(x_0) < u(x_2).
+		u(z_0)=y_0.
+	\]
+	Since \(G\) is open, there exists \(r>0\) such that
+	\[
+		\overline{B(z_0,r)}\subseteq G.
 	\]
 
-	Since \(B(x_0,r)\) is connected and \(u\) is continuous, the set \(u(B(x_0,r))\) is a connected subset of \(\mathbb{R}\), hence an interval. Because this interval contains values both less than and greater than \(y_0\), it follows that there exists \(\varepsilon > 0\) such that
+	We first observe that \(u\) is not constant on \(B(z_0,r)\). Indeed, if
+	\(u\) were constant on \(B(z_0,r)\), then
 	\[
-		(y_0 - \varepsilon,\, y_0 + \varepsilon) \subset u(B(x_0,r)) \subset u(G).
+		u_x-iu_y=0
+	\]
+	on \(B(z_0,r)\). Since \(u\) is harmonic, the function \(u_x-iu_y\) is
+	analytic on \(\Omega\). By the identity theorem, it would vanish
+	identically on \(\Omega\). Hence \(u_x=u_y=0\) on \(\Omega\), and since
+	\(\Omega\) is connected, \(u\) would be constant on \(\Omega\), a
+	contradiction.
+
+	Therefore, by the maximum and minimum principles, \(u\) cannot attain a
+	maximum or a minimum at the interior point \(z_0\). Thus there exist
+	\(z_1,z_2\in B(z_0,r)\) such that
+	\[
+		u(z_1)<u(z_0)<u(z_2).
 	\]
 
-	Thus every point \(y_0 \in u(G)\) is an interior point of \(u(G)\), so \(u(G)\) is open. Therefore \(u\) is an open map.
+	The ball \(B(z_0,r)\) is connected, and \(u\) is continuous, so
+	\(u(B(z_0,r))\) is a connected subset of \(\mathbb{R}\). Hence
+	\(u(B(z_0,r))\) is an interval. Since this interval contains values both
+	less than and greater than \(y_0=u(z_0)\), it contains an open interval
+	about \(y_0\). More precisely, if
+	\[
+		\varepsilon
+		=\frac12\min\{y_0-u(z_1),\,u(z_2)-y_0\}>0,
+	\]
+	then
+	\[
+		(y_0-\varepsilon,y_0+\varepsilon)
+		\subseteq u(B(z_0,r))
+		\subseteq u(G).
+	\]
+
+	Thus every point of \(u(G)\) is an interior point of \(u(G)\), so
+	\(u(G)\) is open. Therefore \(u\) is an open map.
 \end{proof}
 
 \setexercise{5}
