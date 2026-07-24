@@ -1115,7 +1115,78 @@ for some \(k\in\mathbb{Z}\).
 		\item[(b)] Show that the root in part (a) is positive.
 	\end{enumerate}
 \end{exercise}
+\begin{proof}[Solution]
+\begin{enumerate}
+    \item[(a)] Define
+    \[
+    F(z)=ze^{a-z}-1
+    \qquad\text{and}\qquad
+    G(z)=ze^{a-z}.
+    \]
+    On the unit circle \(|z|=1\), we have
+    \[
+    |G(z)|
+    =
+    |z|e^{a-\operatorname{Re}z}
+    =
+    e^{a-\operatorname{Re}z}.
+    \]
+    Since \(\operatorname{Re}z\leq 1\) and \(a>1\),
+    \[
+    |G(z)|
+    \geq e^{a-1}
+    >1
+    =
+    |F(z)-G(z)|.
+    \]
+    Therefore, by Rouch\'e's theorem, \(F\) and \(G\) have the
+    same number of zeros in the open unit disk.
 
+    Since \(e^{a-z}\neq 0\) for every \(z\in\mathbb{C}\), the
+    function
+    \[
+    G(z)=ze^{a-z}
+    \]
+    has exactly one zero, namely \(z=0\), and this zero is simple.
+    Thus \(F\) has exactly one zero in the open unit disk.
+
+    Moreover, the strict inequality above shows that \(F\) has no
+    zeros on \(|z|=1\). Hence the equation
+    \[
+    ze^{a-z}=1
+    \]
+    has precisely one root in the closed unit disk
+    \[
+    \{z\in\mathbb{C}:|z|\leq 1\}.
+    \]
+
+    \item[(b)] Consider the real-valued continuous function
+    \[
+    h(x)=xe^{a-x}-1,
+    \qquad 0\leq x\leq 1.
+    \]
+    We have
+    \[
+    h(0)=-1<0
+    \]
+    and
+    \[
+    h(1)=e^{a-1}-1>0,
+    \]
+    since \(a>1\). By the intermediate value theorem, there exists
+    \(x_0\in(0,1)\) such that
+    \[
+    h(x_0)=0.
+    \]
+    Thus
+    \[
+    x_0e^{a-x_0}=1.
+    \]
+    Therefore \(x_0\) is a positive root lying in the unit disk.
+    By the uniqueness established in part~(a), it is the unique root
+    in the closed unit disk. Hence that root is positive.
+\end{enumerate}
+\end{proof}
 \begin{exercise}
 	Using the maximum modulus principle, prove the Fundamental Theorem of Algebra.
 \end{exercise}
