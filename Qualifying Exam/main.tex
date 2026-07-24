@@ -986,6 +986,41 @@
 	\]
 \end{exercise}
 
+\begin{proof}[Solution]
+Expand \(f\) in its Taylor series about \(0\):
+\[
+f(z)=\sum_{n=0}^{\infty} a_n z^n.
+\]
+
+Let \(r>R\). By Cauchy's estimate,
+\[
+|a_n|
+\leq \frac{\max_{|z|=r}|f(z)|}{r^n}.
+\]
+Since
+\[
+|f(z)|\leq M|z|^{1/2}
+\]
+whenever \(|z|>R\), we have
+\[
+\max_{|z|=r}|f(z)|\leq Mr^{1/2}.
+\]
+Therefore,
+\[
+|a_n|\leq Mr^{1/2-n}.
+\]
+
+For every \(n\geq 1\), we have \(1/2-n<0\). Letting \(r\to\infty\), we obtain
+\[
+|a_n|=0.
+\]
+Thus \(a_n=0\) for every \(n\geq 1\). Hence
+\[
+f(z)=a_0
+\]
+for all \(z\in\mathbb{C}\), and therefore \(f\) is constant.
+\end{proof}
+
 \begin{exercise}
 	Fix \(w=re^{i\theta}\neq 0\) and let \(\gamma\) be a piecewise smooth curve in
 	\(\mathbb{C}\setminus\{0\}\) from \(1\) to \(w\). Show that there is an integer
