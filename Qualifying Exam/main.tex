@@ -1029,6 +1029,80 @@ for all \(z\in\mathbb{C}\), and therefore \(f\) is constant.
 		\int_\gamma \frac{1}{z}\,dz=\log r+i\theta+2\pi i k.
 	\]
 \end{exercise}
+\begin{proof}[Solution]
+Let \(\sigma\) be the path from \(1\) to \(r\) along the positive real axis, followed by the circular arc from \(r\) to \(w=re^{i\theta}\). More precisely, the first part is given by
+\[
+\sigma_1(t)=t,
+\qquad 1\leq t\leq r,
+\]
+and the second part is given by
+\[
+\sigma_2(t)=re^{it},
+\qquad 0\leq t\leq \theta.
+\]
+
+Then
+\[
+\int_{\sigma_1}\frac{1}{z}\,dz
+=
+\int_1^r \frac{1}{t}\,dt
+=
+\log r,
+\]
+and
+\[
+\int_{\sigma_2}\frac{1}{z}\,dz
+=
+\int_0^\theta
+\frac{1}{re^{it}}\,ire^{it}\,dt
+=
+i\theta.
+\]
+Therefore,
+\[
+\int_\sigma \frac{1}{z}\,dz
+=
+\log r+i\theta.
+\]
+
+Now let
+\[
+\Gamma=\gamma*(-\sigma),
+\]
+where \(-\sigma\) denotes the reverse of \(\sigma\). Then \(\Gamma\) is a closed curve in
+\(\mathbb{C}\setminus\{0\}\). Hence, by the winding number formula,
+\[
+\int_\Gamma \frac{1}{z}\,dz
+=
+2\pi i k
+\]
+for some \(k\in\mathbb{Z}\).
+
+Since
+\[
+\int_\Gamma \frac{1}{z}\,dz
+=
+\int_\gamma \frac{1}{z}\,dz
+-
+\int_\sigma \frac{1}{z}\,dz,
+\]
+we obtain
+\[
+\int_\gamma \frac{1}{z}\,dz
+-
+\left(\log r+i\theta\right)
+=
+2\pi i k.
+\]
+Therefore,
+\[
+\int_\gamma \frac{1}{z}\,dz
+=
+\log r+i\theta+2\pi i k
+\]
+for some \(k\in\mathbb{Z}\).
+\end{proof}
+
 
 \begin{exercise}
 	\begin{enumerate}
