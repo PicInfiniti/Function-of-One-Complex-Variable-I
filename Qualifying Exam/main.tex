@@ -987,38 +987,38 @@
 \end{exercise}
 
 \begin{proof}[Solution]
-Expand \(f\) in its Taylor series about \(0\):
-\[
-f(z)=\sum_{n=0}^{\infty} a_n z^n.
-\]
+	Expand \(f\) in its Taylor series about \(0\):
+	\[
+		f(z)=\sum_{n=0}^{\infty} a_n z^n.
+	\]
 
-Let \(r>R\). By Cauchy's estimate,
-\[
-|a_n|
-\leq \frac{\max_{|z|=r}|f(z)|}{r^n}.
-\]
-Since
-\[
-|f(z)|\leq M|z|^{1/2}
-\]
-whenever \(|z|>R\), we have
-\[
-\max_{|z|=r}|f(z)|\leq Mr^{1/2}.
-\]
-Therefore,
-\[
-|a_n|\leq Mr^{1/2-n}.
-\]
+	Let \(r>R\). By Cauchy's estimate,
+	\[
+		|a_n|
+		\leq \frac{\max_{|z|=r}|f(z)|}{r^n}.
+	\]
+	Since
+	\[
+		|f(z)|\leq M|z|^{1/2}
+	\]
+	whenever \(|z|>R\), we have
+	\[
+		\max_{|z|=r}|f(z)|\leq Mr^{1/2}.
+	\]
+	Therefore,
+	\[
+		|a_n|\leq Mr^{1/2-n}.
+	\]
 
-For every \(n\geq 1\), we have \(1/2-n<0\). Letting \(r\to\infty\), we obtain
-\[
-|a_n|=0.
-\]
-Thus \(a_n=0\) for every \(n\geq 1\). Hence
-\[
-f(z)=a_0
-\]
-for all \(z\in\mathbb{C}\), and therefore \(f\) is constant.
+	For every \(n\geq 1\), we have \(1/2-n<0\). Letting \(r\to\infty\), we obtain
+	\[
+		|a_n|=0.
+	\]
+	Thus \(a_n=0\) for every \(n\geq 1\). Hence
+	\[
+		f(z)=a_0
+	\]
+	for all \(z\in\mathbb{C}\), and therefore \(f\) is constant.
 \end{proof}
 
 \begin{exercise}
@@ -1030,77 +1030,77 @@ for all \(z\in\mathbb{C}\), and therefore \(f\) is constant.
 	\]
 \end{exercise}
 \begin{proof}[Solution]
-Let \(\sigma\) be the path from \(1\) to \(r\) along the positive real axis, followed by the circular arc from \(r\) to \(w=re^{i\theta}\). More precisely, the first part is given by
-\[
-\sigma_1(t)=t,
-\qquad 1\leq t\leq r,
-\]
-and the second part is given by
-\[
-\sigma_2(t)=re^{it},
-\qquad 0\leq t\leq \theta.
-\]
+	Let \(\sigma\) be the path from \(1\) to \(r\) along the positive real axis, followed by the circular arc from \(r\) to \(w=re^{i\theta}\). More precisely, the first part is given by
+	\[
+		\sigma_1(t)=t,
+		\qquad 1\leq t\leq r,
+	\]
+	and the second part is given by
+	\[
+		\sigma_2(t)=re^{it},
+		\qquad 0\leq t\leq \theta.
+	\]
 
-Then
-\[
-\int_{\sigma_1}\frac{1}{z}\,dz
-=
-\int_1^r \frac{1}{t}\,dt
-=
-\log r,
-\]
-and
-\[
-\int_{\sigma_2}\frac{1}{z}\,dz
-=
-\int_0^\theta
-\frac{1}{re^{it}}\,ire^{it}\,dt
-=
-i\theta.
-\]
-Therefore,
-\[
-\int_\sigma \frac{1}{z}\,dz
-=
-\log r+i\theta.
-\]
+	Then
+	\[
+		\int_{\sigma_1}\frac{1}{z}\,dz
+		=
+		\int_1^r \frac{1}{t}\,dt
+		=
+		\log r,
+	\]
+	and
+	\[
+		\int_{\sigma_2}\frac{1}{z}\,dz
+		=
+		\int_0^\theta
+		\frac{1}{re^{it}}\,ire^{it}\,dt
+		=
+		i\theta.
+	\]
+	Therefore,
+	\[
+		\int_\sigma \frac{1}{z}\,dz
+		=
+		\log r+i\theta.
+	\]
 
-Now let
-\[
-\Gamma=\gamma*(-\sigma),
-\]
-where \(-\sigma\) denotes the reverse of \(\sigma\). Then \(\Gamma\) is a closed curve in
-\(\mathbb{C}\setminus\{0\}\). Hence, by the winding number formula,
-\[
-\int_\Gamma \frac{1}{z}\,dz
-=
-2\pi i k
-\]
-for some \(k\in\mathbb{Z}\).
+	Now let
+	\[
+		\Gamma=\gamma*(-\sigma),
+	\]
+	where \(-\sigma\) denotes the reverse of \(\sigma\). Then \(\Gamma\) is a closed curve in
+	\(\mathbb{C}\setminus\{0\}\). Hence, by the winding number formula,
+	\[
+		\int_\Gamma \frac{1}{z}\,dz
+		=
+		2\pi i k
+	\]
+	for some \(k\in\mathbb{Z}\).
 
-Since
-\[
-\int_\Gamma \frac{1}{z}\,dz
-=
-\int_\gamma \frac{1}{z}\,dz
--
-\int_\sigma \frac{1}{z}\,dz,
-\]
-we obtain
-\[
-\int_\gamma \frac{1}{z}\,dz
--
-\left(\log r+i\theta\right)
-=
-2\pi i k.
-\]
-Therefore,
-\[
-\int_\gamma \frac{1}{z}\,dz
-=
-\log r+i\theta+2\pi i k
-\]
-for some \(k\in\mathbb{Z}\).
+	Since
+	\[
+		\int_\Gamma \frac{1}{z}\,dz
+		=
+		\int_\gamma \frac{1}{z}\,dz
+		-
+		\int_\sigma \frac{1}{z}\,dz,
+	\]
+	we obtain
+	\[
+		\int_\gamma \frac{1}{z}\,dz
+		-
+		\left(\log r+i\theta\right)
+		=
+		2\pi i k.
+	\]
+	Therefore,
+	\[
+		\int_\gamma \frac{1}{z}\,dz
+		=
+		\log r+i\theta+2\pi i k
+	\]
+	for some \(k\in\mathbb{Z}\).
 \end{proof}
 
 
@@ -1116,80 +1116,141 @@ for some \(k\in\mathbb{Z}\).
 	\end{enumerate}
 \end{exercise}
 \begin{proof}[Solution]
-\begin{enumerate}
-    \item[(a)] Define
-    \[
-    F(z)=ze^{a-z}-1
-    \qquad\text{and}\qquad
-    G(z)=ze^{a-z}.
-    \]
-    On the unit circle \(|z|=1\), we have
-    \[
-    |G(z)|
-    =
-    |z|e^{a-\operatorname{Re}z}
-    =
-    e^{a-\operatorname{Re}z}.
-    \]
-    Since \(\operatorname{Re}z\leq 1\) and \(a>1\),
-    \[
-    |G(z)|
-    \geq e^{a-1}
-    >1
-    =
-    |F(z)-G(z)|.
-    \]
-    Therefore, by Rouch\'e's theorem, \(F\) and \(G\) have the
-    same number of zeros in the open unit disk.
+	\begin{enumerate}
+		\item[(a)] Define
+			\[
+				F(z)=ze^{a-z}-1
+				\qquad\text{and}\qquad
+				G(z)=ze^{a-z}.
+			\]
+			On the unit circle \(|z|=1\), we have
+			\[
+				|G(z)|
+				=
+				|z|e^{a-\operatorname{Re}z}
+				=
+				e^{a-\operatorname{Re}z}.
+			\]
+			Since \(\operatorname{Re}z\leq 1\) and \(a>1\),
+			\[
+				|G(z)|
+				\geq e^{a-1}
+				>1
+				=
+				|F(z)-G(z)|.
+			\]
+			Therefore, by Rouch\'e's theorem, \(F\) and \(G\) have the
+			same number of zeros in the open unit disk.
 
-    Since \(e^{a-z}\neq 0\) for every \(z\in\mathbb{C}\), the
-    function
-    \[
-    G(z)=ze^{a-z}
-    \]
-    has exactly one zero, namely \(z=0\), and this zero is simple.
-    Thus \(F\) has exactly one zero in the open unit disk.
+			Since \(e^{a-z}\neq 0\) for every \(z\in\mathbb{C}\), the
+			function
+			\[
+				G(z)=ze^{a-z}
+			\]
+			has exactly one zero, namely \(z=0\), and this zero is simple.
+			Thus \(F\) has exactly one zero in the open unit disk.
 
-    Moreover, the strict inequality above shows that \(F\) has no
-    zeros on \(|z|=1\). Hence the equation
-    \[
-    ze^{a-z}=1
-    \]
-    has precisely one root in the closed unit disk
-    \[
-    \{z\in\mathbb{C}:|z|\leq 1\}.
-    \]
+			Moreover, the strict inequality above shows that \(F\) has no
+			zeros on \(|z|=1\). Hence the equation
+			\[
+				ze^{a-z}=1
+			\]
+			has precisely one root in the closed unit disk
+			\[
+				\{z\in\mathbb{C}:|z|\leq 1\}.
+			\]
 
-    \item[(b)] Consider the real-valued continuous function
-    \[
-    h(x)=xe^{a-x}-1,
-    \qquad 0\leq x\leq 1.
-    \]
-    We have
-    \[
-    h(0)=-1<0
-    \]
-    and
-    \[
-    h(1)=e^{a-1}-1>0,
-    \]
-    since \(a>1\). By the intermediate value theorem, there exists
-    \(x_0\in(0,1)\) such that
-    \[
-    h(x_0)=0.
-    \]
-    Thus
-    \[
-    x_0e^{a-x_0}=1.
-    \]
-    Therefore \(x_0\) is a positive root lying in the unit disk.
-    By the uniqueness established in part~(a), it is the unique root
-    in the closed unit disk. Hence that root is positive.
-\end{enumerate}
+		\item[(b)] Consider the real-valued continuous function
+			\[
+				h(x)=xe^{a-x}-1,
+				\qquad 0\leq x\leq 1.
+			\]
+			We have
+			\[
+				h(0)=-1<0
+			\]
+			and
+			\[
+				h(1)=e^{a-1}-1>0,
+			\]
+			since \(a>1\). By the intermediate value theorem, there exists
+			\(x_0\in(0,1)\) such that
+			\[
+				h(x_0)=0.
+			\]
+			Thus
+			\[
+				x_0e^{a-x_0}=1.
+			\]
+			Therefore \(x_0\) is a positive root lying in the unit disk.
+			By the uniqueness established in part~(a), it is the unique root
+			in the closed unit disk. Hence that root is positive.
+	\end{enumerate}
 \end{proof}
 \begin{exercise}
 	Using the maximum modulus principle, prove the Fundamental Theorem of Algebra.
 \end{exercise}
+\begin{proof}[Solution]
+	Let
+	\[
+		p(z)=a_nz^n+a_{n-1}z^{n-1}+\cdots+a_0,
+		\qquad a_n\neq 0,
+	\]
+	be a nonconstant polynomial. We must show that \(p\) has a zero in
+	\(\mathbb{C}\).
+	Suppose, for contradiction, that \(p(z)\neq 0\) for every
+	\(z\in\mathbb{C}\). Then
+	\[
+		f(z)=\frac{1}{p(z)}
+	\]
+	is an entire function.
+
+	Since \(p\) is a nonconstant polynomial,
+	\[
+		|p(z)|\longrightarrow\infty
+		\qquad\text{as}\qquad
+		|z|\longrightarrow\infty.
+	\]
+	Consequently,
+	\[
+		|f(z)|=\frac{1}{|p(z)|}\longrightarrow 0
+		\qquad\text{as}\qquad
+		|z|\longrightarrow\infty.
+	\]
+
+	In particular, there exists \(R>0\) such that
+	\[
+		|f(z)|<|f(0)|
+		\qquad\text{whenever}\qquad
+		|z|>R.
+	\]
+	Because \(f\) is continuous on the compact disk
+	\[
+		\overline{D(0,R)}=\{z\in\mathbb{C}:|z|\leq R\},
+	\]
+	the function \(|f|\) attains its maximum there. Thus there exists
+	\(z_0\in\overline{D(0,R)}\) such that
+	\[
+		|f(z_0)|
+		=
+		\max_{|z|\leq R}|f(z)|.
+	\]
+	Since \(0\in\overline{D(0,R)}\), we have
+	\[
+		|f(z_0)|\geq |f(0)|.
+	\]
+	On the other hand, for \(|z|>R\),
+	\[
+		|f(z)|<|f(0)|\leq |f(z_0)|.
+	\]
+	Therefore, \(|f|\) attains its maximum over all of \(\mathbb{C}\) at
+	the point \(z_0\).
+	By the maximum modulus principle, \(f\) must be constant. Hence
+	\(p=1/f\) is also constant, contradicting the assumption that \(p\)
+	is nonconstant.
+	Therefore \(p\) must have at least one zero in \(\mathbb{C}\). This
+	proves the Fundamental Theorem of Algebra.
+\end{proof}
 
 \begin{exercise}
 	Let \(f\) be an entire function, taking real values on the real axis, and imaginary
