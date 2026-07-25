@@ -1261,6 +1261,68 @@
 	for all \(z\).
 \end{exercise}
 
+\begin{proof}[Solution]
+	Since \(f\) is entire, it has a Taylor expansion about \(0\):
+	\[
+		f(z)=\sum_{n=0}^{\infty} a_n z^n.
+	\]
+
+	Because \(f\) takes real values on the real axis, we have
+	\[
+		f(x)\in \mathbb{R}
+		\qquad \text{for all } x\in \mathbb{R}.
+	\]
+	Therefore all derivatives of \(f\) at \(0\) are real, and hence
+	\[
+		a_n=\frac{f^{(n)}(0)}{n!}\in \mathbb{R}
+		\qquad \text{for every } n\geq 0.
+	\]
+
+	Now let \(z=iy\), where \(y\in\mathbb{R}\). Then
+	\[
+		f(iy)=\sum_{n=0}^{\infty} a_n i^n y^n.
+	\]
+	The real part of this expression is
+	\[
+		\operatorname{Re} f(iy)
+		=
+		\sum_{k=0}^{\infty} a_{2k}(-1)^k y^{2k}.
+	\]
+
+	Since \(f\) takes purely imaginary values on the imaginary axis,
+	\[
+		\operatorname{Re} f(iy)=0
+		\qquad \text{for all } y\in\mathbb{R}.
+	\]
+	Thus
+	\[
+		\sum_{k=0}^{\infty} a_{2k}(-1)^k y^{2k}=0
+		\qquad \text{for all } y\in\mathbb{R}.
+	\]
+	By uniqueness of power series coefficients,
+	\[
+		a_{2k}=0
+		\qquad \text{for all } k\geq 0.
+	\]
+
+	Hence the Taylor series of \(f\) contains only odd powers:
+	\[
+		f(z)=\sum_{k=0}^{\infty} a_{2k+1}z^{2k+1}.
+	\]
+	Therefore,
+	\[
+		f(-z)
+		=
+		\sum_{k=0}^{\infty} a_{2k+1}(-z)^{2k+1}
+		=
+		-\sum_{k=0}^{\infty} a_{2k+1}z^{2k+1}
+		=
+		-f(z).
+	\]
+
+	Thus \(f\) is an odd function.
+\end{proof}
+
 \section{Part II}
 \begin{exercise}
 	Given entire functions \(f,g\) without common zeros, prove that there exist entire
