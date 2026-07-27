@@ -1520,6 +1520,67 @@ Therefore, \(A\) has no limit points in \(G\).
 	most elementary example possible.
 \end{exercise}
 
+\begin{proof}[Solution]
+For each positive integer \(n\), the points
+\[
+ne^{2k\pi i/n}, \qquad 0\leq k\leq n-1,
+\]
+are precisely the roots of the polynomial \(z^n-n^n\). Thus, consider
+\[
+f(z)=\prod_{n=1}^{\infty}
+\left(1-\frac{z^n}{n^n}\right).
+\]
+
+We first show that this product defines an entire function. Fix \(R>0\).
+For \(|z|\leq R\), we have
+\[
+\left|\frac{z^n}{n^n}\right|
+\leq \left(\frac{R}{n}\right)^n.
+\]
+If \(n\geq 2R\), then
+\[
+\left(\frac{R}{n}\right)^n\leq 2^{-n}.
+\]
+Consequently,
+\[
+\sum_{n=1}^{\infty}
+\sup_{|z|\leq R}
+\left|\frac{z^n}{n^n}\right|
+\leq
+\sum_{n=1}^{\infty}
+\left(\frac{R}{n}\right)^n
+<\infty.
+\]
+Therefore, the infinite product
+\[
+\prod_{n=1}^{\infty}
+\left(1-\frac{z^n}{n^n}\right)
+\]
+converges uniformly on every compact subset of \(\mathbb{C}\). Since its
+partial products are polynomials, \(f\) is entire. Moreover, \(f(0)=1\), so
+\(f\) is not identically zero.
+Now let \(n\) be a positive integer and let \(0\leq k\leq n-1\). Then
+\[
+\left(ne^{2k\pi i/n}\right)^n
+=n^n e^{2k\pi i}
+=n^n.
+\]
+Hence the \(n\)-th factor in the product vanishes:
+\[
+1-\frac{\left(ne^{2k\pi i/n}\right)^n}{n^n}=0.
+\]
+It follows that
+\[
+f\left(ne^{2k\pi i/n}\right)=0.
+\]
+
+Thus, an elementary example is
+\[
+f(z)=\prod_{n=1}^{\infty}
+\left(1-\frac{z^n}{n^n}\right).
+\]
+\end{proof}
+
 \begin{exercise}
 	Let \(G\) and \(\Omega\) be two domains in the complex plane. Suppose
 	\(\{f_n\}\) is a sequence in \(C(G,\Omega)\) which converges to \(f\) and
