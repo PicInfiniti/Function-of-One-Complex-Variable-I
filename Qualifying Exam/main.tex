@@ -1634,5 +1634,38 @@ and hence
 	\]
 	is also normal.
 \end{exercise}
+\begin{proof}[Solution]
+Let \(\{g_n\}\) be an arbitrary sequence in \(\mathcal{F}'\). For each \(n\),
+choose \(f_n\in\mathcal{F}\) such that
+\[
+g_n=f_n'.
+\]
+
+Since \(\mathcal{F}\) is normal, there exist a subsequence
+\(\{f_{n_k}\}\) and a function \(f\in H(G)\) such that
+\[
+f_{n_k}\longrightarrow f
+\]
+uniformly on compact subsets of \(G\).
+By Theorem \(VII.2.1\) , locally uniform convergence of analytic functions implies
+locally uniform convergence of all their derivatives. In particular,
+\[
+f_{n_k}'\longrightarrow f'
+\]
+uniformly on compact subsets of \(G\).
+Since
+\[
+g_{n_k}=f_{n_k}',
+\]
+we obtain
+\[
+g_{n_k}\longrightarrow f'
+\]
+uniformly on compact subsets of \(G\). Thus every sequence in
+\(\mathcal{F}'\) has a subsequence converging uniformly on compact subsets of
+\(G\) to a function in \(H(G)\).
+Therefore, \(\mathcal{F}'\) is normal.
+\end{proof}
+
 
 \end{document}
