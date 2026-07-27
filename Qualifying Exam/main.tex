@@ -1467,6 +1467,49 @@ B=\frac{1}{g}.
 	\]
 	Show that \(A\) does not have any limit points in \(G\).
 \end{exercise}
+\begin{proof}[Solution]
+Define
+\[
+f(z)=u_x(z)-i\,u_y(z).
+\]
+Since \(u\) is harmonic on \(G\), we have
+\[
+u_{xx}+u_{yy}=0.
+\]
+Also, harmonic functions are smooth, so
+\[
+u_{xy}=u_{yx}.
+\]
+Thus, the real and imaginary parts of \(f\), namely \(u_x\) and
+\(-u_y\), satisfy the Cauchy--Riemann equations:
+\[
+(u_x)_x=(-u_y)_y
+\]
+and
+\[
+(u_x)_y=-(-u_y)_x.
+\]
+Therefore, \(f\) is holomorphic on \(G\).
+Moreover,
+\[
+A=\{z\in G:u_x(z)=u_y(z)=0\}
+ =\{z\in G:f(z)=0\}.
+\]
+Hence \(A\) is the zero set of the holomorphic function \(f\).
+Suppose that \(A\) has a limit point in \(G\). By the identity theorem,
+\[
+f\equiv 0
+\]
+on \(G\). Consequently,
+\[
+u_x\equiv 0
+\qquad\text{and}\qquad
+u_y\equiv 0
+\]
+on \(G\). Since \(G\) is connected, this implies that \(u\) is constant
+on \(G\), contradicting the assumption that \(u\) is nonconstant.
+Therefore, \(A\) has no limit points in \(G\).
+\end{proof}
 
 \begin{exercise}
 	Find an entire function \(f\) such that
