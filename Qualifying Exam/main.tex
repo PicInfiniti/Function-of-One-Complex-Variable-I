@@ -1590,6 +1590,42 @@ f(z)=\prod_{n=1}^{\infty}
 		\lim_{n\to\infty} f_n(z_n)=f(z).
 	\]
 \end{exercise}
+\begin{proof}
+Since \(z_n\to z\) and \(z\in G\), there exists \(r>0\) such that
+\[
+K=\overline{D(z,r)}\subset G.
+\]
+Moreover, \(z_n\in K\) for all sufficiently large \(n\).
+
+For such \(n\), the triangle inequality gives
+\[
+|f_n(z_n)-f(z)|
+\leq
+|f_n(z_n)-f(z_n)|
++
+|f(z_n)-f(z)|.
+\]
+
+Because \(f_n\to f\) uniformly on the compact set \(K\),
+\[
+|f_n(z_n)-f(z_n)|
+\leq
+\sup_{w\in K}|f_n(w)-f(w)|
+\longrightarrow 0.
+\]
+Also, \(f\) is continuous and \(z_n\to z\), so
+\[
+|f(z_n)-f(z)|\longrightarrow 0.
+\]
+Therefore,
+\[
+|f_n(z_n)-f(z)|\longrightarrow 0,
+\]
+and hence
+\[
+\lim_{n\to\infty}f_n(z_n)=f(z).
+\]
+\end{proof}
 
 \begin{exercise}
 	Show that if \(\mathcal{F}\subset H(G)\) is normal then
