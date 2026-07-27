@@ -1209,6 +1209,67 @@ for some \(k\in\mathbb{Z}\).
 	\]
 	Hint: Use the Mittag-Leffler Theorem.
 \end{exercise}
+\begin{proof}[Solution]
+Assume first that \(f \not\equiv 0\), and let \(\{a_n\}\) be the zeros of \(f\), listed without repetition. Since \(f\) and \(g\) have no common zeros, we have
+\[
+g(a_n)\neq 0
+\]
+for every \(n\).
+
+For each \(n\), let \(P_n\) be the principal part at \(a_n\) of the Laurent expansion of the meromorphic function
+\[
+\frac{1}{fg}.
+\]
+By the Mittag-Leffler theorem, there exists a meromorphic function \(h\) on \(\mathbb{C}\) whose only possible poles are the points \(a_n\), and whose principal part at \(a_n\) is \(P_n\).
+
+Define
+\[
+B=fh
+\]
+and
+\[
+A=\frac{1}{f}-gh.
+\]
+
+We claim that \(A\) and \(B\) are entire. Suppose that \(a_n\) is a zero of \(f\) of multiplicity \(m\). Since \(g(a_n)\neq 0\), the function \(1/(fg)\) has a pole of order \(m\) at \(a_n\). Hence \(h\) has a pole of order at most \(m\) at \(a_n\), so the singularity of \(fh\) at \(a_n\) is removable. Therefore, \(B=fh\) is entire.
+
+Moreover, \(h\) and \(1/(fg)\) have the same principal part at each \(a_n\). Thus
+\[
+\frac{1}{fg}-h
+\]
+is holomorphic at every zero of \(f\). Since
+\[
+A
+=
+\frac{1}{f}-gh
+=
+g\left(\frac{1}{fg}-h\right),
+\]
+the function \(A\) is holomorphic at every zero of \(f\). Away from the zeros of \(f\), it is clearly holomorphic. Hence \(A\) is entire.
+
+Finally,
+\[
+Af+Bg
+=
+\left(\frac{1}{f}-gh\right)f+(fh)g
+=
+1-fgh+fgh
+=
+1.
+\]
+
+Therefore, there exist entire functions \(A\) and \(B\) such that
+\[
+Af+Bg=1.
+\]
+
+If \(f\equiv 0\), then \(g\) has no zeros, so \(1/g\) is entire. In that case, take
+\[
+A=0,
+\qquad
+B=\frac{1}{g}.
+\]
+\end{proof}
 
 \begin{exercise}
 	If \(f\) is a nonconstant entire function, show that
