@@ -1680,6 +1680,32 @@ Thus the integral of \(f\) around every triangle is zero. By Morera's theorem,
 	Using Liouville's Theorem, prove the Fundamental Theorem of Algebra.
 \end{exercise}
 
+\begin{proof}
+Suppose \(p(z)\neq 0\) for all \(z\), and let
+\[
+f(z)=[p(z)]^{-1}.
+\]
+Then \(f\) is an entire function. If \(p\) is not constant, then
+\[
+\lim_{z\to\infty}p(z)=\infty,
+\]
+and hence
+\[
+\lim_{z\to\infty}f(z)=0.
+\]
+In particular, there exists \(R>0\) such that
+\[
+|f(z)|<1 \qquad \text{if } |z|>R.
+\]
+Since \(f\) is continuous on \(\overline{B}(0;R)\), there exists a constant
+\(M\) such that
+\[
+|f(z)|\leq M \qquad \text{for } |z|\leq R.
+\]
+Hence \(f\) is bounded and therefore must be constant by Liouville's theorem.
+It follows that \(p\) must be constant, contradicting our assumption.
+\end{proof}
+
 \begin{exercise}
 	Let \(G\) be a region and \(z_0\in G\). Suppose \(f:G\to\mathbb{C}\) is
 	analytic and \(f'(z_0)\neq 0\). Show that
