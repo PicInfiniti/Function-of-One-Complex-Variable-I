@@ -1555,6 +1555,69 @@ B=\frac{1}{g}.
 		\{z\in\mathbb{C}:\operatorname{Re}z<1\}.
 	\]
 \end{exercise}
+\begin{proof}[Solution]
+Let
+\[
+F(z)=e^z-cz.
+\]
+
+Suppose that \(z\) is a solution of
+\[
+e^z=cz
+\]
+with \(\operatorname{Re}z<1\). Taking absolute values, we obtain
+\[
+e^{\operatorname{Re}z}=|c||z|.
+\]
+Therefore,
+\[
+|z|
+=\frac{e^{\operatorname{Re}z}}{|c|}
+<\frac{e}{|c|}
+<1,
+\]
+since \(|c|>e\). Thus, every solution satisfying
+\(\operatorname{Re}z<1\) lies in the unit disk.
+
+On the circle \(|z|=1\), we have
+\[
+|e^z|
+=e^{\operatorname{Re}z}
+\leq e
+<|c|
+=|cz|.
+\]
+Hence, by Rouch\'e's theorem, the functions
+\[
+e^z-cz
+\qquad\text{and}\qquad
+-cz
+\]
+have the same number of zeros in the unit disk, counted with
+multiplicity.
+
+The function \(-cz\) has exactly one zero in the unit disk, namely
+\(z=0\), with multiplicity one. Consequently, \(F(z)=e^z-cz\) also
+has exactly one zero in the unit disk.
+
+Finally, if \(|z|<1\), then
+\[
+\operatorname{Re}z\leq |z|<1.
+\]
+Thus, the unique zero of \(F\) in the unit disk belongs to the set
+\[
+\{z\in\mathbb{C}:\operatorname{Re}z<1\}.
+\]
+Since every solution in this set must lie in the unit disk, the equation
+\[
+e^z=cz
+\]
+has exactly one solution in
+\[
+\{z\in\mathbb{C}:\operatorname{Re}z<1\}.
+\]
+\end{proof}
+
 
 \begin{exercise}
 	Show that if \(f:\mathbb{C}\to\mathbb{C}\) is a continuous function such that
