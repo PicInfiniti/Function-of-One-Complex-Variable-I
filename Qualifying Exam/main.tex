@@ -1623,6 +1623,58 @@ has exactly one solution in
 	Show that if \(f:\mathbb{C}\to\mathbb{C}\) is a continuous function such that
 	\(f\) is analytic off \([-1,1]\), then \(f\) is an entire function.
 \end{exercise}
+\begin{proof}[Solution]
+We use Morera's theorem. Since \(f\) is continuous on \(\mathbb{C}\), it suffices to show that
+\[
+\int_{\partial T} f(z)\,dz=0
+\]
+for every triangle \(T\subset\mathbb{C}\).
+
+First, let \(P\) be a polygon contained in the closed upper half-plane. For
+\(\varepsilon>0\), define
+\[
+P_{\varepsilon}=P+i\varepsilon.
+\]
+Then \(P_{\varepsilon}\) lies entirely in the open upper half-plane, where \(f\)
+is analytic. Hence, by Cauchy's theorem,
+\[
+\int_{\partial P_{\varepsilon}} f(z)\,dz=0.
+\]
+Since \(f\) is continuous, letting \(\varepsilon\to 0^{+}\) gives
+\[
+\int_{\partial P} f(z)\,dz=0.
+\]
+Similarly, by translating downward, the same conclusion holds for every
+polygon contained in the closed lower half-plane.
+
+Now let \(T\) be an arbitrary triangle, and define
+\[
+P_{+}=T\cap\{z\in\mathbb{C}:\operatorname{Im}z\geq 0\},
+\qquad
+P_{-}=T\cap\{z\in\mathbb{C}:\operatorname{Im}z\leq 0\}.
+\]
+The sets \(P_{+}\) and \(P_{-}\) are polygons, possibly empty or degenerate.
+By the preceding argument,
+\[
+\int_{\partial P_{+}} f(z)\,dz=0,
+\qquad
+\int_{\partial P_{-}} f(z)\,dz=0.
+\]
+When these two integrals are added, the contributions along the portion of the
+real axis separating \(P_{+}\) and \(P_{-}\) cancel, since that segment is
+traversed in opposite directions. Therefore,
+\[
+\int_{\partial T} f(z)\,dz
+=
+\int_{\partial P_{+}} f(z)\,dz
++
+\int_{\partial P_{-}} f(z)\,dz
+=0.
+\]
+
+Thus the integral of \(f\) around every triangle is zero. By Morera's theorem,
+\(f\) is analytic on all of \(\mathbb{C}\). Therefore, \(f\) is entire.
+\end{proof}
 
 \begin{exercise}
 	Using Liouville's Theorem, prove the Fundamental Theorem of Algebra.
