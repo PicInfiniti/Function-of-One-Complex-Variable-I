@@ -1517,6 +1517,100 @@ B=\frac{1}{g}.
 	\]
 	which is not analytic on any region \(G\) which properly contains \(D\).
 \end{exercise}
+\begin{proof}[Solution]
+Let
+\[
+D=\{z\in\mathbb{C}:|z|<1\},
+\]
+and define
+\[
+a_j=\left(1-\frac{1}{j}\right)e^{ij},
+\qquad
+m_j=1,
+\qquad j\geq 1.
+\]
+
+Since
+\[
+|a_j|=1-\frac{1}{j}<1,
+\]
+we have $a_j\in D$. The points $a_j$ are distinct because their moduli are distinct. Moreover,
+\[
+|a_j|\longrightarrow 1,
+\]
+so the sequence $\{a_j\}$ has no limit point in $D$.
+By Theorem 5.15, there exists an analytic function $f$ on $D$ whose only zeros are the points $a_j$, each with multiplicity $1$.
+We claim that $f$ cannot be extended analytically to any region properly containing $D$. Suppose, toward a contradiction, that there exists a region $G$ such that
+\[
+D\subsetneq G
+\]
+and an analytic function $F$ on $G$ satisfying
+\[
+F|_D=f.
+\]
+
+Since $G$ is open and properly contains $D$, it contains a point $w$ such that
+\[
+|w|>1.
+\]
+Because $G$ is a region, it is path connected. Hence there exists a continuous path
+\[
+\gamma:[0,1]\longrightarrow G
+\]
+such that
+\[
+\gamma(0)=0
+\qquad\text{and}\qquad
+\gamma(1)=w.
+\]
+Since
+\[
+|\gamma(0)|<1<|\gamma(1)|,
+\]
+the intermediate value theorem implies that there exists $t_0\in(0,1)$ such that
+\[
+|\gamma(t_0)|=1.
+\]
+Set
+\[
+\xi=\gamma(t_0).
+\]
+Then
+\[
+\xi\in G\cap\partial D.
+\]
+
+Since $\frac{1}{2\pi}$ is irrational, the sequence
+\[
+\{e^{ij}\}_{j=1}^{\infty}
+\]
+is dense in the unit circle. In fact, every tail of this sequence is dense. Therefore, there exists an increasing sequence of integers $\{j_k\}$ such that
+\[
+e^{ij_k}\longrightarrow \xi.
+\]
+Since $j_k\to\infty$, we obtain
+\[
+a_{j_k}
+=
+\left(1-\frac{1}{j_k}\right)e^{ij_k}
+\longrightarrow \xi.
+\]
+
+Furthermore,
+\[
+F(a_{j_k})=f(a_{j_k})=0
+\]
+for every $k$. Thus the zeros of $F$ have a limit point $\xi\in G$. By the identity theorem,
+\[
+F\equiv 0
+\]
+on $G$. Consequently,
+\[
+f\equiv 0
+\]
+on $D$, which is impossible because the only zeros of $f$ are the points $a_j$.
+Therefore, $f$ is analytic on $D$ and cannot be extended analytically to any region properly containing $D$.
+\end{proof}
 
 \begin{exercise}
 	Find an entire function \(f\) such that for every integer \(n\ge 1\), \(f\) has
