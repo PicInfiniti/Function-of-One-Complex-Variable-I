@@ -108,9 +108,7 @@
 	\]
 	maps the upper half-plane conformally onto the unit disk \(\mathbb{D}\). Therefore a conformal map from \(\Omega\) onto \(\mathbb{D}\) is
 	\[
-		\boxed{
-			f(z)=\frac{e^{i\pi(z-3)/8}-i}{e^{i\pi(z-3)/8}+i}
-		}.
+		f(z)=\frac{e^{i\pi(z-3)/8}-i}{e^{i\pi(z-3)/8}+i}
 	\]
 \end{proof}
 
@@ -1334,65 +1332,65 @@
 	Hint: Use the Mittag-Leffler Theorem.
 \end{exercise}
 \begin{proof}[Solution]
-Assume first that \(f \not\equiv 0\), and let \(\{a_n\}\) be the zeros of \(f\), listed without repetition. Since \(f\) and \(g\) have no common zeros, we have
-\[
-g(a_n)\neq 0
-\]
-for every \(n\).
+	Assume first that \(f \not\equiv 0\), and let \(\{a_n\}\) be the zeros of \(f\), listed without repetition. Since \(f\) and \(g\) have no common zeros, we have
+	\[
+		g(a_n)\neq 0
+	\]
+	for every \(n\).
 
-For each \(n\), let \(P_n\) be the principal part at \(a_n\) of the Laurent expansion of the meromorphic function
-\[
-\frac{1}{fg}.
-\]
-By the Mittag-Leffler theorem, there exists a meromorphic function \(h\) on \(\mathbb{C}\) whose only possible poles are the points \(a_n\), and whose principal part at \(a_n\) is \(P_n\).
+	For each \(n\), let \(P_n\) be the principal part at \(a_n\) of the Laurent expansion of the meromorphic function
+	\[
+		\frac{1}{fg}.
+	\]
+	By the Mittag-Leffler theorem, there exists a meromorphic function \(h\) on \(\mathbb{C}\) whose only possible poles are the points \(a_n\), and whose principal part at \(a_n\) is \(P_n\).
 
-Define
-\[
-B=fh
-\]
-and
-\[
-A=\frac{1}{f}-gh.
-\]
+	Define
+	\[
+		B=fh
+	\]
+	and
+	\[
+		A=\frac{1}{f}-gh.
+	\]
 
-We claim that \(A\) and \(B\) are entire. Suppose that \(a_n\) is a zero of \(f\) of multiplicity \(m\). Since \(g(a_n)\neq 0\), the function \(1/(fg)\) has a pole of order \(m\) at \(a_n\). Hence \(h\) has a pole of order at most \(m\) at \(a_n\), so the singularity of \(fh\) at \(a_n\) is removable. Therefore, \(B=fh\) is entire.
+	We claim that \(A\) and \(B\) are entire. Suppose that \(a_n\) is a zero of \(f\) of multiplicity \(m\). Since \(g(a_n)\neq 0\), the function \(1/(fg)\) has a pole of order \(m\) at \(a_n\). Hence \(h\) has a pole of order at most \(m\) at \(a_n\), so the singularity of \(fh\) at \(a_n\) is removable. Therefore, \(B=fh\) is entire.
 
-Moreover, \(h\) and \(1/(fg)\) have the same principal part at each \(a_n\). Thus
-\[
-\frac{1}{fg}-h
-\]
-is holomorphic at every zero of \(f\). Since
-\[
-A
-=
-\frac{1}{f}-gh
-=
-g\left(\frac{1}{fg}-h\right),
-\]
-the function \(A\) is holomorphic at every zero of \(f\). Away from the zeros of \(f\), it is clearly holomorphic. Hence \(A\) is entire.
+	Moreover, \(h\) and \(1/(fg)\) have the same principal part at each \(a_n\). Thus
+	\[
+		\frac{1}{fg}-h
+	\]
+	is holomorphic at every zero of \(f\). Since
+	\[
+		A
+		=
+		\frac{1}{f}-gh
+		=
+		g\left(\frac{1}{fg}-h\right),
+	\]
+	the function \(A\) is holomorphic at every zero of \(f\). Away from the zeros of \(f\), it is clearly holomorphic. Hence \(A\) is entire.
 
-Finally,
-\[
-Af+Bg
-=
-\left(\frac{1}{f}-gh\right)f+(fh)g
-=
-1-fgh+fgh
-=
-1.
-\]
+	Finally,
+	\[
+		Af+Bg
+		=
+		\left(\frac{1}{f}-gh\right)f+(fh)g
+		=
+		1-fgh+fgh
+		=
+		1.
+	\]
 
-Therefore, there exist entire functions \(A\) and \(B\) such that
-\[
-Af+Bg=1.
-\]
+	Therefore, there exist entire functions \(A\) and \(B\) such that
+	\[
+		Af+Bg=1.
+	\]
 
-If \(f\equiv 0\), then \(g\) has no zeros, so \(1/g\) is entire. In that case, take
-\[
-A=0,
-\qquad
-B=\frac{1}{g}.
-\]
+	If \(f\equiv 0\), then \(g\) has no zeros, so \(1/g\) is entire. In that case, take
+	\[
+		A=0,
+		\qquad
+		B=\frac{1}{g}.
+	\]
 \end{proof}
 
 \begin{exercise}
@@ -1509,6 +1507,56 @@ B=\frac{1}{g}.
 	\]
 	is normal.
 \end{exercise}
+\begin{proof}[Solution]
+	Let
+	\[
+		\mathcal{G}=\{g\circ f:f\in\mathcal{F}\}.
+	\]
+	Since \(f(G)\subset\Omega\) for every \(f\in\mathcal{F}\), each function
+	\(g\circ f\) is analytic on \(G\).
+
+	We first show that \(\mathcal{F}\) is locally bounded. Let \(K\) be a compact
+	subset of \(G\). Suppose that \(\mathcal{F}\) were not uniformly bounded on
+	\(K\). Then there would exist functions \(f_n\in\mathcal{F}\) and points
+	\(z_n\in K\) such that
+	\[
+		|f_n(z_n)|>n.
+	\]
+	Since \(\mathcal{F}\) is normal in \(H(G)\), some subsequence
+	\(\{f_{n_k}\}\) converges uniformly on compact subsets of \(G\) to a
+	function \(f\in H(G)\). In particular, \(f_{n_k}\to f\) uniformly on \(K\).
+	Hence, for all sufficiently large \(k\),
+	\[
+		\sup_{z\in K}|f_{n_k}(z)|
+		\leq \sup_{z\in K}|f(z)|+1,
+	\]
+	which contradicts
+	\[
+		|f_{n_k}(z_{n_k})|>n_k.
+	\]
+	Therefore, there exists \(M_K>0\) such that
+	\[
+		|f(z)|\leq M_K
+	\]
+	for every \(f\in\mathcal{F}\) and every \(z\in K\).
+
+	Now consider the bounded subset
+	\[
+		E_K=\{w\in\Omega:|w|\leq M_K\}
+	\]
+	of \(\Omega\). Since \(g\) is bounded on bounded subsets of \(\Omega\),
+	there exists \(C_K>0\) such that
+	\[
+		|g(w)|\leq C_K
+	\]
+	for every \(w\in E_K\). Consequently, for every \(f\in\mathcal{F}\) and
+	every \(z\in K\),
+	\[
+		|(g\circ f)(z)|=|g(f(z))|\leq C_K.
+	\]
+	Thus \(\mathcal{G}\) is locally bounded on \(G\). By Montel's theorem,
+	\(\mathcal{G}\) is normal.
+\end{proof}
 
 \begin{exercise}
 	Show there is an analytic function \(f\) on
@@ -1518,98 +1566,98 @@ B=\frac{1}{g}.
 	which is not analytic on any region \(G\) which properly contains \(D\).
 \end{exercise}
 \begin{proof}[Solution]
-Let
-\[
-D=\{z\in\mathbb{C}:|z|<1\},
-\]
-and define
-\[
-a_j=\left(1-\frac{1}{j}\right)e^{ij},
-\qquad
-m_j=1,
-\qquad j\geq 1.
-\]
+	Let
+	\[
+		D=\{z\in\mathbb{C}:|z|<1\},
+	\]
+	and define
+	\[
+		a_j=\left(1-\frac{1}{j}\right)e^{ij},
+		\qquad
+		m_j=1,
+		\qquad j\geq 1.
+	\]
 
-Since
-\[
-|a_j|=1-\frac{1}{j}<1,
-\]
-we have $a_j\in D$. The points $a_j$ are distinct because their moduli are distinct. Moreover,
-\[
-|a_j|\longrightarrow 1,
-\]
-so the sequence $\{a_j\}$ has no limit point in $D$.
-By Theorem 5.15, there exists an analytic function $f$ on $D$ whose only zeros are the points $a_j$, each with multiplicity $1$.
-We claim that $f$ cannot be extended analytically to any region properly containing $D$. Suppose, toward a contradiction, that there exists a region $G$ such that
-\[
-D\subsetneq G
-\]
-and an analytic function $F$ on $G$ satisfying
-\[
-F|_D=f.
-\]
+	Since
+	\[
+		|a_j|=1-\frac{1}{j}<1,
+	\]
+	we have $a_j\in D$. The points $a_j$ are distinct because their moduli are distinct. Moreover,
+	\[
+		|a_j|\longrightarrow 1,
+	\]
+	so the sequence $\{a_j\}$ has no limit point in $D$.
+	By Theorem 5.15, there exists an analytic function $f$ on $D$ whose only zeros are the points $a_j$, each with multiplicity $1$.
+	We claim that $f$ cannot be extended analytically to any region properly containing $D$. Suppose, toward a contradiction, that there exists a region $G$ such that
+	\[
+		D\subsetneq G
+	\]
+	and an analytic function $F$ on $G$ satisfying
+	\[
+		F|_D=f.
+	\]
 
-Since $G$ is open and properly contains $D$, it contains a point $w$ such that
-\[
-|w|>1.
-\]
-Because $G$ is a region, it is path connected. Hence there exists a continuous path
-\[
-\gamma:[0,1]\longrightarrow G
-\]
-such that
-\[
-\gamma(0)=0
-\qquad\text{and}\qquad
-\gamma(1)=w.
-\]
-Since
-\[
-|\gamma(0)|<1<|\gamma(1)|,
-\]
-the intermediate value theorem implies that there exists $t_0\in(0,1)$ such that
-\[
-|\gamma(t_0)|=1.
-\]
-Set
-\[
-\xi=\gamma(t_0).
-\]
-Then
-\[
-\xi\in G\cap\partial D.
-\]
+	Since $G$ is open and properly contains $D$, it contains a point $w$ such that
+	\[
+		|w|>1.
+	\]
+	Because $G$ is a region, it is path connected. Hence there exists a continuous path
+	\[
+		\gamma:[0,1]\longrightarrow G
+	\]
+	such that
+	\[
+		\gamma(0)=0
+		\qquad\text{and}\qquad
+		\gamma(1)=w.
+	\]
+	Since
+	\[
+		|\gamma(0)|<1<|\gamma(1)|,
+	\]
+	the intermediate value theorem implies that there exists $t_0\in(0,1)$ such that
+	\[
+		|\gamma(t_0)|=1.
+	\]
+	Set
+	\[
+		\xi=\gamma(t_0).
+	\]
+	Then
+	\[
+		\xi\in G\cap\partial D.
+	\]
 
-Since $\frac{1}{2\pi}$ is irrational, the sequence
-\[
-\{e^{ij}\}_{j=1}^{\infty}
-\]
-is dense in the unit circle. In fact, every tail of this sequence is dense. Therefore, there exists an increasing sequence of integers $\{j_k\}$ such that
-\[
-e^{ij_k}\longrightarrow \xi.
-\]
-Since $j_k\to\infty$, we obtain
-\[
-a_{j_k}
-=
-\left(1-\frac{1}{j_k}\right)e^{ij_k}
-\longrightarrow \xi.
-\]
+	Since $\frac{1}{2\pi}$ is irrational, the sequence
+	\[
+		\{e^{ij}\}_{j=1}^{\infty}
+	\]
+	is dense in the unit circle. In fact, every tail of this sequence is dense. Therefore, there exists an increasing sequence of integers $\{j_k\}$ such that
+	\[
+		e^{ij_k}\longrightarrow \xi.
+	\]
+	Since $j_k\to\infty$, we obtain
+	\[
+		a_{j_k}
+		=
+		\left(1-\frac{1}{j_k}\right)e^{ij_k}
+		\longrightarrow \xi.
+	\]
 
-Furthermore,
-\[
-F(a_{j_k})=f(a_{j_k})=0
-\]
-for every $k$. Thus the zeros of $F$ have a limit point $\xi\in G$. By the identity theorem,
-\[
-F\equiv 0
-\]
-on $G$. Consequently,
-\[
-f\equiv 0
-\]
-on $D$, which is impossible because the only zeros of $f$ are the points $a_j$.
-Therefore, $f$ is analytic on $D$ and cannot be extended analytically to any region properly containing $D$.
+	Furthermore,
+	\[
+		F(a_{j_k})=f(a_{j_k})=0
+	\]
+	for every $k$. Thus the zeros of $F$ have a limit point $\xi\in G$. By the identity theorem,
+	\[
+		F\equiv 0
+	\]
+	on $G$. Consequently,
+	\[
+		f\equiv 0
+	\]
+	on $D$, which is impossible because the only zeros of $f$ are the points $a_j$.
+	Therefore, $f$ is analytic on $D$ and cannot be extended analytically to any region properly containing $D$.
 \end{proof}
 
 \begin{exercise}
@@ -1650,66 +1698,66 @@ Therefore, $f$ is analytic on $D$ and cannot be extended analytically to any reg
 	\]
 \end{exercise}
 \begin{proof}[Solution]
-Let
-\[
-F(z)=e^z-cz.
-\]
+	Let
+	\[
+		F(z)=e^z-cz.
+	\]
 
-Suppose that \(z\) is a solution of
-\[
-e^z=cz
-\]
-with \(\operatorname{Re}z<1\). Taking absolute values, we obtain
-\[
-e^{\operatorname{Re}z}=|c||z|.
-\]
-Therefore,
-\[
-|z|
-=\frac{e^{\operatorname{Re}z}}{|c|}
-<\frac{e}{|c|}
-<1,
-\]
-since \(|c|>e\). Thus, every solution satisfying
-\(\operatorname{Re}z<1\) lies in the unit disk.
+	Suppose that \(z\) is a solution of
+	\[
+		e^z=cz
+	\]
+	with \(\operatorname{Re}z<1\). Taking absolute values, we obtain
+	\[
+		e^{\operatorname{Re}z}=|c||z|.
+	\]
+	Therefore,
+	\[
+		|z|
+		=\frac{e^{\operatorname{Re}z}}{|c|}
+		<\frac{e}{|c|}
+		<1,
+	\]
+	since \(|c|>e\). Thus, every solution satisfying
+	\(\operatorname{Re}z<1\) lies in the unit disk.
 
-On the circle \(|z|=1\), we have
-\[
-|e^z|
-=e^{\operatorname{Re}z}
-\leq e
-<|c|
-=|cz|.
-\]
-Hence, by Rouch\'e's theorem, the functions
-\[
-e^z-cz
-\qquad\text{and}\qquad
--cz
-\]
-have the same number of zeros in the unit disk, counted with
-multiplicity.
+	On the circle \(|z|=1\), we have
+	\[
+		|e^z|
+		=e^{\operatorname{Re}z}
+		\leq e
+		<|c|
+		=|cz|.
+	\]
+	Hence, by Rouch\'e's theorem, the functions
+	\[
+		e^z-cz
+		\qquad\text{and}\qquad
+		-cz
+	\]
+	have the same number of zeros in the unit disk, counted with
+	multiplicity.
 
-The function \(-cz\) has exactly one zero in the unit disk, namely
-\(z=0\), with multiplicity one. Consequently, \(F(z)=e^z-cz\) also
-has exactly one zero in the unit disk.
+	The function \(-cz\) has exactly one zero in the unit disk, namely
+	\(z=0\), with multiplicity one. Consequently, \(F(z)=e^z-cz\) also
+	has exactly one zero in the unit disk.
 
-Finally, if \(|z|<1\), then
-\[
-\operatorname{Re}z\leq |z|<1.
-\]
-Thus, the unique zero of \(F\) in the unit disk belongs to the set
-\[
-\{z\in\mathbb{C}:\operatorname{Re}z<1\}.
-\]
-Since every solution in this set must lie in the unit disk, the equation
-\[
-e^z=cz
-\]
-has exactly one solution in
-\[
-\{z\in\mathbb{C}:\operatorname{Re}z<1\}.
-\]
+	Finally, if \(|z|<1\), then
+	\[
+		\operatorname{Re}z\leq |z|<1.
+	\]
+	Thus, the unique zero of \(F\) in the unit disk belongs to the set
+	\[
+		\{z\in\mathbb{C}:\operatorname{Re}z<1\}.
+	\]
+	Since every solution in this set must lie in the unit disk, the equation
+	\[
+		e^z=cz
+	\]
+	has exactly one solution in
+	\[
+		\{z\in\mathbb{C}:\operatorname{Re}z<1\}.
+	\]
 \end{proof}
 
 
@@ -1718,56 +1766,56 @@ has exactly one solution in
 	\(f\) is analytic off \([-1,1]\), then \(f\) is an entire function.
 \end{exercise}
 \begin{proof}[Solution]
-We use Morera's theorem. Since \(f\) is continuous on \(\mathbb{C}\), it suffices to show that
-\[
-\int_{\partial T} f(z)\,dz=0
-\]
-for every triangle \(T\subset\mathbb{C}\).
+	We use Morera's theorem. Since \(f\) is continuous on \(\mathbb{C}\), it suffices to show that
+	\[
+		\int_{\partial T} f(z)\,dz=0
+	\]
+	for every triangle \(T\subset\mathbb{C}\).
 
-First, let \(P\) be a polygon contained in the closed upper half-plane. For
-\(\varepsilon>0\), define
-\[
-P_{\varepsilon}=P+i\varepsilon.
-\]
-Then \(P_{\varepsilon}\) lies entirely in the open upper half-plane, where \(f\)
-is analytic. Hence, by Cauchy's theorem,
-\[
-\int_{\partial P_{\varepsilon}} f(z)\,dz=0.
-\]
-Since \(f\) is continuous, letting \(\varepsilon\to 0^{+}\) gives
-\[
-\int_{\partial P} f(z)\,dz=0.
-\]
-Similarly, by translating downward, the same conclusion holds for every
-polygon contained in the closed lower half-plane.
+	First, let \(P\) be a polygon contained in the closed upper half-plane. For
+	\(\varepsilon>0\), define
+	\[
+		P_{\varepsilon}=P+i\varepsilon.
+	\]
+	Then \(P_{\varepsilon}\) lies entirely in the open upper half-plane, where \(f\)
+	is analytic. Hence, by Cauchy's theorem,
+	\[
+		\int_{\partial P_{\varepsilon}} f(z)\,dz=0.
+	\]
+	Since \(f\) is continuous, letting \(\varepsilon\to 0^{+}\) gives
+	\[
+		\int_{\partial P} f(z)\,dz=0.
+	\]
+	Similarly, by translating downward, the same conclusion holds for every
+	polygon contained in the closed lower half-plane.
 
-Now let \(T\) be an arbitrary triangle, and define
-\[
-P_{+}=T\cap\{z\in\mathbb{C}:\operatorname{Im}z\geq 0\},
-\qquad
-P_{-}=T\cap\{z\in\mathbb{C}:\operatorname{Im}z\leq 0\}.
-\]
-The sets \(P_{+}\) and \(P_{-}\) are polygons, possibly empty or degenerate.
-By the preceding argument,
-\[
-\int_{\partial P_{+}} f(z)\,dz=0,
-\qquad
-\int_{\partial P_{-}} f(z)\,dz=0.
-\]
-When these two integrals are added, the contributions along the portion of the
-real axis separating \(P_{+}\) and \(P_{-}\) cancel, since that segment is
-traversed in opposite directions. Therefore,
-\[
-\int_{\partial T} f(z)\,dz
-=
-\int_{\partial P_{+}} f(z)\,dz
-+
-\int_{\partial P_{-}} f(z)\,dz
-=0.
-\]
+	Now let \(T\) be an arbitrary triangle, and define
+	\[
+		P_{+}=T\cap\{z\in\mathbb{C}:\operatorname{Im}z\geq 0\},
+		\qquad
+		P_{-}=T\cap\{z\in\mathbb{C}:\operatorname{Im}z\leq 0\}.
+	\]
+	The sets \(P_{+}\) and \(P_{-}\) are polygons, possibly empty or degenerate.
+	By the preceding argument,
+	\[
+		\int_{\partial P_{+}} f(z)\,dz=0,
+		\qquad
+		\int_{\partial P_{-}} f(z)\,dz=0.
+	\]
+	When these two integrals are added, the contributions along the portion of the
+	real axis separating \(P_{+}\) and \(P_{-}\) cancel, since that segment is
+	traversed in opposite directions. Therefore,
+	\[
+		\int_{\partial T} f(z)\,dz
+		=
+		\int_{\partial P_{+}} f(z)\,dz
+		+
+		\int_{\partial P_{-}} f(z)\,dz
+		=0.
+	\]
 
-Thus the integral of \(f\) around every triangle is zero. By Morera's theorem,
-\(f\) is analytic on all of \(\mathbb{C}\). Therefore, \(f\) is entire.
+	Thus the integral of \(f\) around every triangle is zero. By Morera's theorem,
+	\(f\) is analytic on all of \(\mathbb{C}\). Therefore, \(f\) is entire.
 \end{proof}
 
 \begin{exercise}
@@ -1775,29 +1823,29 @@ Thus the integral of \(f\) around every triangle is zero. By Morera's theorem,
 \end{exercise}
 
 \begin{proof}
-Suppose \(p(z)\neq 0\) for all \(z\), and let
-\[
-f(z)=[p(z)]^{-1}.
-\]
-Then \(f\) is an entire function. If \(p\) is not constant, then
-\[
-\lim_{z\to\infty}p(z)=\infty,
-\]
-and hence
-\[
-\lim_{z\to\infty}f(z)=0.
-\]
-In particular, there exists \(R>0\) such that
-\[
-|f(z)|<1 \qquad \text{if } |z|>R.
-\]
-Since \(f\) is continuous on \(\overline{B}(0;R)\), there exists a constant
-\(M\) such that
-\[
-|f(z)|\leq M \qquad \text{for } |z|\leq R.
-\]
-Hence \(f\) is bounded and therefore must be constant by Liouville's theorem.
-It follows that \(p\) must be constant, contradicting our assumption.
+	Suppose \(p(z)\neq 0\) for all \(z\), and let
+	\[
+		f(z)=[p(z)]^{-1}.
+	\]
+	Then \(f\) is an entire function. If \(p\) is not constant, then
+	\[
+		\lim_{z\to\infty}p(z)=\infty,
+	\]
+	and hence
+	\[
+		\lim_{z\to\infty}f(z)=0.
+	\]
+	In particular, there exists \(R>0\) such that
+	\[
+		|f(z)|<1 \qquad \text{if } |z|>R.
+	\]
+	Since \(f\) is continuous on \(\overline{B}(0;R)\), there exists a constant
+	\(M\) such that
+	\[
+		|f(z)|\leq M \qquad \text{for } |z|\leq R.
+	\]
+	Hence \(f\) is bounded and therefore must be constant by Liouville's theorem.
+	It follows that \(p\) must be constant, contradicting our assumption.
 \end{proof}
 
 \begin{exercise}
@@ -1827,47 +1875,47 @@ It follows that \(p\) must be constant, contradicting our assumption.
 	Show that \(A\) does not have any limit points in \(G\).
 \end{exercise}
 \begin{proof}[Solution]
-Define
-\[
-f(z)=u_x(z)-i\,u_y(z).
-\]
-Since \(u\) is harmonic on \(G\), we have
-\[
-u_{xx}+u_{yy}=0.
-\]
-Also, harmonic functions are smooth, so
-\[
-u_{xy}=u_{yx}.
-\]
-Thus, the real and imaginary parts of \(f\), namely \(u_x\) and
-\(-u_y\), satisfy the Cauchy--Riemann equations:
-\[
-(u_x)_x=(-u_y)_y
-\]
-and
-\[
-(u_x)_y=-(-u_y)_x.
-\]
-Therefore, \(f\) is holomorphic on \(G\).
-Moreover,
-\[
-A=\{z\in G:u_x(z)=u_y(z)=0\}
- =\{z\in G:f(z)=0\}.
-\]
-Hence \(A\) is the zero set of the holomorphic function \(f\).
-Suppose that \(A\) has a limit point in \(G\). By the identity theorem,
-\[
-f\equiv 0
-\]
-on \(G\). Consequently,
-\[
-u_x\equiv 0
-\qquad\text{and}\qquad
-u_y\equiv 0
-\]
-on \(G\). Since \(G\) is connected, this implies that \(u\) is constant
-on \(G\), contradicting the assumption that \(u\) is nonconstant.
-Therefore, \(A\) has no limit points in \(G\).
+	Define
+	\[
+		f(z)=u_x(z)-i\,u_y(z).
+	\]
+	Since \(u\) is harmonic on \(G\), we have
+	\[
+		u_{xx}+u_{yy}=0.
+	\]
+	Also, harmonic functions are smooth, so
+	\[
+		u_{xy}=u_{yx}.
+	\]
+	Thus, the real and imaginary parts of \(f\), namely \(u_x\) and
+	\(-u_y\), satisfy the Cauchy--Riemann equations:
+	\[
+		(u_x)_x=(-u_y)_y
+	\]
+	and
+	\[
+		(u_x)_y=-(-u_y)_x.
+	\]
+	Therefore, \(f\) is holomorphic on \(G\).
+	Moreover,
+	\[
+		A=\{z\in G:u_x(z)=u_y(z)=0\}
+		=\{z\in G:f(z)=0\}.
+	\]
+	Hence \(A\) is the zero set of the holomorphic function \(f\).
+	Suppose that \(A\) has a limit point in \(G\). By the identity theorem,
+	\[
+		f\equiv 0
+	\]
+	on \(G\). Consequently,
+	\[
+		u_x\equiv 0
+		\qquad\text{and}\qquad
+		u_y\equiv 0
+	\]
+	on \(G\). Since \(G\) is connected, this implies that \(u\) is constant
+	on \(G\), contradicting the assumption that \(u\) is nonconstant.
+	Therefore, \(A\) has no limit points in \(G\).
 \end{proof}
 
 \begin{exercise}
@@ -1880,64 +1928,64 @@ Therefore, \(A\) has no limit points in \(G\).
 \end{exercise}
 
 \begin{proof}[Solution]
-For each positive integer \(n\), the points
-\[
-ne^{2k\pi i/n}, \qquad 0\leq k\leq n-1,
-\]
-are precisely the roots of the polynomial \(z^n-n^n\). Thus, consider
-\[
-f(z)=\prod_{n=1}^{\infty}
-\left(1-\frac{z^n}{n^n}\right).
-\]
+	For each positive integer \(n\), the points
+	\[
+		ne^{2k\pi i/n}, \qquad 0\leq k\leq n-1,
+	\]
+	are precisely the roots of the polynomial \(z^n-n^n\). Thus, consider
+	\[
+		f(z)=\prod_{n=1}^{\infty}
+		\left(1-\frac{z^n}{n^n}\right).
+	\]
 
-We first show that this product defines an entire function. Fix \(R>0\).
-For \(|z|\leq R\), we have
-\[
-\left|\frac{z^n}{n^n}\right|
-\leq \left(\frac{R}{n}\right)^n.
-\]
-If \(n\geq 2R\), then
-\[
-\left(\frac{R}{n}\right)^n\leq 2^{-n}.
-\]
-Consequently,
-\[
-\sum_{n=1}^{\infty}
-\sup_{|z|\leq R}
-\left|\frac{z^n}{n^n}\right|
-\leq
-\sum_{n=1}^{\infty}
-\left(\frac{R}{n}\right)^n
-<\infty.
-\]
-Therefore, the infinite product
-\[
-\prod_{n=1}^{\infty}
-\left(1-\frac{z^n}{n^n}\right)
-\]
-converges uniformly on every compact subset of \(\mathbb{C}\). Since its
-partial products are polynomials, \(f\) is entire. Moreover, \(f(0)=1\), so
-\(f\) is not identically zero.
-Now let \(n\) be a positive integer and let \(0\leq k\leq n-1\). Then
-\[
-\left(ne^{2k\pi i/n}\right)^n
-=n^n e^{2k\pi i}
-=n^n.
-\]
-Hence the \(n\)-th factor in the product vanishes:
-\[
-1-\frac{\left(ne^{2k\pi i/n}\right)^n}{n^n}=0.
-\]
-It follows that
-\[
-f\left(ne^{2k\pi i/n}\right)=0.
-\]
+	We first show that this product defines an entire function. Fix \(R>0\).
+	For \(|z|\leq R\), we have
+	\[
+		\left|\frac{z^n}{n^n}\right|
+		\leq \left(\frac{R}{n}\right)^n.
+	\]
+	If \(n\geq 2R\), then
+	\[
+		\left(\frac{R}{n}\right)^n\leq 2^{-n}.
+	\]
+	Consequently,
+	\[
+		\sum_{n=1}^{\infty}
+		\sup_{|z|\leq R}
+		\left|\frac{z^n}{n^n}\right|
+		\leq
+		\sum_{n=1}^{\infty}
+		\left(\frac{R}{n}\right)^n
+		<\infty.
+	\]
+	Therefore, the infinite product
+	\[
+		\prod_{n=1}^{\infty}
+		\left(1-\frac{z^n}{n^n}\right)
+	\]
+	converges uniformly on every compact subset of \(\mathbb{C}\). Since its
+	partial products are polynomials, \(f\) is entire. Moreover, \(f(0)=1\), so
+	\(f\) is not identically zero.
+	Now let \(n\) be a positive integer and let \(0\leq k\leq n-1\). Then
+	\[
+		\left(ne^{2k\pi i/n}\right)^n
+		=n^n e^{2k\pi i}
+		=n^n.
+	\]
+	Hence the \(n\)-th factor in the product vanishes:
+	\[
+		1-\frac{\left(ne^{2k\pi i/n}\right)^n}{n^n}=0.
+	\]
+	It follows that
+	\[
+		f\left(ne^{2k\pi i/n}\right)=0.
+	\]
 
-Thus, an elementary example is
-\[
-f(z)=\prod_{n=1}^{\infty}
-\left(1-\frac{z^n}{n^n}\right).
-\]
+	Thus, an elementary example is
+	\[
+		f(z)=\prod_{n=1}^{\infty}
+		\left(1-\frac{z^n}{n^n}\right).
+	\]
 \end{proof}
 
 \begin{exercise}
@@ -1950,40 +1998,40 @@ f(z)=\prod_{n=1}^{\infty}
 	\]
 \end{exercise}
 \begin{proof}
-Since \(z_n\to z\) and \(z\in G\), there exists \(r>0\) such that
-\[
-K=\overline{D(z,r)}\subset G.
-\]
-Moreover, \(z_n\in K\) for all sufficiently large \(n\).
+	Since \(z_n\to z\) and \(z\in G\), there exists \(r>0\) such that
+	\[
+		K=\overline{D(z,r)}\subset G.
+	\]
+	Moreover, \(z_n\in K\) for all sufficiently large \(n\).
 
-For such \(n\), the triangle inequality gives
-\[
-|f_n(z_n)-f(z)|
-\leq
-|f_n(z_n)-f(z_n)|
-+
-|f(z_n)-f(z)|.
-\]
+	For such \(n\), the triangle inequality gives
+	\[
+		|f_n(z_n)-f(z)|
+		\leq
+		|f_n(z_n)-f(z_n)|
+		+
+		|f(z_n)-f(z)|.
+	\]
 
-Because \(f_n\to f\) uniformly on the compact set \(K\),
-\[
-|f_n(z_n)-f(z_n)|
-\leq
-\sup_{w\in K}|f_n(w)-f(w)|
-\longrightarrow 0.
-\]
-Also, \(f\) is continuous and \(z_n\to z\), so
-\[
-|f(z_n)-f(z)|\longrightarrow 0.
-\]
-Therefore,
-\[
-|f_n(z_n)-f(z)|\longrightarrow 0,
-\]
-and hence
-\[
-\lim_{n\to\infty}f_n(z_n)=f(z).
-\]
+	Because \(f_n\to f\) uniformly on the compact set \(K\),
+	\[
+		|f_n(z_n)-f(z_n)|
+		\leq
+		\sup_{w\in K}|f_n(w)-f(w)|
+		\longrightarrow 0.
+	\]
+	Also, \(f\) is continuous and \(z_n\to z\), so
+	\[
+		|f(z_n)-f(z)|\longrightarrow 0.
+	\]
+	Therefore,
+	\[
+		|f_n(z_n)-f(z)|\longrightarrow 0,
+	\]
+	and hence
+	\[
+		\lim_{n\to\infty}f_n(z_n)=f(z).
+	\]
 \end{proof}
 
 \begin{exercise}
@@ -1994,36 +2042,36 @@ and hence
 	is also normal.
 \end{exercise}
 \begin{proof}[Solution]
-Let \(\{g_n\}\) be an arbitrary sequence in \(\mathcal{F}'\). For each \(n\),
-choose \(f_n\in\mathcal{F}\) such that
-\[
-g_n=f_n'.
-\]
+	Let \(\{g_n\}\) be an arbitrary sequence in \(\mathcal{F}'\). For each \(n\),
+	choose \(f_n\in\mathcal{F}\) such that
+	\[
+		g_n=f_n'.
+	\]
 
-Since \(\mathcal{F}\) is normal, there exist a subsequence
-\(\{f_{n_k}\}\) and a function \(f\in H(G)\) such that
-\[
-f_{n_k}\longrightarrow f
-\]
-uniformly on compact subsets of \(G\).
-By Theorem \(VII.2.1\) , locally uniform convergence of analytic functions implies
-locally uniform convergence of all their derivatives. In particular,
-\[
-f_{n_k}'\longrightarrow f'
-\]
-uniformly on compact subsets of \(G\).
-Since
-\[
-g_{n_k}=f_{n_k}',
-\]
-we obtain
-\[
-g_{n_k}\longrightarrow f'
-\]
-uniformly on compact subsets of \(G\). Thus every sequence in
-\(\mathcal{F}'\) has a subsequence converging uniformly on compact subsets of
-\(G\) to a function in \(H(G)\).
-Therefore, \(\mathcal{F}'\) is normal.
+	Since \(\mathcal{F}\) is normal, there exist a subsequence
+	\(\{f_{n_k}\}\) and a function \(f\in H(G)\) such that
+	\[
+		f_{n_k}\longrightarrow f
+	\]
+	uniformly on compact subsets of \(G\).
+	By Theorem \(VII.2.1\) , locally uniform convergence of analytic functions implies
+	locally uniform convergence of all their derivatives. In particular,
+	\[
+		f_{n_k}'\longrightarrow f'
+	\]
+	uniformly on compact subsets of \(G\).
+	Since
+	\[
+		g_{n_k}=f_{n_k}',
+	\]
+	we obtain
+	\[
+		g_{n_k}\longrightarrow f'
+	\]
+	uniformly on compact subsets of \(G\). Thus every sequence in
+	\(\mathcal{F}'\) has a subsequence converging uniformly on compact subsets of
+	\(G\) to a function in \(H(G)\).
+	Therefore, \(\mathcal{F}'\) is normal.
 \end{proof}
 
 
