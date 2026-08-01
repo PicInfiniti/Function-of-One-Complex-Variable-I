@@ -1446,6 +1446,99 @@
 		h(z)=g(f(z)), \qquad \text{for all } z\in G.
 	\]
 \end{exercise}
+\begin{proof}[Solution (I)]
+	Fix \(z_0\in G\), and set
+	\[
+		w_0=f(z_0)\in\Omega.
+	\]
+	Since \(g'(w_0)\neq 0\), the complex inverse function theorem implies that
+	there exist neighborhoods \(U\subset\Omega\) of \(w_0\) and \(W\) of
+	\(g(w_0)\) such that
+	\[
+		g|_U:U\longrightarrow W
+	\]
+	is one-to-one and has an analytic inverse
+	\[
+		(g|_U)^{-1}:W\longrightarrow U.
+	\]
+
+	Since \(f\) is continuous at \(z_0\), there exists a neighborhood
+	\(V\subset G\) of \(z_0\) such that
+	\[
+		f(V)\subset U.
+	\]
+	For every \(z\in V\), we have
+	\[
+		h(z)=g(f(z))\in g(U)=W.
+	\]
+	Therefore,
+	\[
+		f(z)=(g|_U)^{-1}(h(z)),\qquad z\in V.
+	\]
+	Thus, on \(V\), \(f\) is the composition of two analytic functions:
+	\[
+		f=(g|_U)^{-1}\circ h.
+	\]
+	Hence \(f\) is analytic in a neighborhood of \(z_0\). Since \(z_0\) was
+	arbitrary, \(f\) is analytic on \(G\).
+\end{proof}
+
+\begin{proof}[Solution (II)]
+	First observe that \(f\) is one-to-one. Indeed, if
+	\[
+		f(z_1)=f(z_2),
+	\]
+	then
+	\[
+		h(z_1)=g(f(z_1))=g(f(z_2))=h(z_2).
+	\]
+	Since \(h\) is one-to-one, it follows that \(z_1=z_2\).
+
+	Fix \(a\in G\). For \(z\neq a\), the injectivity of \(f\) gives
+	\(f(z)\neq f(a)\), and hence
+	\[
+		\frac{h(z)-h(a)}{z-a}
+		=
+		\frac{g(f(z))-g(f(a))}{f(z)-f(a)}
+		\frac{f(z)-f(a)}{z-a}.
+	\]
+	Equivalently,
+	\[
+		\frac{f(z)-f(a)}{z-a}
+		=
+		\frac{\dfrac{h(z)-h(a)}{z-a}}
+		{\dfrac{g(f(z))-g(f(a))}{f(z)-f(a)}}.
+	\]
+
+	As \(z\to a\), the continuity of \(f\) implies that
+	\[
+		f(z)\to f(a).
+	\]
+	Therefore,
+	\[
+		\frac{g(f(z))-g(f(a))}{f(z)-f(a)}
+		\longrightarrow g'(f(a)).
+	\]
+	By hypothesis,
+	\[
+		g'(f(a))\neq 0.
+	\]
+	Also, since \(h\) is analytic,
+	\[
+		\frac{h(z)-h(a)}{z-a}\longrightarrow h'(a).
+	\]
+	Consequently,
+	\[
+		\lim_{z\to a}\frac{f(z)-f(a)}{z-a}
+		=
+		\frac{h'(a)}{g'(f(a))}.
+	\]
+	Thus \(f\) is complex differentiable at \(a\), with
+	\[
+		f'(a)=\frac{h'(a)}{g'(f(a))}.
+	\]
+	Since \(a\in G\) was arbitrary, \(f\) is analytic on \(G\).
+\end{proof}
 
 \begin{exercise}
 	Let \(D\) be the open unit disk. Show that no analytic function
