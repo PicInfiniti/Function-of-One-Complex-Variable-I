@@ -1,0 +1,155 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage{mathrsfs, amsmath,amssymb,amsthm,mathtools,setspace,graphicx,array,tikz,url}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage} 
+\usepackage[top=3cm, left=3cm, right=3cm, bottom=3cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\usepackage{amsthm} % Required for theorem environments
+\usetikzlibrary{decorations.markings}
+\patchcmd{\thebibliography}{\advance\leftmargin\labelsep}{\labelsep=.5em\leftmargin=2.5em\itemindent=0em\advance\leftmargin\labelsep}
+\titlespacing*{\section}{0pt}{3em}{2em}
+\titlespacing*{\chapter}{0pt}{0pt}{2em}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}
+  {}
+  {0pt}
+  {}
+\titleformat{\section}
+  {\normalfont\large\bfseries} % format for the whole title
+  {}                           % section number format
+  {0pt}                        % spacing between number and title
+  {}                           % code before the title text
+
+\setstretch{1.1}
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer
+\fancyfoot[C]{\footnotesize \thepage\ of \pageref{LastPage}}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\newtheoremstyle{spaced}
+  {15pt}   % Space above (e.g., 10pt)
+  {20pt}   % Space below (e.g., 10pt)
+  {\itshape} % Body font (e.g., italic)
+  {}       % Indentation of the header
+  {\bfseries} % Theorem header font (e.g., bold)
+  {.}      % Punctuation after theorem header
+  {.5em}   % Space after theorem header
+  {}       % Theorem head spec (can be left empty)
+
+\theoremstyle{spaced}
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{namedlemma}{Negation Lemma}[section]
+\newtheorem{exercise}{}
+\newcommand{\setexercise}[1]{\setcounter{exercise}{#1-1}}
+\pretocmd{\chapter}{\setcounter{exercise}{0}}{}{}
+\renewcommand{\theHexercise}{\thechapter.\arabic{exercise}}
+
+\title{Complex Analysis Exam Problems}
+\author{
+  Pic S. Infiniti (Second Edition)
+}
+
+\date{Summer 2026-2027}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+\maketitle
+
+\tableofcontents
+
+\hypersetup{pageanchor=true}
+\chapter{Fall 2025}
+\section{Part I}
+\begin{exercise}
+	Define $\gamma \colon [0,2\pi] \to \mathbb{C}$ by
+	\[
+		\gamma(t)=e^{it}.
+	\]
+	Compute
+	\[
+		\int_{\gamma} z^n\,dz
+	\]
+	for every integer $n$.
+\end{exercise}
+
+\begin{exercise}
+	Let $\gamma$ be the closed polygon
+	\[
+		[1-i,\,1+i,\,-1+i,\,-1-i,\,1-i].
+	\]
+	Find
+	\[
+		\int_{\gamma}\frac{1}{z}\,dz.
+	\]
+\end{exercise}
+
+\begin{exercise}
+	\begin{enumerate}[(a)]
+		\item Show that a M\"obius transformation has $0$ and $\infty$ as its only fixed points if and only if it is a dilation, but not the identity.
+
+		\item Show that a M\"obius transformation has $\infty$ as its only fixed point if and only if it is a translation, but not the identity.
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+	Let $G$ be a region, and suppose that $f\colon G\to\mathbb{C}$ is analytic such that $f(G)$ is a subset of a circle. Show that $f$ is constant.
+\end{exercise}
+
+\begin{exercise}
+	Let
+	\[
+		f(z)=e^x\sin y+i e^x\cos y,
+		\qquad z=x+iy.
+	\]
+	Determine whether $f$ is analytic on the complex plane.
+\end{exercise}
+
+\begin{exercise}
+	Map
+	\[
+		G=\mathbb{C}\setminus\{z:-9\leq z\leq 9\}
+	\]
+	onto the open unit disk by an analytic function $f$. Can $f$ be one-to-one?
+\end{exercise}
+
+\begin{exercise}
+	Give the principal branch of
+	\[
+		\sqrt{1-z^3}.
+	\]
+\end{exercise}
+\section{Part II}
+\begin{exercise}
+	Compute the integral
+	\[
+		\int_{\gamma}
+		\frac{e^z}{(z-2)^2(z-5)^5}\,dz,
+	\]
+	where $\gamma$ is the closed path
+	\[
+		\gamma(t)=3e^{it},
+		\qquad 0\leq t\leq 2\pi.
+	\]
+\end{exercise}
+
+\begin{exercise}
+	Compute the integral in the previous exercise with $\gamma$ the closed path
+	\[
+		\gamma(t)=e^{it},
+		\qquad 0\leq t\leq 2\pi.
+	\]
+\end{exercise}
+\end{document}
