@@ -1548,6 +1548,63 @@
 		\qquad \text{whenever } |z_n|\to 1.
 	\]
 \end{exercise}
+\begin{proof}[Solution]
+	Suppose, toward a contradiction, that such an analytic function \(f\) exists.
+	First, the sequential hypothesis implies that
+	\[
+		|f(z)|\longrightarrow \infty \qquad \text{uniformly as } |z|\to 1.
+	\]
+	More precisely, for every \(M>0\), there exists \(0<r<1\) such that
+	\[
+		r<|z|<1 \implies |f(z)|>M.
+	\]
+	Indeed, otherwise there would exist \(M>0\) and a sequence
+	\((z_n)\subset D\) such that
+	\[
+		|z_n|\to 1
+		\qquad\text{and}\qquad
+		|f(z_n)|\leq M,
+	\]
+	contrary to the hypothesis.
+	In particular, choose \(0<r_0<1\) such that
+	\[
+		|f(z)|>1 \qquad\text{whenever } r_0<|z|<1.
+	\]
+	Thus all the zeros of \(f\) lie in the compact disk
+	\(\{z:|z|\leq r_0\}\). Since \(f\not\equiv 0\), it has only finitely many
+	zeros in \(D\). Let these zeros, repeated according to multiplicity, be
+	\(a_1,\dots,a_N\), and set
+	\[
+		P(z)=\prod_{j=1}^{N}(z-a_j).
+	\]
+	If \(f\) has no zeros, take \(P\equiv 1\).
+	The function
+	\[
+		F(z)=\frac{P(z)}{f(z)}
+	\]
+	has removable singularities at the zeros of \(f\), and hence extends to
+	an analytic function on \(D\). Moreover, \(F\not\equiv 0\).
+	Since \(P\) is bounded on \(D\), while \(|f(z)|\to\infty\) as
+	\(|z|\to1\), we have
+	\[
+		|F(z)|=\frac{|P(z)|}{|f(z)|}\longrightarrow 0
+		\qquad\text{as } |z|\to1.
+	\]
+	Therefore,
+	\[
+		\max_{|z|=r}|F(z)|\longrightarrow 0
+		\qquad\text{as } r\to1^-.
+	\]
+
+	Fix \(z\in D\). For every \(r\) satisfying \(|z|<r<1\), the maximum
+	modulus principle gives
+	\[
+		|F(z)|\leq \max_{|\zeta|=r}|F(\zeta)|.
+	\]
+	Letting \(r\to1^-\), we obtain \(F(z)=0\). Since \(z\in D\) was
+	arbitrary, \(F\equiv0\), contradicting \(F\not\equiv0\).
+	Hence no such analytic function \(f:D\to\mathbb C\) exists.
+\end{proof}
 
 \begin{exercise}
 	How many roots does the polynomial
@@ -1556,6 +1613,54 @@
 	\]
 	have between the circles \(\{|z|=1\}\) and \(\{|z|=2\}\)?
 \end{exercise}
+\begin{proof}[Solution]
+	Let
+	\[
+		P(z)=z^9+z^5-8z^3+2z+1.
+	\]
+
+	We first count the zeros of \(P\) in the disk \(\{|z|<2\}\). On
+	\(|z|=2\),
+	\[
+		|z^9|=2^9=512,
+	\]
+	whereas
+	\[
+		|z^5-8z^3+2z+1|
+		\leq |z|^5+8|z|^3+2|z|+1
+		=32+64+4+1=101.
+	\]
+	Thus
+	\[
+		|z^5-8z^3+2z+1|<|z^9|
+		\qquad\text{on } |z|=2.
+	\]
+	By Rouché's theorem, \(P(z)\) and \(z^9\) have the same number of
+	zeros in \(\{|z|<2\}\). Hence \(P\) has \(9\) zeros in \(\{|z|<2\}\),
+	counting multiplicities.
+	Next, we count the zeros in \(\{|z|<1\}\). On \(|z|=1\),
+	\[
+		|-8z^3|=8,
+	\]
+	while
+	\[
+		|z^9+z^5+2z+1|
+		\leq |z|^9+|z|^5+2|z|+1
+		=1+1+2+1=5.
+	\]
+	Therefore,
+	\[
+		|z^9+z^5+2z+1|<|-8z^3|
+		\qquad\text{on } |z|=1.
+	\]
+	Again, by Rouché's theorem, \(P(z)\) and \(-8z^3\) have the same
+	number of zeros in \(\{|z|<1\}\). Thus \(P\) has \(3\) zeros in
+	\(\{|z|<1\}\), counting multiplicities.
+	Consequently, the number of zeros lying between the two circles is
+	\[
+		9-3=6.
+	\]
+\end{proof}
 
 \begin{exercise}
 	Prove Liouville's Theorem by considering the following integral
@@ -1565,6 +1670,88 @@
 	for a bounded entire function \(f(z)\), where \(C_R=Re^{it}\) with
 	\(t\in[0,2\pi]\), and \(a\neq b\) with \(|a|<R\) and \(|b|<R\).
 \end{exercise}
+\begin{proof}[Solution]
+	Let \(f\) be a bounded entire function. Then there exists \(M>0\) such
+	that
+	\[
+		|f(z)|\leq M
+		\qquad\text{for all } z\in\mathbb C.
+	\]
+
+	Fix two distinct points \(a,b\in\mathbb C\), and choose
+	\[
+		R>\max\{|a|,|b|\}.
+	\]
+	Consider
+	\[
+		I_R=\int_{C_R}\frac{f(z)}{(z-a)(z-b)}\,dz,
+	\]
+	where \(C_R=\{z:|z|=R\}\) is positively oriented.
+	Using
+	\[
+		\frac{1}{(z-a)(z-b)}
+		=
+		\frac{1}{a-b}
+		\left(\frac{1}{z-a}-\frac{1}{z-b}\right),
+	\]
+	Cauchy's integral formula gives
+	\[
+		\begin{aligned}
+			I_R
+			 & =
+			\frac{1}{a-b}
+			\left(
+			\int_{C_R}\frac{f(z)}{z-a}\,dz
+			-
+			\int_{C_R}\frac{f(z)}{z-b}\,dz
+			\right) \\
+			 & =
+			\frac{2\pi i}{a-b}\bigl(f(a)-f(b)\bigr).
+		\end{aligned}
+	\]
+
+	On the other hand, for \(z\in C_R\), the reverse triangle inequality
+	gives
+	\[
+		|z-a|\geq R-|a|,
+		\qquad
+		|z-b|\geq R-|b|.
+	\]
+	Hence, by the \(ML\)-estimate,
+	\[
+		\begin{aligned}
+			|I_R|
+			 & \leq
+			(2\pi R)
+			\max_{|z|=R}
+			\left|
+			\frac{f(z)}{(z-a)(z-b)}
+			\right| \\
+			 & \leq
+			\frac{2\pi RM}{(R-|a|)(R-|b|)}.
+		\end{aligned}
+	\]
+	As \(R\to\infty\),
+	\[
+		\frac{2\pi RM}{(R-|a|)(R-|b|)}
+		\longrightarrow 0.
+	\]
+	Therefore \(I_R\to0\). Since
+	\[
+		I_R=\frac{2\pi i}{a-b}\bigl(f(a)-f(b)\bigr)
+	\]
+	is independent of \(R\), it follows that
+	\[
+		\frac{2\pi i}{a-b}\bigl(f(a)-f(b)\bigr)=0.
+	\]
+	Because \(a\neq b\), we conclude that
+	\[
+		f(a)=f(b).
+	\]
+
+	The points \(a\) and \(b\) were arbitrary, so \(f\) is constant on
+	\(\mathbb C\). This proves Liouville's Theorem.
+\end{proof}
 
 \begin{exercise}
 	Let \(G\) be a region, and
@@ -1578,6 +1765,53 @@
 	\]
 	is also analytic.
 \end{exercise}
+\begin{proof}[Solution]
+	The map \(z\mapsto \overline z\) is a homeomorphism of \(\mathbb C\).
+	Hence, since \(G\) is a region, its reflection
+	\[
+		G^*=\{z\in\mathbb C:\overline z\in G\}
+	\]
+	is also a region.
+
+	Fix \(z_0\in G^*\). Then \(\overline{z_0}\in G\). For \(z\in G^*\),
+	\(z\neq z_0\), we have
+	\[
+		\begin{aligned}
+			\frac{f^*(z)-f^*(z_0)}{z-z_0}
+			 & =
+			\frac{\overline{f(\overline z)}
+				-\overline{f(\overline{z_0})}}
+			{z-z_0} \\
+			 & =
+			\overline{
+				\frac{f(\overline z)-f(\overline{z_0})}
+				{\overline z-\overline{z_0}}
+			}.
+		\end{aligned}
+	\]
+	As \(z\to z_0\), we have
+	\[
+		\overline z\to \overline{z_0}.
+	\]
+	Since \(f\) is analytic at \(\overline{z_0}\),
+	\[
+		\frac{f(\overline z)-f(\overline{z_0})}
+		{\overline z-\overline{z_0}}
+		\longrightarrow f'(\overline{z_0}).
+	\]
+	Taking complex conjugates gives
+	\[
+		\lim_{z\to z_0}
+		\frac{f^*(z)-f^*(z_0)}{z-z_0}
+		=
+		\overline{f'(\overline{z_0})}.
+	\]
+	Thus \(f^*\) is complex differentiable at every \(z_0\in G^*\), and
+	\[
+		(f^*)'(z)=\overline{f'(\overline z)}.
+	\]
+	Therefore \(f^*\) is analytic on \(G^*\).
+\end{proof}
 
 \section{Part II}
 \begin{exercise}
