@@ -251,6 +251,57 @@
 		\qquad 0\leq t\leq 2\pi.
 	\]
 \end{exercise}
+\begin{proof}[Solution]
+	The path
+	\[
+		\gamma(t)=3e^{it},\qquad 0\leq t\leq 2\pi,
+	\]
+	is the positively oriented circle \(|z|=3\). Of the two singularities
+	\(z=2\) and \(z=5\), only \(z=2\) lies inside \(\gamma\).
+
+	Set
+	\[
+		h(z)=\frac{e^z}{(z-5)^5}.
+	\]
+	Since \(z=5\) lies outside \(|z|=3\), the function \(h\) is analytic on
+	and inside \(\gamma\). Therefore, by Cauchy's integral formula for
+	derivatives,
+	\[
+		\int_{\gamma}\frac{e^z}{(z-2)^2(z-5)^5}\,dz
+		=
+		\int_{\gamma}\frac{h(z)}{(z-2)^2}\,dz
+		=
+		2\pi i\,h'(2).
+	\]
+
+	Now
+	\[
+		\begin{aligned}
+			h'(z)
+			 & =
+			\frac{e^z}{(z-5)^5}
+			-\frac{5e^z}{(z-5)^6} \\
+			 & =
+			\frac{e^z(z-10)}{(z-5)^6}.
+		\end{aligned}
+	\]
+	Thus
+	\[
+		h'(2)
+		=
+		\frac{e^2(2-10)}{(2-5)^6}
+		=
+		-\frac{8e^2}{729}.
+	\]
+	Consequently,
+	\[
+		\
+		\int_{\gamma}
+		\frac{e^z}{(z-2)^2(z-5)^5}\,dz
+		=
+		-\frac{16\pi i e^2}{729}
+	\]
+\end{proof}
 
 \begin{exercise}
 	Compute the integral in the previous exercise with $\gamma$ the closed path
@@ -259,4 +310,28 @@
 		\qquad 0\leq t\leq 2\pi.
 	\]
 \end{exercise}
+\begin{proof}[Solution]
+	The path
+	\[
+		\gamma(t)=e^{it},\qquad 0\leq t\leq 2\pi,
+	\]
+	is the positively oriented unit circle \(|z|=1\).
+	The integrand
+	\[
+		\frac{e^z}{(z-2)^2(z-5)^5}
+	\]
+	has singularities only at \(z=2\) and \(z=5\). Since
+	\[
+		|2|>1
+		\qquad\text{and}\qquad
+		|5|>1,
+	\]
+	both singularities lie outside \(\gamma\). Therefore the integrand is
+	analytic on and inside the unit circle.
+	By Cauchy's theorem,
+	\[
+		\int_{\gamma}
+		\frac{e^z}{(z-2)^2(z-5)^5}\,dz=0
+	\]
+\end{proof}
 \end{document}
