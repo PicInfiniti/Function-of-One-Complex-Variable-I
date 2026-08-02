@@ -189,6 +189,55 @@
 		\sqrt{1-z^3}.
 	\]
 \end{exercise}
+\begin{proof}[Solution]
+	The principal branch of the square root is defined by
+	\[
+	\sqrt{w}=\exp\left(\frac12\Log w\right),
+	\qquad
+	w\in\mathbb C\setminus(-\infty,0],
+	\]
+	where \(\Log\) denotes the principal logarithm.
+
+	Therefore, the principal branch of \(\sqrt{1-z^3}\) is
+	\[
+	\sqrt{1-z^3}
+	=
+	\exp\left(\frac12\Log(1-z^3)\right)
+	.
+	\]
+
+	Its domain consists of those \(z\) for which
+	\[
+	1-z^3\notin(-\infty,0].
+	\]
+	Equivalently,
+	\[
+	z^3\notin[1,\infty).
+	\]
+	Writing \(z=re^{i\theta}\), the condition \(z^3\in[1,\infty)\) holds
+	precisely when
+	\[
+		r\geq 1
+		\quad\text{and}\quad
+		\theta=\frac{2\pi k}{3},
+		\qquad k=0,1,2.
+	\]
+	Thus the domain of the principal branch is
+	\[
+		\mathbb C\setminus
+		\bigcup_{k=0}^{2}
+		\left\{
+		re^{2\pi i k/3}:r\geq1
+		\right\}.
+	\]
+
+	Hence the three branch cuts are the rays beginning at the cube roots
+	of unity \(1,e^{2\pi i/3},e^{4\pi i/3}\) and extending outward. This
+	branch is characterized by
+	\[
+		\sqrt{1-0^3}=1.
+	\]
+\end{proof}
 \section{Part II}
 \begin{exercise}
 	Compute the integral
