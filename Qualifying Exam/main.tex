@@ -2310,6 +2310,67 @@
 	if \(\gamma=\gamma(t)=z_0+re^{it}\) for \(t\in[0,2\pi]\) and \(r>0\) is small
 	enough.
 \end{exercise}
+\begin{proof}[Solution]
+	Since \(f\) is analytic at \(z_0\), define
+	\[
+		g(z)=
+		\begin{cases}
+			\dfrac{f(z)-f(z_0)}{z-z_0}, & z\neq z_0, \\[1.2ex]
+			f'(z_0),                    & z=z_0.
+		\end{cases}
+	\]
+	The singularity at \(z_0\) is removable, so \(g\) is analytic in a
+	neighborhood of \(z_0\). Moreover,
+	\[
+		g(z_0)=f'(z_0)\neq 0.
+	\]
+
+	By continuity of \(g\), there exists \(r>0\), sufficiently small, such
+	that the closed disk
+	\[
+		\overline{D(z_0,r)}\subset G
+	\]
+	and
+	\[
+		g(z)\neq 0
+		\qquad\text{for all }z\in \overline{D(z_0,r)}.
+	\]
+	Thus
+	\[
+		h(z)=\frac{1}{g(z)}
+	\]
+	is analytic on a neighborhood of \(\overline{D(z_0,r)}\).
+	For \(z\neq z_0\), we have
+	\[
+		f(z)-f(z_0)=(z-z_0)g(z),
+	\]
+	and hence
+	\[
+		\frac{1}{f(z)-f(z_0)}
+		=
+		\frac{h(z)}{z-z_0}.
+	\]
+	Therefore, by Cauchy's integral formula,
+	\[
+		\begin{aligned}
+			\int_\gamma \frac{1}{f(z)-f(z_0)}\,dz
+			 & =
+			\int_\gamma \frac{h(z)}{z-z_0}\,dz \\
+			 & =
+			2\pi i\,h(z_0)                     \\
+			 & =
+			\frac{2\pi i}{g(z_0)}              \\
+			 & =
+			\frac{2\pi i}{f'(z_0)}.
+		\end{aligned}
+	\]
+	Hence
+	\[
+		\int_\gamma \frac{1}{f(z)-f(z_0)}\,dz
+		=
+		\frac{2\pi i}{f'(z_0)}
+	\]
+\end{proof}
 
 \section{Part II}
 \begin{exercise}
