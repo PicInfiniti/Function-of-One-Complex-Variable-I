@@ -25,6 +25,15 @@
       --warm-line: #d5b754;
       --sidebar: #f8fafb;
       --shadow: 0 18px 55px rgba(31, 52, 66, .09);
+      --essential: #b94a52;
+      --essential-soft: #fff2f3;
+      --important: #a96d08;
+      --important-soft: #fff8e7;
+      --supporting: #39785f;
+      --supporting-soft: #f0f8f4;
+      --practice-essential: #e3b4b8;
+      --practice-important: #e8cf9c;
+      --practice-supporting: #b9d9c9;
     }
 
     * { box-sizing: border-box; }
@@ -113,30 +122,63 @@
     ul, ol { margin: .65rem 0 1.2rem; padding-left: 1.5rem; }
     li { margin: .38rem 0; padding-left: .2rem; }
 
-    .task-list { padding: 0; list-style: none; }
-    .task { padding: 0; border-top: 1px solid var(--line); }
-    .task:last-child { border-bottom: 1px solid var(--line); }
-    .task label { display: grid; grid-template-columns: 1.25rem 1fr; gap: .7rem; padding: .72rem .3rem; cursor: pointer; }
-    .task input { width: 1.05rem; height: 1.05rem; margin-top: .32rem; accent-color: var(--accent); }
+    #tier-1-must-practice { border-bottom-color: var(--practice-essential); }
+    #tier-2-important-advanced-coverage { border-bottom-color: var(--practice-important); }
+    #lower-priority-warm-ups { border-bottom-color: var(--practice-supporting); }
+    .practice-color-key { display: flex; flex-wrap: wrap; gap: .65rem 1.15rem; margin: 1.15rem 0 1.8rem; padding: .7rem .85rem; border: 1px solid var(--line); border-radius: 9px; background: #fafcfd; color: var(--muted); font-size: .8rem; }
+    .practice-color-key span { display: inline-flex; align-items: center; gap: .42rem; }
+    .practice-color-key i { width: .72rem; height: .72rem; border-radius: 3px; background: currentColor; }
+    .practice-color-key .key-essential { color: var(--practice-essential); }
+    .practice-color-key .key-important { color: var(--practice-important); }
+    .practice-color-key .key-supporting { color: var(--practice-supporting); }
+    .practice-color-key b { color: #52616d; font-weight: 750; }
+    #practice-view mjx-container[display="true"] { margin: .65rem 0 !important; overflow-x: auto; overflow-y: hidden; }
+    #if-time-is-short-do-these-12-first + ol { display: grid; gap: 1rem; padding: 0; list-style: none; counter-reset: shortlist; }
+    #if-time-is-short-do-these-12-first + ol > li { position: relative; margin: 0; padding: 1.15rem 1.2rem 1.05rem 4rem; border: 1px solid var(--line); border-left: 4px solid var(--practice-essential); border-radius: 12px; background: #fcfdfe; box-shadow: 0 5px 16px rgba(31, 52, 66, .045); counter-increment: shortlist; break-inside: avoid; }
+    #if-time-is-short-do-these-12-first + ol > li::before { content: counter(shortlist); position: absolute; top: 1.05rem; left: 1.15rem; display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid #bdd5e1; border-radius: 50%; background: var(--soft); color: var(--accent-dark); font-size: .78rem; font-weight: 850; }
+    .task-list { display: grid; gap: .75rem; padding: 0; list-style: none; }
+    .task { padding: 0; border: 1px solid var(--line); border-radius: 10px; background: #fcfdfe; break-inside: avoid; }
+    .task.practice-essential { border-left: 4px solid var(--practice-essential); }
+    .task.practice-important { border-left: 4px solid var(--practice-important); }
+    .task:hover { border-color: #b8ccd7; }
+    .task label { display: grid; grid-template-columns: 1.3rem 1fr; gap: .8rem; padding: 1rem 1.05rem; cursor: pointer; }
+    .task input { width: 1.08rem; height: 1.08rem; margin-top: .27rem; accent-color: var(--accent); }
     .task input:checked + span { color: var(--muted); text-decoration: line-through; text-decoration-color: #91a0ab; }
     .question-text { display: block; color: var(--ink); text-decoration: none; }
     .question-text p { margin: 0 0 .55rem; }
     .question-text p:last-child { margin-bottom: 0; }
-    .parts { display: grid; gap: .55rem; margin: .55rem 0; }
-    .part { padding-left: .15rem; }
-    .source-ref { display: block; margin-top: .55rem; color: var(--muted); font-size: .78rem; font-weight: 650; text-decoration: none; }
+    .parts { display: grid; gap: .65rem; margin: .7rem 0; }
+    .part { padding: .5rem .7rem; border-left: 3px solid #c5d9e3; border-radius: 0 6px 6px 0; background: #f5f9fb; }
+    .source-ref { display: block; margin-top: .8rem; padding-top: .55rem; border-top: 1px solid #e2e8ec; color: var(--muted); font-size: .78rem; font-weight: 650; text-decoration: none; }
     .task input:checked + span .question-text, .task input:checked + span .source-ref { color: var(--muted); }
     .why, .notice { margin: 1rem 0 1.5rem; padding: .85rem 1rem; border-left: 4px solid var(--warm-line); border-radius: 0 9px 9px 0; background: var(--warm); }
     .why { color: #5c4b15; }
+    #lower-priority-warm-ups + p + ul { display: grid; gap: .75rem; padding: 0; list-style: none; }
+    #lower-priority-warm-ups + p + ul > li { margin: 0; padding: 1rem 1.05rem; border: 1px solid var(--line); border-left: 4px solid var(--practice-supporting); border-radius: 10px; background: #fcfefd; break-inside: avoid; }
 
     .generated-jumps { display: none; }
     .section-note { color: var(--muted); font-size: .92rem; }
+    .importance-guide { margin: 1.35rem 0 2rem; padding: 1rem; border: 1px solid var(--line); border-radius: 12px; background: #fbfcfd; }
+    .importance-guide h2 { margin: 0 0 .35rem; padding: 0; border: 0; font-family: inherit; font-size: 1rem; }
+    .importance-guide > p { margin: 0 0 .8rem; color: var(--muted); font-size: .84rem; }
+    .legend-items { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .55rem; }
+    .legend-item { padding: .62rem .7rem; border: 1px solid var(--line); border-left: 5px solid; border-radius: 8px; background: #fff; font-size: .76rem; line-height: 1.35; }
+    .legend-item strong { display: block; margin-bottom: .08rem; }
+    .legend-essential { border-left-color: var(--essential); background: var(--essential-soft); }
+    .legend-important { border-left-color: var(--important); background: var(--important-soft); }
+    .legend-supporting { border-left-color: var(--supporting); background: var(--supporting-soft); }
+    .legend-definition { border-left-color: var(--accent); background: var(--soft); }
     .result-grid { display: grid; gap: .85rem; }
-    .result { padding: 1rem 1.05rem; border: 1px solid var(--line); border-radius: 12px; background: #fff; break-inside: avoid; }
+    .result { padding: 1rem 1.05rem; border: 1px solid var(--line); border-left-width: 5px; border-radius: 12px; background: #fff; break-inside: avoid; }
+    .result.importance-essential { border-left-color: var(--essential); background: linear-gradient(90deg, var(--essential-soft), #fff 18%); }
+    .result.importance-important { border-left-color: var(--important); background: linear-gradient(90deg, var(--important-soft), #fff 18%); }
+    .result.importance-supporting { border-left-color: var(--supporting); background: linear-gradient(90deg, var(--supporting-soft), #fff 18%); }
+    .result.importance-definition { border-left-color: var(--accent); background: linear-gradient(90deg, var(--soft), #fff 18%); }
     .result-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .45rem .7rem; margin-bottom: .45rem; }
     .result-number { color: var(--accent); font-weight: 800; }
     .result-title { color: var(--accent-dark); font-weight: 800; }
     .kind { padding: .08rem .42rem; border-radius: 999px; background: var(--soft); color: #3f6679; font-size: .7rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+    .importance-definition .kind { background: #dceef5; color: var(--accent-dark); }
     .meta { margin-left: auto; color: var(--muted); font-size: .78rem; }
     .statement { margin: .35rem 0; }
     .statement-label { display: block; margin-bottom: .18rem; color: var(--muted); font-size: .68rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
@@ -163,6 +205,10 @@
       .view-label { display: none; }
       .meta { width: 100%; margin-left: 0; }
       #count { min-width: 5.5rem; }
+      .legend-items { grid-template-columns: 1fr 1fr; }
+      #if-time-is-short-do-these-12-first + ol > li { padding: 1rem .85rem .95rem 3.35rem; }
+      #if-time-is-short-do-these-12-first + ol > li::before { top: .9rem; left: .75rem; width: 1.75rem; height: 1.75rem; }
+      .task label { padding: .9rem .8rem; }
     }
     @media print {
       body { background: #fff; font-size: 10.5pt; }
@@ -197,6 +243,11 @@
       <div class="nav-group">
         <button class="nav-heading" type="button" data-view-button="theorems"><span class="nav-icon">T</span>Theorem reference</button>
         <div class="nav-links">
+          <a href="#theorems-view" data-target="theorems-view" data-view="theorems">All results &amp; definitions</a>
+          <a href="#theorems-view" data-target="theorems-view" data-view="theorems" data-query="type:reference">Definitions &amp; formulas</a>
+          <a href="#theorems-view" data-target="theorems-view" data-view="theorems" data-query="type:result">Results only</a>
+          <a href="#importance-guide" data-target="importance-guide" data-view="theorems">Color &amp; priority guide</a>
+          <a href="#result-iii-2-24-cauchy-riemann-equations" data-target="result-iii-2-24-cauchy-riemann-equations" data-view="theorems">Cauchy–Riemann equations</a>
           <a href="#topology" data-target="topology" data-view="theorems">Topology & compactness</a>
           <a href="#analytic" data-target="analytic" data-view="theorems">Analytic functions</a>
           <a href="#integration" data-target="integration" data-view="theorems">Integration & Cauchy theory</a>
@@ -241,6 +292,11 @@
 <li>107 textbook exercises in <code>Exercise/complex.tex</code>.</li>
 </ul>
 <p>The ordering gives the most weight to questions that appeared on a qualifying exam, especially when essentially the same textbook exercise later appeared on an exam. Check an item only after you can solve it from a blank page, justify every theorem's hypotheses, and explain the proof aloud.</p>
+<div class="practice-color-key" aria-label="Practice question priority colors">
+  <span><i class="key-essential"></i><b>Essential / Top 12</b></span>
+  <span><i class="key-important"></i><b>Important advanced</b></span>
+  <span><i class="key-supporting"></i><b>Warm-up</b></span>
+</div>
 <h2 id="if-time-is-short-do-these-12-first">If time is short — do these 12 first</h2>
 <ol>
 <li><span class="question-text"><p>Prove the Fundamental Theorem of Algebra by completing the following two steps for a nonconstant polynomial \[ p(z)=a_0+a_1z+\cdots+a_nz^n, \] where \(a_n\neq 0\) and \(n\ge 1\).</p><div class="parts"><div class="part"><strong>(a)</strong> Show that there is a nonzero polynomial \(q(z)\) such that \[ \frac{1}{zp(z)}=\frac{1}{zp(0)}+\frac{q(z)}{p(z)}, \] for \(z\neq 0\) and \(p(z)\neq 0\).</div><div class="part"><strong>(b)</strong> By means of integration over the circle \(C_R=Re^{it}\) with \(t\in[0,2\pi]\), show that \(p(z_0)=0\) for some point \(z_0\) in \(\mathbb{C}\).</div></div></span><span class="source-ref">Source: <a href="Qualifying Exam/main.tex#L1973">January 2025, I.1</a></span></li>
@@ -441,6 +497,17 @@
       Page numbers below are the book’s printed page numbers. Each page link opens the corresponding physical PDF page. Important definitions, propositions, developments, and exercises are explicitly identified by Conway’s own labels. “Used for” notes and descriptive card titles are study annotations, not text from the book.
     </div>
 
+    <section class="importance-guide" id="importance-guide" aria-labelledby="importance-guide-title">
+      <h2 id="importance-guide-title">Color and priority guide</h2>
+      <p>The three result colors are study priorities based on how often and how centrally a result is used in this repository. They are not classifications from Conway.</p>
+      <div class="legend-items">
+        <div class="legend-item legend-essential"><strong>Essential · coral</strong>Know the statement and when to apply it.</div>
+        <div class="legend-item legend-important"><strong>Important · amber</strong>Practice it after the essential results.</div>
+        <div class="legend-item legend-supporting"><strong>Supporting · green</strong>Useful background or a specialized tool.</div>
+        <div class="legend-item legend-definition"><strong>Definition/formula · blue</strong>Vocabulary and formulas needed to state results correctly.</div>
+      </div>
+    </section>
+
     <nav class="jump-links generated-jumps" id="jump-links" aria-label="Topic navigation"></nav>
     <div id="reference"></div>
 
@@ -468,6 +535,8 @@
       };
 
       boxes.forEach(box => {
+        const task = box.closest('.task');
+        task.classList.add(Number(box.dataset.task) <= 55 ? 'practice-essential' : 'practice-important');
         box.checked = Boolean(saved[box.dataset.task]);
         box.addEventListener('change', () => {
           saved[box.dataset.task] = box.checked;
@@ -493,6 +562,12 @@
     category('topology', '1. Topology, compactness, and uniform convergence',
       'The metric-space results repeatedly used to justify connectedness, compactness, distance estimates, and passage to limits.');
 
+    add('topology', 'Definition', 'II.2.1', 'Connected set', 'Chapter II, §2 — Connectedness', 14,
+      String.raw`A metric space $(X,d)$ is connected if the only subsets of $X$ which are both open and closed are $\varnothing$ and $X$. If $A\subset X$ then $A$ is a connected subset of $X$ if the metric space $(A,d)$ is connected.`,
+      'Regions, components, identity arguments, and open mapping.');
+    add('topology', 'Definition', 'III.§2', 'Region', 'Chapter III, §2 — Analytic functions', 41,
+      String.raw`A region is an open connected subset of the plane.`,
+      'Reading nearly every global theorem hypothesis in the reference.');
     add('topology', 'Theorem', 'II.2.3', 'Polygonal characterization of regions', 'Chapter II, §2 — Connectedness', 15,
       String.raw`An open set $G\subset\mathbb C$ is connected iff for any two points $a,b$ in $G$ there is a polygon from $a$ to $b$ lying entirely inside $G$.`,
       'Contour construction, regions, primitives, and connected-domain arguments.');
@@ -505,6 +580,9 @@
     add('topology', 'Theorem', 'II.3.7', 'Cantor intersection theorem', 'Chapter II, §3 — Sequences and completeness', 19,
       String.raw`A metric space $(X,d)$ is complete iff for any sequence $\{F_n\}$ of non-empty closed sets with $F_1\supset F_2\supset\cdots$ and $\operatorname{diam}F_n\to0$, $\bigcap_{n=1}^{\infty}F_n$ consists of a single point.`,
       'Completeness exercises and nested-disk arguments.');
+    add('topology', 'Definition', 'II.4.1', 'Compact set', 'Chapter II, §4 — Compactness', 20,
+      String.raw`A subset $K$ of a metric space $X$ is compact if for every collection $\mathcal G$ of open sets in $X$ with the property $K\subset\bigcup\{G:G\in\mathcal G\}$, there are a finite number of sets $G_1,\ldots,G_n$ in $\mathcal G$ such that $K\subset G_1\cup G_2\cup\cdots\cup G_n$. A collection of sets $\mathcal G$ satisfying the displayed inclusion is called a cover of $K$; if each member of $\mathcal G$ is an open set it is called an open cover of $K$.`,
+      'Finite subcovers, uniform estimates, extrema, and compact convergence.');
     add('topology', 'Lemma', 'II.4.8', 'Lebesgue covering lemma', 'Chapter II, §4 — Compactness', 21,
       String.raw`If $(X,d)$ is sequentially compact and $\mathcal G$ is an open cover of $X$ then there is an $\varepsilon>0$ such that if $x$ is in $X$, there is a set $G$ in $\mathcal G$ with $B(x;\varepsilon)\subset G$.`,
       'Uniform local estimates on compact curves and sets.');
@@ -542,12 +620,21 @@
     add('analytic', 'Theorem', 'III.1.3', 'Radius of convergence theorem', 'Chapter III, §1 — Power series', 31,
       String.raw`For a given power series $\sum_{n=0}^{\infty}a_n(z-a)^n$ define the number $R$, $0\le R\le\infty$, by $1/R=\limsup |a_n|^{1/n}$; then: (a) if $|z-a|<R$, the series converges absolutely; (b) if $|z-a|>R$, the terms of the series become unbounded and so the series diverges; (c) if $0<r<R$ then the series converges uniformly on $\{z:|z-a|\le r\}$. Moreover, the number $R$ is the only number having properties (a) and (b).`,
       'All power-series radius and boundary-convergence problems.');
+    add('analytic', 'Definition', 'III.2.1', 'Complex differentiability', 'Chapter III, §2 — Analytic functions', 33,
+      String.raw`If $G$ is an open set in $\mathbb C$ and $f:G\to\mathbb C$ then $f$ is differentiable at a point $a$ in $G$ if $\displaystyle\lim_{h\to0}\frac{f(a+h)-f(a)}{h}$ exists; the value of this limit is denoted by $f'(a)$ and is called the derivative of $f$ at $a$. If $f$ is differentiable at each point of $G$ we say that $f$ is differentiable on $G$.`,
+      'Checking whether a function is complex differentiable.');
+    add('analytic', 'Definition', 'III.2.3', 'Analytic function', 'Chapter III, §2 — Analytic functions', 34,
+      String.raw`A function $f:G\to\mathbb C$ is analytic if $f$ is continuously differentiable on $G$.`,
+      'The basic hypothesis for Cauchy theory and all later analytic results.');
     add('analytic', 'Corollary', 'III.2.9', 'Analyticity of a power series', 'Chapter III, §2 — Analytic functions', 37,
       String.raw`If the series $\sum_{n=0}^{\infty}a_n(z-a)^n$ has radius of convergence $R>0$ then $f(z)=\sum_{n=0}^{\infty}a_n(z-a)^n$ is analytic in $B(a;R)$.`,
       'Taylor expansions, functional equations, and coefficient comparisons.');
     add('analytic', 'Proposition', 'III.2.10', 'Zero derivative implies constant', 'Chapter III, §2 — Analytic functions', 37,
       String.raw`If $G$ is open and connected and $f:G\to\mathbb C$ is differentiable with $f'(z)=0$ for all $z$ in $G$, then $f$ is constant.`,
       'Uniqueness of primitives and constant-function conclusions.');
+    add('analytic', 'Definition', 'III.2.18', 'Branch of the logarithm', 'Chapter III, §2 — Analytic functions', 39,
+      String.raw`If $G$ is an open connected set in $\mathbb C$ and $f:G\to\mathbb C$ is a continuous function such that $z=\exp f(z)$ for all $z$ in $G$ then $f$ is a branch of the logarithm.`,
+      'Logarithm branches, complex powers, roots, and contour obstructions.');
     add('analytic', 'Proposition', 'III.2.19', 'Uniqueness of logarithm branches', 'Chapter III, §2 — Analytic functions', 39,
       String.raw`If $G\subset\mathbb C$ is open and connected and $f$ is a branch of $\log z$ on $G$ then the totality of branches of $\log z$ are the functions $f(z)+2\pi ki$, $k\in\mathbb Z$.`,
       'Branch classification and annulus problems.');
@@ -557,6 +644,9 @@
     add('analytic', 'Corollary', 'III.2.21', 'Analyticity of logarithm branches', 'Chapter III, §2 — Analytic functions', 40,
       String.raw`A branch of the logarithm function is analytic and its derivative is $z^{-1}$.`,
       'Principal branches, powers, and path integrals of $1/z$.');
+    add('analytic', 'Formula', 'III.2.24', 'Cauchy–Riemann equations', 'Chapter III, §2 — Analytic functions', 41,
+      String.raw`If $f(x+iy)=u(x,y)+iv(x,y)$, the Cauchy–Riemann equations are \[\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}\qquad\text{and}\qquad\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}.\]`,
+      'Direct analyticity tests, harmonic conjugates, and computations of derivatives.');
     add('analytic', 'Theorem', 'III.2.29', 'Cauchy–Riemann criterion', 'Chapter III, §2 — Analytic functions', 42,
       String.raw`Let $u$ and $v$ be real-valued functions defined on a region $G$ and suppose that $u$ and $v$ have continuous partial derivatives. Then $f:G\to\mathbb C$ defined by $f(z)=u(z)+iv(z)$ is analytic iff $u$ and $v$ satisfy the Cauchy–Riemann equations.`,
       'Direct analyticity checks, reflection, and harmonic conjugates.');
@@ -579,6 +669,9 @@
     add('integration', 'Proposition', 'IV.1.17', 'Basic properties and estimate for line integrals', 'Chapter IV, §1 — Riemann–Stieltjes integrals', 65,
       String.raw`Let $\gamma$ be a rectifiable curve and suppose that $f$ is a function continuous on $\{\gamma\}$. Then: (a) $\int_\gamma f=-\int_{-\gamma}f$; (b) $\left|\int_\gamma f\right|\le\int_\gamma |f|\,|dz|\le V(\gamma)\sup\{|f(z)|:z\in\{\gamma\}\}$; (c) if $c\in\mathbb C$ then $\int_\gamma f(z)\,dz=\int_{\gamma+c}f(z-c)\,dz$.`,
       'Large-arc limits, Liouville contour proofs, and vanishing integrals.');
+    add('integration', 'Definition', 'IV.§1', 'Primitive', 'Chapter IV, §1 — Riemann–Stieltjes integrals', 65,
+      String.raw`$F$ is a primitive of $f$ when $F'=f$.`,
+      'The fundamental theorem for line integrals, path independence, and logarithms.');
     add('integration', 'Theorem', 'IV.1.18', 'Fundamental theorem for complex line integrals', 'Chapter IV, §1 — Riemann–Stieltjes integrals', 65,
       String.raw`Let $G$ be open in $\mathbb C$ and let $\gamma$ be a rectifiable path in $G$ with initial and end points $\alpha$ and $\beta$ respectively. If $f:G\to\mathbb C$ is a continuous function with a primitive $F:G\to\mathbb C$, then $\int_\gamma f=F(\beta)-F(\alpha)$.`,
       'Primitives, path independence, and integrals of powers.');
@@ -606,6 +699,12 @@
     add('integration', 'Theorem', 'IV.2.14', 'Cauchy estimates', 'Chapter IV, §2 — Power-series representation', 74,
       String.raw`Let $f$ be analytic in $B(a;R)$ and suppose $|f(z)|\le M$ for all $z$ in $B(a;R)$. Then $|f^{(n)}(a)|\le n!M/R^n$.`,
       'Liouville, polynomial-growth results, derivative bounds, and normal families.');
+    add('integration', 'Definition', 'IV.3.1', 'Zero and multiplicity', 'Chapter IV, §3 — Zeros of an analytic function', 76,
+      String.raw`If $f:G\to\mathbb C$ is analytic and $a$ in $G$ satisfies $f(a)=0$ then $a$ is a zero of $f$ of multiplicity $m\ge1$ if there is an analytic function $g:G\to\mathbb C$ such that $f(z)=(z-a)^m g(z)$ where $g(a)\ne0$.`,
+      'Counting zeros correctly in factorization, residues, and Rouché arguments.');
+    add('integration', 'Definition', 'IV.3.2', 'Entire function', 'Chapter IV, §3 — Zeros of an analytic function', 77,
+      String.raw`An entire function is a function which is defined and analytic in the whole complex plane $\mathbb C$.`,
+      'Liouville, polynomial growth, factorization, and Picard problems.');
     add('integration', 'Theorem', 'IV.3.4', 'Liouville’s theorem', 'Chapter IV, §3 — Zeros of an analytic function', 77,
       String.raw`If $f$ is a bounded entire function then $f$ is constant.`,
       'FTA proofs, bounded ratios, harmonic Liouville, and entire growth.');
@@ -624,6 +723,9 @@
     add('integration', 'Corollary', 'IV.3.10', 'Isolated zeros', 'Chapter IV, §3 — Zeros of an analytic function', 79,
       String.raw`If $f:G\to\mathbb C$ is analytic and not constant, $a\in G$, and $f(a)=0$ then there is an $R>0$ such that $B(a;R)\subset G$ and $f(z)\ne0$ for $0<|z-a|<R$.`,
       'Critical sets, local factorization, and zero counting.');
+    add('integration', 'Definition', 'IV.4.2', 'Index (winding number)', 'Chapter IV, §4 — Index of a closed curve', 81,
+      String.raw`If $\gamma$ is a closed rectifiable curve in $\mathbb C$ then for $a\notin\{\gamma\}$, \[n(\gamma;a)=\frac{1}{2\pi i}\int_\gamma (z-a)^{-1}\,dz\] is called the index of $\gamma$ with respect to the point $a$. It is also sometimes called the winding number of $\gamma$ around $a$.`,
+      'Cauchy formulas, residues, and contours that are not simple circles.');
     add('integration', 'Theorem', 'IV.4.4', 'Index of a closed curve', 'Chapter IV, §4 — Index of a closed curve', 82,
       String.raw`Let $\gamma$ be a closed rectifiable curve in $\mathbb C$. Then $n(\gamma;a)$ is constant for $a$ belonging to a component of $G=\mathbb C-\{\gamma\}$. Also, $n(\gamma;a)=0$ for $a$ belonging to the unbounded component of $G$.`,
       'Winding-number integrals, logarithm obstruction, and noncircular contours.');
@@ -651,6 +753,9 @@
     add('integration', 'Theorem', 'IV.6.7', 'Cauchy’s theorem — third version', 'Chapter IV, §6 — Homotopy and simple connectivity', 90,
       String.raw`If $\gamma_0$ and $\gamma_1$ are two closed rectifiable curves in $G$ and $\gamma_0\simeq\gamma_1$ then $\int_{\gamma_0}f=\int_{\gamma_1}f$ for every function $f$ analytic on $G$.`,
       'Deforming contours and evaluating integrals on complicated paths.');
+    add('integration', 'Definition', 'IV.6.14', 'Simply connected open set', 'Chapter IV, §6 — Homotopy and simple connectivity', 93,
+      String.raw`An open set $G$ is simply connected if $G$ is connected and every closed curve in $G$ is homotopic to zero.`,
+      'Global primitives, logarithms, roots, and the Riemann mapping theorem.');
     add('integration', 'Theorem', 'IV.6.15', 'Cauchy’s theorem — fourth version', 'Chapter IV, §6 — Homotopy and simple connectivity', 94,
       String.raw`If $G$ is simply connected then $\int_\gamma f=0$ for every closed rectifiable curve $\gamma$ and every analytic function $f$.`,
       'Cauchy theory on simply connected regions.');
@@ -682,12 +787,21 @@
     category('singularities', '4. Singularities, residues, and zero counting',
       'Laurent classification, residue calculus, the argument principle, and Rouché’s theorem.');
 
+    add('singularities', 'Definition', 'V.1.1', 'Isolated and removable singularities', 'Chapter V, §1 — Classification of singularities', 103,
+      String.raw`A function $f$ has an isolated singularity at $z=a$ if there is an $R>0$ such that $f$ is defined and analytic in $B(a;R)-\{a\}$ but not in $B(a;R)$. The point $a$ is called a removable singularity if there is an analytic function $g:B(a;R)\to\mathbb C$ such that $g(z)=f(z)$ for $0<|z-a|<R$.`,
+      'Classifying punctures and extending quotients across common zeros.');
     add('singularities', 'Theorem', 'V.1.2', 'Removable-singularity criterion', 'Chapter V, §1 — Classification of singularities', 103,
       String.raw`If $f$ has an isolated singularity at $a$ then the point $z=a$ is a removable singularity iff $\lim_{z\to a}(z-a)f(z)=0$.`,
       'Punctured-domain maps, quotients at common zeros, and bounded extensions.');
+    add('singularities', 'Definition', 'V.1.3', 'Pole and essential singularity', 'Chapter V, §1 — Classification of singularities', 105,
+      String.raw`If $z=a$ is an isolated singularity of $f$ then $a$ is a pole of $f$ if $\lim_{z\to a}|f(z)|=\infty$. That is, for any $M>0$ there is a number $\varepsilon>0$ such that $|f(z)|\ge M$ whenever $0<|z-a|<\varepsilon$. If an isolated singularity is neither a pole nor a removable singularity it is called an essential singularity.`,
+      'Distinguishing the three types of isolated singularity.');
     add('singularities', 'Proposition', 'V.1.4', 'Representation at a pole', 'Chapter V, §1 — Classification of singularities', 105,
       String.raw`If $G$ is a region with $a$ in $G$ and if $f$ is analytic on $G-\{a\}$ with a pole at $z=a$ then there is a positive integer $m$ and an analytic function $g:G\to\mathbb C$ such that $f(z)=\dfrac{g(z)}{(z-a)^m}$.`,
       'Pole order, singular parts, and residue computation.');
+    add('singularities', 'Definition', 'V.1.6', 'Order of a pole', 'Chapter V, §1 — Classification of singularities', 105,
+      String.raw`If $f$ has a pole at $z=a$ and $m$ is the smallest positive integer such that $f(z)(z-a)^m$ has a removable singularity at $z=a$ then $f$ has a pole of order $m$ at $z=a$.`,
+      'Higher-order residue formulas and Laurent principal parts.');
     add('singularities', 'Development', 'V.1.11', 'Laurent series development', 'Chapter V, §1 — Classification of singularities', 107,
       String.raw`Let $f$ be analytic in the annulus $\operatorname{ann}(a;R_1,R_2)$. Then $f(z)=\sum_{n=-\infty}^{\infty}a_n(z-a)^n$ where the convergence is absolute and uniform over $\overline{\operatorname{ann}(a;r_1,r_2)}$ if $R_1<r_1<r_2<R_2$. Also the coefficients $a_n$ are given by the formula $a_n=\dfrac1{2\pi i}\int_\gamma\dfrac{f(z)}{(z-a)^{n+1}}\,dz$, where $\gamma$ is the circle $|z-a|=r$ for any $r$, $R_1<r<R_2$. Moreover, this series is unique.`,
       'Laurent expansions, principal parts, residues, and singularity classification.');
@@ -706,12 +820,18 @@
     add('singularities', 'Proposition', 'V.2.4', 'Residue at a pole', 'Chapter V, §2 — Residues', 113,
       String.raw`Suppose $f$ has a pole of order $m$ at $z=a$ and put $g(z)=(z-a)^mf(z)$; then $\operatorname{Res}(f;a)=\dfrac1{(m-1)!}g^{(m-1)}(a)$.`,
       'High-order residues, including Fall 2025 Part II.');
+    add('singularities', 'Definition', 'V.3.3', 'Meromorphic function', 'Chapter V, §3 — Argument principle', 123,
+      String.raw`If $G$ is open and $f$ is a function defined and analytic in $G$ except for poles, then $f$ is a meromorphic function on $G$.`,
+      'Residue theorem, argument principle, and Rouché’s theorem.');
     add('singularities', 'Theorem', 'V.3.4', 'Argument principle', 'Chapter V, §3 — Argument principle', 123,
       String.raw`Let $f$ be meromorphic in $G$ with poles $p_1,p_2,\ldots,p_m$ and zeros $z_1,z_2,\ldots,z_n$ counted according to multiplicity. If $\gamma$ is a closed rectifiable curve in $G$ with $\gamma\simeq0$ and not passing through $p_1,\ldots,p_m;z_1,\ldots,z_n$; then $\dfrac1{2\pi i}\int_\gamma\dfrac{f'(z)}{f(z)}\,dz=\sum_{k=1}^{n}n(\gamma;z_k)-\sum_{j=1}^{m}n(\gamma;p_j)$.`,
       'Counting solutions and change of argument.');
     add('singularities', 'Theorem', 'V.3.8', 'Rouché’s theorem', 'Chapter V, §3 — Argument principle', 125,
       String.raw`Suppose $f$ and $g$ are meromorphic in a neighborhood of $\overline{B(a;R)}$ with no zeros or poles on the circle $\gamma=\{z:|z-a|=R\}$. If $Z_f,Z_g$ ($P_f,P_g$) are the number of zeros (poles) of $f$ and $g$ inside $\gamma$ counted according to their multiplicities and if $|f(z)+g(z)|<|f(z)|+|g(z)|$ on $\gamma$, then $Z_f-P_f=Z_g-P_g$.`,
       'All qualifying-exam root counts and Hurwitz-type arguments.');
+    add('singularities', 'Corollary', 'V.3.8a', 'Classical Rouché inequality', 'Chapter V, §3 — Argument principle', 126,
+      String.raw`Under the hypotheses of Rouché’s Theorem, if $|f(z)+g(z)|<|g(z)|$ on $\gamma$, then $Z_f-P_f=Z_g-P_g$.`,
+      'The usual comparison form used to count zeros of a perturbation.');
 
     category('maximum', '5. Maximum principles, Schwarz lemma, and growth',
       'Boundary estimates, disk automorphisms, three-circles convexity, and unbounded-domain maximum principles.');
@@ -750,6 +870,9 @@
     category('families', '6. Analytic convergence, normal families, and factorization',
       'The convergence and construction theorems behind the advanced Part II problems.');
 
+    add('families', 'Definition', 'VII.1.14', 'Normal family', 'Chapter VII, §1 — The space $C(G,\Omega)$', 146,
+      String.raw`A set $\mathcal F\subset C(G,\Omega)$ is normal if each sequence in $\mathcal F$ has a subsequence which converges to a function $f$ in $C(G,\Omega)$.`,
+      'Understanding the conclusion of Arzelà–Ascoli and Montel.');
     add('families', 'Theorem', 'VII.1.23', 'Arzelà–Ascoli theorem', 'Chapter VII, §1 — The space $C(G,\Omega)$', 148,
       String.raw`A set $\mathcal F\subset C(G,\Omega)$ is normal iff the following two conditions are satisfied: (a) for each $z$ in $G$, $\{f(z):f\in\mathcal F\}$ has compact closure in $\Omega$; (b) $\mathcal F$ is equicontinuous at each point of $G$.`,
       'Normality in spaces of continuous functions.');
@@ -768,12 +891,18 @@
     add('families', 'Corollary', 'VII.2.6', 'Zero-free limits', 'Chapter VII, §2 — Spaces of analytic functions', 152,
       String.raw`If $G$ is a region and $\{f_n\}\subset H(G)$ converges to $f$ in $H(G)$ and each $f_n$ never vanishes on $G$ then either $f\equiv0$ or $f$ never vanishes.`,
       'Hurwitz applications and univalent-limit arguments.');
+    add('families', 'Definition', 'VII.2.7', 'Locally bounded family', 'Chapter VII, §2 — Spaces of analytic functions', 153,
+      String.raw`A set $\mathcal F\subset H(G)$ is locally bounded if for each point $a$ in $G$ there are constants $M$ and $r>0$ such that for all $f$ in $\mathcal F$, $|f(z)|\le M$ for $|z-a|<r$.`,
+      'Applying Montel’s theorem and proving compact-set bounds.');
     add('families', 'Lemma', 'VII.2.8', 'Local boundedness criterion', 'Chapter VII, §2 — Spaces of analytic functions', 153,
       String.raw`A set $\mathcal F$ in $H(G)$ is locally bounded iff for each compact set $K\subset G$ there is a constant $M$ such that $|f(z)|\le M$ for all $f$ in $\mathcal F$ and $z$ in $K$.`,
       'Area-bound normality and composition of normal families.');
     add('families', 'Theorem', 'VII.2.9', 'Montel’s theorem', 'Chapter VII, §2 — Spaces of analytic functions', 153,
       String.raw`A family $\mathcal F$ in $H(G)$ is normal iff $\mathcal F$ is locally bounded.`,
       'All normal-family questions in the qualifying exams.');
+    add('families', 'Definition', 'VII.4.1', 'Conformal equivalence', 'Chapter VII, §4 — Riemann mapping theorem', 160,
+      String.raw`A region $G_1$ is conformally equivalent to $G_2$ if there is an analytic function $f:G_1\to\mathbb C$ such that $f$ is one-one and $f(G_1)=G_2$.`,
+      'Riemann mapping and classification of disk and half-plane maps.');
     add('families', 'Theorem', 'VII.4.2', 'Riemann mapping theorem', 'Chapter VII, §4 — Riemann mapping theorem', 160,
       String.raw`Let $G$ be a simply connected region which is not the whole plane and let $a\in G$. Then there is a unique analytic function $f:G\to\mathbb C$ having the properties: (a) $f(a)=0$ and $f'(a)>0$; (b) $f$ is one-one; (c) $f(G)=\{z:|z|<1\}$.`,
       'Disk/half-plane equivalence, symmetry, and punctured-domain questions.');
@@ -786,6 +915,9 @@
     add('families', 'Theorem', 'VII.5.9', 'Analytic infinite-product theorem', 'Chapter VII, §5 — Weierstrass factorization', 167,
       String.raw`Let $G$ be a region in $\mathbb C$ and let $\{f_n\}$ be a sequence in $H(G)$ such that no $f_n$ is identically zero. If $\sum[f_n(z)-1]$ converges absolutely and uniformly on compact subsets of $G$ then $\prod_{n=1}^{\infty}f_n(z)$ converges in $H(G)$ to an analytic function $f(z)$. If $a$ is a zero of $f$ then $a$ is a zero of only a finite number of the functions $f_n$, and the multiplicity of the zero of $f$ at $a$ is the sum of the multiplicities of the zeros of the functions $f_n$ at $a$.`,
       'Infinite-product solutions and factorization of sine.');
+    add('families', 'Definition', 'VII.5.10', 'Elementary factors', 'Chapter VII, §5 — Weierstrass factorization', 168,
+      String.raw`An elementary factor is one of the following functions $E_p(z)$ for $p=0,1,\ldots$: \[E_0(z)=1-z,\qquad E_p(z)=(1-z)\exp\left(z+\frac{z^2}{2}+\cdots+\frac{z^p}{p}\right),\quad p\ge1.\]`,
+      'Canonical products and Weierstrass factorization.');
     add('families', 'Theorem', 'VII.5.12', 'Canonical product theorem', 'Chapter VII, §5 — Weierstrass factorization', 169,
       String.raw`Let $\{a_n\}$ be a sequence in $\mathbb C$ such that $\lim|a_n|=\infty$ and $a_n\ne0$ for all $n\ge1$. (This is not a sequence of distinct points; but, by hypothesis, no point is repeated an infinite number of times.) If $\{p_n\}$ is any sequence of integers such that $\sum_{n=1}^{\infty}(r/|a_n|)^{p_n+1}<\infty$ for all $r>0$ then $f(z)=\prod_{n=1}^{\infty}E_{p_n}(z/a_n)$ converges in $H(\mathbb C)$. The function $f$ is an entire function with zeros only at the points $a_n$. If $z_0$ occurs in the sequence $\{a_n\}$ exactly $m$ times then $f$ has a zero at $z=z_0$ of multiplicity $m$. Furthermore, if $p_n=n-1$ then the preceding condition will be satisfied.`,
       'Entire functions with assigned discrete zero sets.');
@@ -817,6 +949,9 @@
     add('approximation', 'Theorem', 'IX.1.1', 'Schwarz reflection principle', 'Chapter IX, §1 — Schwarz reflection principle', 210,
       String.raw`Let $G$ be a region such that $G=G^*$. If $f:G_+\cup G_0\to\mathbb C$ is a continuous function which is analytic on $G_+$ and if $f(x)$ is real for $x$ in $G_0$, then there is an analytic function $g:G\to\mathbb C$ such that $g(z)=f(z)$ for $z$ in $G_+\cup G_0$.`,
       'Real/imaginary-axis symmetry and bounded half-plane problems.');
+    add('approximation', 'Definition', 'IX.2.1', 'Function element and germ', 'Chapter IX, §2 — Analytic continuation along a path', 214,
+      String.raw`A function element is a pair $(f,G)$ where $G$ is a region and $f$ is an analytic function on $G$. For a given function element $(f,G)$ define the germ of $f$ at $a$ to be the collection of all function elements $(g,D)$ such that $a\in D$ and $f(z)=g(z)$ for all $z$ in a neighborhood of $a$. Denote the germ by $[f]_a$.`,
+      'Reading the Monodromy theorem and analytic-continuation statements.');
     add('approximation', 'Theorem', 'IX.3.6', 'Monodromy theorem', 'Chapter IX, §3 — Monodromy theorem', 219,
       String.raw`Let $(f,D)$ be a function element and let $G$ be a region containing $D$ such that $(f,D)$ admits unrestricted continuation in $G$. Let $a\in D$, $b\in G$ and let $\gamma_0$ and $\gamma_1$ be paths in $G$ from $a$ to $b$; let $\{(f_t,D_t):0\le t\le1\}$ and $\{(g_t,B_t):0\le t\le1\}$ be analytic continuations of $(f,D)$ along $\gamma_0$ and $\gamma_1$ respectively. If $\gamma_0$ and $\gamma_1$ are FEP homotopic in $G$ then $[f_1]_b=[g_1]_b$.`,
       'Path independence under fixed-end-point homotopy.');
@@ -827,12 +962,21 @@
     category('harmonic', '8. Harmonic and subharmonic functions',
       'Mean values, maximum principles, Poisson integrals, Harnack convergence, and conformal invariance.');
 
+    add('harmonic', 'Definition', 'X.1.1', 'Harmonic function', 'Chapter X, §1 — Basic properties', 251,
+      String.raw`If $G$ is an open subset of $\mathbb C$ then a function $u:G\to\mathbb R$ is harmonic if $u$ has continuous second partial derivatives and \[\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}=0.\] This equation is called Laplace’s equation.`,
+      'Mean values, harmonic maximum principles, and Dirichlet problems.');
+    add('harmonic', 'Definition', 'X.1.2', 'Harmonic conjugates', 'Chapter X, §1 — Basic properties', 251,
+      String.raw`If $f:G\to\mathbb C$ is an analytic function then $u=\operatorname{Re}f$ and $v=\operatorname{Im}f$ are called harmonic conjugates.`,
+      'Constructing analytic functions from harmonic real or imaginary parts.');
     add('harmonic', 'Proposition', 'X.1.3', 'Smoothness of harmonic functions', 'Chapter X, §1 — Basic properties', 252,
       String.raw`If $u:G\to\mathbb R$ is harmonic then $u$ is infinitely differentiable.`,
       'Harmonic critical points, gradients, and conjugates.');
     add('harmonic', 'Theorem', 'X.1.4', 'Mean-value theorem', 'Chapter X, §1 — Basic properties', 253,
       String.raw`If $u:G\to\mathbb R$ is a harmonic function and $\overline{B(a;r)}$ is a closed disk contained in $G$, then $u(a)=\dfrac1{2\pi}\int_0^{2\pi}u(a+re^{i\theta})\,d\theta$.`,
       'Harmonic Liouville, maximum principles, and area mean values.');
+    add('harmonic', 'Definition', 'X.1.5', 'Mean Value Property', 'Chapter X, §1 — Basic properties', 253,
+      String.raw`A continuous function $u:G\to\mathbb R$ has the Mean Value Property (MVP) if whenever $\overline{B(a;r)}\subset G$, \[u(a)=\frac1{2\pi}\int_0^{2\pi}u(a+re^{i\theta})\,d\theta.\]`,
+      'The harmonic maximum principles and converse mean-value theorem.');
     add('harmonic', 'Theorem', 'X.1.6', 'Maximum principle — first version', 'Chapter X, §1 — Basic properties', 253,
       String.raw`Let $G$ be a region and suppose that $u$ is a continuous real valued function on $G$ with the MVP. If there is a point $a$ in $G$ such that $u(a)\ge u(z)$ for all $z$ in $G$ then $u$ is a constant function.`,
       'Interior extrema and harmonic open mapping.');
@@ -872,6 +1016,9 @@
     add('harmonic', 'Theorem', 'X.2.16', 'Harnack’s theorem', 'Chapter X, §2 — Harmonic functions on a disk', 261,
       String.raw`Let $G$ be a region. (a) The metric space $\operatorname{Har}(G)$ is complete. (b) If $\{u_n\}$ is a sequence in $\operatorname{Har}(G)$ such that $u_1\le u_2\le\cdots$ then either $u_n(z)\to\infty$ uniformly on compact subsets of $G$ or $\{u_n\}$ converges in $\operatorname{Har}(G)$ to a harmonic function.`,
       'Compactness and convergence of harmonic functions.');
+    add('harmonic', 'Definition', 'X.3.1', 'Subharmonic and superharmonic functions', 'Chapter X, §3 — Subharmonic functions', 264,
+      String.raw`Let $G$ be a region and let $\varphi:G\to\mathbb R$ be a continuous function. $\varphi$ is a subharmonic function if whenever $\overline{B(a;r)}\subset G$, \[\varphi(a)\le\frac1{2\pi}\int_0^{2\pi}\varphi(a+re^{i\theta})\,d\theta.\] $\varphi$ is a superharmonic function if whenever $\overline{B(a;r)}\subset G$, \[\varphi(a)\ge\frac1{2\pi}\int_0^{2\pi}\varphi(a+re^{i\theta})\,d\theta.\]`,
+      'Subharmonic maximum principles, comparison, and Perron arguments.');
     add('harmonic', 'Theorem', 'X.3.2', 'Maximum principle — third version', 'Chapter X, §3 — Subharmonic functions', 264,
       String.raw`Let $G$ be a region and let $\varphi:G\to\mathbb R$ be a subharmonic function. If there is a point $a$ in $G$ with $\varphi(a)\ge\varphi(z)$ for all $z$ in $G$ then $\varphi$ is a constant function.`,
       'Maximum arguments for subharmonic functions.');
@@ -907,6 +1054,39 @@
       : `${GOOGLE_BOOKS}&pg=PA${printedPage}`;
     const reference = document.getElementById('reference');
     const jumpLinks = document.getElementById('jump-links');
+    const essentialResults = new Set([
+      'III.2.29', 'IV.2.8', 'IV.2.13', 'IV.2.14', 'IV.3.4', 'IV.3.5', 'IV.3.7',
+      'IV.5.4', 'IV.5.10', 'IV.6.15', 'IV.6.16', 'IV.6.17', 'IV.7.4', 'IV.7.5',
+      'V.1.2', 'V.1.11', 'V.1.18', 'V.2.2', 'V.2.4', 'V.3.4', 'V.3.8', 'V.3.8a',
+      'VI.1.1', 'VI.1.2', 'VI.1.4', 'VI.2.1', 'VII.2.1', 'VII.2.5', 'VII.2.6',
+      'VII.2.9', 'VII.4.2', 'VIII.1.7', 'VIII.2.2', 'VIII.3.2', 'X.1.4', 'X.1.6',
+      'X.1.7', 'X.1.10', 'X.2.4', 'X.2.11', 'X.2.14', 'X.2.16', 'X.3.2', 'X.3.3',
+      'XII.2.3'
+    ]);
+    const importantResults = new Set([
+      'II.2.3', 'II.2.4', 'II.4.9', 'II.4.10', 'II.5.8', 'II.5.12', 'II.6.1',
+      'II.6.2', 'III.1.3', 'III.2.9', 'III.2.10', 'III.2.19', 'III.2.20', 'III.2.21',
+      'III.2.30', 'III.3.14', 'IV.1.17', 'IV.1.18', 'IV.2.7', 'IV.2.11', 'IV.3.8',
+      'IV.3.9', 'IV.3.10', 'IV.4.4', 'IV.5.6', 'IV.5.9', 'IV.6.6', 'IV.6.7',
+      'IV.7.6', 'IV.§8', 'V.1.4', 'V.1.21', 'VI.2.2', 'VI.2.5', 'VI.3.13',
+      'VI.4.1', 'VII.1.23', 'VII.2.4', 'VII.2.8', 'VII.5.9', 'VII.5.12',
+      'VII.5.14', 'VII.5.15', 'VIII.1.14', 'VIII.1.15', 'IX.1.1', 'IX.3.6',
+      'IX.3.9', 'X.1.3', 'X.1.9', 'X.2.9', 'X.2.10', 'X.3.4', 'X.3.5'
+    ]);
+    const importanceFor = item => {
+      if (item.kind === 'Definition' || item.kind === 'Formula') {
+        return { key: 'definition', label: item.kind === 'Formula' ? 'Formula' : 'Definition' };
+      }
+      if (essentialResults.has(item.number)) return { key: 'essential', label: 'Essential' };
+      if (importantResults.has(item.number)) return { key: 'important', label: 'Important' };
+      return { key: 'supporting', label: 'Supporting' };
+    };
+    const sourceLabelFor = item => {
+      if (item.number === 'V.3.8a') return 'Classical form noted by Conway';
+      if (item.kind === 'Definition') return 'Conway’s definition';
+      if (item.kind === 'Formula') return 'Conway’s formula';
+      return 'Conway’s statement';
+    };
 
     for (const cat of categories) {
       const link = document.createElement('a');
@@ -923,8 +1103,11 @@
 
       for (const item of results.filter(result => result.category === cat.id)) {
         const article = document.createElement('article');
-        article.className = 'result';
-        article.dataset.search = `${item.number} ${item.title} ${item.section} ${item.kind} ${item.statement} ${item.used}`.toLowerCase();
+        const importance = importanceFor(item);
+        article.className = `result importance-${importance.key}`;
+        article.id = `result-${slug(`${item.number}-${item.title}`)}`;
+        article.dataset.priority = importance.key;
+        article.dataset.search = `${item.number} ${item.title} ${item.section} ${item.kind} ${importance.label} ${item.statement} ${item.used}`.toLowerCase();
         article.innerHTML = `
           <div class="result-head">
             <span class="kind">${item.kind}</span>
@@ -932,7 +1115,7 @@
             <span class="result-title">${item.title}</span>
             <span class="meta">${item.section} · <a class="page-link" href="${pageHref(item.page)}">printed p. ${item.page}</a></span>
           </div>
-          <div class="statement"><span class="statement-label">Conway’s statement</span>${item.statement}</div>
+          <div class="statement"><span class="statement-label">${sourceLabelFor(item)}</span>${item.statement}</div>
           <div class="used"><strong>Used for:</strong> ${item.used}</div>`;
         grid.appendChild(article);
       }
@@ -945,7 +1128,10 @@
       const query = search.value.trim().toLowerCase();
       let visible = 0;
       document.querySelectorAll('.result').forEach(card => {
-        const match = !query || card.dataset.search.includes(query);
+        const match = !query
+          || (query === 'type:reference' && card.dataset.priority === 'definition')
+          || (query === 'type:result' && card.dataset.priority !== 'definition')
+          || (!query.startsWith('type:') && card.dataset.search.includes(query));
         card.classList.toggle('hidden', !match);
         if (match) visible++;
       });
@@ -982,6 +1168,11 @@
       links.forEach(link => link.addEventListener('click', event => {
         event.preventDefault();
         showView(link.dataset.view);
+        if (link.dataset.view === 'theorems') {
+          const theoremSearch = document.getElementById('search');
+          theoremSearch.value = link.dataset.query || '';
+          theoremSearch.dispatchEvent(new Event('input'));
+        }
         links.forEach(item => item.classList.toggle('active', item === link));
         requestAnimationFrame(() => {
           document.getElementById(link.dataset.target)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
