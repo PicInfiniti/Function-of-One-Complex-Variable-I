@@ -445,7 +445,7 @@
     <div id="reference"></div>
 
     <footer>
-      Source: <a href="Conway_Functions_of_one_complex_variable.pdf">Conway, <em>Functions of One Complex Variable I</em>, 2nd ed.</a> The page references were checked against the supplied 331-page PDF. No proofs are reproduced here.
+      Source: <a href="https://link.springer.com/book/10.1007/978-1-4612-6313-5">Conway, <em>Functions of One Complex Variable I</em>, 2nd ed.</a> The page references were checked against the supplied 331-page PDF. No proofs are reproduced here.
     </footer>
   
       </section>
@@ -481,7 +481,8 @@
   </script>
   <script>
 
-    const PDF = 'Conway_Functions_of_one_complex_variable.pdf';
+    const LOCAL_PDF = 'Conway_Functions_of_one_complex_variable.pdf';
+    const GOOGLE_BOOKS = 'https://books.google.com/books?id=9LtfZr1snG0C';
     const categories = [];
     const results = [];
 
@@ -901,6 +902,9 @@
 
     const slug = text => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     const pdfPage = printedPage => printedPage + 14;
+    const pageHref = printedPage => location.protocol === 'file:'
+      ? `${LOCAL_PDF}#page=${pdfPage(printedPage)}`
+      : `${GOOGLE_BOOKS}&pg=PA${printedPage}`;
     const reference = document.getElementById('reference');
     const jumpLinks = document.getElementById('jump-links');
 
@@ -926,7 +930,7 @@
             <span class="kind">${item.kind}</span>
             <span class="result-number">${item.number}</span>
             <span class="result-title">${item.title}</span>
-            <span class="meta">${item.section} · <a class="page-link" href="${PDF}#page=${pdfPage(item.page)}">printed p. ${item.page}</a></span>
+            <span class="meta">${item.section} · <a class="page-link" href="${pageHref(item.page)}">printed p. ${item.page}</a></span>
           </div>
           <div class="statement"><span class="statement-label">Conway’s statement</span>${item.statement}</div>
           <div class="used"><strong>Used for:</strong> ${item.used}</div>`;
