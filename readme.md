@@ -8,9 +8,9 @@ qualifying exams.
 
 - `Exercise/complex.tex` contains solutions to selected exercises from Conway's
   book. The compiled PDF is `Exercise/complex.pdf`.
-- `Qualifying Exam/main.tex` contains qualifying exam material. August 2018
-  includes solved problems; August 2020, August 2024, and January 2025 currently
-  include problem statements prepared from the original exam PDFs.
+- `Qualifying Exam/main.tex` contains problem statements and working solutions
+  from the August 2018, August 2020, August 2024, and January 2025 qualifying
+  exams. August 2022 currently contains question statements only.
 
 ## Build
 
