@@ -1486,7 +1486,7 @@
 	\[
 		\delta(z)=
 		\begin{cases}
-			1, & z=0,\\
+			1, & z=0,     \\
 			0, & z\neq 0.
 		\end{cases}
 	\]
@@ -2072,118 +2072,128 @@
 
 \section{Part I}
 \begin{exercise}
-	Prove the Fundamental Theorem of Algebra by completing the following two steps
-	for a nonconstant polynomial
+	Prove the Fundamental Theorem of Algebra by completing the following two
+	steps for a nonconstant polynomial
 	\[
 		p(z)=a_0+a_1z+\cdots+a_nz^n,
 	\]
-	where \(a_n\neq 0\) and \(n\ge 1\).
+	where \(a_n\neq 0\) and \(n\geq 1\).
+
 	\begin{enumerate}
-		\item[(a)] Show that there is a nonzero polynomial \(q(z)\) such that
+		\item[(a)] Show that there exists a nonzero polynomial \(q(z)\) such that
 			\[
-				\frac{1}{zp(z)}=\frac{1}{zp(0)}+\frac{q(z)}{p(z)},
+				\frac{1}{z}
+				=
+				\frac{p(0)}{zp(z)}
+				+
+				\frac{q(z)}{p(z)},
 			\]
 			for \(z\neq 0\) and \(p(z)\neq 0\).
-		\item[(b)] By means of integration over the circle \(C_R=Re^{it}\) with
-			\(t\in[0,2\pi]\), show that \(p(z_0)=0\) for some point
-			\(z_0\) in \(\mathbb{C}\).
+
+		\item[(b)] By integrating over the positively oriented circle
+			\[
+				C_R=\{Re^{it}:0\leq t\leq 2\pi\},
+			\]
+			show that \(p(z_0)=0\) for some \(z_0\in\mathbb{C}\).
 	\end{enumerate}
 \end{exercise}
 
 \begin{proof}[Solution]
-	If \(p(0)=0\), then \(z_0=0\) is already a zero of \(p\), and there is
-	nothing to prove. Thus, suppose that
-	\[
-		p(0)=a_0\neq 0.
-	\]
-
 	\begin{enumerate}
 		\item[(a)]
 			Since
 			\[
-				p(z)-p(0)=a_1z+a_2z^2+\cdots+a_nz^n
-				=z\bigl(a_1+a_2z+\cdots+a_nz^{n-1}\bigr),
-			\]
-			define
-			\[
-				q(z)
+				p(z)-p(0)
 				=
-				-\frac{a_1+a_2z+\cdots+a_nz^{n-1}}{p(0)}.
+				a_1z+a_2z^2+\cdots+a_nz^n,
 			\]
-			This is a polynomial, and it is nonzero because \(p\) is nonconstant.
+			we may write
+			\[
+				p(z)-p(0)
+				=
+				z\left(a_1+a_2z+\cdots+a_nz^{n-1}\right).
+			\]
+			Define
+			\[
+				q(z)=a_1+a_2z+\cdots+a_nz^{n-1}.
+			\]
+			Then \(q\) is a polynomial. Moreover, \(q\neq 0\), since the
+			coefficient of \(z^{n-1}\) is \(a_n\neq 0\).
 
 			For \(z\neq 0\) and \(p(z)\neq 0\), we have
 			\[
 				\begin{aligned}
-					\frac{1}{zp(z)}-\frac{1}{zp(0)}
+					\frac{p(0)}{zp(z)}+\frac{q(z)}{p(z)}
 					 & =
-					\frac{p(0)-p(z)}{zp(z)p(0)}                  \\
+					\frac{p(0)+zq(z)}{zp(z)}     \\
 					 & =
-					-\frac{p(z)-p(0)}{zp(z)p(0)}                 \\
+					\frac{p(0)+p(z)-p(0)}{zp(z)} \\
 					 & =
-					-\frac{a_1+a_2z+\cdots+a_nz^{n-1}}{p(0)p(z)} \\
+					\frac{p(z)}{zp(z)}           \\
 					 & =
-					\frac{q(z)}{p(z)}.
+					\frac{1}{z}
 				\end{aligned}
 			\]
 			Therefore,
 			\[
-				\frac{1}{zp(z)}
+				\frac{1}{z}
 				=
-				\frac{1}{zp(0)}+\frac{q(z)}{p(z)}.
+				\frac{p(0)}{zp(z)}
+				+
+				\frac{q(z)}{p(z)}
 			\]
 
 		\item[(b)]
 			Suppose, toward a contradiction, that \(p\) has no zeros in
-			\(\mathbb C\). Then the function
+			\(\mathbb{C}\). Then \(p(0)\neq 0\), and the function
 			\[
 				\frac{q(z)}{p(z)}
 			\]
 			is entire.
-			Let
+
+			Integrating the identity from part \textup{(a)} over \(C_R\), we obtain
 			\[
-				C_R(t)=Re^{it},\qquad 0\leq t\leq 2\pi,
-			\]
-			be positively oriented. Integrating the identity from part (a) over
-			\(C_R\), we obtain
-			\[
-				\int_{C_R}\frac{1}{zp(z)}\,dz
+				\int_{C_R}\frac{1}{z}\,dz
 				=
-				\frac{1}{p(0)}\int_{C_R}\frac{1}{z}\,dz
+				p(0)\int_{C_R}\frac{1}{zp(z)}\,dz
 				+
-				\int_{C_R}\frac{q(z)}{p(z)}\,dz.
+				\int_{C_R}\frac{q(z)}{p(z)}\,dz
 			\]
 			By Cauchy's theorem,
 			\[
-				\int_{C_R}\frac{q(z)}{p(z)}\,dz=0,
+				\int_{C_R}\frac{q(z)}{p(z)}\,dz=0
 			\]
-			while
+			Also,
 			\[
-				\int_{C_R}\frac{1}{z}\,dz=2\pi i.
+				\int_{C_R}\frac{1}{z}\,dz=2\pi i
 			\]
 			Hence
 			\[
 				\int_{C_R}\frac{1}{zp(z)}\,dz
 				=
-				\frac{2\pi i}{p(0)}.
+				\frac{2\pi i}{p(0)}
 				\tag{1}
 			\]
 
-			We now estimate the integral as \(R\to\infty\). Since
+			We now estimate the integral as \(R\to\infty\). For \(|z|=R\),
 			\[
-				p(z)=a_nz^n+\sum_{k=0}^{n-1}a_kz^k,
+				\begin{aligned}
+					|p(z)|
+					 & =
+					\left|a_nz^n+\sum_{k=0}^{n-1}a_kz^k\right| \\
+					 & \geq
+					|a_n|R^n-\sum_{k=0}^{n-1}|a_k|R^k
+				\end{aligned}
 			\]
-			for \(|z|=R\),
+			Since the leading term dominates the lower-degree terms, there exists
+			\(R_0>0\) such that, for every \(R\geq R_0\),
 			\[
 				|p(z)|
-				\geq |a_n|R^n-\sum_{k=0}^{n-1}|a_k|R^k.
+				\geq
+				\frac{|a_n|}{2}R^n
+				\qquad\text{whenever }|z|=R.
 			\]
-			Because the leading term dominates the remaining terms, there exists
-			\(R_0>0\) such that, whenever \(R\geq R_0\),
-			\[
-				|p(z)|\geq \frac{|a_n|}{2}R^n
-				\qquad\text{for every } |z|=R.
-			\]
+
 			Therefore, by the \(ML\)-estimate,
 			\[
 				\begin{aligned}
@@ -2192,33 +2202,35 @@
 					\right|
 					 & \leq
 					2\pi R
-					\max_{|z|=R}\frac{1}{|z|\,|p(z)|}          \\
+					\max_{|z|=R}\frac{1}{|z|\,|p(z)|} \\
 					 & \leq
-					2\pi R\cdot
-					\frac{1}{R\left(\frac{|a_n|}{2}R^n\right)} \\
+					2\pi R
+					\frac{1}{
+						R\left(\frac{|a_n|}{2}R^n\right)
+					}                                 \\
 					 & =
 					\frac{4\pi}{|a_n|R^n}.
 				\end{aligned}
 			\]
-			Thus
+			Since \(n\geq 1\),
 			\[
-				\int_{C_R}\frac{1}{zp(z)}\,dz\longrightarrow 0
+				\int_{C_R}\frac{1}{zp(z)}\,dz
+				\longrightarrow 0
 				\qquad\text{as }R\to\infty.
 			\]
-			This contradicts (1), since
+			This contradicts \textup{(1)}, because
 			\[
 				\frac{2\pi i}{p(0)}\neq 0.
 			\]
 
-			Consequently, the assumption that \(p\) has no zeros is false.
-			Therefore there exists \(z_0\in\mathbb C\) such that
+			Therefore, \(p\) must have a zero. Hence there exists
+			\(z_0\in\mathbb{C}\) such that
 			\[
 				p(z_0)=0.
 			\]
 			This proves the Fundamental Theorem of Algebra.
 	\end{enumerate}
 \end{proof}
-
 \begin{remark}
 	If Cauchy's integral formula is available, part \textup{(a)} is not
 	strictly necessary. Indeed, under the assumption that \(p\) has no
