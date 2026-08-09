@@ -276,6 +276,33 @@
         background: var(--soft);
         color: var(--accent);
       }
+      .nav-links > a.branch-open {
+        color: var(--accent);
+        font-weight: 750;
+      }
+      .nav-filter-tree {
+        display: none;
+        gap: 0.08rem;
+        margin: 0.02rem 0 0.12rem 0.65rem;
+        padding-left: 0.55rem;
+        border-left: 1px solid var(--part-line);
+      }
+      .nav-filter-tree.open {
+        display: grid;
+      }
+      .nav-filter-tree a {
+        position: relative;
+        padding-left: 0.62rem;
+        font-size: 0.74rem;
+      }
+      .nav-filter-tree a::before {
+        position: absolute;
+        top: 50%;
+        left: -0.55rem;
+        width: 0.48rem;
+        border-top: 1px solid var(--part-line);
+        content: "";
+      }
       .sidebar-nav {
         flex: 1;
       }
@@ -1083,22 +1110,67 @@
               href="#theorems-view"
               data-target="theorems-view"
               data-view="theorems"
+              data-filter-root="all"
+              aria-expanded="false"
+              aria-controls="all-results-tree"
               >All results &amp; definitions</a
             >
+            <div
+              class="nav-filter-tree"
+              id="all-results-tree"
+              role="group"
+              aria-label="All-result filters"
+            >
+              <a
+                href="#theorems-view"
+                data-target="theorems-view"
+                data-view="theorems"
+                data-query="type:reference"
+                data-filter-branch="all"
+                >Definitions &amp; formulas</a
+              >
+              <a
+                href="#theorems-view"
+                data-target="theorems-view"
+                data-view="theorems"
+                data-query="type:result"
+                data-filter-branch="all"
+                >Results only</a
+              >
+            </div>
             <a
               href="#theorems-view"
               data-target="theorems-view"
               data-view="theorems"
-              data-query="type:reference"
-              >Definitions &amp; formulas</a
+              data-query="named:true"
+              data-filter-root="named"
+              aria-expanded="false"
+              aria-controls="named-results-tree"
+              >Named results</a
             >
-            <a
-              href="#theorems-view"
-              data-target="theorems-view"
-              data-view="theorems"
-              data-query="type:result"
-              >Results only</a
+            <div
+              class="nav-filter-tree"
+              id="named-results-tree"
+              role="group"
+              aria-label="Named-result filters"
             >
+              <a
+                href="#theorems-view"
+                data-target="theorems-view"
+                data-view="theorems"
+                data-query="named:person"
+                data-filter-branch="named"
+                >Named after people</a
+              >
+              <a
+                href="#theorems-view"
+                data-target="theorems-view"
+                data-view="theorems"
+                data-query="named:other"
+                data-filter-branch="named"
+                >Other named results</a
+              >
+            </div>
             <a
               href="#importance-guide"
               data-target="importance-guide"
@@ -3881,6 +3953,16 @@
       );
       add(
         "integration",
+        "Remark",
+        "IV.2.14 — boundary form",
+        "Boundary form of the Cauchy estimates",
+        "Chapter IV, §2 — Power-series representation",
+        74,
+        String.raw`Let $f$ be analytic in $B(a;R)$. For every $0<r<R$, combining Cauchy’s formula with the later maximum modulus theorem gives \[|f^{(n)}(a)|\le\frac{n!}{r^n}\max_{|z-a|=r}|f(z)|.\]`,
+        `Sharper derivative bounds using the later <a href="#result-vi-1-1-maximum-modulus-theorem-interior-form" data-target="result-vi-1-1-maximum-modulus-theorem-interior-form" data-view="theorems">maximum modulus theorem</a>.`,
+      );
+      add(
+        "integration",
         "Definition",
         "IV.3.1",
         "Zero and multiplicity",
@@ -5127,6 +5209,118 @@
         "X.3.4",
         "X.3.5",
       ]);
+      const namedResults = new Set([
+        "II.3.7",
+        "II.4.8",
+        "II.4.10",
+        "II.5.10",
+        "II.5.12",
+        "II.5.15",
+        "II.6.1",
+        "II.6.2",
+        "III.2.24",
+        "III.2.24 — note",
+        "III.2.29",
+        "III.3.14",
+        "IV.1.18",
+        "IV.2.13",
+        "IV.2.14",
+        "IV.3.4",
+        "IV.3.5",
+        "IV.3.7",
+        "IV.3.8",
+        "IV.5.4",
+        "IV.5.6",
+        "IV.5.7",
+        "IV.5.8",
+        "IV.5.9",
+        "IV.5.10",
+        "IV.6.6",
+        "IV.6.7",
+        "IV.6.15",
+        "IV.7.5",
+        "IV.7.6",
+        "IV.§8",
+        "V.1.21",
+        "V.2.2",
+        "V.3.4",
+        "V.3.8",
+        "V.3.8a",
+        "VI.1.1",
+        "VI.1.2",
+        "VI.1.4",
+        "VI.1, Exercise 1",
+        "VI.2.1",
+        "VI.3.7",
+        "VI.3.13",
+        "VI.4.1",
+        "VII.1.23",
+        "VII.2.1",
+        "VII.2.5",
+        "VII.2.9",
+        "VII.4.2",
+        "VII.5.14",
+        "VIII.1.7",
+        "VIII.1.14",
+        "VIII.3.2",
+        "IX.1.1",
+        "IX.3.6",
+        "X.1.4",
+        "X.1.6",
+        "X.1.7",
+        "X.1.10",
+        "X.2.4",
+        "X.2.11",
+        "X.2.14",
+        "X.2.16",
+        "X.3.2",
+        "X.3.3",
+        "XII.2.3",
+      ]);
+      const personNamedResults = new Set([
+        "II.3.7",
+        "II.4.8",
+        "II.4.10",
+        "II.5.15",
+        "II.6.2",
+        "III.2.24",
+        "III.2.24 — note",
+        "III.2.29",
+        "III.3.14",
+        "IV.2.13",
+        "IV.2.14",
+        "IV.3.4",
+        "IV.5.4",
+        "IV.5.6",
+        "IV.5.7",
+        "IV.5.8",
+        "IV.5.9",
+        "IV.5.10",
+        "IV.6.6",
+        "IV.6.7",
+        "IV.6.15",
+        "IV.§8",
+        "V.1.21",
+        "V.3.8",
+        "V.3.8a",
+        "VI.2.1",
+        "VI.3.13",
+        "VI.4.1",
+        "VII.1.23",
+        "VII.2.1",
+        "VII.2.5",
+        "VII.2.9",
+        "VII.4.2",
+        "VII.5.14",
+        "VIII.1.7",
+        "VIII.1.14",
+        "VIII.3.2",
+        "IX.1.1",
+        "X.2.4",
+        "X.2.14",
+        "X.2.16",
+        "XII.2.3",
+      ]);
       const importanceFor = (item) => {
         if (["Definition", "Formula", "Remark"].includes(item.kind)) {
           return {
@@ -5248,6 +5442,14 @@
           article.className = `result importance-${importance.key}`;
           article.id = `result-${slug(`${item.number}-${item.title}`)}`;
           article.dataset.priority = importance.key;
+          article.dataset.named = namedResults.has(item.number)
+            ? "true"
+            : "false";
+          article.dataset.nameKind = personNamedResults.has(item.number)
+            ? "person"
+            : namedResults.has(item.number)
+              ? "other"
+              : "";
           article.dataset.search =
             `${item.number} ${item.title} ${item.section} ${item.kind} ${importance.label} ${item.statement} ${item.used}`.toLowerCase();
           article.innerHTML = `
@@ -5276,7 +5478,14 @@
               card.dataset.priority === "definition") ||
             (query === "type:result" &&
               card.dataset.priority !== "definition") ||
-            (!query.startsWith("type:") && card.dataset.search.includes(query));
+            (query === "named:true" && card.dataset.named === "true") ||
+            (query === "named:person" &&
+              card.dataset.nameKind === "person") ||
+            (query === "named:other" &&
+              card.dataset.nameKind === "other") ||
+            (!query.startsWith("type:") &&
+              !query.startsWith("named:") &&
+              card.dataset.search.includes(query));
           card.classList.toggle("hidden", !match);
           if (match) visible++;
         });
@@ -5301,6 +5510,27 @@
         const buttons = [...document.querySelectorAll("[data-view-button]")];
         const links = [...document.querySelectorAll("[data-target]")];
         const label = document.getElementById("view-label");
+        const filterRoots = [
+          ...document.querySelectorAll("[data-filter-root]"),
+        ];
+        const filterTrees = [
+          ...document.querySelectorAll(".nav-filter-tree"),
+        ];
+
+        const setOpenFilterBranch = (branch) => {
+          filterRoots.forEach((rootLink) => {
+            const open = rootLink.dataset.filterRoot === branch;
+            rootLink.classList.toggle("branch-open", open);
+            rootLink.setAttribute("aria-expanded", String(open));
+          });
+          filterTrees.forEach((tree) => {
+            const open = tree.id === `${branch}-results-tree`;
+            tree.classList.toggle("open", open);
+            tree.setAttribute("aria-hidden", String(!open));
+          });
+        };
+
+        setOpenFilterBranch(null);
 
         const updateThemeControl = (theme) => {
           const dark = theme === "dark";
@@ -5345,6 +5575,7 @@
 
         buttons.forEach((button) =>
           button.addEventListener("click", () => {
+            setOpenFilterBranch(null);
             showView(button.dataset.viewButton, true);
             history.replaceState(
               null,
@@ -5359,6 +5590,9 @@
         links.forEach((link) =>
           link.addEventListener("click", (event) => {
             event.preventDefault();
+            setOpenFilterBranch(
+              link.dataset.filterRoot || link.dataset.filterBranch || null,
+            );
             showView(link.dataset.view);
             if (link.dataset.view === "theorems") {
               const theoremSearch = document.getElementById("search");
