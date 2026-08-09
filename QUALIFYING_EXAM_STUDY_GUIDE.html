@@ -3299,8 +3299,8 @@
                 specialized tool.
               </div>
               <div class="legend-item legend-definition">
-                <strong>Definition/formula · blue</strong>Vocabulary and
-                formulas needed to state results correctly.
+                <strong>Definition/formula/remark · blue</strong>Vocabulary,
+                formulas, and cautions needed to state results correctly.
               </div>
             </div>
           </section>
@@ -3584,6 +3584,26 @@
       );
       add(
         "analytic",
+        "Proposition",
+        "III.1.4",
+        "Ratio formula for the radius of convergence",
+        "Chapter III, §1 — Power series",
+        32,
+        String.raw`If $\sum_{n=0}^{\infty}a_n(z-a)^n$ is a given power series with radius of convergence $R$, then \[R=\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right|\] if this limit exists.`,
+        "Computing a power series’ radius of convergence from consecutive coefficients.",
+      );
+      add(
+        "analytic",
+        "Formula",
+        "III.§1",
+        "Exponential series",
+        "Chapter III, §1 — Power series",
+        32,
+        String.raw`The series $\sum_{n=0}^{\infty}\frac{z^n}{n!}$ has radius of convergence $\infty$, so it converges at every complex number and uniformly on every compact subset of $\mathbb C$. The exponential series or function is designated by \[e^z=\exp z=\sum_{n=0}^{\infty}\frac{z^n}{n!}.\]`,
+        "Power-series arguments involving $e^z$, entire functions, derivatives, and exponential equations.",
+      );
+      add(
+        "analytic",
         "Definition",
         "III.2.1",
         "Complex differentiability",
@@ -3681,6 +3701,16 @@
         41,
         String.raw`If $f(x+iy)=u(x,y)+iv(x,y)$, the Cauchy–Riemann equations are \[\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}\qquad\text{and}\qquad\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}.\]`,
         "Direct analyticity tests, harmonic conjugates, and computations of derivatives.",
+      );
+      add(
+        "analytic",
+        "Remark",
+        "III.2.24 — note",
+        "Differentiability implies Cauchy–Riemann",
+        "Chapter III, §2 — Analytic functions",
+        41,
+        String.raw`Let $z_0=x_0+iy_0$ and write $f=u+iv$. If $f$ is complex differentiable at $z_0$, then the first partial derivatives of $u$ and $v$ at $(x_0,y_0)$ exist and \[u_x(x_0,y_0)=v_y(x_0,y_0),\qquad u_y(x_0,y_0)=-v_x(x_0,y_0).\] This implication is necessary only: satisfying the Cauchy–Riemann equations at a single point does not by itself imply that $f$ is complex differentiable there.`,
+        "Using Cauchy–Riemann to rule out differentiability and distinguishing necessary from sufficient conditions.",
       );
       add(
         "analytic",
@@ -5040,6 +5070,7 @@
         "II.6.1",
         "II.6.2",
         "III.1.3",
+        "III.1.4",
         "III.2.9",
         "III.2.10",
         "III.2.19",
@@ -5087,10 +5118,10 @@
         "X.3.5",
       ]);
       const importanceFor = (item) => {
-        if (item.kind === "Definition" || item.kind === "Formula") {
+        if (["Definition", "Formula", "Remark"].includes(item.kind)) {
           return {
             key: "definition",
-            label: item.kind === "Formula" ? "Formula" : "Definition",
+            label: item.kind,
           };
         }
         if (essentialResults.has(item.number))
@@ -5103,6 +5134,7 @@
         if (item.number === "V.3.8a") return "Classical form noted by Conway";
         if (item.kind === "Definition") return "Conway’s definition";
         if (item.kind === "Formula") return "Conway’s formula";
+        if (item.kind === "Remark") return "Study remark";
         return "Conway’s statement";
       };
 
