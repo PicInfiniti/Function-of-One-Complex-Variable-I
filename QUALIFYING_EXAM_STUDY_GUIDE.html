@@ -4131,6 +4131,16 @@
       );
       add(
         "integration",
+        "Remark",
+        "IV.7.4 — consequence",
+        "Local analytic inverse",
+        "Chapter IV, §7 — Counting zeros and open mapping",
+        98,
+        String.raw`Let $G$ be a region, let $f:G\to\mathbb C$ be analytic, and let $a\in G$. If $f'(a)\ne0$, then there is an open neighborhood $U\subset G$ of $a$ such that the restriction $f|_U:U\to f(U)$ is one-one and onto, $f(U)$ is open, and $(f|_U)^{-1}:f(U)\to U$ is analytic. For every $z\in U$, \[\left((f|_U)^{-1}\right)'\!\bigl(f(z)\bigr)=\frac{1}{f'(z)}.\] This is a local conclusion; $f$ need not be one-one on all of $G$.`,
+        "Local conformal coordinates, inverse branches, and distinguishing local from global injectivity.",
+      );
+      add(
+        "integration",
         "Theorem",
         "IV.7.5",
         "Open mapping theorem",
@@ -4143,10 +4153,10 @@
         "integration",
         "Corollary",
         "IV.7.6",
-        "Analytic inverse theorem",
+        "Global analytic inverse theorem",
         "Chapter IV, §7 — Counting zeros and open mapping",
         99,
-        String.raw`Suppose $f:G\to\mathbb C$ is one-one, analytic and $f(G)=\Omega$. Then $f^{-1}:\Omega\to\mathbb C$ is analytic and $(f^{-1})'(w)=[f'(z)]^{-1}$ where $w=f(z)$.`,
+        String.raw`Suppose $G$ is a region and $f:G\to\mathbb C$ is one-one and analytic. Put $\Omega=f(G)$. Then $\Omega$ is open, $f'(z)\ne0$ for every $z\in G$, and the global inverse $f^{-1}:\Omega\to G$ is analytic. If $w=f(z)$, then \[(f^{-1})'(w)=\frac{1}{f'(z)}.\]`,
         "Conformal equivalence, inverse maps, and subharmonic pullbacks.",
       );
       add(
