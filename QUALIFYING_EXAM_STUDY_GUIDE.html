@@ -5133,6 +5133,12 @@
         return markers;
       };
 
+      const escapeStatementHtml = (statement) =>
+        statement
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+
       const formatStatement = (statement) => {
         const alphaMarkers = collectPartMarkers(statement, [..."abcdefghij"]);
         const romanMarkers = collectPartMarkers(statement, [
@@ -5159,16 +5165,20 @@
           [alphaMarkers, romanMarkers, numericMarkers].find(
             (sequence) => sequence.length >= 2,
           ) || [];
-        if (markers.length < 2) return statement;
+        if (markers.length < 2) return escapeStatementHtml(statement);
 
-        const intro = statement.slice(0, markers[0].start).trim();
+        const intro = escapeStatementHtml(
+          statement.slice(0, markers[0].start).trim(),
+        );
         const parts = markers
           .map((marker, index) => {
             const nextStart = markers[index + 1]?.start ?? statement.length;
-            const content = statement
-              .slice(marker.end, nextStart)
-              .trim()
-              .replace(/;$/, "");
+            const content = escapeStatementHtml(
+              statement
+                .slice(marker.end, nextStart)
+                .trim()
+                .replace(/;$/, ""),
+            );
             return `<div class="statement-part"><span class="statement-part-label">(${marker.label})</span><span class="statement-part-content">${content}</span></div>`;
           })
           .join("");
