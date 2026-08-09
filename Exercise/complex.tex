@@ -982,7 +982,7 @@
 \end{exercise}
 
 
-\begin{proof}[Solution]
+\begin{proof}[Solution (I)]
 	Fix \(a\in G\) and let \(h\in\mathbb{C}\) with \(h\neq0\) and \(a+h\in G\).
 	Write the given identity \(h(z)=g(f(z))\) at the points \(a\) and \(a+h\):
 	\[
@@ -1016,6 +1016,58 @@
 	Therefore \(f\) is analytic on \(G\) with
 	\[
 		\,f'(z)=\dfrac{h'(z)}{g'(f(z))}
+	\]
+\end{proof}
+
+\begin{proof}[Solution (II)]
+	Fix $z_0\in G$, and let
+	\[
+		w_0=f(z_0)\in\Omega.
+	\]
+	Since $g$ is analytic and
+	\[
+		g'(w_0)\neq 0,
+	\]
+	the complex inverse function theorem implies that there exist neighborhoods
+	$V$ of $w_0$ and $W$ of $g(w_0)$ such that
+	\[
+		g:V\to W
+	\]
+	is one-to-one and has an analytic inverse
+	\[
+		\phi=(g|_V)^{-1}:W\to V.
+	\]
+
+	Since $f$ is continuous and $f(z_0)=w_0\in V$, there exists a neighborhood
+	$U\subset G$ of $z_0$ such that
+	\[
+		f(U)\subset V.
+	\]
+	For every $z\in U$,
+	\[
+		h(z)=g(f(z)).
+	\]
+	Applying $\phi$ gives
+	\[
+		f(z)=\phi(h(z)).
+	\]
+	Hence, on $U$,
+	\[
+		f=\phi\circ h.
+	\]
+	Since both $\phi$ and $h$ are analytic, $f$ is analytic on $U$.
+	Because $z_0\in G$ was arbitrary, $f$ is analytic on $G$.
+	Now differentiate
+	\[
+		h(z)=g(f(z)).
+	\]
+	By the chain rule,
+	\[
+		h'(z)=g'(f(z))f'(z).
+	\]
+	Since $g'(f(z))\neq 0$, we obtain
+	\[
+		f'(z)=\frac{h'(z)}{g'(f(z))}
 	\]
 \end{proof}
 
