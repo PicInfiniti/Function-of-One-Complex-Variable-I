@@ -1,0 +1,2716 @@
+\documentclass[11pt,a4paper,openany]{book}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage[top=2.8cm,bottom=2.8cm,left=2.9cm,right=2.9cm]{geometry}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{needspace}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{imakeidx}
+\usepackage[hidelinks]{hyperref}
+
+\makeindex[name=results,title={Index of Results},columns=2,intoc]
+\makeindex[name=subjects,title={Subject Index},columns=2,intoc]
+
+\hypersetup{
+  pdftitle={Complex Analysis Qualifying Exam Study Guide},
+  pdfauthor={Pic S. Infiniti},
+  pdfdisplaydoctitle=true
+}
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{1}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\raggedbottom
+
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}
+  {\normalfont\large\scshape\chaptertitlename\ \thechapter}{0.8ex}{}
+  [\vspace{0.6ex}\titlerule]
+\titlespacing*{\chapter}{0pt}{-18pt}{24pt}
+\titleformat{\section}
+  {\normalfont\Large\bfseries}
+  {\thesection}{0.8em}{}
+\titlespacing*{\section}{0pt}{2.5em}{0.8em}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{14pt}
+\fancyhead[L]{\footnotesize Complex Analysis Study Guide}
+\fancyhead[R]{\footnotesize\nouppercase{\leftmark}}
+\fancyfoot[C]{\footnotesize \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newtheoremstyle{studyplain}
+  {1em}{1em}{\itshape}{}% space above, below, and body font
+  {\bfseries}{.}{0.5em}{}
+\newtheoremstyle{studydefinition}
+  {1em}{1em}{\normalfont}{}
+  {\bfseries}{.}{0.5em}{}
+\newtheoremstyle{studyremark}
+  {1em}{1em}{\normalfont}{}
+  {\itshape}{.}{0.5em}{}
+
+\theoremstyle{studyplain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{studydefinition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{formula}[theorem]{Formula}
+\newtheorem{development}[theorem]{Development}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{practiceexercise}{Exercise}[section]
+
+\theoremstyle{studyremark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\ResultMeta}[3]{%
+  \par\smallskip
+  {\normalfont\footnotesize\itshape Conway #1; printed p.~#2; #3.\par}%
+  \smallskip
+}
+
+\newcommand{\UsedFor}[1]{%
+  \par\smallskip{\normalfont\footnotesize\textit{Used for.} #1\par}%
+}
+
+\newcommand{\SourceRef}[1]{%
+  \smallskip{\footnotesize\itshape #1\par}%
+}
+
+\newcommand{\NamedIndexItem}[3]{%
+  \item \hyperref[#1]{\textbf{#2}. #3}%
+}
+
+\title{\Huge\bfseries Complex Analysis\\[0.25em]
+  \Large Qualifying Exam Study Guide}
+\author{Pic S. Infiniti}
+\date{Summer 2026--2027}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\thispagestyle{empty}
+\clearpage
+
+\hypersetup{pageanchor=false}
+\tableofcontents
+\clearpage
+\hypersetup{pageanchor=true}
+
+\mainmatter
+% Source: QUALIFYING_EXAM_STUDY_GUIDE.html
+% Coverage: 79 practice exercises; 157 reference entries.
+
+\part{Practice Questions}
+\chapter{How to Use the Practice List}
+\label{chapter-practice}
+
+This list is based on all 166 exercises in the repository:
+
+
+\begin{itemize}[leftmargin=*,itemsep=0.55em,topsep=0.45em]
+\item 9 questions in \texttt{Exams/main.tex};
+\item 50 questions from the August 2018, August 2020, August 2022, August 2024, and January 2025 qualifying exams;
+\item 107 textbook exercises in \texttt{Exercise/complex.tex}.
+\end{itemize}
+
+The ordering gives the most weight to questions that appeared on a qualifying exam, especially when essentially the same textbook exercise later appeared on an exam. Check an item only after you can solve it from a blank page, justify every theorem's hypotheses, and explain the proof aloud.
+
+
+
+\begin{description}[style=nextline,leftmargin=2em,labelindent=0pt]
+\item[Essential / Top 12] The first results and proof techniques to master.
+\item[Important advanced] Material needed for broad Part II coverage.
+\item[Warm-up] Shorter exercises for fluency and review.
+\end{description}
+
+\chapter{Essential Shortlist}
+\label{practice-if-time-is-short-do-these-12-first}
+
+\begin{enumerate}[leftmargin=*,itemsep=0.55em,topsep=0.45em]
+\item Prove the Fundamental Theorem of Algebra by completing the following two steps for a nonconstant polynomial \[ p(z)=a_0+a_1z+\cdots+a_nz^n, \] where \(a_n\neq 0\) and \(n\ge 1\).
+
+ 
+\smallskip
+\textbf{(a)} Show that there is a nonzero polynomial \(q(z)\) such that \[ \frac{1}{zp(z)}=\frac{1}{zp(0)}+\frac{q(z)}{p(z)}, \] for \(z\neq 0\) and \(p(z)\neq 0\).
+\par\smallskip
+\textbf{(b)} By means of integration over the circle \(C_R=Re^{it}\) with \(t\in[0,2\pi]\), show that \(p(z_0)=0\) for some point \(z_0\) in \(\mathbb{C}\).
+\SourceRef{Source: January 2025, I.1}
+\item How many roots does the polynomial \[ z^9+z^5-8z^3+2z+1 \] have between the circles \(\{|z|=1\}\) and \(\{|z|=2\}\)?
+
+\SourceRef{Source: August 2024, I.3}
+\item Show that the equation \[ e^z=cz, \] where \(c\) is a constant with \(|c|>e\), has exactly one solution in the set \[ \{z\in\mathbb{C}:\operatorname{Re}z<1\}. \]
+
+\SourceRef{Source: January 2025, I.2}
+\item Suppose $f$ is a holomorphic function on the open unit disc \[ D=\{z:|z|<1\}. \] Prove that there is a sequence $(z_n)_{n=1}^{\infty}$ in $D$ such that $|z_n|\to 1$ and the set \[ \{f(z_n):n\geq 1\} \] is bounded.
+
+\SourceRef{Source: August 2018, I.3}
+\item Show that if \(f:\mathbb{C}\to\mathbb{C}\) is a continuous function such that \(f\) is analytic off \([-1,1]\), then \(f\) is an entire function.
+
+\SourceRef{Source: January 2025, I.3}
+\item Suppose that $F$ and $G$ are holomorphic functions on the right half plane \[ H=\{z\in\mathbb{C}:\operatorname{Re}(z)>0\}. \] Suppose also that $F$ and $G$ have the same zeros with the same multiplicities at each zero. Prove that there is a holomorphic function $h$ on $H$ such that \[ F(z)=e^{h(z)}G(z) \] for all $z\in H$.
+
+\SourceRef{Source: August 2018, I.2}
+\item Find a conformal map \(f\) from the vertical strip \[ \Omega=\{z\in\mathbb{C}:3<\operatorname{Re}(z)<11\} \] onto the open unit disk \(\mathbb{D}\).
+
+\SourceRef{Source: August 2018, I.1}
+\item Let \[ G=\{z:\operatorname{Re}(z)>0\}, \] and \(f:G\to G\) be a one-one analytic function from \(G\) into \(G\). Suppose \(f(a)=a\) for some positive real number \(a\). Show that \[ |f'(a)|\le 1. \]
+
+\SourceRef{Source: August 2020, II.4}
+\item Let $\mathfrak{F}$ be the collection of holomorphic functions on the open unit disk \[ D=\{z:|z|<1\} \] satisfying \[ \iint_D |f|\,dx\,dy \leq 1. \] Prove or disprove that $\mathfrak{F}$ is a normal family.
+
+\SourceRef{Source: August 2018, II.5}
+\item Suppose that \(G\) is a region in \(\mathbb{C}\), \(\{f_n\}\) is a sequence in \(H(G)\), \(f\) is a nonconstant function, and \(f_n\to f\) in \(H(G)\). Let \(a\in G\) and \(b=f(a)\). Show that there is a sequence \(\{a_n\}\) in \(G\) such that
+
+ 
+\smallskip
+\textbf{(i)} \(a=\lim a_n\),
+\par\smallskip
+\textbf{(ii)} \(f_n(a_n)=b\) for sufficiently large \(n\).
+\SourceRef{Source: August 2020, II.3}
+\item Given entire functions \(f,g\) without common zeros, prove that there exist entire functions \(A,B\) such that \[ Af+Bg=1. \] Hint: Use the Mittag-Leffler Theorem.
+
+\SourceRef{Source: August 2020, II.1}
+\item Let \(G\) be a domain in the complex plane and \(u:G\to\mathbb{R}\) be a nonconstant harmonic function and let \[ A=\{z\in G:u_x(z)=u_y(z)=0\}. \] Show that \(A\) does not have any limit points in \(G\).
+
+\SourceRef{Source: January 2025, II.2}
+\end{enumerate}
+
+\chapter{Core Qualifying-Exam Topics}
+\label{practice-tier-1-must-practice}
+
+\section{Fundamental Theorem of Algebra by several methods}
+\label{practice-1-fundamental-theorem-of-algebra-by-several-methods}
+
+\begin{practiceexercise}
+Using the maximum modulus principle, prove the Fundamental Theorem of Algebra.
+
+\SourceRef{Source: August 2020, I.4}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Using Liouville's Theorem, prove the Fundamental Theorem of Algebra.
+
+\SourceRef{Source: January 2025, I.4}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Prove the Fundamental Theorem of Algebra by completing the following two steps for a nonconstant polynomial \[ p(z)=a_0+a_1z+\cdots+a_nz^n, \] where \(a_n\neq 0\) and \(n\ge 1\).
+
+ 
+\smallskip
+\textbf{(a)} Show that there is a nonzero polynomial \(q(z)\) such that \[ \frac{1}{zp(z)}=\frac{1}{zp(0)}+\frac{q(z)}{p(z)}, \] for \(z\neq 0\) and \(p(z)\neq 0\).
+\par\smallskip
+\textbf{(b)} By means of integration over the circle \(C_R=Re^{it}\) with \(t\in[0,2\pi]\), show that \(p(z_0)=0\) for some point \(z_0\) in \(\mathbb{C}\).
+\SourceRef{Source: January 2025, I.1}
+\end{practiceexercise}
+
+Why: the FTA appeared three times in five recorded qualifying exams, with three different requested proofs.
+
+
+\section{Rouché's theorem and counting zeros}
+\label{practice-2-rouch-s-theorem-and-counting-zeros}
+
+\begin{practiceexercise}
+How many roots does the polynomial \[ z^9+z^5-8z^3+2z+1 \] have between the circles \(\{|z|=1\}\) and \(\{|z|=2\}\)?
+
+\SourceRef{Source: August 2024, I.3}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+\smallskip
+\textbf{(a)} Let \(a>1\). Show that the equation \[ ze^{a-z}=1 \] has precisely one root in the closed unit disk \(\{z:|z|=1\}\).
+\par\smallskip
+\textbf{(b)} Show that the root in part (a) is positive.
+\SourceRef{Source: August 2020, I.3}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Show that the equation \[ e^z=cz, \] where \(c\) is a constant with \(|c|>e\), has exactly one solution in the set \[ \{z\in\mathbb{C}:\operatorname{Re}z<1\}. \]
+
+\SourceRef{Source: January 2025, I.2}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Suppose \( f \) is analytic on \( \overline{B(0;1)} \) and satisfies \( |f(z)| < 1 \) for \( |z| = 1 \). Find the number of solutions (counting multiplicities) of the equation \[ f(z) = z^{n} \] where \( n \) is an integer larger than or equal to \( 1 \).
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Determine the number of solutions, counted with multiplicity, of \[ z^6+7z^3-2z+3=0 \] that satisfy \(1<|z|<2\).
+
+\SourceRef{Source: August 2022, II.1}
+\end{practiceexercise}
+
+Why: you should be able to choose the comparison function and contour yourself, not only recognize Rouché after being told to use it.
+
+
+\section{Liouville, growth, and maximum/minimum modulus arguments}
+\label{practice-3-liouville-growth-and-maximum-minimum-modulus-arguments}
+
+\begin{practiceexercise}
+Let \(f\) be an entire function. Show that \(f\) is a constant function if there exist \(M>0\) and \(R>0\) such that \[ |f(z)|\le M|z|^{1/2} \qquad \text{whenever } |z|>R. \]
+
+\SourceRef{Source: August 2020, I.1}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let $f$ be an entire function and suppose there is a constant $M$, an $R>0$, and an integer $n\ge 1$ such that \[ |f(z)| \le M\,|z|^{n} \quad \text{for } |z|>R. \] Show that $f$ is a polynomial of degree $\le n$.
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let $f$ and $g$ be entire functions satisfying $f(0)=g(0)\neq 0$ and \[ |f(z)|\leq |g(z)| \qquad \forall z\in\mathbb{C}. \] Show that $f=g$.
+
+\SourceRef{Source: August 2018, I.5}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let $G$ be a region and suppose that $f : G \to \mathbb{C}$ is analytic and $a\in G$ such that \[ |f(a)| \le |f(z)| \quad \text{for all } z\in G. \] Show that either $f(a)=0$ or $f$ is constant.
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\section{Boundary blow-up contradiction on the disk}
+\label{practice-4-boundary-blow-up-contradiction-on-the-disk}
+
+\begin{practiceexercise}
+Suppose $f$ is a holomorphic function on the open unit disc \[ D=\{z:|z|<1\}. \] Prove that there is a sequence $(z_n)_{n=1}^{\infty}$ in $D$ such that $|z_n|\to 1$ and the set \[ \{f(z_n):n\geq 1\} \] is bounded.
+
+\SourceRef{Source: August 2018, I.3}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \(D\) be the open unit disk. Show that no analytic function \(f:D\to\mathbb{C}\) has the property that \[ |f(z_n)|\to\infty, \qquad \text{whenever } |z_n|\to 1. \]
+
+\SourceRef{Source: August 2024, I.2}
+\end{practiceexercise}
+
+Why: this exact idea returned six years later. Know how to remove the finitely many zeros and apply the maximum modulus principle to the reciprocal.
+
+
+\section{Cauchy's formula, residues, and winding numbers}
+\label{practice-5-cauchy-s-formula-residues-and-winding-numbers}
+
+\begin{practiceexercise}
+Define $\gamma \colon [0,2\pi] \to \mathbb{C}$ by \[ \gamma(t)=e^{it}. \] Compute \[ \int_{\gamma} z^n\,dz \] for every integer $n$.
+
+\SourceRef{Source: Fall 2025, I.1–2}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Compute the integral \[ \int_{\gamma} \frac{e^z}{(z-2)^2(z-5)^5}\,dz, \] where $\gamma$ is the closed path \[ \gamma(t)=3e^{it}, \qquad 0\leq t\leq 2\pi. \]
+
+\SourceRef{Source: Fall 2025, II.1–2}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Fix \(w=re^{i\theta}\neq 0\) and let \(\gamma\) be a piecewise smooth curve in \(\mathbb{C}\setminus\{0\}\) from \(1\) to \(w\). Show that there is an integer \(k\) such that \[ \int_\gamma \frac{1}{z}\,dz=\log r+i\theta+2\pi i k. \]
+
+\SourceRef{Source: August 2020, I.2}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \(G\) be a region and \(z_0\in G\). Suppose \(f:G\to\mathbb{C}\) is analytic and \(f'(z_0)\neq 0\). Show that \[ \int_\gamma \frac{1}{f(z)-f(z_0)}\,dz=\frac{2\pi i}{f'(z_0)} \] if \(\gamma=\gamma(t)=z_0+re^{it}\) for \(t\in[0,2\pi]\) and \(r>0\) is small enough.
+
+\SourceRef{Source: January 2025, I.5}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Evaluate the integral $\displaystyle \int_{\gamma} \frac{dz}{z^{2}+1}$ where $\gamma(\theta) = 2|\cos 2\theta|\, e^{i\theta}$ for $0 \le \theta \le 2\pi$.
+
+\SourceRef{Source: text exercises}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \(a>0\). Compute \[ \int_{-\infty}^{\infty}\frac{\sin(ax)}{x(x^2+1)}\,dx \] by using residue theory.
+
+\SourceRef{Source: August 2022, I.3}
+\end{practiceexercise}
+
+\section{Removable sets and Morera's theorem}
+\label{practice-6-removable-sets-and-morera-s-theorem}
+
+\begin{practiceexercise}
+Show that if \(f:\mathbb{C}\to\mathbb{C}\) is a continuous function such that \(f\) is analytic off \([-1,1]\), then \(f\) is an entire function.
+
+\SourceRef{Source: January 2025, I.3}
+\end{practiceexercise}
+
+Why: be ready to subdivide triangles intersecting the segment and use continuity to control the thin pieces.
+
+
+\section{Analytic logarithms, zeros, and branches}
+\label{practice-7-analytic-logarithms-zeros-and-branches}
+
+\begin{practiceexercise}
+Suppose that $F$ and $G$ are holomorphic functions on the right half plane \[ H=\{z\in\mathbb{C}:\operatorname{Re}(z)>0\}. \] Suppose also that $F$ and $G$ have the same zeros with the same multiplicities at each zero. Prove that there is a holomorphic function $h$ on $H$ such that \[ F(z)=e^{h(z)}G(z) \] for all $z\in H$.
+
+\SourceRef{Source: August 2018, I.2}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \(0<R_1<R_2\) and \(\alpha\in\mathbb{R}\), and let \(G\) be the annulus centered at the origin with radii \(R_1\) and \(R_2\). Let \[ z^\alpha=\exp(\alpha\log z), \] where \(\log z\) is a branch of the logarithm. Prove that \(z^\alpha\) is analytic in \(G\) if and only if \(\alpha\) is an integer.
+
+\SourceRef{Source: August 2020, II.5}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Give the principal branch of \[ \sqrt{1-z^3}. \]
+
+\SourceRef{Source: Fall 2025, I.7}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Prove that there is no branch of the logarithm defined on \(G=\mathbb{C}\setminus\{0\}\). \emph{(Hint: Suppose such a branch exists and compare this with the principal branch.)}
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\section{Conformal maps and Möbius transformations}
+\label{practice-8-conformal-maps-and-m-bius-transformations}
+
+\begin{practiceexercise}
+Find a conformal map \(f\) from the vertical strip \[ \Omega=\{z\in\mathbb{C}:3<\operatorname{Re}(z)<11\} \] onto the open unit disk \(\mathbb{D}\).
+
+\SourceRef{Source: August 2018, I.1}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Map \[ G=\mathbb{C}\setminus\{z:-9\leq z\leq 9\} \] onto the open unit disk by an analytic function $f$. Can $f$ be one-to-one?
+
+\SourceRef{Source: Fall 2025, I.6}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \(D = \{\, z : |z| < 1 \,\}\) and find all Möbius transformations \(T\) such that \(T(D) = D\).
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+\smallskip
+\textbf{(1)} Show that a Möbius transformation has $0$ and $\infty$ as its only fixed points if and only if it is a dilation, but not the identity.
+\par\smallskip
+\textbf{(2)} Show that a Möbius transformation has $\infty$ as its only fixed point if and only if it is a translation, but not the identity.
+\SourceRef{Source: Fall 2025, I.3}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Can you map the open unit disk conformally onto \(\{\,z: 0<|z|<1\,\}\)?
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Find a conformal map from the vertical strip \[ \{z\in\mathbb{C}:-2<\operatorname{Re}(z)<2\} \] onto the open unit disk \(D(0,1)\). Give an explicit formula for your map.
+
+\SourceRef{Source: August 2022, I.2}
+\end{practiceexercise}
+
+\section{Schwarz lemma and half-plane self-maps}
+\label{practice-9-schwarz-lemma-and-half-plane-self-maps}
+
+\begin{practiceexercise}
+Let \[ G=\{z:\operatorname{Re}(z)>0\}, \] and \(f:G\to G\) be a one-one analytic function from \(G\) into \(G\). Suppose \(f(a)=a\) for some positive real number \(a\). Show that \[ |f'(a)|\le 1. \]
+
+\SourceRef{Source: August 2020, II.4}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Suppose $|f(z)| \le 1$ for $|z|<1$ and $f$ is a non-constant analytic function. By considering the function $g : \mathbb{D} \to \mathbb{D}$ defined by \[ g(z) = \frac{f(z)-a}{1-\overline{a}\,f(z)} \] where $a = f(0)$, prove that \[ \frac{|f(0)|-|z|}{1+|f(0)|\,|z|} \le |f(z)| \le \frac{|f(0)|+|z|}{1-|f(0)|\,|z|} \] for $|z|<1$.
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Suppose $f:\mathbb{D}\to\mathbb{C}$ satisfies $\Re f(z)\ge 0$ for all $z\in\mathbb{D}$ and suppose that $f$ is analytic and not constant.
+
+ 
+\smallskip
+\textbf{(1)} Show that $\Re f(z)>0$ for all $z\in\mathbb{D}$.
+\par\smallskip
+\textbf{(2)} By using an appropriate Möbius transformation, apply Schwarz's Lemma to prove that if $f(0)=1$ then \[ |f(z)| \le \frac{1+|z|}{1-|z|} \] for $|z|<1$. What can be said if $f(0)\ne 1$?
+\par\smallskip
+\textbf{(3)} Show that if $f(0)=1$, $f$ also satisfies \[ |f(z)| \ge \frac{1-|z|}{1+|z|}. \] Hint: Use part (a).
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \(f\) be analytic on the open square \[ \Omega=\{z=x+iy:x,y\in(-1,1)\} \] and suppose that \(|f|\leq1\) on \(\Omega\). Show that \[ |f'(0)|<1. \]
+
+\SourceRef{Source: August 2022, I.1}
+\end{practiceexercise}
+
+\section{Normal families from estimates}
+\label{practice-10-normal-families-from-estimates}
+
+\begin{practiceexercise}
+Let $\mathfrak{F}$ be the collection of holomorphic functions on the open unit disk \[ D=\{z:|z|<1\} \] satisfying \[ \iint_D |f|\,dx\,dy \leq 1. \] Prove or disprove that $\mathfrak{F}$ is a normal family.
+
+\SourceRef{Source: August 2018, II.5}
+\end{practiceexercise}
+
+Why: this requires converting an area integral into a uniform bound on compact subsets, typically through the mean-value property or Cauchy estimates.
+
+
+\section{Operations on normal families}
+\label{practice-11-operations-on-normal-families}
+
+\begin{practiceexercise}
+Show that if \(\mathcal{F}\subset H(G)\) is normal then \[ \mathcal{F}'=\{f':f\in\mathcal{F}\} \] is also normal.
+
+\SourceRef{Source: January 2025, II.5}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \(G\) be a region and suppose \(\mathcal{F}\) is normal in \(H(G)\) and \(\Omega\) is open in \(\mathbb{C}\) such that \(f(G)\subset\Omega\) for every \(f\in\mathcal{F}\). Show that if \(g\) is analytic on \(\Omega\) and is bounded on bounded sets then \[ \{g\circ f:f\in\mathcal{F}\} \] is normal.
+
+\SourceRef{Source: August 2024, II.3}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \(G\) be a region and \(f,f_1,f_2,\ldots\) be elements of \(H(G)\). Show that \(f_n\to f\) in \(H(G)\) if and only if for each closed rectifiable curve \(\gamma\) in \(G\), \(f_n\to f\) uniformly on \(\gamma\).
+
+\SourceRef{Source: August 2024, II.2}
+\end{practiceexercise}
+
+\section{Hurwitz-type convergence and moving points}
+\label{practice-12-hurwitz-type-convergence-and-moving-points}
+
+\begin{practiceexercise}
+Suppose that \(G\) is a region in \(\mathbb{C}\), \(\{f_n\}\) is a sequence in \(H(G)\), \(f\) is a nonconstant function, and \(f_n\to f\) in \(H(G)\). Let \(a\in G\) and \(b=f(a)\). Show that there is a sequence \(\{a_n\}\) in \(G\) such that
+
+ 
+\smallskip
+\textbf{(i)} \(a=\lim a_n\),
+\par\smallskip
+\textbf{(ii)} \(f_n(a_n)=b\) for sufficiently large \(n\).
+\SourceRef{Source: August 2020, II.3}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let $\{f_n\}\subset H(G)$ be a sequence of one-one functions which converge to $f$. If $G$ is a region, show that either $f$ is one-one or $f$ is a constant function.
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \(G\) and \(\Omega\) be two domains in the complex plane. Suppose \(\{f_n\}\) is a sequence in \(C(G,\Omega)\) which converges to \(f\) and \(\{z_n\}\) is a sequence in \(G\) which converges to a point \(z\) in \(G\). Show \[ \lim_{n\to\infty} f_n(z_n)=f(z). \]
+
+\SourceRef{Source: January 2025, II.4}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \((f_n)\) be holomorphic on a domain \(\Omega\), converge locally uniformly to \(f\), and satisfy \(f_n(\Omega)\subseteq\Omega\). Show that either \(f(\Omega)\subseteq\Omega\), or \(f(\Omega)\) consists of a single point in \(\partial\Omega\).
+
+\SourceRef{Source: August 2022, I.5}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Show that, given any \(\varepsilon>0\), for sufficiently large \(n\), all the zeros of \[ f_n(z)=1+\frac1z+\frac{1}{2!z^2}+\cdots+\frac{1}{n!z^n} \] lie inside \(D(0,\varepsilon)\).
+
+\SourceRef{Source: August 2022, II.5}
+\end{practiceexercise}
+
+\section{Weierstrass products and prescribed zeros}
+\label{practice-13-weierstrass-products-and-prescribed-zeros}
+
+\begin{practiceexercise}
+Find an entire function \(f\) such that for every integer \(n\ge 1\), \(f\) has \(n\) as a zero of order \(n\). Find the most elementary solution possible.
+
+\SourceRef{Source: August 2024, II.5}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Find an entire function \(f\) such that \[ f\left(ne^{2k\pi i/n}\right)=0 \] for all positive integers \(n\) and all integers \(0\le k\le n-1\). Give the most elementary example possible.
+
+\SourceRef{Source: January 2025, II.3}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Show there is an analytic function \(f\) on \[ D=\{z:|z|<1\} \] which is not analytic on any region \(G\) which properly contains \(D\).
+
+\SourceRef{Source: August 2024, II.4}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Find an entire function $f$ such that $f(m+in)=0$ for all possible integers $m$, $n$. Find the most elementary solution possible.
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Construct an entire function \(f\) satisfying:
+
+ 
+\smallskip
+\textbf{(a)} \(f\) has simple zeros at each \(\sqrt n\), \(n=1,2,\ldots\);
+\par\smallskip
+\textbf{(b)} \(f\) has double zeros at each \(\pm i\sqrt k\), \(k=0,1,2,\ldots\);
+\par\smallskip
+\textbf{(c)} \(f\) has no other zeros.
+\SourceRef{Source: August 2022, II.2}
+\end{practiceexercise}
+
+\section{Mittag-Leffler and analytic Bézout identities}
+\label{practice-14-mittag-leffler-and-analytic-b-zout-identities}
+
+\begin{practiceexercise}
+Given entire functions \(f,g\) without common zeros, prove that there exist entire functions \(A,B\) such that \[ Af+Bg=1. \] Hint: Use the Mittag-Leffler Theorem.
+
+\SourceRef{Source: August 2020, II.1}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let $G$ be a region and let $\{a_n\}$ and $\{b_m\}$ be two sequences of distinct points in $G$ without limit points in $G$ such that $a_n \neq b_m$ for all $n,m$. Let $S_n(z)$ be a singular part at $a_n$ and let $p_m$ be a positive integer. Show that there is a meromorphic function $f$ on $G$ whose poles and zeros are $\{a_n\}$ and $\{b_m\}$ respectively, the singular part at $z = a_n$ is $S_n(z)$, and $z = b_m$ is a zero of multiplicity $p_m$.
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\section{Basic analyticity, inverse functions, and reflection}
+\label{practice-15-basic-analyticity-inverse-functions-and-reflection}
+
+\begin{practiceexercise}
+Let \(G\) and \(\Omega\) be two regions in \(\mathbb{C}\), and \(h:G\to\mathbb{C}\) be a one-one analytic function, and \(f:G\to\mathbb{C}\) be a continuous function with \(f(G)\subset\Omega\), and \(g:\Omega\to\mathbb{C}\) be an analytic function with \(g'(w)\neq 0\) for any \(w\in\Omega\). Show that \(f\) is analytic if \[ h(z)=g(f(z)), \qquad \text{for all } z\in G. \]
+
+\SourceRef{Source: August 2024, I.1}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \(G\) be a region, and \[ G^*=\{z:\overline{z}\in G\}. \] If \(f:G\to\mathbb{C}\) is analytic, prove that \(f^*:G^*\to\mathbb{C}\) defined by \[ f^*(z)=\overline{f(\overline{z})} \] is also analytic.
+
+\SourceRef{Source: August 2024, I.5}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \(f\) be an entire function, taking real values on the real axis, and imaginary values on the imaginary axis. Show that \(f(z)\) is an odd function; that is, \[ f(-z)=-f(z) \] for all \(z\).
+
+\SourceRef{Source: August 2020, I.5}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \[ f(z)=e^x\sin y+i e^x\cos y, \qquad z=x+iy. \] Determine whether $f$ is analytic on the complex plane.
+
+\SourceRef{Source: Fall 2025, I.5}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \(f\) be entire, injective, and without fixed points in \(\mathbb{C}\). Show that \[ f(z)=az+b, \qquad z\in\mathbb{C}, \] for some \(a,b\in\mathbb{C}\) with \(a\neq0\).
+
+\SourceRef{Source: August 2022, I.4}
+\end{practiceexercise}
+
+\section{Open mapping and restricted ranges}
+\label{practice-16-open-mapping-and-restricted-ranges}
+
+\begin{practiceexercise}
+Let $G$ be a region, and suppose that $f\colon G\to\mathbb{C}$ is analytic such that $f(G)$ is a subset of a circle. Show that $f$ is constant.
+
+\SourceRef{Source: Fall 2025, I.4}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Determine, with proof, all entire functions $f$ such that for all $\lambda\in\mathbb{C}$ with $|\lambda|=1$ and all $z\in\mathbb{C}$ the equation \[ f(\lambda z)=\lambda f(z) \] holds.
+
+\SourceRef{Source: August 2018, I.4}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Prove that if $f$ is a non-constant bounded holomorphic function defined on the half plane \[ \{z:\operatorname{Im} z<1\}, \] then there is some point on the real axis where the value of $f$ is not real.
+
+\SourceRef{Source: August 2018, II.3}
+\end{practiceexercise}
+
+\section{Harmonic functions}
+\label{practice-17-harmonic-functions}
+
+\begin{practiceexercise}
+Prove that a nonconstant harmonic function on a region is an open map.
+
+\SourceRef{Source: August 2024, II.1}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \(G\) be a domain in the complex plane and \(u:G\to\mathbb{R}\) be a nonconstant harmonic function and let \[ A=\{z\in G:u_x(z)=u_y(z)=0\}. \] Show that \(A\) does not have any limit points in \(G\).
+
+\SourceRef{Source: January 2025, II.2}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+If $f$ is analytic on $G$ and $f(z)\ne 0$ for any $z$ show that \[ u=\log |f| \] is harmonic on $G$.
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let $u$ be harmonic in $G$ and suppose $\overline{B}(a;R)\subseteq G$. Show that \[ u(a)=\frac{1}{\pi R^2}\iint_{\overline{B}(a;R)} u(x,y)\,dx\,dy. \]
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\chapter{Advanced Coverage}
+\label{practice-tier-2-important-advanced-coverage}
+
+\section{Infinite-product functional equations}
+\label{practice-18-infinite-product-functional-equations}
+
+\begin{practiceexercise}
+Determine all entire functions that satisfy the functional equation \[ f(3z)=(1-3z)f(z). \] Express the answer in terms of an infinite product.
+
+\SourceRef{Source: August 2018, II.1}
+\end{practiceexercise}
+
+\section{Local geometry at a double zero}
+\label{practice-19-local-geometry-at-a-double-zero}
+
+\begin{practiceexercise}
+Let $F(z)$ be holomorphic on a disc $D(z_0,r)$ so that \[ F(z_0)=F'(z_0)=0 \qquad \text{and} \qquad F''(z_0)\neq 0. \] Show that there are two curves $\Gamma_1$ and $\Gamma_2$ passing through $z_0$ that are orthogonal at $z_0$ and so that the function $F$ when restricted to $\Gamma_1$ is real-valued and has a minimum at $z_0$, and when restricted to $\Gamma_2$ it is also real-valued and has a maximum at $z_0$.
+
+\SourceRef{Source: August 2018, II.2}
+\end{practiceexercise}
+
+\section{Polynomial approximation versus compact convergence}
+\label{practice-20-polynomial-approximation-versus-compact-convergence}
+
+\begin{practiceexercise}
+Show that there exists a sequence of polynomials $(P_n)$ so that \[ \lim_{n\to\infty} P_n(z)= \begin{cases} 1, & \text{if } \operatorname{Re}(z)>0, \\ 0, & \text{if } \operatorname{Re}(z)=0, \\ -1, & \text{if } \operatorname{Re}(z)<0. \end{cases} \] Also, explain why $(P_n)$ can't be bounded on compact subsets of $\mathbb{C}$.
+
+\SourceRef{Source: August 2018, II.4}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Prove or disprove: There exists a sequence of polynomials that converges pointwise on \(\mathbb{C}\) to \[ \delta(z)=\begin{cases}1,&z=0,\\0,&z\neq0.\end{cases} \]
+
+\SourceRef{Source: August 2022, II.3}
+\end{practiceexercise}
+
+\section{Laurent series and isolated singularities}
+\label{practice-21-laurent-series-and-isolated-singularities}
+
+\begin{practiceexercise}
+Let \[ f(z)=\frac{1}{z(z-1)(z-2)}. \] Give the Laurent expansion of \(f(z)\) in each of the following annuli:
+
+ 
+\smallskip
+\textbf{(a)} ann\((0;0,1)\);
+\par\smallskip
+\textbf{(b)} ann\((0;1,2)\);
+\par\smallskip
+\textbf{(c)} ann\((0;2,\infty)\).
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \( f \) be analytic in \[ G = \{ z : 0 < |z - a| < r \} \] except that there is a sequence of poles \( \{a_n\} \) in \(G\) with \(a_n \to a\). Show that for any \( \omega \in \mathbb{C} \) there exists a sequence \( \{z_n\} \subset G \) with \[ a = \lim z_n \quad \text{and} \quad \omega = \lim f(z_n). \]
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\section{Residues for real integrals}
+\label{practice-22-residues-for-real-integrals}
+
+\begin{practiceexercise}
+Verify the following equation: \[ \int_{0}^{\infty} \frac{\cos(ax)}{(1+x^{2})^{2}}\, dx = \frac{\pi (a+1)e^{-a}}{4}, \qquad a>0. \]
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\section{Boundary modulus and finite Blaschke products}
+\label{practice-23-boundary-modulus-and-finite-blaschke-products}
+
+\begin{practiceexercise}
+Suppose $f$ is analytic in some region containing $\overline{B}(0,1)$ and $|f(z)|=1$ where $|z|=1$. Find a formula for $f$. Hint: First consider the case where $f$ has no zeros in $B(0,1)$.
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Suppose that both $f$ and $g$ are analytic on $\overline{B(0;R)}$ with \[ |f(z)| = |g(z)| \quad \text{for } |z| = R. \] Show that if neither $f$ nor $g$ vanishes in $B(0;R)$, then there is a constant $\lambda$, with $|\lambda| = 1$, such that $f = \lambda g$.
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let \(f\) be analytic on \(\mathbb{D}\), continuous on \(\overline{\mathbb{D}}\), and satisfy \(|f|=1\) on \(\partial\mathbb{D}\). Find a formula for \(f\). \emph{Hint: Consider first the zero-free case.}
+
+\SourceRef{Source: August 2022, II.4}
+\end{practiceexercise}
+
+\section{Riemann mapping and topology of punctures}
+\label{practice-24-riemann-mapping-and-topology-of-punctures}
+
+\begin{practiceexercise}
+\smallskip
+\textbf{(1)} Let $G$ be a region, let $a\in G$ and suppose that $f:(G\setminus\{a\})\to\mathbb{C}$ is an analytic function such that $f(G\setminus\{a\})=\Omega$ is bounded. Show that $f$ has a removable singularity at $z=a$. If $f$ is one-one, show that $f(a)\in\partial\Omega$.
+\par\smallskip
+\textbf{(2)} Show that there is no one-one analytic function which maps \[ G=\{z:0<|z|<1\} \] onto an annulus \[ \Omega=\{z:r<|z|<R\} \] where $r>0$.
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let $G$ be a simply connected region which is not the whole plane and suppose that $\overline{z}\in G$ whenever $z\in G$. Let $a\in G\cap\mathbb{R}$ and suppose that $f:G\to D=\{z:|z|<1\}$ is a one-one analytic function with $f(a)=0$, $f'(a)>0$ and $f(G)=D$. Let \[ G_+=\{z\in G:\Im z>0\}. \] Show that $f(G_+)$ must lie entirely above or entirely below the real axis.
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\section{Subharmonic functions}
+\label{practice-25-subharmonic-functions}
+
+\begin{practiceexercise}
+Let \(G\) and \(\Omega\) be domains in the complex plane. If \(f:G\to\Omega\) is one-to-one and analytic and \(\varphi:\Omega\to\mathbb{R}\) is subharmonic, show that \(\varphi\circ f\) is subharmonic.
+
+\SourceRef{Source: January 2025, II.1}
+\end{practiceexercise}
+
+\section{Runge and approximation obstructions}
+\label{practice-26-runge-and-approximation-obstructions}
+
+\begin{practiceexercise}
+Let $G$ be the open unit disk $B(0;1)$ and let \( K=\left\{z:\frac{1}{4}\le |z|\le \frac{3}{4}\right\}. \) Show that there is a function $f$ analytic on some open subset $G_1$ containing $K$ which cannot be approximated on $K$ by functions in $H(G)$.
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\section{Phragmén–Lindelöf}
+\label{practice-27-phragm-n-lindel-f}
+
+\begin{practiceexercise}
+Let $G=\{z:\ |\Im z|<\tfrac{1}{2}\pi\}$ and suppose $f:G\to\mathbb{C}$ is analytic and \[ \limsup_{z\to w}|f(z)|\le M \quad \text{for } w\in \partial G. \] Also, suppose $A<\infty$ and $a<1$ can be found such that \[ |f(z)|<\exp\!\bigl[A\exp(a\,\Re z)\bigr] \] for all $z$ in $G$. Show that $|f(z)|\le M$ for all $z$ in $G$. Examine $\exp(\exp z)$ to see that this is the best possible growth condition. Can we take $a=1$ above?
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\begin{practiceexercise}
+Let $f:G\to\mathbb{C}$ be analytic and suppose that $G$ is bounded. Fix $z_0\in\partial G$ and suppose that \[ \limsup_{z\to w}|f(z)|\le M \quad \text{for } w\in\partial G,\ w\ne z_0. \] Show that if \[ \lim_{z\to z_0} |z-z_0|^{\varepsilon}|f(z)|=0 \] for every $\varepsilon>0$ then $|f(z)|\le M$ for every $z\in G$. \emph{Hint:} If $a\notin G$, consider $\varphi(z)=(z-z_0)(z-a)^{-1}$.
+
+\SourceRef{Source: text exercise}
+\end{practiceexercise}
+
+\chapter{Warm-ups and Supporting Exercises}
+\label{practice-lower-priority-warm-ups}
+
+Use these for speed, but do not spend your main study time on them before completing Tier 1:
+
+
+\begin{itemize}[leftmargin=*,itemsep=0.55em,topsep=0.45em]
+\item Calculate the following:
+
+ 
+\smallskip
+\textbf{(1)} the square roots of $i$
+\par\smallskip
+\textbf{(2)} the cube roots of $i$
+\par\smallskip
+\textbf{(3)} the square roots of $\sqrt{3} + 3i$
+\SourceRef{Source: Exercise/complex.tex, line 112}
+\item If $(X,d)$ is any metric space show that every open ball is an open set. Also, show that every closed ball is a closed set.
+
+\SourceRef{Source: Exercise/complex.tex, line 269}
+\item Let $\gamma$ and $\sigma$ be the two polygons $[1,i]$ and $[1,\,1+i,\,i]$. Express $\gamma$ and $\sigma$ as paths and calculate $\int_\gamma f$ and $\int_\sigma f$ where $f(z)=|z|^{2}$.
+
+\SourceRef{Source: Exercise/complex.tex, line 1588}
+\item Find the radius of convergence for each of the following power series:
+
+ 
+\smallskip
+\textbf{(1)} $\displaystyle \sum_{n=0}^{\infty} a^n z^n, \quad a \in \mathbb{C};$
+\par\smallskip
+\textbf{(2)} $\displaystyle \sum_{n=0}^{\infty} a^{n^2} z^n, \quad a \in \mathbb{C};$
+\par\smallskip
+\textbf{(3)} $\displaystyle \sum_{n=0}^{\infty} k^n z^n, \quad k \text{ an integer } \neq 0;$
+\par\smallskip
+\textbf{(4)} $\displaystyle \sum_{n=0}^{\infty} z^{n!}.$
+\SourceRef{Source: Exercise/complex.tex, line 860}
+\item Show that if $F_1$ and $F_2$ are primitives for $f:G\to\mathbb{C}$ and $G$ is open and connected, then there is a constant $c$ such that $F_1(z)=c+F_2(z)$ for each $z\in G$.
+
+\SourceRef{Source: Exercise/complex.tex, line 1747}
+\end{itemize}
+
+\chapter{Recommended Study Plan}
+\label{practice-recommended-order}
+
+\begin{enumerate}[leftmargin=*,itemsep=0.55em,topsep=0.45em]
+\item First pass: items 1–9 (core first-semester techniques).
+\item Second pass: items 10–17 (convergence, factorization, and harmonic theory).
+\item Third pass: items 18–27 (Part II and advanced topics).
+\item Final review: redo every qualifying-exam question above under a 20–25 minute limit without notes.
+\end{enumerate}
+
+A solution counts as exam-ready only if you can state exactly why the relevant hypotheses hold—for example, why a quotient has removable singularities, why a logarithm exists on the domain, which zeros lie inside a Rouché contour, or why a family is locally bounded.
+
+
+
+\part{Theorem Reference}
+\label{chapter-reference}
+
+\chapter{Topology, compactness, and uniform convergence}
+\label{category-topology}
+The metric-space results repeatedly used to justify connectedness, compactness, distance estimates, and passage to limits.
+
+\section{Chapter II, §2 — Connectedness}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Connected set]
+\label{result-ii-2-1-connected-set}
+\index[results]{Connected set@Connected set (II.2.1)}
+\index[subjects]{Topology, compactness, and uniform convergence!Connected set}
+\ResultMeta{II.2.1}{14}{Definition}
+A metric space $(X,d)$ is connected if the only subsets of $X$ which are both open and closed are $\varnothing$ and $X$. If $A\subset X$ then $A$ is a connected subset of $X$ if the metric space $(A,d)$ is connected.
+\UsedFor{Regions, components, identity arguments, and open mapping.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Polygonal characterization of regions]
+\label{result-ii-2-3-polygonal-characterization-of-regions}
+\index[results]{Polygonal characterization of regions@Polygonal characterization of regions (II.2.3)}
+\index[subjects]{Topology, compactness, and uniform convergence!Polygonal characterization of regions}
+\ResultMeta{II.2.3}{15}{Important}
+An open set $G\subset\mathbb C$ is connected iff for any two points $a,b$ in $G$ there is a polygon from $a$ to $b$ lying entirely inside $G$.
+\UsedFor{Contour construction, regions, primitives, and connected-domain arguments.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Axis-parallel polygonal paths]
+\label{result-ii-2-4-axis-parallel-polygonal-paths}
+\index[results]{Axis-parallel polygonal paths@Axis-parallel polygonal paths (II.2.4)}
+\index[subjects]{Topology, compactness, and uniform convergence!Axis-parallel polygonal paths}
+\ResultMeta{II.2.4}{15}{Important}
+If $G\subset\mathbb C$ is open and connected and $a$ and $b$ are points in $G$ then there is a polygon $P$ in $G$ from $a$ to $b$ which is made up of line segments parallel to either the real or imaginary axis.
+\UsedFor{Cauchy–Riemann and path-integration arguments.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{lemma}[Union of connected sets]
+\label{result-ii-2-6-union-of-connected-sets}
+\index[results]{Union of connected sets@Union of connected sets (II.2.6)}
+\index[subjects]{Topology, compactness, and uniform convergence!Union of connected sets}
+\ResultMeta{II.2.6}{16}{Supporting}
+Let $x_0\in X$ and let $\{D_j:j\in J\}$ be a collection of connected subsets of $X$ such that $x_0\in D_j$ for each $j$ in $J$. Then $D=\bigcup\{D_j:j\in J\}$ is connected.
+\UsedFor{Connectedness exercises and component arguments.}
+\end{lemma}
+
+\section{Chapter II, §3 — Sequences and completeness}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Cantor intersection theorem]
+\label{result-ii-3-7-cantor-intersection-theorem}
+\index[results]{Cantor intersection theorem@Cantor intersection theorem (II.3.7)}
+\index[subjects]{Topology, compactness, and uniform convergence!Cantor intersection theorem}
+\ResultMeta{II.3.7}{19}{Supporting}
+A metric space $(X,d)$ is complete iff for any sequence $\{F_n\}$ of non-empty closed sets with $F_1\supset F_2\supset\cdots$ and $\operatorname{diam}F_n\to0$, $\bigcap_{n=1}^{\infty}F_n$ consists of a single point.
+\UsedFor{Completeness exercises and nested-disk arguments.}
+\end{theorem}
+
+\section{Chapter II, §4 — Compactness}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Compact set]
+\label{result-ii-4-1-compact-set}
+\index[results]{Compact set@Compact set (II.4.1)}
+\index[subjects]{Topology, compactness, and uniform convergence!Compact set}
+\ResultMeta{II.4.1}{20}{Definition}
+A subset $K$ of a metric space $X$ is compact if for every collection $\mathcal G$ of open sets in $X$ with the property $K\subset\bigcup\{G:G\in\mathcal G\}$, there are a finite number of sets $G_1,\ldots,G_n$ in $\mathcal G$ such that $K\subset G_1\cup G_2\cup\cdots\cup G_n$. A collection of sets $\mathcal G$ satisfying the displayed inclusion is called a cover of $K$; if each member of $\mathcal G$ is an open set it is called an open cover of $K$.
+\UsedFor{Finite subcovers, uniform estimates, extrema, and compact convergence.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{lemma}[Lebesgue covering lemma]
+\label{result-ii-4-8-lebesgue-covering-lemma}
+\index[results]{Lebesgue covering lemma@Lebesgue covering lemma (II.4.8)}
+\index[subjects]{Topology, compactness, and uniform convergence!Lebesgue covering lemma}
+\ResultMeta{II.4.8}{21}{Supporting}
+If $(X,d)$ is sequentially compact and $\mathcal G$ is an open cover of $X$ then there is an $\varepsilon>0$ such that if $x$ is in $X$, there is a set $G$ in $\mathcal G$ with $B(x;\varepsilon)\subset G$.
+\UsedFor{Uniform local estimates on compact curves and sets.}
+\end{lemma}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Equivalent forms of compactness]
+\label{result-ii-4-9-equivalent-forms-of-compactness}
+\index[results]{Equivalent forms of compactness@Equivalent forms of compactness (II.4.9)}
+\index[subjects]{Topology, compactness, and uniform convergence!Equivalent forms of compactness}
+\ResultMeta{II.4.9}{22}{Important}
+Let $(X,d)$ be a metric space; then the following are equivalent statements:
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.45em,topsep=0.45em]
+\item $X$ is compact
+\item every infinite set in $X$ has a limit point
+\item $X$ is sequentially compact
+\item $X$ is complete and for every $\varepsilon>0$ there are a finite number of points $x_1,\ldots,x_n$ in $X$ such that $X=\bigcup_{k=1}^{n}B(x_k;\varepsilon)$.
+\end{enumerate}
+\UsedFor{Normal families, compact exhaustion, and topology exercises.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Heine–Borel theorem]
+\label{result-ii-4-10-heine-borel-theorem}
+\index[results]{Heine–Borel theorem@Heine–Borel theorem (II.4.10)}
+\index[subjects]{Topology, compactness, and uniform convergence!Heine–Borel theorem}
+\ResultMeta{II.4.10}{23}{Important}
+A subset $K$ of $\mathbb R^n$ $(n\ge1)$ is compact iff $K$ is closed and bounded.
+\UsedFor{Compact contours, boundary extrema, and finite subcovers.}
+\end{theorem}
+
+\section{Chapter II, §5 — Continuity}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Continuous images]
+\label{result-ii-5-8-continuous-images}
+\index[results]{Continuous images@Continuous images (II.5.8)}
+\index[subjects]{Topology, compactness, and uniform convergence!Continuous images}
+\ResultMeta{II.5.8}{26}{Important}
+Let $f:(X,d)\to(\Omega,\rho)$ be a continuous function.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.45em,topsep=0.45em]
+\item If $X$ is compact then $f(X)$ is a compact subset of $\Omega$.
+\item If $X$ is connected then $f(X)$ is a connected subset of $\Omega$.
+\end{enumerate}
+\UsedFor{Range restrictions, integer-valued continuous functions, and extrema.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Intermediate-value property]
+\label{result-ii-5-10-intermediate-value-property}
+\index[results]{Intermediate-value property@Intermediate-value property (II.5.10)}
+\index[subjects]{Topology, compactness, and uniform convergence!Intermediate-value property}
+\ResultMeta{II.5.10}{26}{Supporting}
+If $f:X\to\mathbb R$ is continuous and $X$ is connected then $f(X)$ is an interval.
+\UsedFor{Harmonic open-map and sign arguments.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Extreme-value theorem]
+\label{result-ii-5-12-extreme-value-theorem}
+\index[results]{Extreme-value theorem@Extreme-value theorem (II.5.12)}
+\index[subjects]{Topology, compactness, and uniform convergence!Extreme-value theorem}
+\ResultMeta{II.5.12}{27}{Important}
+If $f:X\to\mathbb R$ is continuous and $K\subset X$ is compact then there are points $x_0$ and $y_0$ in $K$ with $f(x_0)=\sup\{f(x):x\in K\}$ and $f(y_0)=\inf\{f(x):x\in K\}$.
+\UsedFor{Minimum-modulus, contour-distance, and compact-boundary arguments.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Heine–Cantor theorem]
+\label{result-ii-5-15-heine-cantor-theorem}
+\index[results]{Heine–Cantor theorem@Heine–Cantor theorem (II.5.15)}
+\index[subjects]{Topology, compactness, and uniform convergence!Heine–Cantor theorem}
+\ResultMeta{II.5.15}{27}{Supporting}
+Suppose $f:X\to\Omega$ is continuous and $X$ is compact; then $f$ is uniformly continuous.
+\UsedFor{Moving-point convergence and uniform control on curves.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Positive separation from a compact set]
+\label{result-ii-5-17-positive-separation-from-a-compact-set}
+\index[results]{Positive separation from a compact set@Positive separation from a compact set (II.5.17)}
+\index[subjects]{Topology, compactness, and uniform convergence!Positive separation from a compact set}
+\ResultMeta{II.5.17}{28}{Supporting}
+If $A$ and $B$ are non-empty disjoint sets in $X$ with $B$ closed and $A$ compact then $d(A,B)>0$.
+\UsedFor{Choosing small contours and compact subsets away from boundaries.}
+\end{theorem}
+
+\section{Chapter II, §6 — Uniform convergence}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Uniform limit theorem]
+\label{result-ii-6-1-uniform-limit-theorem}
+\index[results]{Uniform limit theorem@Uniform limit theorem (II.6.1)}
+\index[subjects]{Topology, compactness, and uniform convergence!Uniform limit theorem}
+\ResultMeta{II.6.1}{29}{Important}
+Suppose $f_n:(X,d)\to(\Omega,\rho)$ is continuous for each $n$ and that $f=u\!\operatorname{-lim}f_n$; then $f$ is continuous.
+\UsedFor{Continuity of limits and convergence in function spaces.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Weierstrass M-test]
+\label{result-ii-6-2-weierstrass-m-test}
+\index[results]{Weierstrass M-test@Weierstrass M-test (II.6.2)}
+\index[subjects]{Topology, compactness, and uniform convergence!Weierstrass M-test}
+\ResultMeta{II.6.2}{29}{Important}
+Let $u_n:X\to\mathbb C$ be a function such that $|u_n(x)|\le M_n$ for every $x$ in $X$ and suppose the constants satisfy $\sum_{n=1}^{\infty}M_n<\infty$. Then $\sum_1^{\infty}u_n$ is uniformly convergent.
+\UsedFor{Power series, infinite products, Mittag-Leffler, and Weierstrass constructions.}
+\end{theorem}
+
+\section{Chapter III, §2 — Analytic functions}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Region]
+\label{result-iii-2-region}
+\index[results]{Region@Region (III.§2)}
+\index[subjects]{Topology, compactness, and uniform convergence!Region}
+\ResultMeta{III.§2}{41}{Definition}
+A region is an open connected subset of the plane.
+\UsedFor{Reading nearly every global theorem hypothesis in the reference.}
+\end{definition}
+
+\chapter{Analytic functions, branches, and mappings}
+\label{category-analytic}
+Local analytic structure, Cauchy–Riemann theory, logarithms, and Möbius transformations.
+
+\section{Chapter III, §1 — Power series}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Radius of convergence theorem]
+\label{result-iii-1-3-radius-of-convergence-theorem}
+\index[results]{Radius of convergence theorem@Radius of convergence theorem (III.1.3)}
+\index[subjects]{Analytic functions, branches, and mappings!Radius of convergence theorem}
+\ResultMeta{III.1.3}{31}{Important}
+For a given power series $\sum_{n=0}^{\infty}a_n(z-a)^n$ define the number $R$, $0\le R\le\infty$, by $1/R=\limsup |a_n|^{1/n}$; then:
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.45em,topsep=0.45em]
+\item if $|z-a|<R$, the series converges absolutely
+\item if $|z-a|>R$, the terms of the series become unbounded and so the series diverges
+\item if $0<r<R$ then the series converges uniformly on $\{z:|z-a|\le r\}$. Moreover, the number $R$ is the only number having properties (a) and (b).
+\end{enumerate}
+\UsedFor{All power-series radius and boundary-convergence problems.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{proposition}[Ratio formula for the radius of convergence]
+\label{result-iii-1-4-ratio-formula-for-the-radius-of-convergence}
+\index[results]{Ratio formula for the radius of convergence@Ratio formula for the radius of convergence (III.1.4)}
+\index[subjects]{Analytic functions, branches, and mappings!Ratio formula for the radius of convergence}
+\ResultMeta{III.1.4}{32}{Important}
+If $\sum_{n=0}^{\infty}a_n(z-a)^n$ is a given power series with radius of convergence $R$, then \[R=\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right|\] if this limit exists.
+\UsedFor{Computing a power series’ radius of convergence from consecutive coefficients.}
+\end{proposition}
+
+\Needspace{7\baselineskip}
+\begin{formula}[Exponential series]
+\label{result-iii-1-exponential-series}
+\index[results]{Exponential series@Exponential series (III.§1)}
+\index[subjects]{Analytic functions, branches, and mappings!Exponential series}
+\ResultMeta{III.§1}{32}{Formula}
+The series $\sum_{n=0}^{\infty}\frac{z^n}{n!}$ has radius of convergence $\infty$, so it converges at every complex number and uniformly on every compact subset of $\mathbb C$. The exponential series or function is designated by \[e^z=\exp z=\sum_{n=0}^{\infty}\frac{z^n}{n!}.\]
+\UsedFor{Power-series arguments involving $e^z$, entire functions, derivatives, and exponential equations.}
+\end{formula}
+
+\section{Chapter III, §2 — Analytic functions}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Complex differentiability]
+\label{result-iii-2-1-complex-differentiability}
+\index[results]{Complex differentiability@Complex differentiability (III.2.1)}
+\index[subjects]{Analytic functions, branches, and mappings!Complex differentiability}
+\ResultMeta{III.2.1}{33}{Definition}
+If $G$ is an open set in $\mathbb C$ and $f:G\to\mathbb C$ then $f$ is differentiable at a point $a$ in $G$ if $\displaystyle\lim_{h\to0}\frac{f(a+h)-f(a)}{h}$ exists; the value of this limit is denoted by $f'(a)$ and is called the derivative of $f$ at $a$. If $f$ is differentiable at each point of $G$ we say that $f$ is differentiable on $G$.
+\UsedFor{Checking whether a function is complex differentiable.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Analytic function]
+\label{result-iii-2-3-analytic-function}
+\index[results]{Analytic function@Analytic function (III.2.3)}
+\index[subjects]{Analytic functions, branches, and mappings!Analytic function}
+\ResultMeta{III.2.3}{34}{Definition}
+A function $f:G\to\mathbb C$ is analytic if $f$ is continuously differentiable on $G$.
+\UsedFor{The basic hypothesis for Cauchy theory and all later analytic results.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Analyticity of a power series]
+\label{result-iii-2-9-analyticity-of-a-power-series}
+\index[results]{Analyticity of a power series@Analyticity of a power series (III.2.9)}
+\index[subjects]{Analytic functions, branches, and mappings!Analyticity of a power series}
+\ResultMeta{III.2.9}{37}{Important}
+If the series $\sum_{n=0}^{\infty}a_n(z-a)^n$ has radius of convergence $R>0$ then $f(z)=\sum_{n=0}^{\infty}a_n(z-a)^n$ is analytic in $B(a;R)$.
+\UsedFor{Taylor expansions, functional equations, and coefficient comparisons.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{proposition}[Zero derivative implies constant]
+\label{result-iii-2-10-zero-derivative-implies-constant}
+\index[results]{Zero derivative implies constant@Zero derivative implies constant (III.2.10)}
+\index[subjects]{Analytic functions, branches, and mappings!Zero derivative implies constant}
+\ResultMeta{III.2.10}{37}{Important}
+If $G$ is open and connected and $f:G\to\mathbb C$ is differentiable with $f'(z)=0$ for all $z$ in $G$, then $f$ is constant.
+\UsedFor{Uniqueness of primitives and constant-function conclusions.}
+\end{proposition}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Branch of the logarithm]
+\label{result-iii-2-18-branch-of-the-logarithm}
+\index[results]{Branch of the logarithm@Branch of the logarithm (III.2.18)}
+\index[subjects]{Analytic functions, branches, and mappings!Branch of the logarithm}
+\ResultMeta{III.2.18}{39}{Definition}
+If $G$ is an open connected set in $\mathbb C$ and $f:G\to\mathbb C$ is a continuous function such that $z=\exp f(z)$ for all $z$ in $G$ then $f$ is a branch of the logarithm.
+\UsedFor{Logarithm branches, complex powers, roots, and contour obstructions.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{proposition}[Uniqueness of logarithm branches]
+\label{result-iii-2-19-uniqueness-of-logarithm-branches}
+\index[results]{Uniqueness of logarithm branches@Uniqueness of logarithm branches (III.2.19)}
+\index[subjects]{Analytic functions, branches, and mappings!Uniqueness of logarithm branches}
+\ResultMeta{III.2.19}{39}{Important}
+If $G\subset\mathbb C$ is open and connected and $f$ is a branch of $\log z$ on $G$ then the totality of branches of $\log z$ are the functions $f(z)+2\pi ki$, $k\in\mathbb Z$.
+\UsedFor{Branch classification and annulus problems.}
+\end{proposition}
+
+\Needspace{7\baselineskip}
+\begin{proposition}[Analytic inverse criterion]
+\label{result-iii-2-20-analytic-inverse-criterion}
+\index[results]{Analytic inverse criterion@Analytic inverse criterion (III.2.20)}
+\index[subjects]{Analytic functions, branches, and mappings!Analytic inverse criterion}
+\ResultMeta{III.2.20}{39}{Important}
+Let $G$ and $\Omega$ be open subsets of $\mathbb C$. Suppose that $f:G\to\mathbb C$ and $g:\Omega\to\mathbb C$ are continuous functions such that $f(G)\subset\Omega$ and $g(f(z))=z$ for all $z$ in $G$. If $g$ is differentiable and $g'(z)\ne0$, $f$ is differentiable and $f'(z)=1/g'(f(z))$. If $g$ is analytic, $f$ is analytic.
+\UsedFor{August 2024 I.1 and analytic inverses.}
+\end{proposition}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Analyticity of logarithm branches]
+\label{result-iii-2-21-analyticity-of-logarithm-branches}
+\index[results]{Analyticity of logarithm branches@Analyticity of logarithm branches (III.2.21)}
+\index[subjects]{Analytic functions, branches, and mappings!Analyticity of logarithm branches}
+\ResultMeta{III.2.21}{40}{Important}
+A branch of the logarithm function is analytic and its derivative is $z^{-1}$.
+\UsedFor{Principal branches, powers, and path integrals of $1/z$.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Branches of complex powers]
+\label{result-iii-2-complex-powers-branches-of-complex-powers}
+\index[results]{Branches of complex powers@Branches of complex powers (III.2 — Complex powers)}
+\index[subjects]{Analytic functions, branches, and mappings!Branches of complex powers}
+\ResultMeta{III.2 — Complex powers}{40}{Definition}
+Let $G$ be open and connected, let $f$ be a branch of the logarithm on $G$, and fix $b\in\mathbb C$. A branch of $z^b$ on $G$ is defined by \[z^b=\exp\!\bigl(bf(z)\bigr).\] If $b\in\mathbb Z$, this agrees with the ordinary integer power and is independent of the logarithm branch. When no branch is specified, $z^b$ means \[z^b=\exp\!\bigl(b\operatorname{Log}z\bigr),\] where $\operatorname{Log}$ is the principal logarithm. Every such branch of $z^b$ is analytic on its domain.
+\UsedFor{Analytic powers and roots, branch dependence, August 2020 II.5, and Fall 2025 I.7.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{formula}[Cauchy–Riemann equations]
+\label{result-iii-2-24-cauchy-riemann-equations}
+\index[results]{Cauchy–Riemann equations@Cauchy–Riemann equations (III.2.24)}
+\index[subjects]{Analytic functions, branches, and mappings!Cauchy–Riemann equations}
+\ResultMeta{III.2.24}{41}{Formula}
+If $f(x+iy)=u(x,y)+iv(x,y)$, the Cauchy–Riemann equations are \[\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}\qquad\text{and}\qquad\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}.\]
+\UsedFor{Direct analyticity tests, harmonic conjugates, and computations of derivatives.}
+\end{formula}
+
+\Needspace{7\baselineskip}
+\begin{remark}[Differentiability implies Cauchy–Riemann]
+\label{result-iii-2-24-note-differentiability-implies-cauchy-riemann}
+\index[results]{Differentiability implies Cauchy–Riemann@Differentiability implies Cauchy–Riemann (III.2.24 — note)}
+\index[subjects]{Analytic functions, branches, and mappings!Differentiability implies Cauchy–Riemann}
+\ResultMeta{III.2.24 — note}{41}{Remark}
+Let $z_0=x_0+iy_0$ and write $f=u+iv$. If $f$ is complex differentiable at $z_0$, then the first partial derivatives of $u$ and $v$ at $(x_0,y_0)$ exist and \[u_x(x_0,y_0)=v_y(x_0,y_0),\qquad u_y(x_0,y_0)=-v_x(x_0,y_0).\] This implication is necessary only: satisfying the Cauchy–Riemann equations at a single point does not by itself imply that $f$ is complex differentiable there.
+\UsedFor{Using Cauchy–Riemann to rule out differentiability and distinguishing necessary from sufficient conditions.}
+\end{remark}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Cauchy–Riemann criterion]
+\label{result-iii-2-29-cauchy-riemann-criterion}
+\index[results]{Cauchy–Riemann criterion@Cauchy–Riemann criterion (III.2.29)}
+\index[subjects]{Analytic functions, branches, and mappings!Cauchy–Riemann criterion}
+\ResultMeta{III.2.29}{42}{Essential}
+Let $u$ and $v$ be real-valued functions defined on a region $G$ and suppose that $u$ and $v$ have continuous partial derivatives. Then $f:G\to\mathbb C$ defined by $f(z)=u(z)+iv(z)$ is analytic iff $u$ and $v$ satisfy the Cauchy–Riemann equations.
+\UsedFor{Direct analyticity checks, reflection, and harmonic conjugates.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Existence of harmonic conjugates on disks]
+\label{result-iii-2-30-existence-of-harmonic-conjugates-on-disks}
+\index[results]{Existence of harmonic conjugates on disks@Existence of harmonic conjugates on disks (III.2.30)}
+\index[subjects]{Analytic functions, branches, and mappings!Existence of harmonic conjugates on disks}
+\ResultMeta{III.2.30}{43}{Important}
+Let $G$ be either the whole plane $\mathbb C$ or some open disk. If $u:G\to\mathbb R$ is a harmonic function then $u$ has a harmonic conjugate.
+\UsedFor{Local harmonic arguments and harmonic open mapping.}
+\end{theorem}
+
+\section{Chapter III, §3 — Analytic mappings and Möbius transformations}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Angle preservation]
+\label{result-iii-3-4-angle-preservation}
+\index[results]{Angle preservation@Angle preservation (III.3.4)}
+\index[subjects]{Analytic functions, branches, and mappings!Angle preservation}
+\ResultMeta{III.3.4}{46}{Supporting}
+If $f:G\to\mathbb C$ is analytic then $f$ preserves angles at each point $z_0$ of $G$ where $f'(z_0)\ne0$.
+\UsedFor{Conformal-map verification and local geometry.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Möbius maps preserve generalized circles]
+\label{result-iii-3-14-m-bius-maps-preserve-generalized-circles}
+\index[results]{Möbius maps preserve generalized circles@Möbius maps preserve generalized circles (III.3.14)}
+\index[subjects]{Analytic functions, branches, and mappings!Möbius maps preserve generalized circles}
+\ResultMeta{III.3.14}{49}{Important}
+A Möbius transformation takes circles onto circles.
+\UsedFor{Disk/half-plane maps, slit domains, fixed points, and circle geometry.}
+\end{theorem}
+
+\chapter{Complex integration, Cauchy theory, and zeros}
+\label{category-integration}
+The central toolkit for contour computation, estimates, identities, and local mapping behavior.
+
+\section{Chapter IV, §1 — Riemann–Stieltjes integrals}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Parametrization formula]
+\label{result-iv-1-9-parametrization-formula}
+\index[results]{Parametrization formula@Parametrization formula (IV.1.9)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Parametrization formula}
+\ResultMeta{IV.1.9}{62}{Supporting}
+If $\gamma$ is piecewise smooth and $f:[a,b]\to\mathbb C$ is continuous then $\int_a^b f\,d\gamma=\int_a^b f(t)\gamma'(t)\,dt$.
+\UsedFor{Direct evaluation of contour integrals.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{proposition}[Basic properties and estimate for line integrals]
+\label{result-iv-1-17-basic-properties-and-estimate-for-line-integrals}
+\index[results]{Basic properties and estimate for line integrals@Basic properties and estimate for line integrals (IV.1.17)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Basic properties and estimate for line integrals}
+\ResultMeta{IV.1.17}{65}{Important}
+Let $\gamma$ be a rectifiable curve and suppose that $f$ is a function continuous on $\{\gamma\}$. Then:
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.45em,topsep=0.45em]
+\item $\int_\gamma f=-\int_{-\gamma}f$
+\item \[\left|\int_\gamma f\right|\le\int_\gamma |f|\,|dz|\le V(\gamma)\sup\{|f(z)|:z\in\{\gamma\}\}\]
+\item if $c\in\mathbb C$ then $\int_\gamma f(z)\,dz=\int_{\gamma+c}f(z-c)\,dz$.
+\end{enumerate}
+\UsedFor{Large-arc limits, Liouville contour proofs, and vanishing integrals.}
+\end{proposition}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Primitive]
+\label{result-iv-1-primitive}
+\index[results]{Primitive@Primitive (IV.§1)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Primitive}
+\ResultMeta{IV.§1}{65}{Definition}
+$F$ is a primitive of $f$ when $F'=f$.
+\UsedFor{The fundamental theorem for line integrals, path independence, and logarithms.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Fundamental theorem for complex line integrals]
+\label{result-iv-1-18-fundamental-theorem-for-complex-line-integrals}
+\index[results]{Fundamental theorem for complex line integrals@Fundamental theorem for complex line integrals (IV.1.18)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Fundamental theorem for complex line integrals}
+\ResultMeta{IV.1.18}{65}{Important}
+Let $G$ be open in $\mathbb C$ and let $\gamma$ be a rectifiable path in $G$ with initial and end points $\alpha$ and $\beta$ respectively. If $f:G\to\mathbb C$ is a continuous function with a primitive $F:G\to\mathbb C$, then $\int_\gamma f=F(\beta)-F(\alpha)$.
+\UsedFor{Primitives, path independence, and integrals of powers.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Integral of a primitive over a closed curve]
+\label{result-iv-1-22-integral-of-a-primitive-over-a-closed-curve}
+\index[results]{Integral of a primitive over a closed curve@Integral of a primitive over a closed curve (IV.1.22)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Integral of a primitive over a closed curve}
+\ResultMeta{IV.1.22}{66}{Supporting}
+Let $G$, $\gamma$, and $f$ satisfy the same hypothesis as in Theorem 1.18. If $\gamma$ is a closed curve then $\int_\gamma f=0$.
+\UsedFor{Primitives, path independence, and logarithms.}
+\end{corollary}
+
+\section{Chapter IV, §2 — Power-series representation}
+
+\Needspace{7\baselineskip}
+\begin{proposition}[Differentiation under the integral sign]
+\label{result-iv-2-1-differentiation-under-the-integral-sign}
+\index[results]{Differentiation under the integral sign@Differentiation under the integral sign (IV.2.1)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Differentiation under the integral sign}
+\ResultMeta{IV.2.1}{68}{Supporting}
+Let $\varphi:[a,b]\times[c,d]\to\mathbb C$ be a continuous function and define $g:[c,d]\to\mathbb C$ by $g(t)=\int_a^b\varphi(s,t)\,ds$. Then $g$ is continuous. Moreover, if $\partial\varphi/\partial t$ exists and is a continuous function on $[a,b]\times[c,d]$ then $g$ is continuously differentiable and $g'(t)=\int_a^b\frac{\partial\varphi}{\partial t}(s,t)\,ds$.
+\UsedFor{Differentiation under the integral sign and harmonic conjugates.}
+\end{proposition}
+
+\Needspace{7\baselineskip}
+\begin{lemma}[Uniform convergence under contour integrals]
+\label{result-iv-2-7-uniform-convergence-under-contour-integrals}
+\index[results]{Uniform convergence under contour integrals@Uniform convergence under contour integrals (IV.2.7)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Uniform convergence under contour integrals}
+\ResultMeta{IV.2.7}{71}{Important}
+Let $\gamma$ be a rectifiable curve in $\mathbb C$ and suppose that $F_n$ and $F$ are continuous functions on $\{\gamma\}$. If $F=u\!\operatorname{-lim}F_n$ on $\{\gamma\}$ then $\int_\gamma F=\lim\int_\gamma F_n$.
+\UsedFor{Analytic limits, Laurent series, and contour approximations.}
+\end{lemma}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Local power-series representation]
+\label{result-iv-2-8-local-power-series-representation}
+\index[results]{Local power-series representation@Local power-series representation (IV.2.8)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Local power-series representation}
+\ResultMeta{IV.2.8}{72}{Essential}
+Let $f$ be analytic in $B(a;R)$; then $f(z)=\sum_{n=0}^{\infty}a_n(z-a)^n$ for $|z-a|<R$, where $a_n=\frac1{n!}f^{(n)}(a)$, and this series has radius of convergence $\ge R$.
+\UsedFor{Taylor expansions, symmetry, and classification of entire functions.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Taylor expansion on the largest centered disk]
+\label{result-iv-2-11-taylor-expansion-on-the-largest-centered-disk}
+\index[results]{Taylor expansion on the largest centered disk@Taylor expansion on the largest centered disk (IV.2.11)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Taylor expansion on the largest centered disk}
+\ResultMeta{IV.2.11}{73}{Important}
+If $f:G\to\mathbb C$ is analytic and $a\in G$ then $f(z)=\sum_{n=0}^{\infty}a_n(z-a)^n$ for $|z-a|<R$, where $R=d(a,\partial G)$.
+\UsedFor{Taylor expansions and radii of convergence.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Infinite differentiability]
+\label{result-iv-2-12-infinite-differentiability}
+\index[results]{Infinite differentiability@Infinite differentiability (IV.2.12)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Infinite differentiability}
+\ResultMeta{IV.2.12}{73}{Supporting}
+If $f:G\to\mathbb C$ is analytic then $f$ is infinitely differentiable.
+\UsedFor{Derivative arguments and analytic regularity.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Cauchy formula for derivatives]
+\label{result-iv-2-13-cauchy-formula-for-derivatives}
+\index[results]{Cauchy formula for derivatives@Cauchy formula for derivatives (IV.2.13)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Cauchy formula for derivatives}
+\ResultMeta{IV.2.13}{73}{Essential}
+If $f:G\to\mathbb C$ is analytic and $\overline{B(a;r)}\subset G$ then \[f^{(n)}(a)=\frac{n!}{2\pi i}\int_\gamma\frac{f(w)}{(w-a)^{n+1}}\,dw\], where $\gamma(t)=a+re^{it}$, $0\le t\le2\pi$.
+\UsedFor{High-order pole integrals and coefficient formulas.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Cauchy estimates]
+\label{result-iv-2-14-cauchy-estimates}
+\index[results]{Cauchy estimates@Cauchy estimates (IV.2.14)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Cauchy estimates}
+\ResultMeta{IV.2.14}{74}{Essential}
+Let $f$ be analytic in $B(a;R)$ and suppose $|f(z)|\le M$ for all $z$ in $B(a;R)$. Then $|f^{(n)}(a)|\le n!M/R^n$.
+\UsedFor{Liouville, polynomial-growth results, derivative bounds, and normal families.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{remark}[Boundary form of the Cauchy estimates]
+\label{result-iv-2-14-boundary-form-boundary-form-of-the-cauchy-estimates}
+\index[results]{Boundary form of the Cauchy estimates@Boundary form of the Cauchy estimates (IV.2.14 — boundary form)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Boundary form of the Cauchy estimates}
+\ResultMeta{IV.2.14 — boundary form}{74}{Remark}
+Let $f$ be analytic in $B(a;R)$. For every $0<r<R$, combining Cauchy’s formula with the later maximum modulus theorem gives \[|f^{(n)}(a)|\le\frac{n!}{r^n}\max_{|z-a|=r}|f(z)|.\]
+\UsedFor{Sharper derivative bounds using the later \hyperref[result-vi-1-1-maximum-modulus-theorem-interior-form]{maximum modulus theorem}.}
+\end{remark}
+
+\section{Chapter IV, §3 — Zeros of an analytic function}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Zero and multiplicity]
+\label{result-iv-3-1-zero-and-multiplicity}
+\index[results]{Zero and multiplicity@Zero and multiplicity (IV.3.1)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Zero and multiplicity}
+\ResultMeta{IV.3.1}{76}{Definition}
+If $f:G\to\mathbb C$ is analytic and $a$ in $G$ satisfies $f(a)=0$ then $a$ is a zero of $f$ of multiplicity $m\ge1$ if there is an analytic function $g:G\to\mathbb C$ such that $f(z)=(z-a)^m g(z)$ where $g(a)\ne0$.
+\UsedFor{Counting zeros correctly in factorization, residues, and Rouché arguments.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Entire function]
+\label{result-iv-3-2-entire-function}
+\index[results]{Entire function@Entire function (IV.3.2)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Entire function}
+\ResultMeta{IV.3.2}{77}{Definition}
+An entire function is a function which is defined and analytic in the whole complex plane $\mathbb C$.
+\UsedFor{Liouville, polynomial growth, factorization, and Picard problems.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Liouville’s theorem]
+\label{result-iv-3-4-liouville-s-theorem}
+\index[results]{Liouville’s theorem@Liouville’s theorem (IV.3.4)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Liouville’s theorem}
+\ResultMeta{IV.3.4}{77}{Essential}
+If $f$ is a bounded entire function then $f$ is constant.
+\UsedFor{FTA proofs, bounded ratios, harmonic Liouville, and entire growth.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Fundamental theorem of algebra]
+\label{result-iv-3-5-fundamental-theorem-of-algebra}
+\index[results]{Fundamental theorem of algebra@Fundamental theorem of algebra (IV.3.5)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Fundamental theorem of algebra}
+\ResultMeta{IV.3.5}{77}{Essential}
+If $p(z)$ is a non constant polynomial then there is a complex number $a$ with $p(a)=0$.
+\UsedFor{FTA questions and polynomial zero counts.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Identity theorem]
+\label{result-iv-3-7-identity-theorem}
+\index[results]{Identity theorem@Identity theorem (IV.3.7)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Identity theorem}
+\ResultMeta{IV.3.7}{78}{Essential}
+Let $G$ be a connected open set and let $f:G\to\mathbb C$ be an analytic function. Then the following are equivalent statements:
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.45em,topsep=0.45em]
+\item $f\equiv0$
+\item there is a point $a$ in $G$ such that $f^{(n)}(a)=0$ for each $n\ge0$
+\item $\{z\in G:f(z)=0\}$ has a limit point in $G$.
+\end{enumerate}
+\UsedFor{Reflection identities, zero sets, functional equations, and uniqueness.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Identity theorem for two functions]
+\label{result-iv-3-8-identity-theorem-for-two-functions}
+\index[results]{Identity theorem for two functions@Identity theorem for two functions (IV.3.8)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Identity theorem for two functions}
+\ResultMeta{IV.3.8}{79}{Important}
+If $f$ and $g$ are analytic on a region $G$ then $f\equiv g$ iff $\{z\in G:f(z)=g(z)\}$ has a limit point in $G$.
+\UsedFor{Reflection identities, functional equations, and uniqueness.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Finite multiplicity of zeros]
+\label{result-iv-3-9-finite-multiplicity-of-zeros}
+\index[results]{Finite multiplicity of zeros@Finite multiplicity of zeros (IV.3.9)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Finite multiplicity of zeros}
+\ResultMeta{IV.3.9}{79}{Important}
+If $f$ is analytic on an open connected set $G$ and $f$ is not identically zero then for each $a$ in $G$ with $f(a)=0$ there is an integer $n\ge1$ and an analytic function $g:G\to\mathbb C$ such that $g(a)\ne0$ and $f(z)=(z-a)^n g(z)$ for all $z$ in $G$. That is, each zero of $f$ has finite multiplicity.
+\UsedFor{Quotient removal and prescribed multiplicities.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Isolated zeros]
+\label{result-iv-3-10-isolated-zeros}
+\index[results]{Isolated zeros@Isolated zeros (IV.3.10)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Isolated zeros}
+\ResultMeta{IV.3.10}{79}{Important}
+If $f:G\to\mathbb C$ is analytic and not constant, $a\in G$, and $f(a)=0$ then there is an $R>0$ such that $B(a;R)\subset G$ and $f(z)\ne0$ for $0<|z-a|<R$.
+\UsedFor{Critical sets, local factorization, and zero counting.}
+\end{corollary}
+
+\section{Chapter IV, §4 — Index of a closed curve}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Index (winding number)]
+\label{result-iv-4-2-index-winding-number}
+\index[results]{Index (winding number)@Index (winding number) (IV.4.2)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Index (winding number)}
+\ResultMeta{IV.4.2}{81}{Definition}
+If $\gamma$ is a closed rectifiable curve in $\mathbb C$ then for $a\notin\{\gamma\}$, \[n(\gamma;a)=\frac{1}{2\pi i}\int_\gamma (z-a)^{-1}\,dz\] is called the index of $\gamma$ with respect to the point $a$. It is also sometimes called the winding number of $\gamma$ around $a$.
+\UsedFor{Cauchy formulas, residues, and contours that are not simple circles.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Index of a closed curve]
+\label{result-iv-4-4-index-of-a-closed-curve}
+\index[results]{Index of a closed curve@Index of a closed curve (IV.4.4)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Index of a closed curve}
+\ResultMeta{IV.4.4}{82}{Important}
+Let $\gamma$ be a closed rectifiable curve in $\mathbb C$. Then $n(\gamma;a)$ is constant for $a$ belonging to a component of $G=\mathbb C-\{\gamma\}$. Also, $n(\gamma;a)=0$ for $a$ belonging to the unbounded component of $G$.
+\UsedFor{Winding-number integrals, logarithm obstruction, and noncircular contours.}
+\end{theorem}
+
+\section{Chapter IV, §5 — Cauchy’s theorem and integral formula}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Cauchy’s integral formula — first version]
+\label{result-iv-5-4-cauchy-s-integral-formula-first-version}
+\index[results]{Cauchy’s integral formula — first version@Cauchy’s integral formula — first version (IV.5.4)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Cauchy’s integral formula — first version}
+\ResultMeta{IV.5.4}{84}{Essential}
+Let $G$ be an open subset of the plane and $f:G\to\mathbb C$ an analytic function. If $\gamma$ is a closed rectifiable curve in $G$ such that $n(\gamma;w)=0$ for all $w$ in $\mathbb C-G$, then for $a$ in $G-\{\gamma\}$, \[n(\gamma;a)f(a)=\frac1{2\pi i}\int_\gamma\frac{f(z)}{z-a}\,dz\].
+\UsedFor{Contour integrals and local residue computation.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Cauchy’s integral formula — second version]
+\label{result-iv-5-6-cauchy-s-integral-formula-second-version}
+\index[results]{Cauchy’s integral formula — second version@Cauchy’s integral formula — second version (IV.5.6)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Cauchy’s integral formula — second version}
+\ResultMeta{IV.5.6}{85}{Important}
+Let $G$ be an open subset of the plane and $f:G\to\mathbb C$ an analytic function. If $\gamma_1,\ldots,\gamma_m$ are closed rectifiable curves in $G$ such that $n(\gamma_1;w)+\cdots+n(\gamma_m;w)=0$ for all $w$ in $\mathbb C-G$, then for $a$ in $G-\bigcup_{j=1}^{m}\{\gamma_j\}$, \[f(a)\sum_{k=1}^{m}n(\gamma_k;a)=\sum_{k=1}^{m}\frac1{2\pi i}\int_{\gamma_k}\frac{f(z)}{z-a}\,dz\].
+\UsedFor{Cauchy formulas on annuli and multiple curves.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Cauchy’s theorem — first version]
+\label{result-iv-5-7-cauchy-s-theorem-first-version}
+\index[results]{Cauchy’s theorem — first version@Cauchy’s theorem — first version (IV.5.7)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Cauchy’s theorem — first version}
+\ResultMeta{IV.5.7}{85}{Supporting}
+Let $G$ be an open subset of the plane and $f:G\to\mathbb C$ an analytic function. If $\gamma_1,\ldots,\gamma_m$ are closed rectifiable curves in $G$ such that $n(\gamma_1;w)+\cdots+n(\gamma_m;w)=0$ for all $w$ in $\mathbb C-G$ then $\sum_{k=1}^{m}\int_{\gamma_k}f=0$.
+\UsedFor{General contour deformation and multiply connected regions.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Cauchy formula for derivatives — several curves]
+\label{result-iv-5-8-cauchy-formula-for-derivatives-several-curves}
+\index[results]{Cauchy formula for derivatives — several curves@Cauchy formula for derivatives — several curves (IV.5.8)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Cauchy formula for derivatives — several curves}
+\ResultMeta{IV.5.8}{86}{Supporting}
+Let $G$ be an open subset of the plane and $f:G\to\mathbb C$ an analytic function. If $\gamma_1,\ldots,\gamma_m$ are closed rectifiable curves in $G$ such that $n(\gamma_1;w)+\cdots+n(\gamma_m;w)=0$ for all $w$ in $\mathbb C-G$ then for $a$ in $G-\{\gamma\}$ and $k\ge1$, \[f^{(k)}(a)\sum_{j=1}^{m}n(\gamma_j;a)=k!\sum_{j=1}^{m}\frac1{2\pi i}\int_{\gamma_j}\frac{f(z)}{(z-a)^{k+1}}\,dz\].
+\UsedFor{Higher derivatives and multiple contours.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Cauchy formula for derivatives — one curve]
+\label{result-iv-5-9-cauchy-formula-for-derivatives-one-curve}
+\index[results]{Cauchy formula for derivatives — one curve@Cauchy formula for derivatives — one curve (IV.5.9)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Cauchy formula for derivatives — one curve}
+\ResultMeta{IV.5.9}{86}{Important}
+Let $G$ be an open set and $f:G\to\mathbb C$ an analytic function. If $\gamma$ is a closed rectifiable curve in $G$ such that $n(\gamma;w)=0$ for all $w$ in $\mathbb C-G$ then for $a$ in $G-\{\gamma\}$, \[f^{(k)}(a)n(\gamma;a)=\frac{k!}{2\pi i}\int_\gamma\frac{f(z)}{(z-a)^{k+1}}\,dz\].
+\UsedFor{High-order contour integrals.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Morera’s theorem]
+\label{result-iv-5-10-morera-s-theorem}
+\index[results]{Morera’s theorem@Morera’s theorem (IV.5.10)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Morera’s theorem}
+\ResultMeta{IV.5.10}{86}{Essential}
+Let $G$ be a region and let $f:G\to\mathbb C$ be a continuous function such that $\int_T f=0$ for every triangular path $T$ in $G$; then $f$ is analytic in $G$.
+\UsedFor{Removable line segments and locally uniform limits.}
+\end{theorem}
+
+\section{Chapter IV, §6 — Homotopy and simple connectivity}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Cauchy’s theorem — second version]
+\label{result-iv-6-6-cauchy-s-theorem-second-version}
+\index[results]{Cauchy’s theorem — second version@Cauchy’s theorem — second version (IV.6.6)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Cauchy’s theorem — second version}
+\ResultMeta{IV.6.6}{89}{Important}
+If $f:G\to\mathbb C$ is an analytic function and $\gamma$ is a closed rectifiable curve in $G$ such that $\gamma\simeq0$, then $\int_\gamma f=0$.
+\UsedFor{Null-homotopic contours.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Cauchy’s theorem — third version]
+\label{result-iv-6-7-cauchy-s-theorem-third-version}
+\index[results]{Cauchy’s theorem — third version@Cauchy’s theorem — third version (IV.6.7)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Cauchy’s theorem — third version}
+\ResultMeta{IV.6.7}{90}{Important}
+If $\gamma_0$ and $\gamma_1$ are two closed rectifiable curves in $G$ and $\gamma_0\simeq\gamma_1$ then $\int_{\gamma_0}f=\int_{\gamma_1}f$ for every function $f$ analytic on $G$.
+\UsedFor{Deforming contours and evaluating integrals on complicated paths.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Simply connected open set]
+\label{result-iv-6-14-simply-connected-open-set}
+\index[results]{Simply connected open set@Simply connected open set (IV.6.14)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Simply connected open set}
+\ResultMeta{IV.6.14}{93}{Definition}
+An open set $G$ is simply connected if $G$ is connected and every closed curve in $G$ is homotopic to zero.
+\UsedFor{Global primitives, logarithms, roots, and the Riemann mapping theorem.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Cauchy’s theorem — fourth version]
+\label{result-iv-6-15-cauchy-s-theorem-fourth-version}
+\index[results]{Cauchy’s theorem — fourth version@Cauchy’s theorem — fourth version (IV.6.15)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Cauchy’s theorem — fourth version}
+\ResultMeta{IV.6.15}{94}{Essential}
+If $G$ is simply connected then $\int_\gamma f=0$ for every closed rectifiable curve $\gamma$ and every analytic function $f$.
+\UsedFor{Cauchy theory on simply connected regions.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Existence of primitives]
+\label{result-iv-6-16-existence-of-primitives}
+\index[results]{Existence of primitives@Existence of primitives (IV.6.16)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Existence of primitives}
+\ResultMeta{IV.6.16}{94}{Essential}
+If $G$ is simply connected and $f:G\to\mathbb C$ is analytic in $G$ then $f$ has a primitive in $G$.
+\UsedFor{Path independence, conformal mapping, and branches.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Analytic logarithm criterion]
+\label{result-iv-6-17-analytic-logarithm-criterion}
+\index[results]{Analytic logarithm criterion@Analytic logarithm criterion (IV.6.17)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Analytic logarithm criterion}
+\ResultMeta{IV.6.17}{94}{Essential}
+Let $G$ be simply connected and let $f:G\to\mathbb C$ be an analytic function such that $f(z)\ne0$ for any $z$ in $G$. Then there is an analytic function $g:G\to\mathbb C$ such that $f(z)=\exp g(z)$. If $z_0\in G$ and $e^{w_0}=f(z_0)$, we may choose $g$ such that $g(z_0)=w_0$.
+\UsedFor{Equal-zero quotients, analytic roots, and factorization.}
+\end{corollary}
+
+\section{Chapter IV, §7 — Counting zeros and open mapping}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Counting zeros by the logarithmic derivative]
+\label{result-iv-7-2-counting-zeros-by-the-logarithmic-derivative}
+\index[results]{Counting zeros by the logarithmic derivative@Counting zeros by the logarithmic derivative (IV.7.2)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Counting zeros by the logarithmic derivative}
+\ResultMeta{IV.7.2}{97}{Supporting}
+Let $G$ be a region and let $f$ be an analytic function on $G$ with zeros $a_1,\ldots,a_m$ (repeated according to multiplicity). If $\gamma$ is a closed rectifiable curve in $G$ which does not pass through any point $a_k$ and if $\gamma\simeq0$ in $G$ then \[\frac1{2\pi i}\int_\gamma\frac{f'(z)}{f(z)}\,dz=\sum_{k=1}^{m}n(\gamma;a_k)\].
+\UsedFor{Polynomial degree and zero counts.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Counting solutions of an analytic equation]
+\label{result-iv-7-3-counting-solutions-of-an-analytic-equation}
+\index[results]{Counting solutions of an analytic equation@Counting solutions of an analytic equation (IV.7.3)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Counting solutions of an analytic equation}
+\ResultMeta{IV.7.3}{97}{Supporting}
+Let $f$, $G$, and $\gamma$ be as in the preceding theorem except that $a_1,\ldots,a_m$ are the points in $G$ that satisfy the equation $f(z)=\alpha$; then \[\frac1{2\pi i}\int_\gamma\frac{f'(z)}{f(z)-\alpha}\,dz=\sum_{k=1}^{m}n(\gamma;a_k)\].
+\UsedFor{Counting preimages and local integral formulas.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Local mapping theorem]
+\label{result-iv-7-4-local-mapping-theorem}
+\index[results]{Local mapping theorem@Local mapping theorem (IV.7.4)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Local mapping theorem}
+\ResultMeta{IV.7.4}{98}{Essential}
+Suppose $f$ is analytic in $B(a;R)$ and let $\alpha=f(a)$. If $f(z)-\alpha$ has a zero of order $m$ at $z=a$ then there is an $\varepsilon>0$ and $\delta>0$ such that for $0<|\zeta-\alpha|<\delta$, the equation $f(z)=\zeta$ has exactly $m$ simple roots in $B(a;\varepsilon)$.
+\UsedFor{Local saddle geometry, moving preimages, and open mapping.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{remark}[Local analytic inverse]
+\label{result-iv-7-4-consequence-local-analytic-inverse}
+\index[results]{Local analytic inverse@Local analytic inverse (IV.7.4 — consequence)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Local analytic inverse}
+\ResultMeta{IV.7.4 — consequence}{98}{Remark}
+Let $G$ be a region, let $f:G\to\mathbb C$ be analytic, and let $a\in G$. If $f'(a)\ne0$, then there is an open neighborhood $U\subset G$ of $a$ such that the restriction $f|_U:U\to f(U)$ is one-one and onto, $f(U)$ is open, and $(f|_U)^{-1}:f(U)\to U$ is analytic. For every $z\in U$, \[\left((f|_U)^{-1}\right)'\!\bigl(f(z)\bigr)=\frac{1}{f'(z)}.\] This is a local conclusion; $f$ need not be one-one on all of $G$.
+\UsedFor{Local conformal coordinates, inverse branches, and distinguishing local from global injectivity.}
+\end{remark}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Open mapping theorem]
+\label{result-iv-7-5-open-mapping-theorem}
+\index[results]{Open mapping theorem@Open mapping theorem (IV.7.5)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Open mapping theorem}
+\ResultMeta{IV.7.5}{99}{Essential}
+Let $G$ be a region and suppose that $f$ is a non constant analytic function on $G$. Then for any open set $V$ in $G$, $f(V)$ is open.
+\UsedFor{Functions with image in a circle or line, harmonic open maps, and range arguments.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Global analytic inverse theorem]
+\label{result-iv-7-6-global-analytic-inverse-theorem}
+\index[results]{Global analytic inverse theorem@Global analytic inverse theorem (IV.7.6)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Global analytic inverse theorem}
+\ResultMeta{IV.7.6}{99}{Important}
+Suppose $G$ is a region and $f:G\to\mathbb C$ is one-one and analytic. Put $\Omega=f(G)$. Then $\Omega$ is open, $f'(z)\ne0$ for every $z\in G$, and the global inverse $f^{-1}:\Omega\to G$ is analytic. If $w=f(z)$, then \[(f^{-1})'(w)=\frac{1}{f'(z)}.\]
+\UsedFor{Conformal equivalence, inverse maps, and subharmonic pullbacks.}
+\end{corollary}
+
+\section{Chapter IV, §8 — Goursat’s theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Goursat’s theorem]
+\label{result-iv-8-goursat-s-theorem}
+\index[results]{Goursat’s theorem@Goursat’s theorem (IV.§8)}
+\index[subjects]{Complex integration, Cauchy theory, and zeros!Goursat’s theorem}
+\ResultMeta{IV.§8}{100}{Important}
+Let $G$ be an open set and let $f:G\to\mathbb C$ be a differentiable function; then $f$ is analytic on $G$.
+\UsedFor{Justifying analyticity under the minimal derivative definition.}
+\end{theorem}
+
+\chapter{Singularities, residues, and zero counting}
+\label{category-singularities}
+Laurent classification, residue calculus, the argument principle, and Rouché’s theorem.
+
+\section{Chapter V, §1 — Classification of singularities}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Isolated and removable singularities]
+\label{result-v-1-1-isolated-and-removable-singularities}
+\index[results]{Isolated and removable singularities@Isolated and removable singularities (V.1.1)}
+\index[subjects]{Singularities, residues, and zero counting!Isolated and removable singularities}
+\ResultMeta{V.1.1}{103}{Definition}
+A function $f$ has an isolated singularity at $z=a$ if there is an $R>0$ such that $f$ is defined and analytic in $B(a;R)-\{a\}$ but not in $B(a;R)$. The point $a$ is called a removable singularity if there is an analytic function $g:B(a;R)\to\mathbb C$ such that $g(z)=f(z)$ for $0<|z-a|<R$.
+\UsedFor{Classifying punctures and extending quotients across common zeros.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Removable-singularity criterion]
+\label{result-v-1-2-removable-singularity-criterion}
+\index[results]{Removable-singularity criterion@Removable-singularity criterion (V.1.2)}
+\index[subjects]{Singularities, residues, and zero counting!Removable-singularity criterion}
+\ResultMeta{V.1.2}{103}{Essential}
+If $f$ has an isolated singularity at $a$ then the point $z=a$ is a removable singularity iff $\lim_{z\to a}(z-a)f(z)=0$.
+\UsedFor{Punctured-domain maps, quotients at common zeros, and bounded extensions.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Pole and essential singularity]
+\label{result-v-1-3-pole-and-essential-singularity}
+\index[results]{Pole and essential singularity@Pole and essential singularity (V.1.3)}
+\index[subjects]{Singularities, residues, and zero counting!Pole and essential singularity}
+\ResultMeta{V.1.3}{105}{Definition}
+If $z=a$ is an isolated singularity of $f$ then $a$ is a pole of $f$ if $\lim_{z\to a}|f(z)|=\infty$. That is, for any $M>0$ there is a number $\varepsilon>0$ such that $|f(z)|\ge M$ whenever $0<|z-a|<\varepsilon$. If an isolated singularity is neither a pole nor a removable singularity it is called an essential singularity.
+\UsedFor{Distinguishing the three types of isolated singularity.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{proposition}[Representation at a pole]
+\label{result-v-1-4-representation-at-a-pole}
+\index[results]{Representation at a pole@Representation at a pole (V.1.4)}
+\index[subjects]{Singularities, residues, and zero counting!Representation at a pole}
+\ResultMeta{V.1.4}{105}{Important}
+If $G$ is a region with $a$ in $G$ and if $f$ is analytic on $G-\{a\}$ with a pole at $z=a$ then there is a positive integer $m$ and an analytic function $g:G\to\mathbb C$ such that $f(z)=\dfrac{g(z)}{(z-a)^m}$.
+\UsedFor{Pole order, singular parts, and residue computation.}
+\end{proposition}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Order of a pole]
+\label{result-v-1-6-order-of-a-pole}
+\index[results]{Order of a pole@Order of a pole (V.1.6)}
+\index[subjects]{Singularities, residues, and zero counting!Order of a pole}
+\ResultMeta{V.1.6}{105}{Definition}
+If $f$ has a pole at $z=a$ and $m$ is the smallest positive integer such that $f(z)(z-a)^m$ has a removable singularity at $z=a$ then $f$ has a pole of order $m$ at $z=a$.
+\UsedFor{Higher-order residue formulas and Laurent principal parts.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{development}[Laurent series development]
+\label{result-v-1-11-laurent-series-development}
+\index[results]{Laurent series development@Laurent series development (V.1.11)}
+\index[subjects]{Singularities, residues, and zero counting!Laurent series development}
+\ResultMeta{V.1.11}{107}{Essential}
+Let $f$ be analytic in the annulus $\operatorname{ann}(a;R_1,R_2)$. Then $f(z)=\sum_{n=-\infty}^{\infty}a_n(z-a)^n$ where the convergence is absolute and uniform over $\overline{\operatorname{ann}(a;r_1,r_2)}$ if $R_1<r_1<r_2<R_2$. Also the coefficients $a_n$ are given by the formula $a_n=\dfrac1{2\pi i}\int_\gamma\dfrac{f(z)}{(z-a)^{n+1}}\,dz$, where $\gamma$ is the circle $|z-a|=r$ for any $r$, $R_1<r<R_2$. Moreover, this series is unique.
+\UsedFor{Laurent expansions, principal parts, residues, and singularity classification.}
+\end{development}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Classification by Laurent series]
+\label{result-v-1-18-classification-by-laurent-series}
+\index[results]{Classification by Laurent series@Classification by Laurent series (V.1.18)}
+\index[subjects]{Singularities, residues, and zero counting!Classification by Laurent series}
+\ResultMeta{V.1.18}{109}{Essential}
+Let $z=a$ be an isolated singularity of $f$ and let $f(z)=\sum_{-\infty}^{\infty}a_n(z-a)^n$ be its Laurent Expansion in $\operatorname{ann}(a;0,R)$. Then:
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.45em,topsep=0.45em]
+\item $z=a$ is a removable singularity iff $a_n=0$ for $n\le-1$
+\item $z=a$ is a pole of order $m$ iff $a_{-m}\ne0$ and $a_n=0$ for $n\le-(m+1)$
+\item $z=a$ is an essential singularity iff $a_n\ne0$ for infinitely many negative integers $n$.
+\end{enumerate}
+\UsedFor{Laurent expansions and singularity classification.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Casorati–Weierstrass theorem]
+\label{result-v-1-21-casorati-weierstrass-theorem}
+\index[results]{Casorati–Weierstrass theorem@Casorati–Weierstrass theorem (V.1.21)}
+\index[subjects]{Singularities, residues, and zero counting!Casorati–Weierstrass theorem}
+\ResultMeta{V.1.21}{109}{Important}
+If $f$ has an essential singularity at $z=a$ then for every $\delta>0$, $\{f[\operatorname{ann}(a;0,\delta)]\}^{-}=\mathbb C$.
+\UsedFor{Cluster-value problems and essential singularities.}
+\end{theorem}
+
+\section{Chapter V, §2 — Residues}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Residue]
+\label{result-v-2-1-residue}
+\index[results]{Residue@Residue (V.2.1)}
+\index[subjects]{Singularities, residues, and zero counting!Residue}
+\ResultMeta{V.2.1}{112}{Definition}
+Let $f$ have an isolated singularity at $z=a$ and let $f(z)=\sum_{n=-\infty}^{\infty}a_n(z-a)^n$ be its Laurent Expansion about $z=a$. Then the residue of $f$ at $z=a$ is the coefficient $a_{-1}$. Denote this by $\operatorname{Res}(f;a)=a_{-1}$.
+\UsedFor{Residue computation and contour integrals.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Residue theorem]
+\label{result-v-2-2-residue-theorem}
+\index[results]{Residue theorem@Residue theorem (V.2.2)}
+\index[subjects]{Singularities, residues, and zero counting!Residue theorem}
+\ResultMeta{V.2.2}{112}{Essential}
+Let $f$ be analytic in the region $G$ except for the isolated singularities $a_1,a_2,\ldots,a_m$. If $\gamma$ is a closed rectifiable curve in $G$ which does not pass through any of the points $a_k$ and if $\gamma\simeq0$ in $G$ then \[\dfrac1{2\pi i}\int_\gamma f=\sum_{k=1}^{m}n(\gamma;a_k)\operatorname{Res}(f;a_k)\].
+\UsedFor{All multi-pole contour integrals and real integrals by residues.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{proposition}[Residue at a pole]
+\label{result-v-2-4-residue-at-a-pole}
+\index[results]{Residue at a pole@Residue at a pole (V.2.4)}
+\index[subjects]{Singularities, residues, and zero counting!Residue at a pole}
+\ResultMeta{V.2.4}{113}{Essential}
+Suppose $f$ has a pole of order $m$ at $z=a$ and put $g(z)=(z-a)^mf(z)$; then $\operatorname{Res}(f;a)=\dfrac1{(m-1)!}g^{(m-1)}(a)$.
+\UsedFor{High-order residues, including Fall 2025 Part II.}
+\end{proposition}
+
+\section{Chapter V, §3 — Argument principle}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Meromorphic function]
+\label{result-v-3-3-meromorphic-function}
+\index[results]{Meromorphic function@Meromorphic function (V.3.3)}
+\index[subjects]{Singularities, residues, and zero counting!Meromorphic function}
+\ResultMeta{V.3.3}{123}{Definition}
+If $G$ is open and $f$ is a function defined and analytic in $G$ except for poles, then $f$ is a meromorphic function on $G$.
+\UsedFor{Residue theorem, argument principle, and Rouché’s theorem.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Argument principle]
+\label{result-v-3-4-argument-principle}
+\index[results]{Argument principle@Argument principle (V.3.4)}
+\index[subjects]{Singularities, residues, and zero counting!Argument principle}
+\ResultMeta{V.3.4}{123}{Essential}
+Let $f$ be meromorphic in $G$ with poles $p_1,p_2,\ldots,p_m$ and zeros $z_1,z_2,\ldots,z_n$ counted according to multiplicity. If $\gamma$ is a closed rectifiable curve in $G$ with $\gamma\simeq0$ and not passing through $p_1,\ldots,p_m;z_1,\ldots,z_n$; then \[\dfrac1{2\pi i}\int_\gamma\dfrac{f'(z)}{f(z)}\,dz=\sum_{k=1}^{n}n(\gamma;z_k)-\sum_{j=1}^{m}n(\gamma;p_j)\].
+\UsedFor{Counting solutions and change of argument.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Rouché’s theorem]
+\label{result-v-3-8-rouch-s-theorem}
+\index[results]{Rouché’s theorem@Rouché’s theorem (V.3.8)}
+\index[subjects]{Singularities, residues, and zero counting!Rouché’s theorem}
+\ResultMeta{V.3.8}{125}{Essential}
+Suppose $f$ and $g$ are meromorphic in a neighborhood of $\overline{B(a;R)}$ with no zeros or poles on the circle $\gamma=\{z:|z-a|=R\}$. If $Z_f,Z_g$ ($P_f,P_g$) are the number of zeros (poles) of $f$ and $g$ inside $\gamma$ counted according to their multiplicities and if $|f(z)+g(z)|<|f(z)|+|g(z)|$ on $\gamma$, then $Z_f-P_f=Z_g-P_g$.
+\UsedFor{All qualifying-exam root counts and Hurwitz-type arguments.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Classical Rouché inequality]
+\label{result-v-3-8a-classical-rouch-inequality}
+\index[results]{Classical Rouché inequality@Classical Rouché inequality (V.3.8a)}
+\index[subjects]{Singularities, residues, and zero counting!Classical Rouché inequality}
+\ResultMeta{V.3.8a}{126}{Essential}
+Under the hypotheses of Rouché’s Theorem, if $|f(z)+g(z)|<|g(z)|$ on $\gamma$, then $Z_f-P_f=Z_g-P_g$.
+\UsedFor{The usual comparison form used to count zeros of a perturbation.}
+\end{corollary}
+
+\chapter{Maximum principles, Schwarz lemma, and growth}
+\label{category-maximum}
+Boundary estimates, disk automorphisms, three-circles convexity, and unbounded-domain maximum principles.
+
+\section{Chapter VI, §1 — Maximum principle}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Maximum modulus theorem — interior form]
+\label{result-vi-1-1-maximum-modulus-theorem-interior-form}
+\index[results]{Maximum modulus theorem — interior form@Maximum modulus theorem — interior form (VI.1.1)}
+\index[subjects]{Maximum principles, Schwarz lemma, and growth!Maximum modulus theorem — interior form}
+\ResultMeta{VI.1.1}{128}{Essential}
+If $f$ is analytic in a region $G$ and $a$ is a point in $G$ with $|f(a)|\ge|f(z)|$ for all $z$ in $G$ then $f$ must be a constant function.
+\UsedFor{Minimum-modulus arguments, constant-range results, and FTA.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Maximum modulus theorem — boundary form]
+\label{result-vi-1-2-maximum-modulus-theorem-boundary-form}
+\index[results]{Maximum modulus theorem — boundary form@Maximum modulus theorem — boundary form (VI.1.2)}
+\index[subjects]{Maximum principles, Schwarz lemma, and growth!Maximum modulus theorem — boundary form}
+\ResultMeta{VI.1.2}{128}{Essential}
+Let $G$ be a bounded open set in $\mathbb C$ and suppose $f$ is a continuous function on $\overline G$ which is analytic in $G$. Then \[\max\{|f(z)|:z\in\overline G\}=\max\{|f(z)|:z\in\partial G\}\].
+\UsedFor{Boundary-modulus problems and reciprocal arguments.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Maximum modulus theorem — limsup form]
+\label{result-vi-1-4-maximum-modulus-theorem-limsup-form}
+\index[results]{Maximum modulus theorem — limsup form@Maximum modulus theorem — limsup form (VI.1.4)}
+\index[subjects]{Maximum principles, Schwarz lemma, and growth!Maximum modulus theorem — limsup form}
+\ResultMeta{VI.1.4}{129}{Essential}
+Let $G$ be a region in $\mathbb C$ and $f$ an analytic function on $G$. Suppose there is a constant $M$ such that $\limsup_{z\to a}|f(z)|\le M$ for all $a$ in $\partial_\infty G$. Then $|f(z)|\le M$ for all $z$ in $G$.
+\UsedFor{Boundary blow-up contradictions and Phragmén–Lindelöf exercises.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{exercise}[Minimum principle]
+\label{result-vi-1-exercise-1-minimum-principle}
+\index[results]{Minimum principle@Minimum principle (VI.1, Exercise 1)}
+\index[subjects]{Maximum principles, Schwarz lemma, and growth!Minimum principle}
+\ResultMeta{VI.1, Exercise 1}{129}{Supporting}
+Prove the following Minimum Principle. If $f$ is a non-constant analytic function on a bounded open set $G$ and is continuous on $\overline G$, then either $f$ has a zero in $G$ or $|f|$ assumes its minimum value on $\partial G$.
+\UsedFor{Interior minimum problems, bounded ratios, and reciprocal arguments.}
+\end{exercise}
+
+\section{Chapter VI, §2 — Schwarz’s lemma}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Schwarz lemma]
+\label{result-vi-2-1-schwarz-lemma}
+\index[results]{Schwarz lemma@Schwarz lemma (VI.2.1)}
+\index[subjects]{Maximum principles, Schwarz lemma, and growth!Schwarz lemma}
+\ResultMeta{VI.2.1}{130}{Essential}
+Let $D=\{z:|z|<1\}$ and suppose $f$ is analytic on $D$ with
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.45em,topsep=0.45em]
+\item $|f(z)|\le1$ for $z$ in $D$,
+\item $f(0)=0$. Then $|f'(0)|\le1$ and $|f(z)|\le|z|$ for all $z$ in the disk $D$. Moreover if $|f'(0)|=1$ or if $|f(z)|=|z|$ for some $z\ne0$ then there is a constant $c$, $|c|=1$, such that $f(w)=cw$ for all $w$ in $D$.
+\end{enumerate}
+\UsedFor{Disk estimates, half-plane fixed points, and equality cases.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{proposition}[Disk Möbius automorphisms]
+\label{result-vi-2-2-disk-m-bius-automorphisms}
+\index[results]{Disk Möbius automorphisms@Disk Möbius automorphisms (VI.2.2)}
+\index[subjects]{Maximum principles, Schwarz lemma, and growth!Disk Möbius automorphisms}
+\ResultMeta{VI.2.2}{131}{Important}
+If $|a|<1$ then $\varphi_a$ is a one-one map of $D=\{z:|z|<1\}$ onto itself; the inverse of $\varphi_a$ is $\varphi_{-a}$. Furthermore, $\varphi_a$ maps $\partial D$ onto $\partial D$, $\varphi_a(a)=0$, $\varphi_a'(0)=1-|a|^2$, and $\varphi_a'(a)=(1-|a|^2)^{-1}$, where $\varphi_a(z)=\dfrac{z-a}{1-\overline a z}$.
+\UsedFor{Schwarz–Pick reductions and disk automorphism classification.}
+\end{proposition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Classification of disk automorphisms]
+\label{result-vi-2-5-classification-of-disk-automorphisms}
+\index[results]{Classification of disk automorphisms@Classification of disk automorphisms (VI.2.5)}
+\index[subjects]{Maximum principles, Schwarz lemma, and growth!Classification of disk automorphisms}
+\ResultMeta{VI.2.5}{132}{Important}
+Let $f:D\to D$ be a one-one analytic map of $D$ onto itself and suppose $f(a)=0$. Then there is a complex number $c$ with $|c|=1$ such that $f=c\varphi_a$.
+\UsedFor{Conformal self-maps and derivative bounds.}
+\end{theorem}
+
+\section{Chapter VI, §3 — Convex functions and Hadamard’s theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Three-lines theorem]
+\label{result-vi-3-7-three-lines-theorem}
+\index[results]{Three-lines theorem@Three-lines theorem (VI.3.7)}
+\index[subjects]{Maximum principles, Schwarz lemma, and growth!Three-lines theorem}
+\ResultMeta{VI.3.7}{135}{Supporting}
+Let $a<b$ and let $G$ be the vertical strip $\{x+iy:a<x<b\}$. Suppose $f:\overline G\to\mathbb C$ is continuous and $f$ is analytic in $G$. If we define $M:[a,b]\to\mathbb R_+$ by $M(x)=\sup\{|f(x+iy)|:-\infty<y<\infty\}$, and $|f(z)|<B$ for all $z$ in $G$, then $\log M(x)$ is a convex function.
+\UsedFor{Strip growth and logarithmic convexity.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Hadamard’s three-circles theorem]
+\label{result-vi-3-13-hadamard-s-three-circles-theorem}
+\index[results]{Hadamard’s three-circles theorem@Hadamard’s three-circles theorem (VI.3.13)}
+\index[subjects]{Maximum principles, Schwarz lemma, and growth!Hadamard’s three-circles theorem}
+\ResultMeta{VI.3.13}{137}{Important}
+Let $0<R_1<R_2<\infty$ and suppose $f$ is analytic and not identically zero on $\operatorname{ann}(0;R_1,R_2)$. If $R_1<r<R_2$ define $M(r)=\max\{|f(re^{i\theta})|:0\le\theta\le2\pi\}$. Then for $R_1<r_1\le r\le r_2<R_2$, \[\log M(r)\le\dfrac{\log r_2-\log r}{\log r_2-\log r_1}\log M(r_1)+\dfrac{\log r-\log r_1}{\log r_2-\log r_1}\log M(r_2)\].
+\UsedFor{Hadamard three-circles and Hardy-growth exercises.}
+\end{theorem}
+
+\section{Chapter VI, §4 — Phragmén–Lindelöf theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Phragmén–Lindelöf theorem]
+\label{result-vi-4-1-phragm-n-lindel-f-theorem}
+\index[results]{Phragmén–Lindelöf theorem@Phragmén–Lindelöf theorem (VI.4.1)}
+\index[subjects]{Maximum principles, Schwarz lemma, and growth!Phragmén–Lindelöf theorem}
+\ResultMeta{VI.4.1}{138}{Important}
+Let $G$ be a simply connected region and let $f$ be an analytic function on $G$. Suppose there is an analytic function $\varphi:G\to\mathbb C$ which never vanishes and is bounded on $G$. If $M$ is a constant and $\partial_\infty G=A\cup B$ such that:
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.45em,topsep=0.45em]
+\item for every $a$ in $A$, $\limsup_{z\to a}|f(z)|\le M$
+\item for every $b$ in $B$, and $\eta>0$, $\limsup_{z\to b}|f(z)||\varphi(z)|^\eta\le M$; then $|f(z)|\le M$ for all $z$ in $G$.
+\end{enumerate}
+\UsedFor{Strip growth and exceptional-boundary-point problems.}
+\end{theorem}
+
+\chapter{Analytic convergence, normal families, and factorization}
+\label{category-families}
+The convergence and construction theorems behind the advanced Part II problems.
+
+\section{\texorpdfstring{Chapter VII, §1 — The space $C(G,Omega)$}{Chapter VII, §1 — The space C(G,Omega)}}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Normal family]
+\label{result-vii-1-14-normal-family}
+\index[results]{Normal family@Normal family (VII.1.14)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Normal family}
+\ResultMeta{VII.1.14}{146}{Definition}
+A set $\mathcal F\subset C(G,\Omega)$ is normal if each sequence in $\mathcal F$ has a subsequence which converges to a function $f$ in $C(G,\Omega)$.
+\UsedFor{Understanding the conclusion of Arzelà–Ascoli and Montel.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Arzelà–Ascoli theorem]
+\label{result-vii-1-23-arzel-ascoli-theorem}
+\index[results]{Arzelà–Ascoli theorem@Arzelà–Ascoli theorem (VII.1.23)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Arzelà–Ascoli theorem}
+\ResultMeta{VII.1.23}{148}{Important}
+A set $\mathcal F\subset C(G,\Omega)$ is normal iff the following two conditions are satisfied:
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.45em,topsep=0.45em]
+\item for each $z$ in $G$, $\{f(z):f\in\mathcal F\}$ has compact closure in $\Omega$
+\item $\mathcal F$ is equicontinuous at each point of $G$.
+\end{enumerate}
+\UsedFor{Normality in spaces of continuous functions.}
+\end{theorem}
+
+\section{Chapter VII, §2 — Spaces of analytic functions}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Weierstrass convergence theorem]
+\label{result-vii-2-1-weierstrass-convergence-theorem}
+\index[results]{Weierstrass convergence theorem@Weierstrass convergence theorem (VII.2.1)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Weierstrass convergence theorem}
+\ResultMeta{VII.2.1}{151}{Essential}
+If $\{f_n\}$ is a sequence in $H(G)$ and $f$ belongs to $C(G,\mathbb C)$ such that $f_n\to f$ then $f$ is analytic and $f_n^{(k)}\to f^{(k)}$ for each integer $k\ge1$.
+\UsedFor{Closed-curve convergence, derivative families, and limits of analytic functions.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Completeness of $H(G)$]
+\label{result-vii-2-3-completeness-of-h-g}
+\index[results]{Completeness of $H(G)$@Completeness of $H(G)$ (VII.2.3)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Completeness of $H(G)$}
+\ResultMeta{VII.2.3}{152}{Supporting}
+$H(G)$ is a complete metric space.
+\UsedFor{Limits of Cauchy sequences of analytic functions.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Termwise differentiation in $H(G)$]
+\label{result-vii-2-4-termwise-differentiation-in-h-g}
+\index[results]{Termwise differentiation in $H(G)$@Termwise differentiation in $H(G)$ (VII.2.4)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Termwise differentiation in $H(G)$}
+\ResultMeta{VII.2.4}{152}{Important}
+If $f_n:G\to\mathbb C$ is analytic and $\sum_{n=1}^{\infty}f_n(z)$ converges uniformly on compact sets to $f(z)$ then $f^{(k)}(z)=\sum_{n=1}^{\infty}f_n^{(k)}(z)$.
+\UsedFor{Infinite analytic series and function-space convergence.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Hurwitz’s theorem]
+\label{result-vii-2-5-hurwitz-s-theorem}
+\index[results]{Hurwitz’s theorem@Hurwitz’s theorem (VII.2.5)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Hurwitz’s theorem}
+\ResultMeta{VII.2.5}{152}{Essential}
+Let $G$ be a region and suppose the sequence $\{f_n\}$ in $H(G)$ converges to $f$. If $f\not\equiv0$, $\overline{B(a;R)}\subset G$, and $f(z)\ne0$ for $|z-a|=R$ then there is an integer $N$ such that for $n\ge N$, $f$ and $f_n$ have the same number of zeros in $B(a;R)$.
+\UsedFor{Moving preimages and limits of one-to-one functions.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Zero-free limits]
+\label{result-vii-2-6-zero-free-limits}
+\index[results]{Zero-free limits@Zero-free limits (VII.2.6)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Zero-free limits}
+\ResultMeta{VII.2.6}{152}{Essential}
+If $G$ is a region and $\{f_n\}\subset H(G)$ converges to $f$ in $H(G)$ and each $f_n$ never vanishes on $G$ then either $f\equiv0$ or $f$ never vanishes.
+\UsedFor{Hurwitz applications and univalent-limit arguments.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Locally bounded family]
+\label{result-vii-2-7-locally-bounded-family}
+\index[results]{Locally bounded family@Locally bounded family (VII.2.7)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Locally bounded family}
+\ResultMeta{VII.2.7}{153}{Definition}
+A set $\mathcal F\subset H(G)$ is locally bounded if for each point $a$ in $G$ there are constants $M$ and $r>0$ such that for all $f$ in $\mathcal F$, $|f(z)|\le M$ for $|z-a|<r$.
+\UsedFor{Applying Montel’s theorem and proving compact-set bounds.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{lemma}[Local boundedness criterion]
+\label{result-vii-2-8-local-boundedness-criterion}
+\index[results]{Local boundedness criterion@Local boundedness criterion (VII.2.8)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Local boundedness criterion}
+\ResultMeta{VII.2.8}{153}{Important}
+A set $\mathcal F$ in $H(G)$ is locally bounded iff for each compact set $K\subset G$ there is a constant $M$ such that $|f(z)|\le M$ for all $f$ in $\mathcal F$ and $z$ in $K$.
+\UsedFor{Area-bound normality and composition of normal families.}
+\end{lemma}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Montel’s theorem]
+\label{result-vii-2-9-montel-s-theorem}
+\index[results]{Montel’s theorem@Montel’s theorem (VII.2.9)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Montel’s theorem}
+\ResultMeta{VII.2.9}{153}{Essential}
+A family $\mathcal F$ in $H(G)$ is normal iff $\mathcal F$ is locally bounded.
+\UsedFor{All normal-family questions in the qualifying exams.}
+\end{theorem}
+
+\section{Chapter VII, §4 — Riemann mapping theorem}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Conformal equivalence]
+\label{result-vii-4-1-conformal-equivalence}
+\index[results]{Conformal equivalence@Conformal equivalence (VII.4.1)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Conformal equivalence}
+\ResultMeta{VII.4.1}{160}{Definition}
+A region $G_1$ is conformally equivalent to $G_2$ if there is an analytic function $f:G_1\to\mathbb C$ such that $f$ is one-one and $f(G_1)=G_2$.
+\UsedFor{Riemann mapping and classification of disk and half-plane maps.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Riemann mapping theorem]
+\label{result-vii-4-2-riemann-mapping-theorem}
+\index[results]{Riemann mapping theorem@Riemann mapping theorem (VII.4.2)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Riemann mapping theorem}
+\ResultMeta{VII.4.2}{160}{Essential}
+Let $G$ be a simply connected region which is not the whole plane and let $a\in G$. Then there is a unique analytic function $f:G\to\mathbb C$ having the properties:
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.45em,topsep=0.45em]
+\item $f(a)=0$ and $f'(a)>0$
+\item $f$ is one-one
+\item $f(G)=\{z:|z|<1\}$.
+\end{enumerate}
+\UsedFor{Disk/half-plane equivalence, symmetry, and punctured-domain questions.}
+\end{theorem}
+
+\section{Chapter VII, §5 — Weierstrass factorization}
+
+\Needspace{7\baselineskip}
+\begin{lemma}[Uniform convergence of exponentials]
+\label{result-vii-5-7-uniform-convergence-of-exponentials}
+\index[results]{Uniform convergence of exponentials@Uniform convergence of exponentials (VII.5.7)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Uniform convergence of exponentials}
+\ResultMeta{VII.5.7}{166}{Supporting}
+Let $X$ be a set and let $f,f_1,f_2,\ldots$ be functions from $X$ into $\mathbb C$ such that $f_n(x)\to f(x)$ uniformly for $x$ in $X$. If there is a constant $a$ such that $\operatorname{Re}f(x)\le a$ for all $x$ in $X$ then $\exp f_n(x)\to\exp f(x)$ uniformly for $x$ in $X$.
+\UsedFor{Convergence of exponential factors.}
+\end{lemma}
+
+\Needspace{7\baselineskip}
+\begin{lemma}[Uniform convergence of infinite products]
+\label{result-vii-5-8-uniform-convergence-of-infinite-products}
+\index[results]{Uniform convergence of infinite products@Uniform convergence of infinite products (VII.5.8)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Uniform convergence of infinite products}
+\ResultMeta{VII.5.8}{166}{Supporting}
+Let $(X,d)$ be a compact metric space and let $\{g_n\}$ be a sequence of continuous functions from $X$ into $\mathbb C$ such that $\sum g_n(x)$ converges absolutely and uniformly for $x$ in $X$. Then the product $f(x)=\prod_{n=1}^{\infty}(1+g_n(x))$ converges absolutely and uniformly for $x$ in $X$. Also there is an integer $n_0$ such that $f(x)=0$ iff $g_n(x)=-1$ for some $n$, $1\le n\le n_0$.
+\UsedFor{Functional equations and canonical products.}
+\end{lemma}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Analytic infinite-product theorem]
+\label{result-vii-5-9-analytic-infinite-product-theorem}
+\index[results]{Analytic infinite-product theorem@Analytic infinite-product theorem (VII.5.9)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Analytic infinite-product theorem}
+\ResultMeta{VII.5.9}{167}{Important}
+Let $G$ be a region in $\mathbb C$ and let $\{f_n\}$ be a sequence in $H(G)$ such that no $f_n$ is identically zero. If $\sum[f_n(z)-1]$ converges absolutely and uniformly on compact subsets of $G$ then $\prod_{n=1}^{\infty}f_n(z)$ converges in $H(G)$ to an analytic function $f(z)$. If $a$ is a zero of $f$ then $a$ is a zero of only a finite number of the functions $f_n$, and the multiplicity of the zero of $f$ at $a$ is the sum of the multiplicities of the zeros of the functions $f_n$ at $a$.
+\UsedFor{Infinite-product solutions and factorization of sine.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Elementary factors]
+\label{result-vii-5-10-elementary-factors}
+\index[results]{Elementary factors@Elementary factors (VII.5.10)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Elementary factors}
+\ResultMeta{VII.5.10}{168}{Definition}
+An elementary factor is one of the following functions $E_p(z)$ for $p=0,1,\ldots$: \[E_0(z)=1-z,\qquad E_p(z)=(1-z)\exp\left(z+\frac{z^2}{2}+\cdots+\frac{z^p}{p}\right),\quad p\ge1.\]
+\UsedFor{Canonical products and Weierstrass factorization.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Canonical product theorem]
+\label{result-vii-5-12-canonical-product-theorem}
+\index[results]{Canonical product theorem@Canonical product theorem (VII.5.12)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Canonical product theorem}
+\ResultMeta{VII.5.12}{169}{Important}
+Let $\{a_n\}$ be a sequence in $\mathbb C$ such that $\lim|a_n|=\infty$ and $a_n\ne0$ for all $n\ge1$. (This is not a sequence of distinct points; but, by hypothesis, no point is repeated an infinite number of times.) If $\{p_n\}$ is any sequence of integers such that $\sum_{n=1}^{\infty}(r/|a_n|)^{p_n+1}<\infty$ for all $r>0$ then $f(z)=\prod_{n=1}^{\infty}E_{p_n}(z/a_n)$ converges in $H(\mathbb C)$. The function $f$ is an entire function with zeros only at the points $a_n$. If $z_0$ occurs in the sequence $\{a_n\}$ exactly $m$ times then $f$ has a zero at $z=z_0$ of multiplicity $m$. Furthermore, if $p_n=n-1$ then the preceding condition will be satisfied.
+\UsedFor{Entire functions with assigned discrete zero sets.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Weierstrass factorization theorem]
+\label{result-vii-5-14-weierstrass-factorization-theorem}
+\index[results]{Weierstrass factorization theorem@Weierstrass factorization theorem (VII.5.14)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Weierstrass factorization theorem}
+\ResultMeta{VII.5.14}{170}{Important}
+Let $f$ be an entire function and let $\{a_n\}$ be the non-zero zeros of $f$ repeated according to multiplicity; suppose $f$ has a zero at $z=0$ of order $m\ge0$ (a zero of order $m=0$ at $z=0$ means $f(0)\ne0$). Then there is an entire function $g$ and a sequence of integers $\{p_n\}$ such that $f(z)=z^me^{g(z)}\prod_{n=1}^{\infty}E_{p_n}(z/a_n)$.
+\UsedFor{Comparing functions with identical zeros and prescribed multiplicities.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Prescribed zeros on a region]
+\label{result-vii-5-15-prescribed-zeros-on-a-region}
+\index[results]{Prescribed zeros on a region@Prescribed zeros on a region (VII.5.15)}
+\index[subjects]{Analytic convergence, normal families, and factorization!Prescribed zeros on a region}
+\ResultMeta{VII.5.15}{170}{Important}
+Let $G$ be a region and let $\{a_j\}$ be a sequence of distinct points in $G$ with no limit point in $G$; and let $\{m_j\}$ be a sequence of integers. Then there is an analytic function $f$ defined on $G$ whose only zeros are at the points $a_j$; furthermore, $a_j$ is a zero of $f$ of multiplicity $m_j$.
+\UsedFor{Natural-boundary constructions and all prescribed-zero exam problems.}
+\end{theorem}
+
+\chapter{Approximation, simple connectivity, and continuation}
+\label{category-approximation}
+Runge, Mittag-Leffler, reflection, and monodromy.
+
+\section{Chapter VIII, §1 — Runge’s theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Runge’s theorem]
+\label{result-viii-1-7-runge-s-theorem}
+\index[results]{Runge’s theorem@Runge’s theorem (VIII.1.7)}
+\index[subjects]{Approximation, simple connectivity, and continuation!Runge’s theorem}
+\ResultMeta{VIII.1.7}{195}{Essential}
+Let $K$ be a compact subset of $\mathbb C$ and let $E$ be a subset of $\mathbb C_\infty-K$ that meets each component of $\mathbb C_\infty-K$. If $f$ is analytic in an open set containing $K$ and $\varepsilon>0$ then there is a rational function $R(z)$ whose only poles lie in $E$ and such that $|f(z)-R(z)|<\varepsilon$ for all $z$ in $K$.
+\UsedFor{Polynomial approximation, sign-function sequences, and approximation obstructions.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Runge approximation on open sets]
+\label{result-viii-1-14-runge-approximation-on-open-sets}
+\index[results]{Runge approximation on open sets@Runge approximation on open sets (VIII.1.14)}
+\index[subjects]{Approximation, simple connectivity, and continuation!Runge approximation on open sets}
+\ResultMeta{VIII.1.14}{200}{Important}
+Let $G$ be an open subset of the plane and let $E$ be a subset of $\mathbb C_\infty-G$ such that $E$ meets every component of $\mathbb C_\infty-G$. Let $R(G,E)$ be the set of rational functions with poles in $E$ and consider $R(G,E)$ as a subspace of $H(G)$. If $f\in H(G)$ then there is a sequence $\{R_n\}$ in $R(G,E)$ such that $f=\lim R_n$. That is, $R(G,E)$ is dense in $H(G)$.
+\UsedFor{Approximation on expanding compact sets with controlled poles.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Polynomial approximation on open sets]
+\label{result-viii-1-15-polynomial-approximation-on-open-sets}
+\index[results]{Polynomial approximation on open sets@Polynomial approximation on open sets (VIII.1.15)}
+\index[subjects]{Approximation, simple connectivity, and continuation!Polynomial approximation on open sets}
+\ResultMeta{VIII.1.15}{200}{Important}
+If $G$ is an open subset of $\mathbb C$ such that $\mathbb C_\infty-G$ is connected then for each analytic function $f$ on $G$ there is a sequence of polynomials $\{p_n\}$ such that $f=\lim p_n$ in $H(G)$.
+\UsedFor{Approximation on expanding compact sets.}
+\end{corollary}
+
+\section{Chapter VIII, §2 — Simple connectedness}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Equivalent forms of simple connectivity]
+\label{result-viii-2-2-equivalent-forms-of-simple-connectivity}
+\index[results]{Equivalent forms of simple connectivity@Equivalent forms of simple connectivity (VIII.2.2)}
+\index[subjects]{Approximation, simple connectivity, and continuation!Equivalent forms of simple connectivity}
+\ResultMeta{VIII.2.2}{202}{Essential}
+Let $G$ be an open connected subset of $\mathbb C$. Then the following are equivalent:
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.45em,topsep=0.45em]
+\item $G$ is simply connected
+\item $n(\gamma;a)=0$ for every closed rectifiable curve $\gamma$ in $G$ and every point $a$ in $\mathbb C-G$
+\item $\mathbb C_\infty-G$ is connected
+\item for any $f$ in $H(G)$ there is a sequence of polynomials that converges to $f$ in $H(G)$
+\item for any $f$ in $H(G)$ and any closed rectifiable curve $\gamma$ in $G$, $\int_\gamma f=0$
+\item every function $f$ in $H(G)$ has a primitive
+\item for any $f$ in $H(G)$ such that $f(z)\ne0$ for all $z$ in $G$ there is a function $g$ in $H(G)$ such that $f(z)=\exp g(z)$
+\item for any $f$ in $H(G)$ such that $f(z)\ne0$ for all $z$ in $G$ there is a function $g$ in $H(G)$ such that $f(z)=[g(z)]^2$
+\item $G$ is homeomorphic to the unit disk
+\item if $u:G\to\mathbb R$ is harmonic then there is a harmonic function $v:G\to\mathbb R$ such that $f=u+iv$ is analytic on $G$.
+\end{enumerate}
+\UsedFor{Branches on annuli, slit domains, primitives, roots, and Riemann mapping.}
+\end{theorem}
+
+\section{Chapter VIII, §3 — Mittag-Leffler’s theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Mittag-Leffler theorem]
+\label{result-viii-3-2-mittag-leffler-theorem}
+\index[results]{Mittag-Leffler theorem@Mittag-Leffler theorem (VIII.3.2)}
+\index[subjects]{Approximation, simple connectivity, and continuation!Mittag-Leffler theorem}
+\ResultMeta{VIII.3.2}{205}{Essential}
+Let $G$ be an open set, $\{a_k\}$ a sequence of distinct points in $G$ without a limit point in $G$, and let $\{S_k(z)\}$ be the sequence of rational functions given by equation (3.1). Then there is a meromorphic function $f$ on $G$ whose poles are exactly the points $\{a_k\}$ and such that the singular part of $f$ at $a_k$ is $S_k(z)$.
+\UsedFor{Analytic Bézout identities and prescribed poles/zeros.}
+\end{theorem}
+
+\section{Chapter IX, §1 — Schwarz reflection principle}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Schwarz reflection principle]
+\label{result-ix-1-1-schwarz-reflection-principle}
+\index[results]{Schwarz reflection principle@Schwarz reflection principle (IX.1.1)}
+\index[subjects]{Approximation, simple connectivity, and continuation!Schwarz reflection principle}
+\ResultMeta{IX.1.1}{210}{Important}
+Let $G$ be a region such that $G=G^*$. If $f:G_+\cup G_0\to\mathbb C$ is a continuous function which is analytic on $G_+$ and if $f(x)$ is real for $x$ in $G_0$, then there is an analytic function $g:G\to\mathbb C$ such that $g(z)=f(z)$ for $z$ in $G_+\cup G_0$.
+\UsedFor{Real/imaginary-axis symmetry and bounded half-plane problems.}
+\end{theorem}
+
+\section{Chapter IX, §2 — Analytic continuation along a path}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Function element and germ]
+\label{result-ix-2-1-function-element-and-germ}
+\index[results]{Function element and germ@Function element and germ (IX.2.1)}
+\index[subjects]{Approximation, simple connectivity, and continuation!Function element and germ}
+\ResultMeta{IX.2.1}{214}{Definition}
+A function element is a pair $(f,G)$ where $G$ is a region and $f$ is an analytic function on $G$. For a given function element $(f,G)$ define the germ of $f$ at $a$ to be the collection of all function elements $(g,D)$ such that $a\in D$ and $f(z)=g(z)$ for all $z$ in a neighborhood of $a$. Denote the germ by $[f]_a$.
+\UsedFor{Reading the Monodromy theorem and analytic-continuation statements.}
+\end{definition}
+
+\section{Chapter IX, §3 — Monodromy theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Monodromy theorem]
+\label{result-ix-3-6-monodromy-theorem}
+\index[results]{Monodromy theorem@Monodromy theorem (IX.3.6)}
+\index[subjects]{Approximation, simple connectivity, and continuation!Monodromy theorem}
+\ResultMeta{IX.3.6}{219}{Important}
+Let $(f,D)$ be a function element and let $G$ be a region containing $D$ such that $(f,D)$ admits unrestricted continuation in $G$. Let $a\in D$, $b\in G$ and let $\gamma_0$ and $\gamma_1$ be paths in $G$ from $a$ to $b$; let $\{(f_t,D_t):0\le t\le1\}$ and $\{(g_t,B_t):0\le t\le1\}$ be analytic continuations of $(f,D)$ along $\gamma_0$ and $\gamma_1$ respectively. If $\gamma_0$ and $\gamma_1$ are FEP homotopic in $G$ then $[f_1]_b=[g_1]_b$.
+\UsedFor{Path independence under fixed-end-point homotopy.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Global continuation on a simply connected region]
+\label{result-ix-3-9-global-continuation-on-a-simply-connected-region}
+\index[results]{Global continuation on a simply connected region@Global continuation on a simply connected region (IX.3.9)}
+\index[subjects]{Approximation, simple connectivity, and continuation!Global continuation on a simply connected region}
+\ResultMeta{IX.3.9}{220}{Important}
+Let $(f,D)$ be a function element which admits unrestricted continuation in the simply connected region $G$. Then there is an analytic function $F:G\to\mathbb C$ such that $F(z)=f(z)$ for all $z$ in $D$.
+\UsedFor{Global branches and analytic continuation.}
+\end{corollary}
+
+\chapter{Harmonic and subharmonic functions}
+\label{category-harmonic}
+Mean values, maximum principles, Poisson integrals, Harnack convergence, and conformal invariance.
+
+\section{Chapter X, §1 — Basic properties}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Harmonic function]
+\label{result-x-1-1-harmonic-function}
+\index[results]{Harmonic function@Harmonic function (X.1.1)}
+\index[subjects]{Harmonic and subharmonic functions!Harmonic function}
+\ResultMeta{X.1.1}{251}{Definition}
+If $G$ is an open subset of $\mathbb C$ then a function $u:G\to\mathbb R$ is harmonic if $u$ has continuous second partial derivatives and \[\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}=0.\] This equation is called Laplace’s equation.
+\UsedFor{Mean values, harmonic maximum principles, and Dirichlet problems.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Harmonic conjugates]
+\label{result-x-1-2-harmonic-conjugates}
+\index[results]{Harmonic conjugates@Harmonic conjugates (X.1.2)}
+\index[subjects]{Harmonic and subharmonic functions!Harmonic conjugates}
+\ResultMeta{X.1.2}{251}{Definition}
+If $f:G\to\mathbb C$ is an analytic function then $u=\operatorname{Re}f$ and $v=\operatorname{Im}f$ are called harmonic conjugates.
+\UsedFor{Constructing analytic functions from harmonic real or imaginary parts.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{proposition}[Smoothness of harmonic functions]
+\label{result-x-1-3-smoothness-of-harmonic-functions}
+\index[results]{Smoothness of harmonic functions@Smoothness of harmonic functions (X.1.3)}
+\index[subjects]{Harmonic and subharmonic functions!Smoothness of harmonic functions}
+\ResultMeta{X.1.3}{252}{Important}
+If $u:G\to\mathbb R$ is harmonic then $u$ is infinitely differentiable.
+\UsedFor{Harmonic critical points, gradients, and conjugates.}
+\end{proposition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Mean-value theorem]
+\label{result-x-1-4-mean-value-theorem}
+\index[results]{Mean-value theorem@Mean-value theorem (X.1.4)}
+\index[subjects]{Harmonic and subharmonic functions!Mean-value theorem}
+\ResultMeta{X.1.4}{253}{Essential}
+If $u:G\to\mathbb R$ is a harmonic function and $\overline{B(a;r)}$ is a closed disk contained in $G$, then $u(a)=\dfrac1{2\pi}\int_0^{2\pi}u(a+re^{i\theta})\,d\theta$.
+\UsedFor{Harmonic Liouville, maximum principles, and area mean values.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Mean Value Property]
+\label{result-x-1-5-mean-value-property}
+\index[results]{Mean Value Property@Mean Value Property (X.1.5)}
+\index[subjects]{Harmonic and subharmonic functions!Mean Value Property}
+\ResultMeta{X.1.5}{253}{Definition}
+A continuous function $u:G\to\mathbb R$ has the Mean Value Property (MVP) if whenever $\overline{B(a;r)}\subset G$, \[u(a)=\frac1{2\pi}\int_0^{2\pi}u(a+re^{i\theta})\,d\theta.\]
+\UsedFor{The harmonic maximum principles and converse mean-value theorem.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Maximum principle — first version]
+\label{result-x-1-6-maximum-principle-first-version}
+\index[results]{Maximum principle — first version@Maximum principle — first version (X.1.6)}
+\index[subjects]{Harmonic and subharmonic functions!Maximum principle — first version}
+\ResultMeta{X.1.6}{253}{Essential}
+Let $G$ be a region and suppose that $u$ is a continuous real valued function on $G$ with the MVP. If there is a point $a$ in $G$ such that $u(a)\ge u(z)$ for all $z$ in $G$ then $u$ is a constant function.
+\UsedFor{Interior extrema and harmonic open mapping.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Maximum principle — second version]
+\label{result-x-1-7-maximum-principle-second-version}
+\index[results]{Maximum principle — second version@Maximum principle — second version (X.1.7)}
+\index[subjects]{Harmonic and subharmonic functions!Maximum principle — second version}
+\ResultMeta{X.1.7}{254}{Essential}
+Let $G$ be a region and let $u$ and $v$ be two bounded continuous real valued functions on $G$ that have the MVP. If for each point $a$ in the extended boundary $\partial_\infty G$, $\limsup_{z\to a}u(z)\le\liminf_{z\to a}v(z)$, then either $u(z)<v(z)$ for all $z$ in $G$ or $u=v$.
+\UsedFor{Harmonic open mapping, uniqueness, and boundary-value problems.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Boundary uniqueness]
+\label{result-x-1-9-boundary-uniqueness}
+\index[results]{Boundary uniqueness@Boundary uniqueness (X.1.9)}
+\index[subjects]{Harmonic and subharmonic functions!Boundary uniqueness}
+\ResultMeta{X.1.9}{255}{Important}
+Let $G$ be a bounded region and suppose that $w:\overline G\to\mathbb R$ is a continuous function that satisfies the MVP on $G$. If $w(z)=0$ for all $z$ in $\partial G$ then $w(z)=0$ for all $z$ in $G$.
+\UsedFor{Uniqueness for the Dirichlet problem.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Minimum principle]
+\label{result-x-1-10-minimum-principle}
+\index[results]{Minimum principle@Minimum principle (X.1.10)}
+\index[subjects]{Harmonic and subharmonic functions!Minimum principle}
+\ResultMeta{X.1.10}{255}{Essential}
+Let $G$ be a region and suppose that $u$ is a continuous real valued function on $G$ with the MVP. If there is a point $a$ in $G$ such that $u(a)\le u(z)$ for all $z$ in $G$ then $u$ is a constant function.
+\UsedFor{Nonnegative entire harmonic functions and reciprocal-style arguments.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{exercise}[Open mapping theorem for harmonic functions]
+\label{result-x-1-exercise-4-open-mapping-theorem-for-harmonic-functions}
+\index[results]{Open mapping theorem for harmonic functions@Open mapping theorem for harmonic functions (X.1, Exercise 4)}
+\index[subjects]{Harmonic and subharmonic functions!Open mapping theorem for harmonic functions}
+\ResultMeta{X.1, Exercise 4}{255}{Supporting}
+Prove that a nonconstant harmonic function on a region is an open map. (Hint: Use the fact that the connected subsets of $\mathbb R$ are intervals.)
+\UsedFor{August 2024 II.1.}
+\end{exercise}
+
+\Needspace{7\baselineskip}
+\begin{exercise}[Harmonicity of the logarithmic modulus]
+\label{result-x-1-exercise-5-harmonicity-of-the-logarithmic-modulus}
+\index[results]{Harmonicity of the logarithmic modulus@Harmonicity of the logarithmic modulus (X.1, Exercise 5)}
+\index[subjects]{Harmonic and subharmonic functions!Harmonicity of the logarithmic modulus}
+\ResultMeta{X.1, Exercise 5}{255}{Supporting}
+If $f$ is analytic on $G$ and $f(z)\ne0$ for any $z$ show that $u=\log|f|$ is harmonic on $G$.
+\UsedFor{Boundary-modulus arguments, Jensen-type reasoning, and zero-free functions.}
+\end{exercise}
+
+\Needspace{7\baselineskip}
+\begin{exercise}[Area mean-value formula]
+\label{result-x-1-exercise-6-area-mean-value-formula}
+\index[results]{Area mean-value formula@Area mean-value formula (X.1, Exercise 6)}
+\index[subjects]{Harmonic and subharmonic functions!Area mean-value formula}
+\ResultMeta{X.1, Exercise 6}{255}{Supporting}
+Let $u$ be harmonic in $G$ and suppose $\overline{B(a;R)}\subset G$. Show that \[u(a)=\dfrac1{\pi R^2}\iint_{\overline{B(a;R)}}u(x,y)\,dx\,dy\].
+\UsedFor{The $L^1$-area-bound normal-family problem.}
+\end{exercise}
+
+\section{Chapter X, §2 — Harmonic functions on a disk}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Poisson integral theorem]
+\label{result-x-2-4-poisson-integral-theorem}
+\index[results]{Poisson integral theorem@Poisson integral theorem (X.2.4)}
+\index[subjects]{Harmonic and subharmonic functions!Poisson integral theorem}
+\ResultMeta{X.2.4}{257}{Essential}
+Let $D=\{z:|z|<1\}$ and suppose that $f:\partial D\to\mathbb R$ is a continuous function. Then there is a continuous function $u:\overline D\to\mathbb R$ such that
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.45em,topsep=0.45em]
+\item $u(z)=f(z)$ for $z$ in $\partial D$
+\item $u$ is harmonic in $D$. Moreover $u$ is unique and is defined by the formula \[u(re^{i\theta})=\dfrac1{2\pi}\int_{-\pi}^{\pi}P_r(\theta-t)f(e^{it})\,dt\] for $0\le r<1$, $0\le\theta\le2\pi$.
+\end{enumerate}
+\UsedFor{Disk boundary-value and harmonic extension problems.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Poisson representation]
+\label{result-x-2-9-poisson-representation}
+\index[results]{Poisson representation@Poisson representation (X.2.9)}
+\index[subjects]{Harmonic and subharmonic functions!Poisson representation}
+\ResultMeta{X.2.9}{259}{Important}
+If $u:\overline D\to\mathbb R$ is a continuous function that is harmonic in $D$ then \[u(re^{i\theta})=\dfrac1{2\pi}\int_{-\pi}^{\pi}P_r(\theta-t)u(e^{it})\,dt\] for $0\le r<1$ and all $\theta$. Moreover, $u$ is the real part of the analytic function \[f(z)=\dfrac1{2\pi}\int_{-\pi}^{\pi}\dfrac{e^{it}+z}{e^{it}-z}u(e^{it})\,dt\].
+\UsedFor{Poisson formulas and harmonic conjugates.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Dirichlet problem on a disk]
+\label{result-x-2-10-dirichlet-problem-on-a-disk}
+\index[results]{Dirichlet problem on a disk@Dirichlet problem on a disk (X.2.10)}
+\index[subjects]{Harmonic and subharmonic functions!Dirichlet problem on a disk}
+\ResultMeta{X.2.10}{259}{Important}
+Let $a\in\mathbb C$, $p>0$, and suppose $h$ is a continuous real valued function on $\{z:|z-a|=p\}$; then there is a unique continuous function $w:\overline{B(a;p)}\to\mathbb R$ such that $w$ is harmonic in $B(a;p)$ and $w(z)=h(z)$ for $|z-a|=p$.
+\UsedFor{Mean-value, boundary limits, and uniqueness.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Converse mean-value theorem]
+\label{result-x-2-11-converse-mean-value-theorem}
+\index[results]{Converse mean-value theorem@Converse mean-value theorem (X.2.11)}
+\index[subjects]{Harmonic and subharmonic functions!Converse mean-value theorem}
+\ResultMeta{X.2.11}{260}{Essential}
+If $u:G\to\mathbb R$ is a continuous function which has the MVP then $u$ is harmonic.
+\UsedFor{Limits of harmonic functions and characterization by averages.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Harnack’s inequality]
+\label{result-x-2-14-harnack-s-inequality}
+\index[results]{Harnack’s inequality@Harnack’s inequality (X.2.14)}
+\index[subjects]{Harmonic and subharmonic functions!Harnack’s inequality}
+\ResultMeta{X.2.14}{260}{Essential}
+If $u:\overline{B(a;R)}\to\mathbb R$ is continuous, harmonic in $B(a;R)$, and $u\ge0$ then for $0\le r<R$ and all $\theta$, \[\dfrac{R-r}{R+r}u(a)\le u(a+re^{i\theta})\le\dfrac{R+r}{R-r}u(a)\].
+\UsedFor{Quantitative comparison for positive harmonic functions.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Harnack’s theorem]
+\label{result-x-2-16-harnack-s-theorem}
+\index[results]{Harnack’s theorem@Harnack’s theorem (X.2.16)}
+\index[subjects]{Harmonic and subharmonic functions!Harnack’s theorem}
+\ResultMeta{X.2.16}{261}{Essential}
+Let $G$ be a region.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.45em,topsep=0.45em]
+\item The metric space $\operatorname{Har}(G)$ is complete.
+\item If $\{u_n\}$ is a sequence in $\operatorname{Har}(G)$ such that $u_1\le u_2\le\cdots$ then either $u_n(z)\to\infty$ uniformly on compact subsets of $G$ or $\{u_n\}$ converges in $\operatorname{Har}(G)$ to a harmonic function.
+\end{enumerate}
+\UsedFor{Compactness and convergence of harmonic functions.}
+\end{theorem}
+
+\section{Chapter X, §3 — Subharmonic functions}
+
+\Needspace{7\baselineskip}
+\begin{definition}[Subharmonic and superharmonic functions]
+\label{result-x-3-1-subharmonic-and-superharmonic-functions}
+\index[results]{Subharmonic and superharmonic functions@Subharmonic and superharmonic functions (X.3.1)}
+\index[subjects]{Harmonic and subharmonic functions!Subharmonic and superharmonic functions}
+\ResultMeta{X.3.1}{264}{Definition}
+Let $G$ be a region and let $\varphi:G\to\mathbb R$ be a continuous function. $\varphi$ is a subharmonic function if whenever $\overline{B(a;r)}\subset G$, \[\varphi(a)\le\frac1{2\pi}\int_0^{2\pi}\varphi(a+re^{i\theta})\,d\theta.\] $\varphi$ is a superharmonic function if whenever $\overline{B(a;r)}\subset G$, \[\varphi(a)\ge\frac1{2\pi}\int_0^{2\pi}\varphi(a+re^{i\theta})\,d\theta.\]
+\UsedFor{Subharmonic maximum principles, comparison, and Perron arguments.}
+\end{definition}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Maximum principle — third version]
+\label{result-x-3-2-maximum-principle-third-version}
+\index[results]{Maximum principle — third version@Maximum principle — third version (X.3.2)}
+\index[subjects]{Harmonic and subharmonic functions!Maximum principle — third version}
+\ResultMeta{X.3.2}{264}{Essential}
+Let $G$ be a region and let $\varphi:G\to\mathbb R$ be a subharmonic function. If there is a point $a$ in $G$ with $\varphi(a)\ge\varphi(z)$ for all $z$ in $G$ then $\varphi$ is a constant function.
+\UsedFor{Maximum arguments for subharmonic functions.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Maximum principle — fourth version]
+\label{result-x-3-3-maximum-principle-fourth-version}
+\index[results]{Maximum principle — fourth version@Maximum principle — fourth version (X.3.3)}
+\index[subjects]{Harmonic and subharmonic functions!Maximum principle — fourth version}
+\ResultMeta{X.3.3}{264}{Essential}
+Let $G$ be a region and let $\varphi$ and $\psi$ be bounded real valued functions defined on $G$ such that $\varphi$ is subharmonic and $\psi$ is superharmonic. If for each point $a$ in $\partial_\infty G$, $\limsup_{z\to a}\varphi(z)\le\liminf_{z\to a}\psi(z)$, then either $\varphi(z)<\psi(z)$ for all $z$ in $G$ or $\varphi=\psi$ and $\varphi$ is harmonic.
+\UsedFor{Boundary comparison for subharmonic functions.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Harmonic comparison characterization]
+\label{result-x-3-4-harmonic-comparison-characterization}
+\index[results]{Harmonic comparison characterization@Harmonic comparison characterization (X.3.4)}
+\index[subjects]{Harmonic and subharmonic functions!Harmonic comparison characterization}
+\ResultMeta{X.3.4}{265}{Important}
+Let $G$ be a region and $\varphi:G\to\mathbb R$ a continuous function. Then $\varphi$ is subharmonic iff for every region $G_1$ contained in $G$ and every harmonic function $u_1$ on $G_1$, $\varphi-u_1$ satisfies the Maximum Principle on $G_1$.
+\UsedFor{Recognizing subharmonic functions by harmonic comparison.}
+\end{theorem}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Boundary comparison characterization]
+\label{result-x-3-5-boundary-comparison-characterization}
+\index[results]{Boundary comparison characterization@Boundary comparison characterization (X.3.5)}
+\index[subjects]{Harmonic and subharmonic functions!Boundary comparison characterization}
+\ResultMeta{X.3.5}{265}{Important}
+Let $G$ be a region and $\varphi:G\to\mathbb R$ a continuous function; then $\varphi$ is subharmonic iff for every bounded region $G_1$ such that $\overline{G_1}\subset G$ and for every continuous function $u_1:\overline{G_1}\to\mathbb R$ that is harmonic in $G_1$ and satisfies $\varphi(z)\le u_1(z)$ for $z$ on $\partial G_1$, $\varphi(z)\le u_1(z)$ for $z$ in $G_1$.
+\UsedFor{Subharmonic pullbacks and Perron-family arguments.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Maximum of subharmonic functions]
+\label{result-x-3-6-maximum-of-subharmonic-functions}
+\index[results]{Maximum of subharmonic functions@Maximum of subharmonic functions (X.3.6)}
+\index[subjects]{Harmonic and subharmonic functions!Maximum of subharmonic functions}
+\ResultMeta{X.3.6}{265}{Supporting}
+Let $G$ be a region and $\varphi_1$ and $\varphi_2$ subharmonic functions on $G$; if $\varphi(z)=\max\{\varphi_1(z),\varphi_2(z)\}$ for each $z$ in $G$ then $\varphi$ is a subharmonic function.
+\UsedFor{Patching subharmonic barriers.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{corollary}[Harmonic replacement]
+\label{result-x-3-7-harmonic-replacement}
+\index[results]{Harmonic replacement@Harmonic replacement (X.3.7)}
+\index[subjects]{Harmonic and subharmonic functions!Harmonic replacement}
+\ResultMeta{X.3.7}{266}{Supporting}
+Let $\varphi$ be a subharmonic function on a region $G$ and let $\overline{B(a;r)}\subset G$. Let $\varphi'$ be the function defined on $G$ by:
+
+\begin{enumerate}[label=(\roman*),leftmargin=*,itemsep=0.45em,topsep=0.45em]
+\item $\varphi'(z)=\varphi(z)$ if $z\in G-B(a;r)$
+\item $\varphi'$ is the continuous function on $\overline{B(a;r)}$ which is harmonic in $B(a;r)$ and agrees with $\varphi(z)$ for $|z-a|=r$. Then $\varphi'$ is subharmonic.
+\end{enumerate}
+\UsedFor{Patching subharmonic functions with harmonic replacements.}
+\end{corollary}
+
+\Needspace{7\baselineskip}
+\begin{exercise}[Conformal invariance of subharmonicity]
+\label{result-x-3-exercise-6-conformal-invariance-of-subharmonicity}
+\index[results]{Conformal invariance of subharmonicity@Conformal invariance of subharmonicity (X.3, Exercise 6)}
+\index[subjects]{Harmonic and subharmonic functions!Conformal invariance of subharmonicity}
+\ResultMeta{X.3, Exercise 6}{267}{Supporting}
+If $f:G\to\Omega$ is analytic and $\varphi:\Omega\to\mathbb R$ is subharmonic, show that $\varphi\circ f$ is subharmonic if $f$ is one-one. What happens if $f'(z)\ne0$ for all $z$ in $G$?
+\UsedFor{January 2025 II.1.}
+\end{exercise}
+
+\chapter{Range theorems for entire functions}
+\label{category-range}
+The one later result needed by a recorded qualifying-exam problem.
+
+\section{Chapter XII, §2 — Little Picard theorem}
+
+\Needspace{7\baselineskip}
+\begin{theorem}[Little Picard theorem]
+\label{result-xii-2-3-little-picard-theorem}
+\index[results]{Little Picard theorem@Little Picard theorem (XII.2.3)}
+\index[subjects]{Range theorems for entire functions!Little Picard theorem}
+\ResultMeta{XII.2.3}{296}{Essential}
+If $f$ is an entire function that omits two values then $f$ is a constant.
+\UsedFor{Surjectivity of $(f^3+f^2)(mathbb C)$ for nonconstant entire $f$.}
+\end{theorem}
+
+\part{Indexes}
+\chapter{Named Results}
+\label{named-result-index}
+The named results are divided into personal and non-personal names. Each entry links to its full statement in the reference.
+
+\section{Results Named after a Person}
+\begin{multicols}{2}
+\raggedcolumns
+\raggedright
+\begin{itemize}[leftmargin=*,itemsep=0.35em,topsep=0.2em]
+\NamedIndexItem{result-ii-3-7-cantor-intersection-theorem}{II.3.7}{Cantor intersection theorem}
+\NamedIndexItem{result-ii-4-8-lebesgue-covering-lemma}{II.4.8}{Lebesgue covering lemma}
+\NamedIndexItem{result-ii-4-10-heine-borel-theorem}{II.4.10}{Heine–Borel theorem}
+\NamedIndexItem{result-ii-5-15-heine-cantor-theorem}{II.5.15}{Heine–Cantor theorem}
+\NamedIndexItem{result-ii-6-2-weierstrass-m-test}{II.6.2}{Weierstrass M-test}
+\NamedIndexItem{result-iii-2-24-cauchy-riemann-equations}{III.2.24}{Cauchy–Riemann equations}
+\NamedIndexItem{result-iii-2-24-note-differentiability-implies-cauchy-riemann}{III.2.24 — note}{Differentiability implies Cauchy–Riemann}
+\NamedIndexItem{result-iii-2-29-cauchy-riemann-criterion}{III.2.29}{Cauchy–Riemann criterion}
+\NamedIndexItem{result-iii-3-14-m-bius-maps-preserve-generalized-circles}{III.3.14}{Möbius maps preserve generalized circles}
+\NamedIndexItem{result-iv-2-13-cauchy-formula-for-derivatives}{IV.2.13}{Cauchy formula for derivatives}
+\NamedIndexItem{result-iv-2-14-cauchy-estimates}{IV.2.14}{Cauchy estimates}
+\NamedIndexItem{result-iv-3-4-liouville-s-theorem}{IV.3.4}{Liouville’s theorem}
+\NamedIndexItem{result-iv-5-4-cauchy-s-integral-formula-first-version}{IV.5.4}{Cauchy’s integral formula — first version}
+\NamedIndexItem{result-iv-5-6-cauchy-s-integral-formula-second-version}{IV.5.6}{Cauchy’s integral formula — second version}
+\NamedIndexItem{result-iv-5-7-cauchy-s-theorem-first-version}{IV.5.7}{Cauchy’s theorem — first version}
+\NamedIndexItem{result-iv-5-8-cauchy-formula-for-derivatives-several-curves}{IV.5.8}{Cauchy formula for derivatives — several curves}
+\NamedIndexItem{result-iv-5-9-cauchy-formula-for-derivatives-one-curve}{IV.5.9}{Cauchy formula for derivatives — one curve}
+\NamedIndexItem{result-iv-5-10-morera-s-theorem}{IV.5.10}{Morera’s theorem}
+\NamedIndexItem{result-iv-6-6-cauchy-s-theorem-second-version}{IV.6.6}{Cauchy’s theorem — second version}
+\NamedIndexItem{result-iv-6-7-cauchy-s-theorem-third-version}{IV.6.7}{Cauchy’s theorem — third version}
+\NamedIndexItem{result-iv-6-15-cauchy-s-theorem-fourth-version}{IV.6.15}{Cauchy’s theorem — fourth version}
+\NamedIndexItem{result-iv-8-goursat-s-theorem}{IV.§8}{Goursat’s theorem}
+\NamedIndexItem{result-v-1-21-casorati-weierstrass-theorem}{V.1.21}{Casorati–Weierstrass theorem}
+\NamedIndexItem{result-v-3-8-rouch-s-theorem}{V.3.8}{Rouché’s theorem}
+\NamedIndexItem{result-v-3-8a-classical-rouch-inequality}{V.3.8a}{Classical Rouché inequality}
+\NamedIndexItem{result-vi-2-1-schwarz-lemma}{VI.2.1}{Schwarz lemma}
+\NamedIndexItem{result-vi-3-13-hadamard-s-three-circles-theorem}{VI.3.13}{Hadamard’s three-circles theorem}
+\NamedIndexItem{result-vi-4-1-phragm-n-lindel-f-theorem}{VI.4.1}{Phragmén–Lindelöf theorem}
+\NamedIndexItem{result-vii-1-23-arzel-ascoli-theorem}{VII.1.23}{Arzelà–Ascoli theorem}
+\NamedIndexItem{result-vii-2-1-weierstrass-convergence-theorem}{VII.2.1}{Weierstrass convergence theorem}
+\NamedIndexItem{result-vii-2-5-hurwitz-s-theorem}{VII.2.5}{Hurwitz’s theorem}
+\NamedIndexItem{result-vii-2-9-montel-s-theorem}{VII.2.9}{Montel’s theorem}
+\NamedIndexItem{result-vii-4-2-riemann-mapping-theorem}{VII.4.2}{Riemann mapping theorem}
+\NamedIndexItem{result-vii-5-14-weierstrass-factorization-theorem}{VII.5.14}{Weierstrass factorization theorem}
+\NamedIndexItem{result-viii-1-7-runge-s-theorem}{VIII.1.7}{Runge’s theorem}
+\NamedIndexItem{result-viii-1-14-runge-approximation-on-open-sets}{VIII.1.14}{Runge approximation on open sets}
+\NamedIndexItem{result-viii-3-2-mittag-leffler-theorem}{VIII.3.2}{Mittag-Leffler theorem}
+\NamedIndexItem{result-ix-1-1-schwarz-reflection-principle}{IX.1.1}{Schwarz reflection principle}
+\NamedIndexItem{result-x-2-4-poisson-integral-theorem}{X.2.4}{Poisson integral theorem}
+\NamedIndexItem{result-x-2-14-harnack-s-inequality}{X.2.14}{Harnack’s inequality}
+\NamedIndexItem{result-x-2-16-harnack-s-theorem}{X.2.16}{Harnack’s theorem}
+\NamedIndexItem{result-xii-2-3-little-picard-theorem}{XII.2.3}{Little Picard theorem}
+\end{itemize}
+\end{multicols}
+
+\section{Other Named Results}
+\begin{multicols}{2}
+\raggedcolumns
+\raggedright
+\begin{itemize}[leftmargin=*,itemsep=0.35em,topsep=0.2em]
+\NamedIndexItem{result-ii-5-10-intermediate-value-property}{II.5.10}{Intermediate-value property}
+\NamedIndexItem{result-ii-5-12-extreme-value-theorem}{II.5.12}{Extreme-value theorem}
+\NamedIndexItem{result-ii-6-1-uniform-limit-theorem}{II.6.1}{Uniform limit theorem}
+\NamedIndexItem{result-iv-1-18-fundamental-theorem-for-complex-line-integrals}{IV.1.18}{Fundamental theorem for complex line integrals}
+\NamedIndexItem{result-iv-3-5-fundamental-theorem-of-algebra}{IV.3.5}{Fundamental theorem of algebra}
+\NamedIndexItem{result-iv-3-7-identity-theorem}{IV.3.7}{Identity theorem}
+\NamedIndexItem{result-iv-3-8-identity-theorem-for-two-functions}{IV.3.8}{Identity theorem for two functions}
+\NamedIndexItem{result-iv-7-5-open-mapping-theorem}{IV.7.5}{Open mapping theorem}
+\NamedIndexItem{result-iv-7-6-global-analytic-inverse-theorem}{IV.7.6}{Global analytic inverse theorem}
+\NamedIndexItem{result-v-2-2-residue-theorem}{V.2.2}{Residue theorem}
+\NamedIndexItem{result-v-3-4-argument-principle}{V.3.4}{Argument principle}
+\NamedIndexItem{result-vi-1-1-maximum-modulus-theorem-interior-form}{VI.1.1}{Maximum modulus theorem — interior form}
+\NamedIndexItem{result-vi-1-2-maximum-modulus-theorem-boundary-form}{VI.1.2}{Maximum modulus theorem — boundary form}
+\NamedIndexItem{result-vi-1-4-maximum-modulus-theorem-limsup-form}{VI.1.4}{Maximum modulus theorem — limsup form}
+\NamedIndexItem{result-vi-1-exercise-1-minimum-principle}{VI.1, Exercise 1}{Minimum principle}
+\NamedIndexItem{result-vi-3-7-three-lines-theorem}{VI.3.7}{Three-lines theorem}
+\NamedIndexItem{result-ix-3-6-monodromy-theorem}{IX.3.6}{Monodromy theorem}
+\NamedIndexItem{result-x-1-4-mean-value-theorem}{X.1.4}{Mean-value theorem}
+\NamedIndexItem{result-x-1-6-maximum-principle-first-version}{X.1.6}{Maximum principle — first version}
+\NamedIndexItem{result-x-1-7-maximum-principle-second-version}{X.1.7}{Maximum principle — second version}
+\NamedIndexItem{result-x-1-10-minimum-principle}{X.1.10}{Minimum principle}
+\NamedIndexItem{result-x-2-11-converse-mean-value-theorem}{X.2.11}{Converse mean-value theorem}
+\NamedIndexItem{result-x-3-2-maximum-principle-third-version}{X.3.2}{Maximum principle — third version}
+\NamedIndexItem{result-x-3-3-maximum-principle-fourth-version}{X.3.3}{Maximum principle — fourth version}
+\end{itemize}
+\end{multicols}
+
+\printindex[results]
+\printindex[subjects]
+
+\end{document}
