@@ -1355,7 +1355,7 @@
 \end{proof}
 
 \section{Analytic functions as mappings, Möbius transformation}
-
+% TO DO
 \setexercise{4}
 \begin{exercise}
 	Discuss the mapping properties of \(z^{n}\) and \(z^{1/n}\) for \(n\ge 2\). \emph{(Hint: use polar coordinates.)}
@@ -1654,9 +1654,9 @@
 	and \(F\) is one-to-one and onto \(\mathbb{D}\).
 	\qedhere
 \end{proof}
-\newpage
 
 % toDO
+
 \setexercise{15}
 \begin{exercise}
 	Can you map the open unit disk conformally onto \(\{\,z: 0<|z|<1\,\}\)?
@@ -1666,8 +1666,6 @@
 	I am unsure how to prove this without using Cauchy’s integral theorem, singularity theory, or the fact that conformal maps preserve topological properties such as simple connectedness. I know the answer is negative, since $\mathbb{D}$ is simply connected whereas $\mathbb{D}\setminus\{0\}$ is not, so there cannot exist a surjective conformal map between them.
 	However, I would appreciate guidance on how to prove this using only the material from the first three chapters.
 \end{proof}
-
-\par\vspace{15em}
 
 
 % toDO
@@ -1690,7 +1688,7 @@
 	Show that \(f\) is constant.
 \end{exercise}
 
-\begin{proof}[Solution]
+\begin{proof}[Solution (I)]
 	Without loss of generality assume $f(G)\subset\{w\in\mathbb C:|w|=1\}$.
 	Then $|f(z)|=1$ for all $z\in G$, so $\overline{f(z)}=1/f(z)$ and $f(z)\neq 0$.
 
@@ -1716,8 +1714,15 @@
 	Since $f$ is continuous and $G$ is connected, $f(G)$ is connected. The only connected subsets of the two-point set $\{\alpha,\beta\}$ are singletons; hence $f(G)=\{\alpha\}$ or $f(G)=\{\beta\}$. Therefore $f$ is constant on $G$.
 \end{proof}
 
-\chapter{Complex Integration}
+\begin{proof}[Solution (II)]
+	Suppose that $f$ is nonconstant. Since $G$ is a region and $f$ is analytic,
+	the Open Mapping Theorem implies that $f(G)$ is open in $\mathbb{C}$.
+	However, by hypothesis, $f(G)$ is contained in a circle, and a circle
+	contains no nonempty open subset of $\mathbb{C}$. This is a contradiction.
+	Hence $f$ is constant.
+\end{proof}
 
+\chapter{Complex Integration}
 \section{Riemann-Stieltjes integral}
 
 \setexercise{6}
