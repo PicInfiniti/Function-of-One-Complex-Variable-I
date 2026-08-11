@@ -3616,8 +3616,31 @@
 \begin{exercise}
 	Suppose that $f : G \to \mathbb{C}$ is analytic and one--one; show that $f'(z) \neq 0$ for any $z$ in $G$.
 \end{exercise}
+\begin{proof}[Solution (I)]
+	Let
+	\[
+		\Omega=f(G).
+	\]
+	Since $f$ is one-to-one and analytic, Corollary 7.6 implies that
+	\[
+		f^{-1}:\Omega\to G
+	\]
+	is analytic.
+	For every $z\in G$,
+	\[
+		f^{-1}(f(z))=z.
+	\]
+	Differentiating both sides and using the chain rule gives
+	\[
+		(f^{-1})'(f(z))\,f'(z)=1.
+	\]
+	Hence $f'(z)$ cannot be zero. Therefore,
+	\[
+		f'(z)\neq 0 \qquad \text{for all } z\in G.
+	\]
+\end{proof}
 
-\begin{proof}[Solution]
+\begin{proof}[Solution (II)]
 	Let $f : G \to \mathbb{C}$ be analytic and one--one, and fix a point
 	$a \in G$.  We show that $f'(a) \neq 0$.
 	Suppose for contradiction that $f'(a)=0$.
