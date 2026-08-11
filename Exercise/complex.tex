@@ -4059,48 +4059,32 @@
 	Let $G$ be a bounded region and suppose $f$ is continuous on $\overline{G}$ and analytic on $G$. Show that if there is a constant $c \ge 0$ such that $|f(z)| = c$ for all $z$ on the boundary of $G$, then either $f$ is a constant function or $f$ has a zero in $G$.
 \end{exercise}
 \begin{proof}[Solution]
-	Let $G$ be a bounded region, and let $f$ be continuous on $\overline{G}$ and analytic on $G$. Assume that
+	Suppose that \(f\) has no zeros in \(G\). We will show that \(f\) is constant.
+	If \(c=0\), then \(|f(z)|=0\) for all \(z\in \partial G\). By the maximum modulus principle,
 	\[
-		|f(z)| = c \quad \text{for all } z \in \partial G,
+		|f(z)|\leq 0
 	\]
-	where $c \ge 0$.
-
-	\medskip
-	\noindent
-	\textbf{Case 1: $c=0$.}
-	Then $f=0$ on $\partial G$. By the maximum modulus principle,
+	for all \(z\in G\). Hence \(f\equiv 0\), so \(f\) is constant.
+	Now suppose that \(c>0\). Since \(f\) is nonzero in \(G\), by the minimum modulus principle,
 	\[
-		\max_{\overline{G}} |f| = \max_{\partial G} |f| = 0,
+		|f(z)|\geq c
 	\]
-	so $f \equiv 0$ on $G$, hence $f$ is constant.
-
-	\medskip
-	\noindent
-	\textbf{Case 2: $c>0$.}
-	Suppose that $f$ has no zeros in $G$. Then $|f|$ is a positive continuous function on $\overline{G}$ and is the modulus of a nonvanishing analytic function on $G$. Hence, by the minimum modulus principle,
+	for all \(z\in G\). On the other hand, by the maximum modulus principle,
 	\[
-		\min_{\overline{G}} |f| = \min_{\partial G} |f|.
+		|f(z)|\leq c
 	\]
-	Since $|f|=c$ on $\partial G$, we get
+	for all \(z\in G\). Therefore,
 	\[
-		\min_{\overline{G}} |f| = c,
+		|f(z)|=c
 	\]
-	and therefore \(|f(z)| \ge c\) for all \(z\in G\).
-
-	On the other hand, by the maximum modulus principle applied to $f$,
+	for all \(z\in G\).
+	Thus \(f(G)\) is contained in the circle
 	\[
-		\max_{\overline{G}} |f| = \max_{\partial G} |f| = c,
+		\{w\in\mathbb{C}:|w|=c\}.
 	\]
-	so \(|f(z)| \le c\) for all \(z\in G\).
-
-	Combining the two inequalities yields \(|f(z)|=c\) for all \(z\in G\). By the maximum modulus principle (in its strong form), an analytic function whose modulus is constant on a region must be constant. Hence $f$ is constant.
-
-	\medskip
-	\noindent
-	Therefore, either $f$ is constant or $f$ has a zero in $G$.
+	If \(f\) were nonconstant, then by the open mapping theorem, \(f(G)\) would be open. But a circle is not an open subset of \(\mathbb{C}\). Hence \(f\) must be constant.
+	Therefore, if \(f\) is not constant, it must have a zero in \(G\).
 \end{proof}
-
-
 
 \setexercise{6}
 \begin{exercise}
