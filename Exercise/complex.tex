@@ -5624,42 +5624,39 @@
 	$\{g\circ f : f\in\mathcal{F}\}$ is normal.
 \end{exercise}
 \begin{proof}[Solution]
-	Let
-	\[
-		\mathcal{G}=\{g\circ f : f\in\mathcal{F}\}.
-	\]
-	Since \(f(G)\subset \Omega\) for every \(f\in\mathcal{F}\), and \(g\) is
-	analytic on \(\Omega\), each function \(g\circ f\) is analytic on \(G\).
-	Because \(\mathcal{F}\) is normal in \(H(G)\), Montel's theorem implies
-	that \(\mathcal{F}\) is locally bounded. Fix \(a\in G\). Then there exist
-	\(r>0\) and \(M>0\) such that
-	\[
-		B(a;r)\subset G
-	\]
-	and
+	Since \(\mathcal{F}\) is normal in \(H(G)\), it is locally bounded. Thus, for every compact set \(K\subset G\), there exists a constant \(M>0\) such that
 	\[
 		|f(z)|\leq M
 	\]
-	for every \(f\in\mathcal{F}\) and every \(z\in B(a;r)\).
-
-	Define
+	for all \(z\in K\) and all \(f\in\mathcal{F}\).
+	Hence
 	\[
-		E=\{f(z): f\in\mathcal{F},\ z\in B(a;r)\}.
+		f(K)\subset \Omega\cap\{w\in\mathbb{C}:|w|\leq M\}
 	\]
-	Then \(E\subset\Omega\), and \(E\) is bounded. Since \(g\) is bounded on
-	bounded subsets of \(\Omega\), there exists \(N>0\) such that
+	for every \(f\in\mathcal{F}\). Since \(g\) is bounded on bounded sets, there exists a constant \(C>0\) such that
 	\[
-		|g(w)|\leq N
+		|g(w)|\leq C
 	\]
-	for every \(w\in E\). Hence, for every \(f\in\mathcal{F}\) and every
-	\(z\in B(a;r)\),
+	for all
 	\[
-		|(g\circ f)(z)|=|g(f(z))|\leq N.
+		w\in \Omega\cap\{w\in\mathbb{C}:|w|\leq M\}.
 	\]
-
-	Therefore, the family \(\mathcal{G}\) is locally bounded on \(G\).
-	By Montel's theorem, \(\mathcal{G}\) is normal in \(H(G)\).
+	Therefore,
+	\[
+		|g(f(z))|\leq C
+	\]
+	for all \(z\in K\) and all \(f\in\mathcal{F}\).
+	Thus the family
+	\[
+		\{g\circ f:f\in\mathcal{F}\}
+	\]
+	is locally bounded on \(G\). Since each \(g\circ f\) is analytic on \(G\), Montel's theorem implies that
+	\[
+		\{g\circ f:f\in\mathcal{F}\}
+	\]
+	is normal in \(H(G)\).
 \end{proof}
+
 
 \setexercise{9}
 \begin{exercise}
