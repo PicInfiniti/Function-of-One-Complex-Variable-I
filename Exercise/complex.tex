@@ -5549,7 +5549,6 @@
 	\]
 	which is normal. However, \(\mathcal{F}\) is not locally bounded and
 	hence is not normal.
-
 	A sufficient additional hypothesis is that, for some fixed
 	\(a\in G\),
 	\[
@@ -5611,7 +5610,6 @@
 	neighborhoods, it follows that \(\{f_n\}\) is uniformly Cauchy on every
 	compact subset of \(G\). Since \(H(G)\) is complete, \(\{f_n\}\)
 	converges in \(H(G)\).
-
 	Therefore every sequence in \(\mathcal{F}\) has a convergent
 	subsequence, so \(\mathcal{F}\) is normal.
 \end{proof}
@@ -5674,7 +5672,6 @@
 \begin{proof}[Solution]
 	Recall that convergence in \(H(D)\) means uniform convergence on compact
 	subsets of \(D\).
-
 	Suppose first that \(f_n \to f\) in \(H(D)\). For any \(0<r<1\), the
 	circle \(\gamma_r\) is a compact subset of \(D\). Hence,
 	\[
@@ -5735,55 +5732,55 @@
 	constant function.
 \end{exercise}
 \begin{proof}[Solution]
-	Suppose that \(f\) is not constant. We will show that \(f\) is one-one.
-
-	Assume, to the contrary, that there exist distinct points \(z_1,z_2\in G\)
-	such that
+	Suppose that $f$ is not one-one. Then there exist distinct points
+	$a,b\in G$ such that
 	\[
-		f(z_1)=f(z_2).
+		f(a)=f(b).
 	\]
-	For each \(n\), define
+	For each $n$, define
 	\[
-		g_n(z)=f_n(z)-f_n(z_1),
+		g_n(z)=f_n(z)-f_n(a).
 	\]
-	and define
+	Since $f_n\to f$ uniformly on compact subsets of $G$, we have
 	\[
-		g(z)=f(z)-f(z_1).
+		g_n(z)\to g(z):=f(z)-f(a)
 	\]
-	Since \(f_n\to f\) uniformly on compact subsets of \(G\), and
-	\(f_n(z_1)\to f(z_1)\), we have
+	uniformly on compact subsets of $G$.
+	Because each $f_n$ is one-one,
 	\[
-		g_n\to g
+		g_n(z)=0
+		\iff f_n(z)=f_n(a)
+		\iff z=a.
 	\]
-	uniformly on compact subsets of \(G\).
-
-	Because \(f\) is not constant and \(G\) is a region, the function \(g\)
-	is not identically zero. Also,
+	Thus $g_n$ has no zeros in $G\setminus\{a\}$.
+	Since $a\neq b$, choose $r>0$ such that
 	\[
-		g(z_2)=f(z_2)-f(z_1)=0.
+		\overline{D(b,r)}\subset G
+		\qquad\text{and}\qquad
+		a\notin \overline{D(b,r)}.
 	\]
-	Thus \(z_2\) is an isolated zero of \(g\). Choose \(r>0\) such that
+	Hence each $g_n$ is zero-free on $D(b,r)$. On the other hand,
 	\[
-		\overline{B(z_2;r)}\subset G,\qquad z_1\notin\overline{B(z_2;r)},
+		g(b)=f(b)-f(a)=0.
 	\]
-	and \(g\) has no zeros on \(\partial B(z_2;r)\).
-
-	By Hurwitz's theorem, for all sufficiently large \(n\), the functions
-	\(g_n\) and \(g\) have the same number of zeros in \(B(z_2;r)\), counting
-	multiplicity. Since \(g\) has at least one zero there, \(g_n\) must also
-	have a zero \(w_n\in B(z_2;r)\). Hence
+	By Hurwitz's theorem, since the $g_n$ are zero-free on $D(b,r)$ and
+	converge uniformly on compact subsets to $g$, either $g$ is zero-free
+	on $D(b,r)$ or $g\equiv 0$ there. Since $g(b)=0$, it follows that
 	\[
-		0=g_n(w_n)=f_n(w_n)-f_n(z_1),
+		g\equiv 0 \quad \text{on } D(b,r).
 	\]
-	so
+	Therefore,
 	\[
-		f_n(w_n)=f_n(z_1).
+		f(z)=f(a)
 	\]
-	Since \(f_n\) is one-one, this implies \(w_n=z_1\), contradicting
-	\(z_1\notin B(z_2;r)\).
-
-	Therefore, if \(f\) is not constant, then \(f\) is one-one. Hence \(f\)
-	is either one-one or constant.
+	for all $z\in D(b,r)$. Since $G$ is connected, the identity theorem
+	implies that
+	\[
+		f(z)\equiv f(a)
+	\]
+	on all of $G$. Thus $f$ is constant.
+	Hence, if $f$ is not constant, it must be one-one. Therefore either
+	$f$ is one-one or $f$ is constant.
 \end{proof}
 
 \section{Spaces of meromorphic functions}
