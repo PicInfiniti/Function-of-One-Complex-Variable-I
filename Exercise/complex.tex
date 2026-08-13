@@ -5803,66 +5803,86 @@
 	\end{enumerate}
 \end{exercise}
 \begin{proof}[Solution]
-	Since \(\Omega=f(G\setminus\{a\})\) is bounded, there exists \(M>0\)
-	such that
-	\[
-		|f(z)|\leq M
-	\]
-	for every \(z\in G\setminus\{a\}\). In particular, \(f\) is bounded in
-	a punctured neighborhood of \(a\). Hence, by Riemann's removable
-	singularity theorem, \(f\) has a removable singularity at \(a\).
+	\begin{enumerate}[label=(\alph*)]
 
-	Define
-	\[
-		f(a):=\lim_{z\to a} f(z).
-	\]
-	Then \(f\) extends to an analytic function on all of \(G\).
-	Now suppose that \(f\) is one-to-one on \(G\setminus\{a\}\). Since
-	\[
-		\lim_{z\to a} f(z)=f(a),
-	\]
-	we have
-	\[
-		f(a)\in\overline{\Omega}.
-	\]
+		\item Since $\Omega=f(G\setminus\{a\})$ is bounded, there exists $M>0$ such that
+		      \[
+			      |f(z)|\le M
+		      \]
+		      for all $z\in G\setminus\{a\}$. Hence $f$ is bounded in a punctured neighborhood of $a$. By the Riemann removable singularity theorem, $f$ has a removable singularity at $a$. Thus $f$ extends to an analytic function on all of $G$, which we continue to denote by $f$.
+		      Now suppose that $f$ is one-one on $G\setminus\{a\}$. Since $f$ is continuous at $a$, if $z_n\to a$ with $z_n\neq a$, then
+		      \[
+			      f(z_n)\to f(a).
+		      \]
+		      Since $f(z_n)\in\Omega$, it follows that
+		      \[
+			      f(a)\in\overline{\Omega}.
+		      \]
 
-	We claim that \(f(a)\notin\Omega\). Suppose, for contradiction, that
-	\(f(a)\in\Omega\). Then there exists \(z_0\in G\setminus\{a\}\) such that
-	\[
-		f(z_0)=f(a).
-	\]
+		      We claim that $f(a)\notin\Omega$. Suppose, to the contrary, that $f(a)\in\Omega$. Since
+		      \[
+			      \Omega=f(G\setminus\{a\}),
+		      \]
+		      there exists $b\in G\setminus\{a\}$ such that
+		      \[
+			      f(b)=f(a).
+		      \]
+		      Choose disjoint neighborhoods $U$ of $a$ and $V$ of $b$ contained in $G$. Since $f$ is nonconstant and analytic, the open mapping theorem implies that $f(U)$ and $f(V)$ are open. Both contain $f(a)$, so their intersection contains some
+		      \[
+			      w\neq f(a).
+		      \]
+		      Thus there exist $u\in U$ and $v\in V$ such that
+		      \[
+			      f(u)=w=f(v).
+		      \]
+		      Since $w\neq f(a)$, we have $u\neq a$, and since $U\cap V=\varnothing$, we have $u\neq v$. This contradicts the assumption that $f$ is one-one on $G\setminus\{a\}$.
+		      Therefore
+		      \[
+			      f(a)\notin\Omega.
+		      \]
+		      Since $f(a)\in\overline{\Omega}$, we conclude that
+		      \[
+			      f(a)\in\partial\Omega
+		      \]
 
-	Choose disjoint open neighborhoods \(U\) of \(a\) and \(V\) of \(z_0\),
-	with \(U,V\subseteq G\). The extended function \(f\) is nonconstant
-	because it is one-to-one on \(G\setminus\{a\}\). Therefore, by the open
-	mapping theorem, \(f(U)\) and \(f(V)\) are open sets containing \(f(a)\).
+		\item Suppose, toward a contradiction, that there exists a one-one analytic function
+		      \[
+			      f:\{z:0<|z|<1\}\longrightarrow \Omega
+		      \]
+		      onto
+		      \[
+			      \Omega=\{w:r<|w|<R\},
+			      \qquad r>0.
+		      \]
+		      Since $\Omega$ is bounded, part (a) implies that the singularity of $f$ at $0$ is removable. Hence $f$ extends analytically to the disk
+		      \[
+			      D=\{z:|z|<1\}.
+		      \]
+		      Moreover, by part (a),
+		      \[
+			      f(0)\in\partial\Omega.
+		      \]
 
-	Thus, \(f(U)\cap f(V)\) is an open set containing \(f(a)\), so there
-	exists
-	\[
-		w\in f(U)\cap f(V)
-	\]
-	such that \(w\neq f(a)\). Hence, there exist \(u\in U\) and \(v\in V\)
-	such that
-	\[
-		f(u)=w=f(v).
-	\]
-	Since \(w\neq f(a)\), we have \(u\neq a\). Also, because
-	\(U\cap V=\varnothing\), we have \(u\neq v\). Thus,
-	\(u,v\in G\setminus\{a\}\) are distinct points satisfying
-	\[
-		f(u)=f(v),
-	\]
-	which contradicts the assumption that \(f\) is one-to-one.
-
-	Therefore, \(f(a)\notin\Omega\). Since \(f(a)\in\overline{\Omega}\), it
-	follows that
-	\[
-		f(a)\in\overline{\Omega}\setminus\Omega=\partial\Omega.
-	\]
+		      Since $f$ maps the punctured disk onto $\Omega$, we have
+		      \[
+			      f(D)=\Omega\cup\{f(0)\}.
+		      \]
+		      But $f(0)\in\partial\Omega$, so the set
+		      \[
+			      \Omega\cup\{f(0)\}
+		      \]
+		      is not open. On the other hand, $f$ is a nonconstant analytic function on $D$, so by the open mapping theorem $f(D)$ must be open. This is a contradiction.
+		      Therefore there is no one-one analytic function mapping
+		      \[
+			      \{z:0<|z|<1\}
+		      \]
+		      onto an annulus
+		      \[
+			      \{z:r<|z|<R\},
+			      \qquad r>0.
+		      \]
+	\end{enumerate}
 \end{proof}
-
-
 
 \setexercise{3}
 \begin{exercise}
