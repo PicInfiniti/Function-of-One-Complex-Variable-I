@@ -1571,92 +1571,106 @@
 	\emph{(Hint: first try \((z-a)^{-1}\).)}
 \end{exercise}
 
-
 \begin{proof}[Solution]
-	\textbf{Normalization.}
-	By translating we may assume the tangency point is \(a=0\). By a rotation
-	(precomposition by a unimodular constant) we may assume both circles are
-	centered on the positive real axis. Thus there exist radii
-	\(0<r_1<r_2\) such that the two circles are
+	Without loss of generality, assume that the point of tangency is \(a=0\), and that the centers of the two circles lie on the positive real axis. Let the outer circle have radius \(R\) and the inner circle have radius \(r\), where \(R>r>0\). Since both circles are tangent at \(0\), their centers are \(R\) and \(r\), respectively. Thus the circles are
 	\[
-		C_j:\ |z-r_j|=r_j\quad(j=1,2),
+		|z-R|=R
+		\qquad\text{and}\qquad
+		|z-r|=r.
 	\]
-	which are internally tangent at \(0\). Let \(G\) be the region between
-	\(C_1\) and \(C_2\).
 
-	\medskip
-	\textbf{Step 1: Inversion sends tangent circles to parallel lines.}
+	Consider the map
+	\[
+		w=\frac{1}{z}.
+	\]
+	For the outer circle,
+	\[
+		|z-R|=R.
+	\]
+	Squaring gives
+	\[
+		|z|^2-2R\operatorname{Re} z=0.
+	\]
+	Dividing by \(|z|^2\), we obtain
+	\[
+		1-2R\operatorname{Re}\left(\frac{1}{z}\right)=0,
+	\]
+	so the outer circle is mapped to the vertical line
+	\[
+		\operatorname{Re} w=\frac{1}{2R}.
+	\]
+	Similarly, the inner circle is mapped to
+	\[
+		\operatorname{Re} w=\frac{1}{2r}.
+	\]
+
+	Therefore \(w=1/z\) maps \(G\) conformally onto the vertical strip
+	\[
+		\frac{1}{2R}<\operatorname{Re} w<\frac{1}{2r}.
+	\]
+
 	Set
 	\[
-		w=\Phi_1(z):=\frac{1}{z}.
+		\alpha=\frac{1}{2R},
+		\qquad
+		\beta=\frac{1}{2r}.
 	\]
-	A circle \(|z-a|=|a|\) through the origin maps to the line
-	\(\Re(a\,w)=\tfrac12\). Here \(a=r_j\in\mathbb{R}_+\), so
+	The map
 	\[
-		\Phi_1(C_j)=\{\,\Re w=\tfrac{1}{2r_j}\,\}.
+		u=\exp\left(\frac{\pi i(w-\alpha)}{\beta-\alpha}\right)
 	\]
-	Hence \(\Phi_1(G)\) is the open vertical strip
+	maps this vertical strip conformally onto the upper half-plane. Indeed, if
+	\(w=x+iy\), then
 	\[
-		S:=\Big\{\,w:\ \alpha<\Re w<\beta\,\Big\},\qquad
-		\alpha:=\frac{1}{2r_2}<\beta:=\frac{1}{2r_1}.
+		\arg u=\frac{\pi(x-\alpha)}{\beta-\alpha},
+	\]
+	and since
+	\[
+		\alpha<x<\beta,
+	\]
+	we have
+	\[
+		0<\arg u<\pi.
 	\]
 
-	\medskip
-	\textbf{Step 2: Rotate to a horizontal strip.}
-	Let
+	Finally, the Cayley transformation
 	\[
-		u=\Phi_2(w):=i\,w.
+		\zeta=\frac{u-i}{u+i}
 	\]
-	Then \(\Im u=\Re w\), so \(\Phi_2(S)\) is the horizontal strip
+	maps the upper half-plane conformally onto the open unit disk.
+	Hence a conformal map from \(G\) onto the open unit disk is
 	\[
-		S_h:=\{\,u:\ \alpha<\Im u<\beta\,\}.
+		\zeta=
+		\frac{
+			\exp\left[
+				\frac{\pi i}{\frac{1}{2r}-\frac{1}{2R}}
+				\left(
+				\frac{1}{z}-\frac{1}{2R}
+				\right)
+				\right]-i
+		}{
+			\exp\left[
+				\frac{\pi i}{\frac{1}{2r}-\frac{1}{2R}}
+				\left(
+				\frac{1}{z}-\frac{1}{2R}
+				\right)
+				\right]+i
+		}.
 	\]
-	Set its width and midline as
 	\[
-		d:=\beta-\alpha=\frac{r_2-r_1}{2r_1r_2},\qquad
-		m:=\frac{\alpha+\beta}{2}=\frac{r_1+r_2}{4r_1r_2}.
+		\boxed{
+			G
+			\xrightarrow{\;1/z\;}
+			\text{vertical strip}
+			\xrightarrow{\;\exp\;}
+			\mathbb{H}
+			\xrightarrow{\;\text{Cayley}\;}
+			\mathbb{D}
+		}
 	\]
-
-	\medskip
-	\textbf{Step 3: Strip \(\to\) half--plane \(\to\) disk.}
-	Define
-	\[
-		\xi=\Phi_3(u):=\exp\!\Big(\frac{\pi}{d}\,(u-i m)\Big),
-	\]
-	which maps \(S_h\) conformally onto the right half--plane \(\{\Re \xi>0\}\).
-	Then apply the Cayley map
-	\[
-		\Phi_4(\xi):=\frac{\xi-1}{\xi+1},
-	\]
-	which sends \(\{\Re \xi>0\}\) conformally onto the unit disk \(\mathbb{D}\).
-
-	\medskip
-	\textbf{Conclusion.}
-	The composition
-	\[
-		F:=\Phi_4\circ\Phi_3\circ\Phi_2\circ\Phi_1
-	\]
-	is a conformal bijection \(F:G\to\mathbb{D}\). Writing it explicitly,
-	\[
-		F(z)=\frac{\exp\!\Big(\frac{\pi}{d}\big(\frac{i}{z}-i m\big)\Big)-1}
-		{\exp\!\Big(\frac{\pi}{d}\big(\frac{i}{z}-i m\big)\Big)+1}
-		\quad\text{with}\quad
-		d=\frac{r_2-r_1}{2r_1r_2},\ \ m=\frac{r_1+r_2}{4r_1r_2}.
-	\]
-	Equivalently, using \(\frac{e^t-1}{e^t+1}=\tanh(t/2)\),
-	\[
-		F(z)=\tanh\!\Big(\frac{\pi}{2d}\,\Big(\frac{i}{z}-i m\Big)\Big).
-	\]
-	Any other configuration (arbitrary \(a\neq0\) and non‐horizontal tangent)
-	is obtained by pre/post‐composing with a rotation/translation:
-	replace \(z\) by \(z-a\) in \(\Phi_1\), and possibly rotate by a unimodular
-	constant before Step~2. In all cases, the boundary circles map to \(|w|=1\),
-	and \(F\) is one-to-one and onto \(\mathbb{D}\).
-	\qedhere
 \end{proof}
 
 % toDO
-
 \setexercise{15}
 \begin{exercise}
 	Can you map the open unit disk conformally onto \(\{\,z: 0<|z|<1\,\}\)?
