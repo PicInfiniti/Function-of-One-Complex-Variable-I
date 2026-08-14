@@ -6596,55 +6596,41 @@
 	Prove that a nonconstant harmonic function on a region is an open map.
 	(Hint: Use the fact that the connected subsets of $\mathbb{R}$ are intervals.)
 \end{exercise}
+
 \begin{proof}[Solution]
-	Let \(u:\Omega\to\mathbb{R}\) be a nonconstant harmonic function on a region
-	\(\Omega\). We prove that \(u\) is an open map.
-	Let \(G\subseteq\Omega\) be open, and let \(y_0\in u(G)\). Choose
-	\(z_0\in G\) such that
+	Let \(u:G\to\mathbb{R}\) be a nonconstant harmonic function. We will show that \(u\) is an open map.
+
+	Let \(U\subset G\) be open, and let \(z_0\in U\). Since \(U\) is open, there exists \(r>0\) such that
 	\[
-		u(z_0)=y_0.
-	\]
-	Since \(G\) is open, there exists \(r>0\) such that
-	\[
-		\overline{B(z_0,r)}\subseteq G.
+		D(z_0,r)\subset U.
 	\]
 
-	We first observe that \(u\) is not constant on \(B(z_0,r)\). Indeed, if
-	\(u\) were constant on \(B(z_0,r)\), then
-	\[
-		u_x-iu_y=0
-	\]
-	on \(B(z_0,r)\). Since \(u\) is harmonic, the function \(u_x-iu_y\) is
-	analytic on \(\Omega\). By the identity theorem, it would vanish
-	identically on \(\Omega\). Hence \(u_x=u_y=0\) on \(\Omega\), and since
-	\(\Omega\) is connected, \(u\) would be constant on \(\Omega\), a
-	contradiction.
-
-	Therefore, by the maximum and minimum principles, \(u\) cannot attain a
-	maximum or a minimum at the interior point \(z_0\). Thus there exist
-	\(z_1,z_2\in B(z_0,r)\) such that
+	Since \(u\) is a nonconstant harmonic function, the maximum and minimum principles imply that \(u\) cannot have a local maximum or a local minimum at \(z_0\). Hence there exist points \(z_1,z_2\in D(z_0,r)\) such that
 	\[
 		u(z_1)<u(z_0)<u(z_2).
 	\]
 
-	The ball \(B(z_0,r)\) is connected, and \(u\) is continuous, so
-	\(u(B(z_0,r))\) is a connected subset of \(\mathbb{R}\). Hence
-	\(u(B(z_0,r))\) is an interval. Since this interval contains values both
-	less than and greater than \(y_0=u(z_0)\), it contains an open interval
-	about \(y_0\). More precisely, if
+	The disk \(D(z_0,r)\) is connected, and \(u\) is continuous. Therefore
 	\[
-		\varepsilon
-		=\frac12\min\{y_0-u(z_1),\,u(z_2)-y_0\}>0,
+		u(D(z_0,r))
 	\]
-	then
-	\[
-		(y_0-\varepsilon,y_0+\varepsilon)
-		\subseteq u(B(z_0,r))
-		\subseteq u(G).
-	\]
+	is a connected subset of \(\mathbb{R}\). Since the connected subsets of \(\mathbb{R}\) are intervals, \(u(D(z_0,r))\) is an interval.
 
-	Thus every point of \(u(G)\) is an interior point of \(u(G)\), so
-	\(u(G)\) is open. Therefore \(u\) is an open map.
+	Since
+	\[
+		u(z_1)<u(z_0)<u(z_2),
+	\]
+	the interval \(u(D(z_0,r))\) contains
+	\[
+		\bigl(u(z_1),u(z_2)\bigr).
+	\]
+	Thus \(u(z_0)\) is an interior point of \(u(D(z_0,r))\). Since
+	\[
+		u(D(z_0,r))\subset u(U),
+	\]
+	it follows that \(u(z_0)\) is an interior point of \(u(U)\).
+
+	Since \(z_0\in U\) was arbitrary, every point of \(u(U)\) is an interior point. Hence \(u(U)\) is open in \(\mathbb{R}\). Therefore \(u\) is an open map.
 \end{proof}
 
 \setexercise{5}
