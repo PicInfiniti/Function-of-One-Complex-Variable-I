@@ -1475,6 +1475,60 @@
 	\]
 	onto the open unit disk \(D(0,1)\). Give an explicit formula for your map.
 \end{exercise}
+\begin{proof}[Solution]
+	Let
+	\[
+		S=\{z\in\mathbb{C}:-2<\operatorname{Re}(z)<2\}.
+	\]
+
+	We first map $S$ conformally onto the upper half-plane
+	\[
+		\mathbb{H}=\{w\in\mathbb{C}:\operatorname{Im}(w)>0\}.
+	\]
+	Define
+	\[
+		g(z)=\exp\left(\frac{\pi i}{4}(z+2)\right).
+	\]
+	If $z=x+iy$, then
+	\[
+		g(z)
+		=
+		e^{-\pi y/4}e^{\,i\pi(x+2)/4}.
+	\]
+	Since $-2<x<2$, we have
+	\[
+		0<\frac{\pi(x+2)}{4}<\pi.
+	\]
+	Hence
+	\[
+		0<\arg g(z)<\pi,
+	\]
+	so $g$ maps $S$ conformally onto $\mathbb{H}$.
+	Next, the Möbius transformation
+	\[
+		h(w)=\frac{w-i}{w+i}
+	\]
+	maps $\mathbb{H}$ conformally onto the open unit disk
+	\[
+		D(0,1)=\{w\in\mathbb{C}:|w|<1\}.
+	\]
+
+	Therefore, the composition $f=h\circ g$ is a conformal map from $S$
+	onto $D(0,1)$, given explicitly by
+	\[
+		f(z)=
+		\frac{
+			\exp\left(\frac{\pi i}{4}(z+2)\right)-i
+		}{
+			\exp\left(\frac{\pi i}{4}(z+2)\right)+i
+		}
+	\]
+
+	Equivalently, this can be written as
+	\[
+		f(z)=i\tan\left(\frac{\pi z}{8}\right).
+	\]
+\end{proof}
 
 \begin{exercise}
 	Let \(a>0\). Compute the integral
