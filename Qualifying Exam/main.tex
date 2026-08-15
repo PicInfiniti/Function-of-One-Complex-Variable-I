@@ -1547,7 +1547,130 @@
 	\]
 	for some complex scalars \(a,b\) with \(a\neq 0\).
 \end{exercise}
+\begin{proof}[Solution (I)]
+	Let $f:\mathbb{C}\to\mathbb{C}$ be entire and injective. We first show that
+	$f$ must be a polynomial.
+	Consider the singularity of $f$ at $\infty$. It cannot be removable, since
+	in that case $f$ would be bounded outside some disk. Since $f$ is also
+	bounded on every compact disk, it would be bounded on all of $\mathbb{C}$.
+	By Liouville's theorem, $f$ would then be constant, contradicting
+	injectivity.
+	Also, $\infty$ cannot be an essential singularity. Indeed, by the Great
+	Picard theorem, if $\infty$ were an essential singularity, then in every
+	neighborhood of $\infty$, the function $f$ would attain every complex value,
+	with at most one exception, infinitely many times. This contradicts the
+	injectivity of $f$.
+	Therefore, $\infty$ is a pole of $f$, and hence $f$ is a polynomial.
+	Suppose that
+	\[
+		\deg f=n.
+	\]
+	Since $f$ is injective, we must have
+	\[
+		f'(z)\neq 0
+		\qquad\text{for every } z\in\mathbb{C}.
+	\]
+	Indeed, if $f'(z_0)=0$, then the Taylor expansion of $f$ at $z_0$ has the
+	form
+	\[
+		f(z)=f(z_0)+c_m(z-z_0)^m+\cdots,
+		\qquad m\geq 2,
+	\]
+	which implies that $f$ is not locally injective near $z_0$.
+	If $n\geq 2$, then $f'$ is a nonconstant polynomial of degree $n-1$.
+	By the Fundamental Theorem of Algebra, $f'$ has a zero, contradicting the
+	injectivity of $f$. Hence
+	\[
+		n=1.
+	\]
+	Thus
+	\[
+		f(z)=az+b
+	\]
+	for some $a,b\in\mathbb{C}$ with $a\neq 0$.
+	In fact, since $f$ has no fixed points, we can say more. A fixed point
+	satisfies
+	\[
+		az+b=z,
+	\]
+	or equivalently,
+	\[
+		(a-1)z=-b.
+	\]
+	If $a\neq 1$, then
+	\[
+		z=-\frac{b}{a-1}
+	\]
+	is a fixed point, contradicting the hypothesis. Therefore $a=1$.
+	Moreover, $b\neq 0$, since otherwise $f(z)=z$ and every point would be
+	fixed. Hence, in fact,
+	\[
+		f(z)=z+b,
+		\qquad b\neq 0.
+	\]
 
+\end{proof}
+\begin{proof}[Solution (II)]
+	Let
+	\[
+		\Omega=f(\mathbb{C}).
+	\]
+	Since $f$ is entire and injective, it is a conformal map from $\mathbb{C}$
+	onto $\Omega$. In particular, $\Omega$ is simply connected.
+	Suppose that
+	\[
+		\Omega\neq\mathbb{C}.
+	\]
+	Then, by the Riemann mapping theorem, there exists a conformal map
+	\[
+		\varphi:\Omega\to\mathbb{D},
+	\]
+	where
+	\[
+		\mathbb{D}=\{z\in\mathbb{C}:|z|<1\}.
+	\]
+	Therefore,
+	\[
+		\varphi\circ f:\mathbb{C}\to\mathbb{D}
+	\]
+	is an entire bounded function. By Liouville's theorem, $\varphi\circ f$
+	must be constant. This is impossible, since both $f$ and $\varphi$ are
+	injective.
+	Hence
+	\[
+		f(\mathbb{C})=\mathbb{C}.
+	\]
+	Thus $f$ is a conformal automorphism of $\mathbb{C}$. By the
+	classification of conformal automorphisms of the complex plane, every
+	such map has the form
+	\[
+		f(z)=az+b,
+	\]
+	where $a,b\in\mathbb{C}$ and $a\neq 0$.
+	Finally, we use the hypothesis that $f$ has no fixed points. A fixed
+	point $z$ would satisfy
+	\[
+		az+b=z,
+	\]
+	and hence
+	\[
+		(a-1)z=-b.
+	\]
+	If $a\neq 1$, then
+	\[
+		z=-\frac{b}{a-1}
+	\]
+	would be a fixed point, which is a contradiction. Therefore
+	\[
+		a=1.
+	\]
+	Also, $b\neq 0$, since otherwise $f(z)=z$ and every point would be fixed.
+	Thus, in fact,
+	\[
+		f(z)=z+b,
+		\qquad b\neq 0.
+	\]
+\end{proof}
 \begin{exercise}
 	Let \((f_n)\) be a sequence of holomorphic functions on a domain \(\Omega\)
 	that converges to a function \(f\) locally uniformly on \(\Omega\), and suppose
