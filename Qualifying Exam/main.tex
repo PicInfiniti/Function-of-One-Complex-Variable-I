@@ -1422,6 +1422,51 @@
 		|f'(0)|<1.
 	\]
 \end{exercise}
+\begin{proof}[Solution]
+	Let $\mathbb{D}=\{z\in\mathbb{C}:|z|<1\}$. Since $\mathbb{D}\subset\Omega$, the restriction of $f$ to $\mathbb{D}$ is analytic and satisfies $|f|\leq 1$.
+	If $f$ is constant, then $f'(0)=0<1$, so suppose that $f$ is nonconstant. By the maximum modulus principle,
+	\[
+		|f(z)|<1 \qquad (z\in\mathbb{D}),
+	\]
+	and hence $f:\mathbb{D}\to\mathbb{D}$.
+	Set $a=f(0)$. By the Schwarz--Pick lemma,
+	\[
+		|f'(0)|\leq 1-|f(0)|^2=1-|a|^2.
+	\]
+	Therefore, if $a\neq 0$, then
+	\[
+		|f'(0)|<1.
+	\]
+
+	It remains to consider the case $f(0)=0$. By Schwarz's lemma,
+	\[
+		|f'(0)|\leq 1.
+	\]
+	Suppose, for contradiction, that $|f'(0)|=1$. Then the equality case of Schwarz's lemma implies that
+	\[
+		f(z)=e^{i\theta}z
+	\]
+	for all $z\in\mathbb{D}$, for some $\theta\in\mathbb{R}$.
+	Since both $f$ and $z\mapsto e^{i\theta}z$ are analytic on the connected domain $\Omega$ and agree on the open set $\mathbb{D}$, the identity theorem gives
+	\[
+		f(z)=e^{i\theta}z
+	\]
+	for all $z\in\Omega$.
+	However,
+	\[
+		z=\frac34+\frac34 i\in\Omega,
+	\]
+	while
+	\[
+		|f(z)|=|z|
+		=\frac{3\sqrt{2}}{4}>1,
+	\]
+	contradicting the assumption that $|f|\leq 1$ on $\Omega$.
+	Hence equality cannot occur, and therefore
+	\[
+		|f'(0)|<1.
+	\]
+\end{proof}
 
 \begin{exercise}
 	Find a conformal map from the vertical strip
