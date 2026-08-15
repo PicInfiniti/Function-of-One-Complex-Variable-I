@@ -6833,39 +6833,57 @@
 	that is, $A$ is the set of zeros of the gradient of $u$. Can $A$ have a limit point in $G$?
 \end{exercise}
 \begin{proof}[Solution]
-	In general, \(A\) can have a limit point in \(G\) only if \(u\) is constant. Thus, if \(u\) is nonconstant harmonic, then \(A\) has no limit point in \(G\).
-
-	To see this, suppose \(a\in G\) is a limit point of
+	Define
 	\[
-		A=\{z\in G: u_x(z)=u_y(z)=0\}.
+		f(z)=u_x(z)-i\,u_y(z).
 	\]
-	Choose a disk \(B(a;r)\subset G\). Since \(u\) is harmonic, on \(B(a;r)\) there exists a harmonic conjugate \(v\), so that
+	Since \(u\) is harmonic,
 	\[
-		f=u+iv
+		u_{xx}+u_{yy}=0.
 	\]
-	is analytic on \(B(a;r)\).
-
-	By the Cauchy--Riemann equations,
+	We claim that \(f\) is holomorphic on \(G\). Indeed, writing
 	\[
-		f'(z)=u_x(z)-i\,u_y(z).
+		f=u_x-i u_y,
 	\]
-	Hence
+	the Cauchy--Riemann equations are
 	\[
-		z\in A \quad \Longleftrightarrow \quad f'(z)=0.
+		u_{xx}=-u_{yy}
+		\qquad\text{and}\qquad
+		u_{xy}=u_{yx},
 	\]
-	Because \(a\) is a limit point of \(A\), the analytic function \(f'\) has zeros with a limit point in \(B(a;r)\). By the identity theorem, it follows that
+	which hold because \(u\) is harmonic and has continuous second partial
+	derivatives.
+	Now
 	\[
-		f'\equiv 0 \qquad \text{on } B(a;r).
+		f(z)=0
 	\]
-	Therefore \(f\) is constant on \(B(a;r)\), and so \(u=\Re f\) is constant on \(B(a;r)\).
-
-	Now \(u\) is harmonic on the connected set \(G\), and \(u\) agrees with a constant on the nonempty open set \(B(a;r)\). Hence \(u\) is constant on all of \(G\). Indeed, \(u\) has a local maximum and a local minimum on \(B(a;r)\), so by the maximum principle \(u\) must be constant on \(G\).
-
-	Thus, if \(A\) has a limit point in \(G\), then \(u\) is constant on \(G\). Equivalently, for a nonconstant harmonic function, the set
+	if and only if
 	\[
-		A=\{z\in G: \nabla u(z)=0\}
+		u_x(z)=u_y(z)=0.
 	\]
-	has no limit point in \(G\).
+	Thus the set
+	\[
+		A=\{z\in G:u_x(z)=u_y(z)=0\}
+	\]
+	is precisely the set of zeros of the holomorphic function \(f\).
+	Suppose that \(A\) has a limit point in \(G\). Then \(f\) has a set of
+	zeros with a limit point in \(G\). By the Identity Theorem,
+	\[
+		f\equiv 0
+	\]
+	on \(G\). Hence
+	\[
+		u_x=u_y=0
+	\]
+	throughout \(G\). Since \(G\) is a region and therefore connected, \(u\)
+	must be constant on \(G\).
+	Therefore, if \(u\) is nonconstant, \(A\) cannot have a limit point in
+	\(G\). If \(u\) is constant, then
+	\[
+		A=G,
+	\]
+	so \(A\) does have limit points in \(G\). Thus \(A\) can have a limit
+	point in \(G\) if and only if \(u\) is constant.
 \end{proof}
 
 \section{Harmonic functions on a disk}
