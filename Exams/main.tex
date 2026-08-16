@@ -162,10 +162,83 @@
 		\item Show that a M\"obius transformation has $\infty$ as its only fixed point if and only if it is a translation, but not the identity.
 	\end{enumerate}
 \end{exercise}
+\begin{proof}[Solution]
+	\begin{enumerate}[(a)]
+		\item Let
+		      \[
+			      T(z)=\frac{az+b}{cz+d},
+			      \qquad ad-bc\neq 0.
+		      \]
+		      Suppose that $0$ and $\infty$ are the only fixed points of $T$.
+		      Since $T(0)=0$, we must have $b=0$. Since $T(\infty)=\infty$, we must have $c=0$. Therefore,
+		      \[
+			      T(z)=\frac{az}{d}=\lambda z,
+		      \]
+		      where $\lambda=\frac{a}{d}\neq 0$. Thus $T$ is a dilation.
+		      Moreover, $\lambda\neq 1$, since otherwise $T(z)=z$ would be the identity transformation, in which case every point would be fixed.
+		      Conversely, suppose that
+		      \[
+			      T(z)=\lambda z,
+			      \qquad \lambda\neq 0,1.
+		      \]
+		      Clearly, $0$ and $\infty$ are fixed. If $z\in\mathbb{C}$ is any finite fixed point, then
+		      \[
+			      \lambda z=z,
+		      \]
+		      so
+		      \[
+			      (\lambda-1)z=0.
+		      \]
+		      Since $\lambda\neq 1$, it follows that $z=0$. Hence the only fixed points of $T$ are $0$ and $\infty$.
+		      Therefore, a M\"obius transformation has $0$ and $\infty$ as its only fixed points if and only if it is a dilation, but not the identity.
+
+		\item Suppose that $\infty$ is the only fixed point of $T$. Since $T(\infty)=\infty$, we must have $c=0$. Thus
+		      \[
+			      T(z)=\frac{az+b}{d}=\alpha z+\beta,
+		      \]
+		      where $\alpha=\frac{a}{d}\neq 0$ and $\beta=\frac{b}{d}$.
+
+		      If $\alpha\neq 1$, then a finite fixed point would satisfy
+		      \[
+			      \alpha z+\beta=z,
+		      \]
+		      and hence
+		      \[
+			      z=-\frac{\beta}{\alpha-1}.
+		      \]
+		      This would give a finite fixed point, contradicting the assumption that $\infty$ is the only fixed point. Therefore, $\alpha=1$, and so
+		      \[
+			      T(z)=z+\beta.
+		      \]
+		      Also, $\beta\neq 0$, since otherwise $T$ would be the identity. Thus $T$ is a translation, but not the identity.
+
+		      Conversely, suppose that
+		      \[
+			      T(z)=z+\beta,
+			      \qquad \beta\neq 0.
+		      \]
+		      Then $\infty$ is fixed. If $z\in\mathbb{C}$ were a finite fixed point, then
+		      \[
+			      z+\beta=z,
+		      \]
+		      which would imply $\beta=0$, a contradiction. Hence $\infty$ is the only fixed point.
+		      Therefore, a M\"obius transformation has $\infty$ as its only fixed point if and only if it is a translation, but not the identity.
+	\end{enumerate}
+\end{proof}
 
 \begin{exercise}
 	Let $G$ be a region, and suppose that $f\colon G\to\mathbb{C}$ is analytic such that $f(G)$ is a subset of a circle. Show that $f$ is constant.
 \end{exercise}
+\begin{proof}[Solution]
+	Suppose, for contradiction, that $f$ is nonconstant. Since $G$ is a region and
+	$f\colon G\to\mathbb{C}$ is analytic and nonconstant, the Open Mapping Theorem
+	implies that $f(G)$ is an open subset of $\mathbb{C}$.
+	However, by hypothesis, $f(G)$ is contained in a circle. A circle contains no
+	nonempty open subset of $\mathbb{C}$, since every open disk centered at a point
+	on the circle contains points that are not on the circle. Thus $f(G)$ cannot
+	be open.
+	This is a contradiction. Therefore, $f$ must be constant.
+\end{proof}
 
 \begin{exercise}
 	Let
@@ -175,6 +248,62 @@
 	\]
 	Determine whether $f$ is analytic on the complex plane.
 \end{exercise}
+\begin{proof}[Solution]
+	Write
+	\[
+		f(z)=u(x,y)+iv(x,y),
+	\]
+	where
+	\[
+		u(x,y)=e^x\sin y
+		\qquad\text{and}\qquad
+		v(x,y)=e^x\cos y.
+	\]
+	We compute the partial derivatives:
+	\[
+		u_x=e^x\sin y,
+		\qquad
+		u_y=e^x\cos y,
+	\]
+	and
+	\[
+		v_x=e^x\cos y,
+		\qquad
+		v_y=-e^x\sin y.
+	\]
+
+	For $f$ to be analytic, the Cauchy--Riemann equations must hold:
+	\[
+		u_x=v_y
+		\qquad\text{and}\qquad
+		u_y=-v_x.
+	\]
+	The first equation gives
+	\[
+		e^x\sin y=-e^x\sin y,
+	\]
+	so
+	\[
+		\sin y=0.
+	\]
+	The second equation gives
+	\[
+		e^x\cos y=-e^x\cos y,
+	\]
+	so
+	\[
+		\cos y=0.
+	\]
+	However, there is no value of $y$ for which both
+	\[
+		\sin y=0
+		\qquad\text{and}\qquad
+		\cos y=0.
+	\]
+	Therefore, the Cauchy--Riemann equations do not hold at any point of
+	$\mathbb{C}$. Hence $f$ is nowhere analytic, and in particular it is not
+	analytic on the complex plane.
+\end{proof}
 
 \begin{exercise}
 	Map
@@ -183,6 +312,112 @@
 	\]
 	onto the open unit disk by an analytic function $f$. Can $f$ be one-to-one?
 \end{exercise}
+
+\begin{proof}[Solution]
+	Let
+	\[
+		G=\mathbb{C}\setminus[-9,9].
+	\]
+	We first construct an analytic map from $G$ onto the open unit disk.
+	Consider
+	\[
+		h(z)=\frac{z-9}{z+9}.
+	\]
+	For $z\in G$, the value $h(z)$ never lies on the nonpositive real axis. Hence
+	we may take the principal square root and define
+	\[
+		s(z)=\sqrt{\frac{z-9}{z+9}},
+	\]
+	where the branch is chosen so that
+	\[
+		\operatorname{Re}s(z)>0.
+	\]
+	Thus $s$ maps $G$ into the right half-plane.
+	Now define
+	\[
+		g(z)=\frac{s(z)-1}{s(z)+1}.
+	\]
+	The M\"obius transformation
+	\[
+		w\mapsto \frac{w-1}{w+1}
+	\]
+	maps the right half-plane onto the open unit disk. Also, $s(z)\neq 1$ for
+	every finite $z$, since
+	\[
+		\frac{z-9}{z+9}=1
+	\]
+	would imply $-9=9$. Therefore,
+	\[
+		g(G)=\mathbb{D}\setminus\{0\},
+	\]
+	where
+	\[
+		\mathbb{D}=\{w:|w|<1\}.
+	\]
+
+	We now need to fill in the missing point $0$. Let
+	\[
+		\phi(w)=\frac{w-\frac12}{1-\frac12w}.
+	\]
+	This is an automorphism of $\mathbb{D}$, and since
+	\[
+		\phi(0)=-\frac12,
+	\]
+	we have
+	\[
+		\phi\bigl(\mathbb{D}\setminus\{0\}\bigr)
+		=
+		\mathbb{D}\setminus\left\{-\frac12\right\}.
+	\]
+	Finally, define
+	\[
+		f(z)=\left(\phi(g(z))\right)^2.
+	\]
+	Explicitly,
+	\[
+		f(z)=
+		\left(
+		\frac{g(z)-\frac12}{1-\frac12g(z)}
+		\right)^2,
+		\qquad
+		g(z)=
+		\frac{
+			\sqrt{\frac{z-9}{z+9}}-1
+		}{
+			\sqrt{\frac{z-9}{z+9}}+1
+		}.
+	\]
+	This function is analytic on $G$.
+	Moreover, the map $w\mapsto w^2$ maps
+	\[
+		\mathbb{D}\setminus\left\{-\frac12\right\}
+	\]
+	onto all of $\mathbb{D}$. Indeed, for any $\zeta\in\mathbb{D}$, choose a
+	square root $w$ of $\zeta$. If $w=-\frac12$, then the other square root
+	$\frac12$ is still in the domain. Hence
+	\[
+		f(G)=\mathbb{D}.
+	\]
+
+	We now show that no analytic map from $G$ onto $\mathbb{D}$ can be
+	one-to-one. The region $G$ is not simply connected. For example, the curve
+	\[
+		\gamma(t)=10e^{it},
+		\qquad 0\leq t\leq 2\pi,
+	\]
+	lies in $G$, and
+	\[
+		\int_\gamma \frac{1}{z}\,dz=2\pi i\neq 0.
+	\]
+	Thus $\gamma$ cannot be contracted to a point in $G$.
+
+	If an analytic map $f:G\to\mathbb{D}$ were both one-to-one and onto, then
+	$f$ would be a conformal equivalence between $G$ and $\mathbb{D}$. In
+	particular, $G$ would be simply connected because $\mathbb{D}$ is simply
+	connected. This is a contradiction.
+	Therefore, there exists an analytic map from $G$ onto the open unit disk,
+	but such a map cannot be one-to-one.
+\end{proof}
 
 \begin{exercise}
 	Give the principal branch of
@@ -259,7 +494,6 @@
 	\]
 	is the positively oriented circle \(|z|=3\). Of the two singularities
 	\(z=2\) and \(z=5\), only \(z=2\) lies inside \(\gamma\).
-
 	Set
 	\[
 		h(z)=\frac{e^z}{(z-5)^5}.
